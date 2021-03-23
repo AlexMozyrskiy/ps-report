@@ -70,7 +70,6 @@ const initialState = {
 };
 
 const workBookDataReducers = (state = initialState, action) => {
-    debugger
     switch (action.type) {
 
         case WORK_BOOK_DATA: {

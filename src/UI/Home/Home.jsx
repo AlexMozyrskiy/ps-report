@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
-import { getWorkBookOtstSheetDataSelector } from "../../state/features/workBookData/selectors";
+import { selectKmChecked } from "../../state/features/workBookData/selectors";
 import { setWorkBookDataActionCreator } from "../../state/features/workBookData/actionCreators";
 
 export const Home = () => {
 
   const dispatch = useDispatch();
+  const kmCheckd = useSelector(selectKmChecked);
 
   function handleFile(evt) {
     var selectedFile = evt.target.files[0];         // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
@@ -48,6 +49,10 @@ export const Home = () => {
   return (
     <>
       <input type="file" id="input_dom_element" onChange={(e) => handleFile(e)} />
+
+      {
+        kmCheckd ? <div>Проверено Км: { kmCheckd }</div> : null
+      }
     </>
   );
 }
