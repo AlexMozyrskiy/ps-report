@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
-
-
-
-
-
-
+import { getWorkBookOtstSheetDataSelector } from "../../state/features/workBookData/selectors";
 
 export const Home = () => {
 
   let [jsonOcKm, setJsonOcKm] = useState([]);                     // для записи сюда таблицы из Excel в формат json
   let [jsonOtst, setJsonOtst] = useState([]);                     // для записи сюда таблицы из Excel в формат json
-  let [runUseEffect, setRunUseEffect] = useState(true);           // запускать ли useEffect, чтобы он не запустился 2 раза
+  // let [runUseEffect, setRunUseEffect] = useState(true);           // запускать ли useEffect, чтобы он не запустился 2 раза
   let [sum, setSum] = useState(0);
+  let otstSheetData = useSelector(getWorkBookOtstSheetDataSelector);
+  debugger
 
-  useEffect(() => {
-    if (runUseEffect) {
+  // useEffect(() => {
+  //   if (runUseEffect) {
 
-      setRunUseEffect(false);
-    }
-  }, [runUseEffect]);
+  //     setRunUseEffect(false);
+  //   }
+  // }, [runUseEffect]);
 
   function handleFile(evt) {
     var selectedFile = evt.target.files[0];         // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
@@ -69,6 +67,7 @@ export const Home = () => {
   return (
     <>
       <input type="file" id="input_dom_element" onChange={(e) => handleFile(e)} />
+      <div>{otstSheetData[0]["ЛИНИЯ"]}</div>
       {
         sum
         ? <div>Всего Километров: {sum}</div>
