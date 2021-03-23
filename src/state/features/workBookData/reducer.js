@@ -20,7 +20,7 @@ const initialState = {
         "КОДНАПРВ": 0,
         "КОДОТСТУП": 0,
         "КОЛИЧЕСТВО": 0,
-        "ЛИНИЯ": "Тест",
+        "ЛИНИЯ": "",
         "М": 0,
         "МЕСЯЦ": 0,
         "МОСТ": 0,
@@ -70,13 +70,83 @@ const initialState = {
 };
 
 const workBookDataReducers = (state = initialState, action) => {
+    debugger
     switch (action.type) {
 
         case WORK_BOOK_DATA: {
             const superState = {
                 ...state,
-                otstSheetData: action.workBookDataObject.otstSheetData,
-                ocKmSheetData: action.workBookDataObject.ocKmSheetData
+
+                otstSheetData: action.workBookDataObject.otstSheetData.map(item => {
+                    return {
+                        "EXCLUDE": item["EXCLUDE"],
+                        "KM": item["KM"],
+                        "PR_PREDUPR": item["PR_PREDUPR"],
+                        "АМПЛИТУДА": item["АМПЛИТУДА"],
+                        "БАЛЛ": item["БАЛЛ"],
+                        "ВИД": item["ВИД"],
+                        "ГОД": item["ГОД"],
+                        "ДЕНЬ": item["ДЕНЬ"],
+                        "ДЗ": item["ДЗ"],
+                        "ДЛИНА": item["ДЛИНА"],
+                        "ИС": item["ИС"],
+                        "КЛАСС": item["КЛАСС"],
+                        "КОД": item["КОД"],
+                        "КОДНАПРВ": item["КОДНАПРВ"],
+                        "КОДОТСТУП": item["КОДОТСТУП"],
+                        "КОЛИЧЕСТВО": item["КОЛИЧЕСТВО"],
+                        "ЛИНИЯ": item["ЛИНИЯ"],
+                        "М": item["М"],
+                        "МЕСЯЦ": item["МЕСЯЦ"],
+                        "МОСТ": item["МОСТ"],
+                        "ОБК": item["ОБК"],
+                        "ОТСТУПЛЕНИЕ": item["ОТСТУПЛЕНИЕ"],
+                        "ПС": item["ПС"],
+                        "ПУТЬ": item["ПУТЬ"],
+                        "ПЧ": item["ПЧ"],
+                        "СК_ОГР_ГРУЗ": item["СК_ОГР_ГРУЗ"],           // "-" | number
+                        "СК_ОГР_ПАСС": item["СК_ОГР_ПАСС"],           // "-" | number
+                        "СК_УСТ_ГРУЗ": item["СК_УСТ_ГРУЗ"],           // "-" | number
+                        "СК_УСТ_ПАСС": item["СК_УСТ_ПАСС"],           // "-" | number
+                        "СТЕПЕНЬ": item["СТЕПЕНЬ"],
+                        "СТРЕЛКА": item["СТРЕЛКА"]
+                    }
+
+                }),
+
+                ocKmSheetData: action.workBookDataObject.ocKmSheetData.map(item => {
+                    return {
+                        "KM": item["KM"],
+                        "KOD_PREDUPR": item["KOD_PREDUPR"],
+                        "M": item["M"],
+                        "БАЛЛ": item["БАЛЛ"],
+                        "ВИД": item["ВИД"],
+                        "ГОД": item["ГОД"],
+                        "ДЕНЬ": item["ДЕНЬ"],
+                        "ДЛКИЛОМЕТРА": item["ДЛКИЛОМЕТРА"],
+                        "КАТЕГОРИЯ": item["КАТЕГОРИЯ"],
+                        "КЛАСС": item["КЛАСС"],
+                        "КОДДОР": item["КОДДОР"],
+                        "КОДНАПР": item["КОДНАПР"],
+                        "ЛИНИЯ": item["ЛИНИЯ"],
+                        "МЕСЯЦ": item["МЕСЯЦ"],
+                        "НАПРАВЛЕНИЕ": item["НАПРАВЛЕНИЕ"],
+                        "ОЦЕНКА": item["ОЦЕНКА"],
+                        "ПРОВЕРЕНО": item["ПРОВЕРЕНО"],
+                        "ПС": item["ПС"],
+                        "ПУТЬ": item["ПУТЬ"],
+                        "ПЧ": item["ПЧ"],
+                        "СК_ОГР_C": item["СК_ОГР_C"],              // "-" | number
+                        "СК_ОГР_ГРУЗ": item["СК_ОГР_ГРУЗ"],           // "-" | number
+                        "СК_ОГР_ПАСС": item["СК_ОГР_ПАСС"],           // "-" | number
+                        "СК_ОГР_ПРЖ": item["СК_ОГР_ПРЖ"],            // "-" | number
+                        "СК_ОГР_СПН": item["СК_ОГР_СПН"],            // "-" | number
+                        "СК_УСТ_C": item["СК_УСТ_C"],
+                        "СК_УСТ_ГРУЗ": item["СК_УСТ_ГРУЗ"],
+                        "СК_УСТ_ПАСС": item["СК_УСТ_ПАСС"],
+                        "СК_УСТ_СПН": item["СК_УСТ_СПН"]
+                    }
+                })
             };
             return superState;
         }

@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
 import { getWorkBookOtstSheetDataSelector } from "../../state/features/workBookData/selectors";
+import { setWorkBookDataActionCreator } from "../../state/features/workBookData/actionCreators";
 
 export const Home = () => {
 
-  let [jsonOcKm, setJsonOcKm] = useState([]);                     // для записи сюда таблицы из Excel в формат json
-  let [jsonOtst, setJsonOtst] = useState([]);                     // для записи сюда таблицы из Excel в формат json
-  // let [runUseEffect, setRunUseEffect] = useState(true);           // запускать ли useEffect, чтобы он не запустился 2 раза
-  let [sum, setSum] = useState(0);
-  let otstSheetData = useSelector(getWorkBookOtstSheetDataSelector);
-  debugger
-
-  // useEffect(() => {
-  //   if (runUseEffect) {
-
-  //     setRunUseEffect(false);
-  //   }
-  // }, [runUseEffect]);
+  const dispatch = useDispatch();
 
   function handleFile(evt) {
     var selectedFile = evt.target.files[0];         // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
@@ -30,11 +19,16 @@ export const Home = () => {
 
       const workSheetOtstDataObj = workBook.Sheets["Отступления"];
       const workSheetOtstDataJson = XLSX.utils.sheet_to_json(workSheetOtstDataObj);
-      setJsonOtst(workSheetOtstDataJson);
 
       const workSheetOcKmDataObj = workBook.Sheets["Оценка КМ"];
       const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
-      setJsonOcKm(workSheetOcKmDataJson);
+
+      let worBookData = {
+        otstSheetData: workSheetOtstDataJson,
+        ocKmSheetData: workSheetOcKmDataJson
+      }
+
+      dispatch(setWorkBookDataActionCreator(worBookData));
 
 
 
@@ -50,29 +44,10 @@ export const Home = () => {
     reader.readAsBinaryString(selectedFile);
   }
 
-  console.log(jsonOtst);
-  console.log(jsonOcKm);
-
-  if (jsonOcKm.length && sum === 0) {
-    let sum1 = jsonOcKm.reduce((prevVal, item) => {
-      let km = +item["ПРОВЕРЕНО"]
-      let subSum = prevVal + km;
-      return +subSum.toFixed(3)
-    }, 0);
-    setSum(sum1);
-  }
-
-
 
   return (
     <>
       <input type="file" id="input_dom_element" onChange={(e) => handleFile(e)} />
-      <div>{otstSheetData[0]["ЛИНИЯ"]}</div>
-      {
-        sum
-        ? <div>Всего Километров: {sum}</div>
-        : null
-      }
     </>
   );
 }

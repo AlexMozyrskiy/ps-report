@@ -4,7 +4,7 @@ import {
 
 /* в workBookDataObject лежат данные из листов Отступления и Оценка КМ в двух соответствующих объектах,
 структура внутри каждого из этих объектов: массив объектов(один объект === одна строка в ексель) */
-export const setWorkBookDataActionCreator = ({ workBookDataObject }) => {
+export const setWorkBookDataActionCreator = ( workBookDataObject ) => {
     return {
         type: WORK_BOOK_DATA,
         workBookDataObject
