@@ -1,0 +1,1 @@
+export const IS_BUTTON_CLICKED = 'react-test/users/IS_BUTTON_CLICKED';
