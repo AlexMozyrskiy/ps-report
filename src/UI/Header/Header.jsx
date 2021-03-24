@@ -18,11 +18,11 @@ const HeaderNav = () => {
                                 <NavLink to="/" className="header__anchor">Home</NavLink>
                             </li>
                             <li className="header__li">
-                                <NavLink to="/users" className="header__anchor">Users</NavLink>
+                                <NavLink to="/test" className="header__anchor">Testing Reselect</NavLink>
                             </li>
-                            <li className="header__li">
+                            {/* <li className="header__li">
                                 <NavLink to="/profile" className="header__anchor">Profile</NavLink>
-                            </li>
+                            </li> */}
                         </ul>
                     </nav>
 

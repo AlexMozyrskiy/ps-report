@@ -1,20 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
-import { selectKmChecked } from "../../state/features/workBookData/selectors";
-import { setWorkBookDataActionCreator } from "../../state/features/workBookData/actionCreators";
+import {
+  getIsWorkBookDataLoadedSelector,
+  calculateAllDataForTheReportOcKmSheetSmartSelector,
+  calculateAllDataForTheReportOtstSheetSmartSelector
+} from "../../state/features/workBookData/selectors";
+import { setWorkBookDataThunkCreator } from "../../state/features/workBookData/thunkCreators";
 
 export const Home = () => {
 
   const dispatch = useDispatch();
-  const kmCheckd = useSelector(selectKmChecked);
+  const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
+  const otstSheetCalculatingData = useSelector(calculateAllDataForTheReportOtstSheetSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
+  const isDataLoaded = useSelector(getIsWorkBookDataLoadedSelector);                                      // загружны ли данные в стейт
 
-  function handleFile(evt) {
-    var selectedFile = evt.target.files[0];         // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
-    var reader = new FileReader();
+  console.log(otstSheetCalculatingData.thirdDegrees);
+
+  const onBookSelect = (evt) => {
+    let worBookData;                                    // возвращаем json
+    const selectedFile = evt.target.files[0];           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
+    let reader = new FileReader();
+    reader.readAsBinaryString(selectedFile);
     reader.onload = function (event) {
-      var data = event.target.result;
-      var workBook = XLSX.read(data, {
+
+      const data = event.target.result;
+      const workBook = XLSX.read(data, {
         type: 'binary'
       });
 
@@ -24,34 +35,28 @@ export const Home = () => {
       const workSheetOcKmDataObj = workBook.Sheets["Оценка КМ"];
       const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
 
-      let worBookData = {
+
+      worBookData = {
         otstSheetData: workSheetOtstDataJson,
         ocKmSheetData: workSheetOcKmDataJson
       }
 
-      dispatch(setWorkBookDataActionCreator(worBookData));
-
-
-
-      // workBook.SheetNames.forEach(function (sheetName) {
-      //   const workSheetDataObj = workBook.Sheets[sheetName];
-      //   const workSheetDataJson = XLSX.utils.sheet_to_json(workSheetDataObj);
-      //   console.log(workSheetDataJson)
-      // })
+      dispatch(setWorkBookDataThunkCreator(worBookData));
     };
+
     reader.onerror = function (event) {
+      worBookData = null
       console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
     };
-    reader.readAsBinaryString(selectedFile);
   }
 
 
   return (
     <>
-      <input type="file" id="input_dom_element" onChange={(e) => handleFile(e)} />
+      <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} />
 
       {
-        kmCheckd ? <div>Проверено Км: { kmCheckd }</div> : null
+        isDataLoaded ? <div>Проверено Км: {ocKmSheetCalculatingData.totalCheckedKilometers}</div> : <div>Данные не загружены</div>
       }
     </>
   );

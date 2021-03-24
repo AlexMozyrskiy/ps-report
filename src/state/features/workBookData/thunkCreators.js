@@ -1,28 +1,15 @@
-// import {
-//     setWorkBookDataActionCreator
-// } from "./actionCreators";
+import {
+    setWorkBookDataActionCreator, setIsWorkBookDataLoadingActionCreator,
+    setIsWorkBookDataLoadedActionCreator
+} from "./actionCreators";
 
 
-// export const getUsersThunkCreator = (currentPage = 1, usersPerPage = 10, turnOnTheButtonPreloader = false) => async (dispatch) => {
+export const setWorkBookDataThunkCreator = (worBookData) => async (dispatch) => {
+    dispatch(setIsWorkBookDataLoadingActionCreator(true));                              // запишем в стейт, что мы загружаем данные в стейт, чтобы покахывать лоадер
 
-//     if(turnOnTheButtonPreloader) {                     // если мы делаем первый запрос: только перешли на страницу юзеров покажем общий прелоадер, если мы уже заходили и нажали кнопку внизу страницы загрузить еще юзеров покажем вместо кнопки лоадер кнопки, а не общий лоадер
-//         dispatch(isButtonLoadMoreUsersClicked(true));
-//     } else {
-//         dispatch(setIsPreloaderActive(true));
-//     }
+    dispatch(setWorkBookDataActionCreator(worBookData));                                // загрузим данные в стейт
 
-//     const data = await usersAPI.getUsers(currentPage, usersPerPage);
+    dispatch(setIsWorkBookDataLoadingActionCreator(false));                             // запишем в стейт, что мы уже загрузили данные в стейт, чтобы убрать лоадер
 
-//     if(data.totalCount) {
-//         dispatch(setUsersArray(data.items, data.totalCount, data.error, turnOnTheButtonPreloader));
-//         dispatch(setCurrentPage(currentPage));
-//     }
-
-//     dispatch(toogleRunUseEffect(false));
-
-//     if(turnOnTheButtonPreloader) {
-//         dispatch(isButtonLoadMoreUsersClicked(false));
-//     } else {
-//         dispatch(setIsPreloaderActive(false));
-//     }
-// }
+    dispatch(setIsWorkBookDataLoadedActionCreator(true));                               // данные загружены в стейт
+}

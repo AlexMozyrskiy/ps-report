@@ -1,5 +1,6 @@
 import {
-    WORK_BOOK_DATA
+    WORK_BOOK_DATA, IS_WORK_BOOK_DATA_LOADED,
+    IS_WORK_BOOK_DATA_LOADING
 } from "./actionTypes";
 
 const initialState = {
@@ -66,7 +67,9 @@ const initialState = {
         "СК_УСТ_ГРУЗ": 0,
         "СК_УСТ_ПАСС": 0,
         "СК_УСТ_СПН": 0
-    }]
+    }],
+    isWorkBookDataLoaded: false,        // загрузились ли данные в стейт
+    isWorkBookDataLoading: false        // загружаются ли данные в стейт по моменту
 };
 
 const workBookDataReducers = (state = initialState, action) => {
@@ -146,6 +149,22 @@ const workBookDataReducers = (state = initialState, action) => {
                         "СК_УСТ_СПН": item["СК_УСТ_СПН"]
                     }
                 })
+            };
+            return superState;
+        }
+
+        case IS_WORK_BOOK_DATA_LOADED: {
+            const superState = {
+                ...state,
+                isWorkBookDataLoaded: action.isWorkBookDataLoaded
+            };
+            return superState;
+        }
+
+        case IS_WORK_BOOK_DATA_LOADING: {
+            const superState = {
+                ...state,
+                isWorkBookDataLoading: action.isWorkBookDataLoading
             };
             return superState;
         }
