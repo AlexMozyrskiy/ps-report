@@ -1,14 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { selectKmChecked } from "../../state/features/workBookData/selectors";
+import XLSX from "xlsx/dist/xlsx.full.min";
+import { definePicketByMeter } from "../../helpers/common/definePicketByMeter/definePicketByMeter";
 
 export const ReselectTesting = () => {
 
-  const kmCheckd = useSelector(selectKmChecked);
+  const writeFile = () => {
+    alert(definePicketByMeter("2d222"));
+  }
 
   return (
     <>
-      
+      <button onClick={writeFile} >Test Download</button>
     </>
   );
 }

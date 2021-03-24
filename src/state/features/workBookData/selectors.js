@@ -77,7 +77,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
 
         otstData.forEach(item => {                                          // для каждого объекта (строчки в excel)
-            if (item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && item["СТЕПЕНЬ"] === 3 && item["PR_PREDUPR"] === 0) {
+            if (item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && item["СТЕПЕНЬ"] === 3) {
                 thirdDegrees.push({
                     "EXCLUDE": item["EXCLUDE"],
                     "KM": item["KM"],
@@ -90,7 +90,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
                     "ДЗ": item["ДЗ"],
                     "ДЛИНА": item["ДЛИНА"],
                     "ИС": item["ИС"],
-                    "КЛАСС": "КЛАСС",
+                    "КЛАСС": item["КЛАСС"],
                     "КОД": item["КОД"],
                     "КОДНАПРВ": item["КОДНАПРВ"],
                     "КОДОТСТУП": item["КОДОТСТУП"],
@@ -100,7 +100,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
                     "МЕСЯЦ": item["МЕСЯЦ"],
                     "МОСТ": item["МОСТ"],
                     "ОБК": item["ОБК"],
-                    "ОТСТУПЛЕНИЕ": "ОТСТУПЛЕНИЕ",
+                    "ОТСТУПЛЕНИЕ": item["ОТСТУПЛЕНИЕ"],
                     "ПС": item["ПС"],
                     "ПУТЬ": item["ПУТЬ"],
                     "ПЧ": item["ПЧ"],
