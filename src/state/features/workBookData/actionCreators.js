@@ -1,6 +1,6 @@
 import {
     WORK_BOOK_DATA, IS_WORK_BOOK_DATA_LOADED,
-    IS_WORK_BOOK_DATA_LOADING
+    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY
 } from "./actionTypes";
 
 /* в workBookDataObject лежат данные из листов Отступления и Оценка КМ в двух соответствующих объектах,
@@ -23,5 +23,12 @@ export const setIsWorkBookDataLoadingActionCreator = ( boolVar ) => {           
     return {
         type: IS_WORK_BOOK_DATA_LOADING,
         isWorkBookDataLoading: boolVar
+    }
+};
+
+export const setReportForDayActionCreator = ( day ) => {                // пользователь вводит за какой день надо сделать отчет, нужен для фильтри при расчетах
+    return {
+        type: REPORT_FOR_DAY,
+        reportForDay: day
     }
 };

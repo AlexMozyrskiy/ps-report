@@ -1,6 +1,6 @@
 import {
     WORK_BOOK_DATA, IS_WORK_BOOK_DATA_LOADED,
-    IS_WORK_BOOK_DATA_LOADING
+    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY
 } from "./actionTypes";
 
 const initialState = {
@@ -69,7 +69,8 @@ const initialState = {
         "СК_УСТ_СПН": 0
     }],
     isWorkBookDataLoaded: false,        // загрузились ли данные в стейт
-    isWorkBookDataLoading: false        // загружаются ли данные в стейт по моменту
+    isWorkBookDataLoading: false,       // загружаются ли данные в стейт по моменту
+    reportForDay: ""                     // пользователь вводит за какой день надо сделать отчет, нужен для фильтри при расчетах
 };
 
 const workBookDataReducers = (state = initialState, action) => {
@@ -165,6 +166,14 @@ const workBookDataReducers = (state = initialState, action) => {
             const superState = {
                 ...state,
                 isWorkBookDataLoading: action.isWorkBookDataLoading
+            };
+            return superState;
+        }
+
+        case REPORT_FOR_DAY: {
+            const superState = {
+                ...state,
+                reportForDay: action.reportForDay
             };
             return superState;
         }
