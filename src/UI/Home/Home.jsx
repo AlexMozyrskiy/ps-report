@@ -114,19 +114,21 @@ export const Home = () => {
 
       /* generate an XLSX file */
       XLSX.writeFile(wb, "3 degrees.xlsx");
-    } else {  
+    } else {
       setInputFieldDayValidateErrorText(validate.message)
     }   // if (validate.isValidate)
 
   }
   // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
 
-  // ------------------------------------ Declare функцию вызывающуюся при вводе дня в поле, записывает ввуденную дату в стейт   ------------------------------------------------
+  // ------------------------------------ Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт   ------------------------------------------------
   const onInputFieldDayChange = (inputFieldDayValue) => {
-    setInputFieldDayValidateErrorText("");                                       // скинем ошибку валидации чтобы она не отображалась на странице
+    if (inputFieldDayValidateErrorText !== "") {                                  // если есть текст сохранненной ошибки валидации
+      setInputFieldDayValidateErrorText("");                                       // скинем ошибку валидации чтобы она не отображалась на странице
+    }
     dispatch(setReportForDayActionCreator(inputFieldDayValue));     // запишем дату за которую нужно сделать отчет в стейт
   }
-  // ------------------------------------ / Declare функцию вызывающуюся при вводе дня в поле, записывает ввуденную дату в стейт  ---------------------------------------------
+  // ------------------------------------ / Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт  ---------------------------------------------
 
 
 
@@ -136,7 +138,7 @@ export const Home = () => {
       <label>
         <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} />
       </label>
-      <p>{}</p>
+      <p>{ }</p>
 
 
 
@@ -144,7 +146,7 @@ export const Home = () => {
         isDataLoaded
           ? <>
             <input placeholder="Введите дату за которую нужно получить отчёт" value={inputFieldDayValue} onChange={(e) => onInputFieldDayChange(e.target.value)} required />
-            { inputFieldDayValidateErrorText !== "" ? <p style={{color: "red"}}>{inputFieldDayValidateErrorText}</p> : null }
+            { inputFieldDayValidateErrorText !== "" ? <p style={{ color: "red" }}>{inputFieldDayValidateErrorText}</p> : null}
             <button onClick={onThirdDegreesSaveButtonClick}>Загрузить файл с 3 степенями</button>
           </>
           : <div>Данные не загружены</div>
