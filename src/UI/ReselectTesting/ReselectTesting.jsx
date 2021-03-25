@@ -6,7 +6,7 @@ import { getDirectionByCode } from "../../helpers/common/getDirectionByCode/getD
 export const ReselectTesting = () => {
 
   const writeFile = () => {
-    alert(getDirectionByCode("sda"));
+    alert(getDirectionByCode("10468as"));
   }
 
   return (
