@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { uniquePch } from "../../../helpers/common/unique/uniquePch";
+import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
 
 export const getWorkBookOtstSheetDataSelector = (state) => {
     return state.workBookData.otstSheetData;
@@ -52,7 +52,7 @@ export const calculateAllDataForTheReportOcKmSheetSmartSelector = createSelector
         let totalCheckedKilometers = 0;
 
         // Уникальные ПЧ
-        const uniquePchArr = uniquePch(ocKmData);      // массив с уникальными номерами ПЧ
+        const uniquePchArr = getUniquePch(ocKmData);      // массив с уникальными номерами ПЧ
         debugger
 
         ocKmData.forEach(item => {                                          // для каждого объекта (строчки в excel)

@@ -1,4 +1,4 @@
-export function uniquePch(arrOfObjects) {           // принимает массив объектов, возвращает массив уникальных ПЧ
+export function getUniquePch(arrOfObjects) {           // принимает массив объектов, возвращает массив уникальных ПЧ
     let result = [];
 
     arrOfObjects.forEach(element => {
