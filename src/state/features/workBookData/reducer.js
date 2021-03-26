@@ -1,6 +1,7 @@
 import {
     WORK_BOOK_DATA, IS_WORK_BOOK_DATA_LOADED,
-    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY
+    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY,
+    MAKE_CALCULATION
 } from "./actionTypes";
 
 const initialState = {
@@ -70,7 +71,8 @@ const initialState = {
     }],
     isWorkBookDataLoaded: false,        // загрузились ли данные в стейт
     isWorkBookDataLoading: false,       // загружаются ли данные в стейт по моменту
-    reportForDay: ""                     // пользователь вводит за какой день надо сделать отчет, нужен для фильтри при расчетах
+    reportForDay: "",                   // пользователь вводит за какой день надо сделать отчет, нужен для фильтри при расчетах
+    makeCalculation: false              // производить ли расчет в селекторе, будет переключаться на true в момент нажатия пользователем кнопки загрузить какой-либо отчет, и обратно на false  вмомент окончания загрузки отчета
 };
 
 const workBookDataReducers = (state = initialState, action) => {
@@ -174,6 +176,14 @@ const workBookDataReducers = (state = initialState, action) => {
             const superState = {
                 ...state,
                 reportForDay: action.reportForDay
+            };
+            return superState;
+        }
+
+        case MAKE_CALCULATION: {
+            const superState = {
+                ...state,
+                makeCalculation: action.makeCalculation
             };
             return superState;
         }

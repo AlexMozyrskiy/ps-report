@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
 import {
   getIsWorkBookDataLoadedSelector,
-  // calculateAllDataForTheReportOcKmSheetSmartSelector,
+  calculateAllDataForTheReportOcKmSheetSmartSelector,
   calculateAllDataForTheReportOtstSheetSmartSelector,
   getReportForDaySelector
 } from "../../state/features/workBookData/selectors";
-import { setReportForDayActionCreator } from "../../state/features/workBookData/actionCreators";
+import {
+  setReportForDayActionCreator
+} from "../../state/features/workBookData/actionCreators";
 import { setWorkBookDataThunkCreator } from "../../state/features/workBookData/thunkCreators";
 import { definePicketByMeter } from "../../helpers/common/definePicketByMeter/definePicketByMeter";
 import { Validator } from "../../helpers/Validator/Validator";
@@ -16,13 +18,12 @@ export const Home = () => {
 
   // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
   const dispatch = useDispatch();
-  // const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
-  const otstSheetCalculatingData = useSelector(calculateAllDataForTheReportOtstSheetSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
+  const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
   const isDataLoaded = useSelector(getIsWorkBookDataLoadedSelector);                                      // загружны ли данные в стейт
   const inputFieldDayValue = useSelector(getReportForDaySelector);
+  const otstSheetCalculatingData = useSelector(calculateAllDataForTheReportOtstSheetSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
   const [inputFieldDayValidateErrorText, setInputFieldDayValidateErrorText] = useState("");                                         // текст ошибки при валидации инпута даты за которое делать отчет
   // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
-
 
   // ------------------------------------ Declare функцию вызывающуюся при загрузке файла ------------------------------------------------
   const onBookSelect = (evt) => {
@@ -72,7 +73,7 @@ export const Home = () => {
     // ------------------------------------- / Валидируем ------------------------------------
 
 
-    if (validate.isValidate) {                                // если прошли Валидацию
+    if (validate.isValidate/* && makeCalculation*/) {                                // если прошли Валидацию
       const data = otstSheetCalculatingData.thirdDegrees;     // данные из селектора - массив объектов как и в стейте
 
       let dataToWrite = [];                                   //массив массивов для кнвертации его в xslx и записи в выходную книгу
@@ -117,7 +118,6 @@ export const Home = () => {
     } else {
       setInputFieldDayValidateErrorText(validate.message)
     }   // if (validate.isValidate)
-
   }
   // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
 

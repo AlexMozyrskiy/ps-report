@@ -1,6 +1,6 @@
 import {
     setWorkBookDataActionCreator, setIsWorkBookDataLoadingActionCreator,
-    setIsWorkBookDataLoadedActionCreator, setReportForDayActionCreator
+    setIsWorkBookDataLoadedActionCreator
 } from "./actionCreators";
 
 

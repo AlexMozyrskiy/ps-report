@@ -1,6 +1,7 @@
 import {
     WORK_BOOK_DATA, IS_WORK_BOOK_DATA_LOADED,
-    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY
+    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY,
+    MAKE_CALCULATION
 } from "./actionTypes";
 
 /* в workBookDataObject лежат данные из листов Отступления и Оценка КМ в двух соответствующих объектах,
@@ -30,5 +31,16 @@ export const setReportForDayActionCreator = ( day ) => {                // по�
     return {
         type: REPORT_FOR_DAY,
         reportForDay: day
+    }
+};
+
+
+// производить ли расчет в селекторе, будет переключаться на true 
+// в момент нажатия пользователем кнопки загрузить какой-либо отчет, 
+// и обратно на false  вмомент окончания загрузки отчета
+export const setMakeCalculationActionCreator = ( boolVar ) => {
+    return {
+        type: MAKE_CALCULATION,
+        makeCalculation: boolVar
     }
 };
