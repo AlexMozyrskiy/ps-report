@@ -5,7 +5,8 @@ import {
   getIsWorkBookDataLoadedSelector,
   calculateAllDataForTheReportOcKmSheetSmartSelector,
   calculateAllDataForTheReportOtstSheetSmartSelector,
-  getReportForDaySelector, getWorkBookOcKmSheetDataSelector
+  getReportForDaySelector, getWorkBookOcKmSheetDataSelector,
+  getWorkBookOtstSheetDataSelector
 } from "../../state/features/workBookData/selectors";
 import {
   setReportForDayActionCreator
@@ -14,18 +15,22 @@ import { setWorkBookDataThunkCreator } from "../../state/features/workBookData/t
 import { getThirdAndFourthDegreesArr } from "../../helpers/UI/getThirdAndFourthDegreesArr/getThirdAndFourthDegreesArr";
 import { Validator } from "../../helpers/Validator/Validator";
 import { getUniquePch } from "../../helpers/common/getUniquePch/getUniquePch";
+import { calculateMagnitudeN } from "../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
 
 export const Home = () => {
 
   // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
   const dispatch = useDispatch();
-  const OcKmData = useSelector(getWorkBookOcKmSheetDataSelector);
-  const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
+  const ocKmData = useSelector(getWorkBookOcKmSheetDataSelector);
+  const otstData = useSelector(getWorkBookOtstSheetDataSelector);
+  // const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
   const isDataLoaded = useSelector(getIsWorkBookDataLoadedSelector);                                      // загружны ли данные в стейт
   const inputFieldDayValue = useSelector(getReportForDaySelector);
   const otstSheetCalculatingData = useSelector(calculateAllDataForTheReportOtstSheetSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
   const [inputFieldDayValidateErrorText, setInputFieldDayValidateErrorText] = useState("");               // текст ошибки при валидации инпута даты за которое делать отчет
   // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
+
+
 
 
   // ------------------------------------ Declare функцию вызывающуюся при загрузке файла ------------------------------------------------
@@ -84,6 +89,7 @@ export const Home = () => {
       const data = otstSheetCalculatingData.thirdAndFourthDegrees;      // данные из селектора - массив объектов как и в стейте
 
       let dataToWrite = getThirdAndFourthDegreesArr(data);              // массив массивов с информаций для записи в xlsx файл
+      debugger
 
 
       const wb = XLSX.utils.book_new();                                 // созыдадим новую пустую книгу
@@ -115,14 +121,37 @@ export const Home = () => {
 
   // ------------------------------------ Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ" ------------------------------------------------
   const onEKASUIReportButtonClick = () => {
-    const uniquePchArr = getUniquePch(OcKmData, inputFieldDayValue);      // массив с уникальными номерами ПЧ
-    debugger
+    const uniquePchArr = getUniquePch(ocKmData, inputFieldDayValue);      // массив с уникальными номерами ПЧ
+    
+    let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0, secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesCount = 0;
+    let magnitudeN = 0;         // величина Nуч
+    let dataForTaEKASUI = [];    // массив объектов тпа:
 
-    // uniquePchArr.forEach(element => {                                           // для каждого уникального ПЧ
-    //   if (+item["ПЧ"] === +element["ПЧ"]) {                                    // если ПЧ в массиве уникальных ПЧ равен ПЧ в массиве данных листа оценка км из стейта
+    uniquePchArr.forEach(element => {                               // для каждого уникального ПЧ
 
-    //   }
-    // });
+      // ----------------- Вычислим километры по видам (отл, хор ...) --------------------------------
+      ocKmData.forEach(el => {                                      // для каждого объекта в листе оц км (строчки excel)
+        if(element === el["ПЧ"]) {
+          if(el["ОЦЕНКА"] === 5 && el["ДЕНЬ"] === +inputFieldDayValue) otlKm = +(otlKm + el["ПРОВЕРЕНО"]).toFixed(3);
+          if(el["ОЦЕНКА"] === 4 && el["ДЕНЬ"] === +inputFieldDayValue) xorKm = +(xorKm + el["ПРОВЕРЕНО"]).toFixed(3);
+          if(el["ОЦЕНКА"] === 3 && el["ДЕНЬ"] === +inputFieldDayValue) UdKm = +(UdKm + el["ПРОВЕРЕНО"]).toFixed(3);
+          if(el["ОЦЕНКА"] === 2 && el["ДЕНЬ"] === +inputFieldDayValue) neUdKm = +(neUdKm + el["ПРОВЕРЕНО"]).toFixed(3);
+        }
+      });
+      secondDegreesCount = otstSheetCalculatingData.secondDegrees.length;
+      thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.length;
+      fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.length;
+      // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
+
+      // -------------------- Вычисоим величину Nуч ----------------------------------
+      magnitudeN = calculateMagnitudeN(otlKm, xorKm, UdKm, neUdKm);
+      // -------------------- / Вычисоим величину Nуч --------------------------------
+      
+
+      dataForTaEKASUI.push({pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN});         // запишем результат вычислений в массив
+      otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount = 0;
+    });
+    console.log(dataForTaEKASUI);
   }
   // ------------------------------------ / Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ"---------------------------------------------
 

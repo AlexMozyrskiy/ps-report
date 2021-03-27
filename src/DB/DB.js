@@ -1113,42 +1113,42 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Староминская петля(13233)",
+            direction: "Староминская петля(13233)",
             station: "Блокпост 7(510729)",
             startCoordinate: "1.1",
             endCoordinate: "2.952"
           },
           {
             pch: 4,
-            direction: "  Выход с Кр.Сада на Старом(13234)",
+            direction: "Выход с Кр.Сада на Старом(13234)",
             station: "Блокпост 7(510729)",
             startCoordinate: "1.1",
             endCoordinate: "1.931"
           },
           {
             pch: 4,
-            direction: "  Староминские груз.подходы(13235)",
+            direction: "Староминские груз.подходы(13235)",
             station: "Блокпост 7(510729)",
             startCoordinate: "1.1",
             endCoordinate: "1.1"
           },
           {
             pch: 4,
-            direction: "  Староминские груз.подходы(13235)",
+            direction: "Староминские груз.подходы(13235)",
             station: "Блокпост 7 - Батайск",
             startCoordinate: "1.2",
             endCoordinate: "3.753"
           },
           {
             pch: 4,
-            direction: "  Староминские груз.подходы(13235)",
+            direction: "Староминские груз.подходы(13235)",
             station: "Батайск(510007)",
             startCoordinate: "3.754",
             endCoordinate: "4.102"
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Заречная - Блокпост 1352 км",
             startCoordinate: "1349.126",
@@ -1156,7 +1156,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Блокпост 1352 км(510177)",
             startCoordinate: "1352.110",
@@ -1164,7 +1164,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Блокпост 1352 км - Батайск",
             startCoordinate: "1352.221",
@@ -1172,7 +1172,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Батайск(510007)",
             startCoordinate: "1353.243",
@@ -1180,7 +1180,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Батайск - Койсуг",
             startCoordinate: "1361.174",
@@ -1188,7 +1188,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Койсуг(514101)",
             startCoordinate: "1366.339",
@@ -1196,7 +1196,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Койсуг - Каяла",
             startCoordinate: "1368.717",
@@ -1204,7 +1204,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Каяла(514205)",
             startCoordinate: "1379.889",
@@ -1212,7 +1212,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Каяла - Степная",
             startCoordinate: "1381.997",
@@ -1220,7 +1220,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Степная(514309)",
             startCoordinate: "1406.230",
@@ -1228,7 +1228,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Заречная - Блокпост 1352 км",
             startCoordinate: "1349.224",
@@ -1236,7 +1236,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Бдокпост 1352 км - Батайск",
             startCoordinate: "1352.104",
@@ -1244,7 +1244,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Батайск(510007)",
             startCoordinate: "1353.154",
@@ -1252,7 +1252,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Батайск - Койсуг",
             startCoordinate: "1361.321",
@@ -1260,7 +1260,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Койсуг(514101)",
             startCoordinate: "1365.531",
@@ -1268,7 +1268,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Койсуг - Каяла",
             startCoordinate: "1368.807",
@@ -1276,7 +1276,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Каяла(514205)",
             startCoordinate: "1379.817",
@@ -1284,7 +1284,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Каяла - Степная",
             startCoordinate: "1382.34",
@@ -1292,7 +1292,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Степная(514309)",
             startCoordinate: "1406.170",
@@ -1300,7 +1300,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Сальские груз. подходы(14136)",
+            direction: "Сальские груз. подходы(14136)",
             track: 1,
             station: "Батайск(510007)",
             startCoordinate: "1.1",
@@ -1308,7 +1308,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Тихорецкие груз. подходы(14137)",
+            direction: "Тихорецкие груз. подходы(14137)",
             track: 1,
             station: "Батайск(510007)",
             startCoordinate: "14.285",
@@ -1316,7 +1316,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Тихорецкие груз. подходы(14137)",
+            direction: "Тихорецкие груз. подходы(14137)",
             track: 1,
             station: "Батайск(510007)",
             startCoordinate: "14.495",
@@ -1324,7 +1324,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайск - Азов(14139)",
+            direction: "Батайск - Азов(14139)",
             track: 1,
             station: "Батайск(510007)",
             startCoordinate: "3.842",
@@ -1332,7 +1332,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайск - Азов(14139)",
+            direction: "Батайск - Азов(14139)",
             track: 1,
             station: "Батайск -Кулешовский",
             startCoordinate: "4.31",
@@ -1340,7 +1340,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайск - Азов(14139)",
+            direction: "Батайск - Азов(14139)",
             track: 1,
             station: "Кулешовский(510830)",
             startCoordinate: "19.113",
@@ -1348,7 +1348,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайск - Азов(14139)",
+            direction: "Батайск - Азов(14139)",
             track: 1,
             station: "Кулешовский - Азов",
             startCoordinate: "20.424",
@@ -1356,7 +1356,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайск - Азов(14139)",
+            direction: "Батайск - Азов(14139)",
             track: 1,
             station: "Азов(510806)",
             startCoordinate: "29.764",
@@ -1364,14 +1364,14 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайск - Сальск(14140)",
+            direction: "Батайск - Сальск(14140)",
             station: "Батайск(510007)",
             startCoordinate: "1.291",
             endCoordinate: "5.909"
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 1,
             station: "Блокпост 1352 км(510177)",
             startCoordinate: "1.158",
@@ -1379,7 +1379,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 1,
             station: "Блокпост 1352 км  - Блокпост 19 км",
             startCoordinate: "1.159",
@@ -1387,7 +1387,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 1,
             station: "Блокпост 19 км(510195)",
             startCoordinate: "7.418",
@@ -1395,7 +1395,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 1,
             station: "Блокпост 19 км - Блокпост 7",
             startCoordinate: "7.419",
@@ -1403,7 +1403,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 1,
             station: "Блокпост 7(510729)",
             startCoordinate: "14.270",
@@ -1411,7 +1411,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 1,
             station: "Блокпост 7 - Койсуг",
             startCoordinate: "14.271",
@@ -1419,7 +1419,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 1,
             station: "Койсуг(514101)",
             startCoordinate: "17.297",
@@ -1427,7 +1427,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 2,
             station: "Блокпост 1352 км(510177)",
             startCoordinate: "1.157",
@@ -1435,7 +1435,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 2,
             station: "Блокпост 1352 км - Блокпост 19 км",
             startCoordinate: "1.158",
@@ -1443,7 +1443,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 2,
             station: "Блокпост 19 км(510195)",
             startCoordinate: "7.159",
@@ -1451,7 +1451,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 2,
             station: "Блокпост 19 км - Блокпост 7",
             startCoordinate: "7.314",
@@ -1459,7 +1459,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 2,
             station: "Блокпост 7(510729)",
             startCoordinate: "13.639",
@@ -1467,7 +1467,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 2,
             station: "Блокпост 7 - Койсуг",
             startCoordinate: "13.640",
@@ -1475,7 +1475,7 @@ const DB = {
           },
           {
             pch: 4,
-            direction: "  Батайский обход(14157)",
+            direction: "Батайский обход(14157)",
             track: 2,
             station: "Койсуг(514101)",
             startCoordinate: "16.236",
@@ -1483,7 +1483,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кизляр(542205)",
             startCoordinate: "80.507",
@@ -1491,7 +1491,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кизляр - Разъезд №17",
             startCoordinate: "83.161",
@@ -1499,7 +1499,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 17(542101)",
             startCoordinate: "95.714",
@@ -1507,7 +1507,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 17 - Кара-Баглы",
             startCoordinate: "96.939",
@@ -1515,7 +1515,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кара-Баглы(542046)",
             startCoordinate: "110.410",
@@ -1523,7 +1523,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кара-Баглы - Разъезд № 15",
             startCoordinate: "111.485",
@@ -1531,7 +1531,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 15(542027)",
             startCoordinate: "127.130",
@@ -1539,7 +1539,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 15 - Кочубей",
             startCoordinate: "128.228",
@@ -1547,7 +1547,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кочубей(542008)",
             startCoordinate: "143.644",
@@ -1555,7 +1555,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кочубей - Разъезд № 14",
             startCoordinate: "144.903",
@@ -1563,7 +1563,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 14(541931)",
             startCoordinate: "159.719",
@@ -1571,7 +1571,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 14 - Кутан",
             startCoordinate: "160.756",
@@ -1579,7 +1579,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кутан(541927)",
             startCoordinate: "175.824",
@@ -1587,7 +1587,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Кутан - Разъезд № 12",
             startCoordinate: "176.896",
@@ -1595,7 +1595,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 12(541912)",
             startCoordinate: "191.974",
@@ -1603,7 +1603,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 12 - Артезиан",
             startCoordinate: "193.10",
@@ -1611,7 +1611,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Артезиан(541908)",
             startCoordinate: "205.837",
@@ -1619,7 +1619,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Артезиан - Разъезд № 11",
             startCoordinate: "208.460",
@@ -1627,7 +1627,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 11(541838)",
             startCoordinate: "221.940",
@@ -1635,7 +1635,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 11 - Белое Озеро",
             startCoordinate: "222.978",
@@ -1643,7 +1643,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Белое Озеро(541823)",
             startCoordinate: "237.304",
@@ -1651,7 +1651,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Белое Озеро - Улан-Холл",
             startCoordinate: "238.349",
@@ -1659,7 +1659,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Улан-Холл(541804)",
             startCoordinate: "263.561",
@@ -1667,7 +1667,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Улан-Холл - Разъезд № 8",
             startCoordinate: "264.835",
@@ -1675,7 +1675,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 8(541734)",
             startCoordinate: "276.552",
@@ -1683,15 +1683,15 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Разъезд № 8 - Олейниково",
             startCoordinate: "277.635",
-            endCoordinate: "292."
+            endCoordinate: "291.699"
           },
           {
             pch: 30,
-            direction: "  Кизляр - Кизил-Юрт(14158)",
+            direction: "Кизляр - Кизил-Юрт(14158)",
             track: 1,
             station: "Кизляр - Качалай",
             startCoordinate: "3.131",
@@ -1699,7 +1699,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Кизляр - Кизил-Юрт(14158)",
+            direction: "Кизляр - Кизил-Юрт(14158)",
             track: 1,
             station: "Качалай(542228)",
             startCoordinate: "17.33",
@@ -1707,7 +1707,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Кизляр - Кизил-Юрт(14158)",
+            direction: "Кизляр - Кизил-Юрт(14158)",
             track: 1,
             station: "Качалай - Герменчик",
             startCoordinate: "18.97",
@@ -1715,7 +1715,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Кизляр - Кизил-Юрт(14158)",
+            direction: "Кизляр - Кизил-Юрт(14158)",
             track: 1,
             station: "Герменчик(543209)",
             startCoordinate: "37.304",
@@ -1723,7 +1723,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Кизляр - Кизил-Юрт(14158)",
+            direction: "Кизляр - Кизил-Юрт(14158)",
             track: 1,
             station: "Герменчик - Куруш",
             startCoordinate: "38.563",
@@ -1731,7 +1731,7 @@ const DB = {
           },
           {
             pch: 30,
-            direction: "  Кизляр - Кизил-Юрт(14158)",
+            direction: "Кизляр - Кизил-Юрт(14158)",
             track: 1,
             station: "Куруш(542247)",
             startCoordinate: "59.208",
@@ -1739,7 +1739,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Хасав-Юрт(542703)",
             startCoordinate: "2203.125",
@@ -1747,7 +1747,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Хасав-Юрт - Карлан-Юрт",
             startCoordinate: "2204.777",
@@ -1755,7 +1755,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Карлан-Юрт(542722)",
             startCoordinate: "2214.983",
@@ -1763,7 +1763,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Карлан-Юрт - Сулак",
             startCoordinate: "2216.95",
@@ -1771,7 +1771,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Сулак(542749)",
             startCoordinate: "2224.628",
@@ -1779,7 +1779,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Сулак - Кизилюрт",
             startCoordinate: "2224.641",
@@ -1787,7 +1787,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Кизилюрт(542807)",
             startCoordinate: "2227.246",
@@ -1795,7 +1795,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Кизилюрт - Темиргое",
             startCoordinate: "2228.804",
@@ -1803,7 +1803,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Темиргое(542930)",
             startCoordinate: "2251.422",
@@ -1811,7 +1811,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Темиргое - Шамхал",
             startCoordinate: "2254.56",
@@ -1819,7 +1819,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Шамхал(543000)",
             startCoordinate: "2268.975",
@@ -1827,7 +1827,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Шамхал - Махачкала",
             startCoordinate: "2270.416",
@@ -1835,7 +1835,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Махачкала(543301)",
             startCoordinate: "2277.829",
@@ -1843,7 +1843,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Махачкала - Тарки",
             startCoordinate: "2286.632",
@@ -1851,7 +1851,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Тарки(543509)",
             startCoordinate: "2296.104",
@@ -1859,7 +1859,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Тарки - Манас",
             startCoordinate: "2297.882",
@@ -1867,7 +1867,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Манас(543706)",
             startCoordinate: "2318.504",
@@ -1875,7 +1875,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Манас - Ачи",
             startCoordinate: "2319.580",
@@ -1883,7 +1883,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Ачи(543836)",
             startCoordinate: "2326.689",
@@ -1891,7 +1891,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Ачи - Избербаш",
             startCoordinate: "2327.944",
@@ -1899,7 +1899,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Избербаш(543903)",
             startCoordinate: "2346.616",
@@ -1907,7 +1907,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Избербаш - Инчхе",
             startCoordinate: "2347.889",
@@ -1915,7 +1915,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Инчхе(544003)",
             startCoordinate: "2356.646",
@@ -1923,7 +1923,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Инчхе - Каягент",
             startCoordinate: "2357.980",
@@ -1931,7 +1931,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Каягент(544147)",
             startCoordinate: "2366.227",
@@ -1939,7 +1939,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Каягент - Берикей",
             startCoordinate: "2367.671",
@@ -1947,7 +1947,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Берикей(544210)",
             startCoordinate: "2385.930",
@@ -1955,7 +1955,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Берикей - Мамед-Кала",
             startCoordinate: "2387.15",
@@ -1963,7 +1963,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Мамед-Кала(544304)",
             startCoordinate: "2393.629",
@@ -1971,7 +1971,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Мамед-Кала - Дагестанские Огни",
             startCoordinate: "2394.842",
@@ -1979,7 +1979,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Дагестанские Огни(544408)",
             startCoordinate: "2401.763",
@@ -1987,7 +1987,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Дагестанские Огни - Дербент",
             startCoordinate: "2404.2",
@@ -1995,7 +1995,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Дербент(544501)",
             startCoordinate: "2414.588",
@@ -2003,7 +2003,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Дербент - Араблинский",
             startCoordinate: "2418.414",
@@ -2011,7 +2011,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Араблинский(544615)",
             startCoordinate: "2424.726",
@@ -2019,7 +2019,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Араблинский - Белиджи",
             startCoordinate: "2425.862",
@@ -2027,7 +2027,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Белиджи(544709)",
             startCoordinate: "2436.345",
@@ -2035,7 +2035,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Белиджи - Самур",
             startCoordinate: "2437.536",
@@ -2043,7 +2043,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Самур(544802)",
             startCoordinate: "2446.739",
@@ -2051,7 +2051,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Самур - Граница Дороги",
             startCoordinate: "2447.999",
@@ -2059,7 +2059,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Хасав-Юрт(542703)",
             startCoordinate: "2203.33",
@@ -2067,7 +2067,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Хасав-Юрт - Карлан-Юрт",
             startCoordinate: "2204.701",
@@ -2075,7 +2075,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Карлан-Юрт(542722)",
             startCoordinate: "2214.906",
@@ -2083,7 +2083,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Карлан-Юрт - Сулак",
             startCoordinate: "2216.195",
@@ -2091,7 +2091,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Сулак(542749)",
             startCoordinate: "2224.543",
@@ -2099,7 +2099,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Сулак - Кизилюрт",
             startCoordinate: "2224.722",
@@ -2107,7 +2107,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Кизилюрт(542807)",
             startCoordinate: "2227.158",
@@ -2115,7 +2115,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Кизилюрт - Темиргое",
             startCoordinate: "2228.716",
@@ -2123,7 +2123,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Темиргое(542930)",
             startCoordinate: "2251.582",
@@ -2131,7 +2131,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Темиргое - Шамхал",
             startCoordinate: "2253.984",
@@ -2139,7 +2139,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Шамхал(543000)",
             startCoordinate: "2268.895",
@@ -2147,7 +2147,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Шамхал - Махачкала",
             startCoordinate: "2270.504",
@@ -2155,7 +2155,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Махачкала(543301)",
             startCoordinate: "2278.411",
@@ -2163,7 +2163,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Махачкала - Тарки",
             startCoordinate: "2288.344",
@@ -2171,7 +2171,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Тарки(543509)",
             startCoordinate: "2296.38",
@@ -2179,7 +2179,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Тарки - Манас",
             startCoordinate: "2297.801",
@@ -2187,7 +2187,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Манас(543706)",
             startCoordinate: "2318.423",
@@ -2195,7 +2195,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Манас - Ачи",
             startCoordinate: "2319.685",
@@ -2203,7 +2203,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Ачи(543836)",
             startCoordinate: "2326.785",
@@ -2211,7 +2211,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Ачи - Избербаш",
             startCoordinate: "2327.867",
@@ -2219,7 +2219,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Избербаш(543903)",
             startCoordinate: "2346.535",
@@ -2227,7 +2227,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Избербаш - Инчхе",
             startCoordinate: "2347.980",
@@ -2235,7 +2235,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Инчхе(544003)",
             startCoordinate: "2356.563",
@@ -2243,7 +2243,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Инчхе - Каягент",
             startCoordinate: "2358.65",
@@ -2251,7 +2251,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Каягент(544147)",
             startCoordinate: "2366.321",
@@ -2259,7 +2259,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Каягент - Берикей",
             startCoordinate: "2367.590",
@@ -2267,7 +2267,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Берикей(544210)",
             startCoordinate: "2385.849",
@@ -2275,7 +2275,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Берикей - Мамед-Кала",
             startCoordinate: "2387.105",
@@ -2283,7 +2283,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Мамед-Кала(544304)",
             startCoordinate: "2393.546",
@@ -2291,7 +2291,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Мамед-Кала - Дагестанские Огни",
             startCoordinate: "2394.926",
@@ -2299,7 +2299,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Дагестанские Огни(544408)",
             startCoordinate: "2401.696",
@@ -2307,7 +2307,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Дагестанские Огни - Дербент",
             startCoordinate: "2404.111",
@@ -2315,7 +2315,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Дербент(544501)",
             startCoordinate: "2414.678",
@@ -2323,7 +2323,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Дербент - Араблинский",
             startCoordinate: "2418.343",
@@ -2331,7 +2331,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Араблинский(544615)",
             startCoordinate: "2424.646",
@@ -2339,7 +2339,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Араблинский - Белиджи",
             startCoordinate: "2425.958",
@@ -2347,7 +2347,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Белиджи(544709)",
             startCoordinate: "2436.429",
@@ -2355,7 +2355,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Белиджи - Самур",
             startCoordinate: "2437.453",
@@ -2363,7 +2363,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Самур(544802)",
             startCoordinate: "2446.660",
@@ -2371,7 +2371,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Самур - Граница Дороги",
             startCoordinate: "2447.921",
@@ -2379,7 +2379,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Шамхал - Буйнакск(14155)",
+            direction: "Шамхал - Буйнакск(14155)",
             track: 1,
             station: "Шамхал - Буйнакск",
             startCoordinate: "1.530",
@@ -2387,7 +2387,7 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Шамхал - Буйнакск(14155)",
+            direction: "Шамхал - Буйнакск(14155)",
             track: 1,
             station: "Буйнакск(543104)",
             startCoordinate: "40.249",
@@ -2395,15 +2395,15 @@ const DB = {
           },
           {
             pch: 16,
-            direction: "  Кизляр - Кизил-Юрт(14158)",
+            direction: "Кизляр - Кизил-Юрт(14158)",
             track: 1,
             station: "Сулак(542749)",
             startCoordinate: "79.575",
-            endCoordinate: "."
+            endCoordinate: "79.575"
           },
           {
             pch: 15,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Червленная-Узловая(542512)",
             startCoordinate: "1.401",
@@ -2411,7 +2411,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Червленная-Узловая - Шелковская",
             startCoordinate: "2.993",
@@ -2419,7 +2419,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Шелковская(542402)",
             startCoordinate: "29.376",
@@ -2427,7 +2427,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Шелковская - Каргинская",
             startCoordinate: "30.567",
@@ -2435,7 +2435,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Каргинская(542329)",
             startCoordinate: "59.943",
@@ -2443,7 +2443,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Грозный(540002)",
             startCoordinate: "2125.649",
@@ -2451,7 +2451,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Грозный - Ханкала",
             startCoordinate: "2128.395",
@@ -2459,7 +2459,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Ханкала(541306)",
             startCoordinate: "2133.462",
@@ -2467,7 +2467,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Ханкала - Аргун",
             startCoordinate: "2134.767",
@@ -2475,7 +2475,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Аргун(541405)",
             startCoordinate: "2142.828",
@@ -2483,7 +2483,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Аргун - Джалка",
             startCoordinate: "2144.393",
@@ -2491,7 +2491,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Джалка(541423)",
             startCoordinate: "2151.706",
@@ -2499,7 +2499,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Джалка - Гудермес",
             startCoordinate: "2152.708",
@@ -2507,7 +2507,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Мин. Воды-Гудермес(14103)",
+            direction: "Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Гудермес(542600)",
             startCoordinate: "2161.480",
@@ -2515,7 +2515,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Ищерская(539503)",
             startCoordinate: "88.805",
@@ -2523,7 +2523,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Ищерская - Алпатово",
             startCoordinate: "90.363",
@@ -2531,7 +2531,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Алпатово(539607)",
             startCoordinate: "99.363",
@@ -2539,7 +2539,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Алпатово - Наурская",
             startCoordinate: "100.673",
@@ -2547,7 +2547,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Наурская(539700)",
             startCoordinate: "108.731",
@@ -2555,7 +2555,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Наурская - Терек",
             startCoordinate: "110.298",
@@ -2563,7 +2563,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Терек(539804)",
             startCoordinate: "128.510",
@@ -2571,7 +2571,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Терек - Червленная",
             startCoordinate: "129.846",
@@ -2579,7 +2579,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Червленная(542506)",
             startCoordinate: "155.716",
@@ -2587,7 +2587,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Червленная - Червленная-Узловая",
             startCoordinate: "157.230",
@@ -2595,7 +2595,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Червленная-Узловая(542512)",
             startCoordinate: "164.104",
@@ -2603,7 +2603,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Червленная-Узловая - Гудермес",
             startCoordinate: "168.23",
@@ -2611,7 +2611,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 1,
             station: "Гудермес(542600)",
             startCoordinate: "178.380",
@@ -2619,7 +2619,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Ищерская(539503)",
             startCoordinate: "88.899",
@@ -2627,7 +2627,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Ищерская - Алпатово",
             startCoordinate: "90.457",
@@ -2635,7 +2635,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Алпатово(539607)",
             startCoordinate: "99.274",
@@ -2643,7 +2643,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Алпатово - Наурская",
             startCoordinate: "100.587",
@@ -2651,7 +2651,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Наурская(539700)",
             startCoordinate: "108.825",
@@ -2659,7 +2659,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Наурская - Терек",
             startCoordinate: "110.219",
@@ -2667,7 +2667,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Терек(539804)",
             startCoordinate: "128.427",
@@ -2675,7 +2675,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Терек - Червленная",
             startCoordinate: "129.758",
@@ -2683,7 +2683,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Червленная(542506)",
             startCoordinate: "155.828",
@@ -2691,7 +2691,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Червленная - Червленная-Узловая",
             startCoordinate: "157.346",
@@ -2699,7 +2699,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Червленная-Узловая(542512)",
             startCoordinate: "165.18",
@@ -2707,7 +2707,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Червленная-Узловая - Гудермес",
             startCoordinate: "168.119",
@@ -2715,7 +2715,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Прохладная - Гудермес(14104)",
+            direction: "Прохладная - Гудермес(14104)",
             track: 2,
             station: "Гудермес(542600)",
             startCoordinate: "178.310",
@@ -2723,7 +2723,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Гудермес(542600)",
             startCoordinate: "2162.532",
@@ -2731,7 +2731,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Гудермес - Кади-Юрт",
             startCoordinate: "2164.104",
@@ -2739,7 +2739,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Кади-Юрт(542629)",
             startCoordinate: "2178.711",
@@ -2747,7 +2747,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Гудермес(542600)",
             startCoordinate: "2162.532",
@@ -2755,7 +2755,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Гудермес - Кади-Юрт",
             startCoordinate: "2164.191",
@@ -2763,7 +2763,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Кади-Юрт(542629)",
             startCoordinate: "2178.623",
@@ -2771,7 +2771,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Гудермес - Разъезд 2 км(14153)",
+            direction: "Гудермес - Разъезд 2 км(14153)",
             track: 1,
             station: "Червленная-Узловая(542512)",
             startCoordinate: "1.746",
@@ -2779,7 +2779,7 @@ const DB = {
           },
           {
             pch: 15,
-            direction: "  Джалка - Гудермес(14154)",
+            direction: "Джалка - Гудермес(14154)",
             track: 1,
             station: "Гудермес(542600)",
             startCoordinate: "1.1",
@@ -2787,7 +2787,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Туапсе(13301)",
+            direction: " Армавир - Туапсе(13301)",
             track: 1,
             station: "Ост.Пункт 302 км - Армавир-Туапсинский",
             startCoordinate: "1648.7",
@@ -2795,14 +2795,14 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Туапсе(13301)",
+            direction: " Армавир - Туапсе(13301)",
             track: 1,
             station: "Армавир-Туапсинский(530301)",
             startCoordinate: "1652.491",
             endCoordinate: "1653.874"
           },
           {
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 1,
             station: "Степная - Кущевка",
             startCoordinate: "1407.806",
@@ -2810,7 +2810,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Отрадо-Кубанская - Кубанская",
             startCoordinate: "1614.354",
@@ -2818,7 +2818,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кубанская(529802)",
             startCoordinate: "1633.227",
@@ -2826,7 +2826,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кубанская - Ост.Пункт 302 км",
             startCoordinate: "1634.860",
@@ -2834,14 +2834,14 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Ост.Пункт 302 км(529821)",
             startCoordinate: "1646.391",
             endCoordinate: "1647.659"
           },
           {
-            direction: "  Ростов - Армавир(14101)",
+            direction: "Ростов - Армавир(14101)",
             track: 2,
             station: "Степная - Кущевка",
             startCoordinate: "1407.728",
@@ -2849,7 +2849,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Отрадо-Кубанская(529709)",
             startCoordinate: "1614.283",
@@ -2857,7 +2857,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Отрадо-Кубанская - Кубанская",
             startCoordinate: "1617.299",
@@ -2865,7 +2865,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кубанская(529802)",
             startCoordinate: "1633.306",
@@ -2873,7 +2873,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кубанская - Ост.Пункт 302 км",
             startCoordinate: "1634.784",
@@ -2881,7 +2881,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Ост.Пункт 302 км(529821)",
             startCoordinate: "1646.473",
@@ -2889,7 +2889,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Ост.Пункт 302 км - Армавир-Ростовский",
             startCoordinate: "1647.660",
@@ -2897,7 +2897,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Армавир-Ростовский(530208)",
             startCoordinate: "1650.279",
@@ -2905,7 +2905,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Армавир-Ростовский - Коноково",
             startCoordinate: "1653.170",
@@ -2913,7 +2913,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Коноково(530405)",
             startCoordinate: "1675.82",
@@ -2921,7 +2921,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Коноково - Овечка",
             startCoordinate: "1676.726",
@@ -2929,7 +2929,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Овечка(530509)",
             startCoordinate: "1699.227",
@@ -2937,7 +2937,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Овечка - Богословская",
             startCoordinate: "1700.961",
@@ -2945,7 +2945,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Богословская(530602)",
             startCoordinate: "1719.21",
@@ -2953,7 +2953,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Богословская - Зеленчук",
             startCoordinate: "1720.675",
@@ -2961,7 +2961,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Зеленчук(530706)",
             startCoordinate: "1728.81",
@@ -2969,7 +2969,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Зеленчук - Невинномысская",
             startCoordinate: "1729.307",
@@ -2977,7 +2977,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Невинномысская(531304)",
             startCoordinate: "1732.371",
@@ -2985,7 +2985,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Невинномысская - Киан",
             startCoordinate: "1734.927",
@@ -2993,7 +2993,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Киан(531376)",
             startCoordinate: "1753.723",
@@ -3001,7 +3001,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Ост.Пункт 302 км - Армавир-Ростовский",
             startCoordinate: "1647.590",
@@ -3009,7 +3009,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Армавир-Ростовский(530208)",
             startCoordinate: "1650.367",
@@ -3017,7 +3017,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Армавир-Ростовский - Коноково",
             startCoordinate: "1653.93",
@@ -3025,7 +3025,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Коноково(530405)",
             startCoordinate: "1675.11",
@@ -3033,7 +3033,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Коноково - Овечка",
             startCoordinate: "1676.646",
@@ -3041,7 +3041,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Овечка(530509)",
             startCoordinate: "1699.353",
@@ -3049,7 +3049,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Овечка - Богословская",
             startCoordinate: "1700.887",
@@ -3057,7 +3057,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Богословская(530602)",
             startCoordinate: "1719.113",
@@ -3065,7 +3065,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Богословская - Зеленчук",
             startCoordinate: "1720.605",
@@ -3073,7 +3073,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Зеленчук(530706)",
             startCoordinate: "1728.194",
@@ -3081,7 +3081,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Зеленчук - Невинномысская",
             startCoordinate: "1729.235",
@@ -3089,7 +3089,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Невинномысская(531304)",
             startCoordinate: "1732.457",
@@ -3097,7 +3097,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Невинномысская - Киан",
             startCoordinate: "1734.934",
@@ -3105,7 +3105,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Киан(531376)",
             startCoordinate: "1753.813",
@@ -3113,7 +3113,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир I-Армавир II(14144)",
+            direction: " Армавир I-Армавир II(14144)",
             track: 1,
             station: "Армавир-Ростовский(530208)",
             startCoordinate: "1.244",
@@ -3121,7 +3121,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир I-Армавир II(14144)",
+            direction: " Армавир I-Армавир II(14144)",
             track: 1,
             station: "Армавир-Ростовский - Армавир-Туапсинский",
             startCoordinate: "2.811",
@@ -3129,7 +3129,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Армавир I-Армавир II(14144)",
+            direction: " Армавир I-Армавир II(14144)",
             track: 1,
             station: "Армавир-Туапсинский(530301)",
             startCoordinate: "4.398",
@@ -3137,7 +3137,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Зеленчук(530706)",
             startCoordinate: "1.1",
@@ -3145,7 +3145,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Зеленчук - Ураковская",
             startCoordinate: "2.120",
@@ -3153,7 +3153,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Ураковская(530809)",
             startCoordinate: "22.211",
@@ -3161,7 +3161,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Ураковская - Эркен-Шахар",
             startCoordinate: "23.244",
@@ -3169,7 +3169,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Эркен-Шахар(530903)",
             startCoordinate: "30.627",
@@ -3177,7 +3177,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Эркен-Шахар - Черкесск",
             startCoordinate: "31.686",
@@ -3185,7 +3185,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Черкесск(531003)",
             startCoordinate: "48.374",
@@ -3193,7 +3193,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Черкесск - Абазинка",
             startCoordinate: "49.857",
@@ -3201,7 +3201,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Абазинка(531107)",
             startCoordinate: "59.71",
@@ -3209,7 +3209,7 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Абазинка - Джегута",
             startCoordinate: "60.334",
@@ -3217,14 +3217,14 @@ const DB = {
           },
           {
             pch: 8,
-            direction: "   Зеленчук - Джегута(14145)",
+            direction: " Зеленчук - Джегута(14145)",
             track: 1,
             station: "Джегута(531200)",
             startCoordinate: "66.806",
             endCoordinate: "67.939"
           },
           {
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Тихорецкая - Шохры",
             startCoordinate: "1528.662",
@@ -3232,7 +3232,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Шохры(520348)",
             startCoordinate: "1534.485",
@@ -3240,7 +3240,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Шохры - Малороссийская",
             startCoordinate: "1536.1",
@@ -3248,7 +3248,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Малороссийская(520308)",
             startCoordinate: "1546.425",
@@ -3256,7 +3256,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Малороссийская - Мирская",
             startCoordinate: "1548.387",
@@ -3264,7 +3264,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Мирская(520403)",
             startCoordinate: "1567.304",
@@ -3272,7 +3272,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Мирская - Кавказская",
             startCoordinate: "1568.306",
@@ -3280,7 +3280,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кавказская(520009)",
             startCoordinate: "1583.911",
@@ -3288,7 +3288,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кавказская - Гирей",
             startCoordinate: "1589.381",
@@ -3296,7 +3296,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Гирей(529501)",
             startCoordinate: "1593.880",
@@ -3304,7 +3304,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Гирей - Гулькевичи",
             startCoordinate: "1595.212",
@@ -3312,7 +3312,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Гулькевичи(529605)",
             startCoordinate: "1599.45",
@@ -3320,7 +3320,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Шохры(520348)",
             startCoordinate: "1534.568",
@@ -3328,7 +3328,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Шохры - Малороссийская",
             startCoordinate: "1535.948",
@@ -3336,7 +3336,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Малороссийская(520308)",
             startCoordinate: "1546.347",
@@ -3344,7 +3344,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Малороссийская - Мирская",
             startCoordinate: "1548.478",
@@ -3352,7 +3352,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Мирская(520403)",
             startCoordinate: "1567.110",
@@ -3360,7 +3360,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Мирская - Кавказская",
             startCoordinate: "1568.392",
@@ -3368,7 +3368,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кавказская(520009)",
             startCoordinate: "1583.842",
@@ -3376,7 +3376,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кавказская - Гирей",
             startCoordinate: "1588.620",
@@ -3384,7 +3384,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Гирей(529501)",
             startCoordinate: "1593.805",
@@ -3392,7 +3392,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Гирей - Гулькевичи",
             startCoordinate: "1595.140",
@@ -3400,7 +3400,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Гулькевичи(529605)",
             startCoordinate: "1599.132",
@@ -3408,7 +3408,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Элиста(21401)",
+            direction: " Кавказская - Элиста(21401)",
             track: 1,
             station: "Кавказская(520009)",
             startCoordinate: "0.829",
@@ -3416,7 +3416,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Элиста(21401)",
+            direction: " Кавказская - Элиста(21401)",
             track: 1,
             station: "Кавказская - Гетмановская",
             startCoordinate: "3.639",
@@ -3424,7 +3424,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Элиста(21401)",
+            direction: " Кавказская - Элиста(21401)",
             track: 1,
             station: "Гетмановская(526202)",
             startCoordinate: "12.823",
@@ -3432,7 +3432,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Элиста(21401)",
+            direction: " Кавказская - Элиста(21401)",
             track: 1,
             station: "Гетмановская - Темижбекская",
             startCoordinate: "14.280",
@@ -3440,7 +3440,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Элиста(21401)",
+            direction: " Кавказская - Элиста(21401)",
             track: 1,
             station: "Темижбекская(526306)",
             startCoordinate: "25.328",
@@ -3448,7 +3448,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Кавказская(520009)",
             startCoordinate: "2.89",
@@ -3456,7 +3456,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Кавказская - Милованово",
             startCoordinate: "8.252",
@@ -3464,7 +3464,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Милованово(52610)",
             startCoordinate: "11.620",
@@ -3472,7 +3472,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Милованово - Гречишкино",
             startCoordinate: "12.795",
@@ -3480,7 +3480,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Гречишкино(52600)",
             startCoordinate: "32.512",
@@ -3488,7 +3488,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Гречишкино - Ладожская",
             startCoordinate: "33.790",
@@ -3496,7 +3496,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Ладожская(52590)",
             startCoordinate: "54.948",
@@ -3504,7 +3504,7 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Ладожская - Двубратский",
             startCoordinate: "56.153",
@@ -3512,14 +3512,14 @@ const DB = {
           },
           {
             pch: 7,
-            direction: "   Кавказская - Краснодар(21402)",
+            direction: " Кавказская - Краснодар(21402)",
             track: 1,
             station: "Двубратский(52581)",
             startCoordinate: "65.746",
             endCoordinate: "67.350"
           },
           {
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Гулькевичи - Отрадо-Кубанская",
             startCoordinate: "1600.725",
@@ -3527,7 +3527,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кущевка(514402)",
             startCoordinate: "1428.163",
@@ -3535,7 +3535,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кущевка - Кисляковка",
             startCoordinate: "1429.902",
@@ -3543,7 +3543,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кисляковка(514609)",
             startCoordinate: "1447.119",
@@ -3551,7 +3551,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Кисляковка - Крыловская",
             startCoordinate: "1448.883",
@@ -3559,7 +3559,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Крыловская(514703)",
             startCoordinate: "1466.980",
@@ -3567,7 +3567,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Крыловская - Сосыка-Ростовская",
             startCoordinate: "1469.65",
@@ -3575,7 +3575,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Сосыка-Ростовская(514807)",
             startCoordinate: "1485.860",
@@ -3583,7 +3583,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Сосыка-Ростовская - Леушковская",
             startCoordinate: "1487.364",
@@ -3591,7 +3591,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Леушковская(515030)",
             startCoordinate: "1502.803",
@@ -3599,7 +3599,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Леушковская - Тихонький",
             startCoordinate: "1504.91",
@@ -3607,7 +3607,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Тихонький(515104)",
             startCoordinate: "1514.195",
@@ -3615,7 +3615,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Тихонький - Тихорецкая",
             startCoordinate: "1515.725",
@@ -3623,14 +3623,14 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 1,
             station: "Тихорецкая(520102)",
             startCoordinate: "1521.857",
             endCoordinate: "1528.661"
           },
           {
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Гулькевичи - Отрадо-Кубанская",
             startCoordinate: "1600.817",
@@ -3638,7 +3638,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кущевка(514402)",
             startCoordinate: "1428.252",
@@ -3646,7 +3646,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кущевка - Кисляковка",
             startCoordinate: "1429.996",
@@ -3654,7 +3654,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кисляковка(514609)",
             startCoordinate: "1447.213",
@@ -3662,7 +3662,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Кисляковка - Крыловская",
             startCoordinate: "1448.813",
@@ -3670,7 +3670,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Крыловская(514703)",
             startCoordinate: "1465.782",
@@ -3678,7 +3678,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Крыловская - Сосыка-Ростовская",
             startCoordinate: "1468.978",
@@ -3686,7 +3686,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Сосыка-Ростовская(514807)",
             startCoordinate: "1485.947",
@@ -3694,7 +3694,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Сосыка-Ростовская - Леушковская",
             startCoordinate: "1487.293",
@@ -3702,7 +3702,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Леушковская(515030)",
             startCoordinate: "1502.724",
@@ -3710,7 +3710,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Леушковская - Тихонький",
             startCoordinate: "1504.173",
@@ -3718,7 +3718,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Тихонький(515104)",
             startCoordinate: "1514.282",
@@ -3726,7 +3726,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Тихонький - Тихорецкая",
             startCoordinate: "1516.275",
@@ -3734,7 +3734,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Тихорецкая(520102)",
             startCoordinate: "1521.941",
@@ -3742,7 +3742,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Сосыка - Ейск(14141)",
+            direction: " Сосыка - Ейск(14141)",
             track: 1,
             station: "Сосыка-Ростовская(514807)",
             startCoordinate: "1.1",
@@ -3750,7 +3750,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Краснод. обход Тихорецкая(14142)",
+            direction: " Краснод. обход Тихорецкая(14142)",
             track: 1,
             station: "Тихорецкая(520102)",
             startCoordinate: "1.1",
@@ -3758,7 +3758,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Сальский обход Тихорецкая(14143)",
+            direction: " Сальский обход Тихорецкая(14143)",
             track: 1,
             station: "Тихорецкая(520102)",
             startCoordinate: "1.1",
@@ -3766,7 +3766,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Порошинская(517805)",
             startCoordinate: "515.412",
@@ -3774,7 +3774,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Порошинская - Тихорецк",
             startCoordinate: "517.662",
@@ -3782,7 +3782,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Тихорецкая(520102)",
             startCoordinate: "532.194",
@@ -3790,7 +3790,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Тихорецк - Челбас",
             startCoordinate: "541.141",
@@ -3798,7 +3798,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Челбас(52531)",
             startCoordinate: "548.607",
@@ -3806,7 +3806,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Челбас - Газырь",
             startCoordinate: "549.754",
@@ -3814,7 +3814,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Газырь(52521)",
             startCoordinate: "556.504",
@@ -3822,7 +3822,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Газырь - Бурсак",
             startCoordinate: "557.640",
@@ -3830,7 +3830,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 1,
             station: "Бурсак(52510)",
             startCoordinate: "565.401",
@@ -3838,7 +3838,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 2,
             station: "Порошинская(517805)",
             startCoordinate: "515.501",
@@ -3846,7 +3846,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 2,
             station: "Порошинская - Тихорецк",
             startCoordinate: "517.576",
@@ -3854,7 +3854,7 @@ const DB = {
           },
           {
             pch: 6,
-            direction: "   Волгоград - Краснодар(21201)",
+            direction: " Волгоград - Краснодар(21201)",
             track: 2,
             station: "Тихорецкая(520102)",
             startCoordinate: "532.192",
@@ -3862,7 +3862,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 1,
             station: "Лихая(580003)",
             startCoordinate: "1059.55",
@@ -3870,7 +3870,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 1,
             station: "Лихая - Замчалово",
             startCoordinate: "1065.411",
@@ -3878,7 +3878,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 1,
             station: "Замчалово(580300)",
             startCoordinate: "1071.605",
@@ -3886,7 +3886,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 2,
             station: "Лихая(580003)",
             startCoordinate: "1059.53",
@@ -3894,7 +3894,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 2,
             station: "Лихая - Замчалово",
             startCoordinate: "1063.395",
@@ -3902,7 +3902,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 2,
             station: "Замчалово(580300)",
             startCoordinate: "1071.641",
@@ -3910,7 +3910,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 3,
             station: "Лихая(580003)",
             startCoordinate: "1063.275",
@@ -3918,7 +3918,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 3,
             station: "Лихая - Замчалово",
             startCoordinate: "1063.308",
@@ -3926,7 +3926,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Отрожка - Ростов(10407)",
+            direction: " Отрожка - Ростов(10407)",
             track: 3,
             station: "Замчалово(580300)",
             startCoordinate: "1071.564",
@@ -3934,7 +3934,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   7 подход ст. Лихая(10461)",
+            direction: " 7 подход ст. Лихая(10461)",
             track: 1,
             station: "Лихая(580003)",
             startCoordinate: "1.1",
@@ -3942,7 +3942,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   3 Главный путь Ст.Лихая(10467)",
+            direction: " 3 Главный путь Ст.Лихая(10467)",
             track: 1,
             station: "Лихая(580003)",
             startCoordinate: "1.1",
@@ -3950,7 +3950,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Заповедная - Замчалово(19202)",
+            direction: " Заповедная - Замчалово(19202)",
             track: 1,
             station: "Замчалово(580300)",
             startCoordinate: "6.857",
@@ -3958,7 +3958,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Лихая(580003)",
             startCoordinate: "3.207",
@@ -3966,7 +3966,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Лихая - Репная",
             startCoordinate: "3.392",
@@ -3974,7 +3974,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Репная(587301)",
             startCoordinate: "24.548",
@@ -3982,7 +3982,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Репная - Васильевский",
             startCoordinate: "26.400",
@@ -3990,7 +3990,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Васильевский(587403)",
             startCoordinate: "30.578",
@@ -3998,7 +3998,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Васильевский - Какичев",
             startCoordinate: "31.942",
@@ -4006,7 +4006,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Какичев(587600)",
             startCoordinate: "43.723",
@@ -4014,7 +4014,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Какичев - Белая Калитва",
             startCoordinate: "44.638",
@@ -4022,7 +4022,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Белая Калитва(587704)",
             startCoordinate: "48.618",
@@ -4030,7 +4030,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Белая Калитва - Грачи",
             startCoordinate: "51.539",
@@ -4038,7 +4038,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Грачи(587808)",
             startCoordinate: "71.210",
@@ -4046,7 +4046,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Грачи - Жирнов",
             startCoordinate: "72.777",
@@ -4054,7 +4054,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Жирнов(587901)",
             startCoordinate: "84.525",
@@ -4062,7 +4062,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Жирнов - Быстрореченская",
             startCoordinate: "85.867",
@@ -4070,7 +4070,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Быстрореченская(588001)",
             startCoordinate: "92.791",
@@ -4078,7 +4078,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Быстрореченская - Тацинская",
             startCoordinate: "94.33",
@@ -4086,7 +4086,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Тацинская(588105)",
             startCoordinate: "100.7",
@@ -4094,7 +4094,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Тацинская - Ковылкин",
             startCoordinate: "101.319",
@@ -4102,7 +4102,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Ковылкин(588143)",
             startCoordinate: "118.314",
@@ -4110,7 +4110,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Ковылкин - Вальково",
             startCoordinate: "119.323",
@@ -4118,7 +4118,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Вальково(588209)",
             startCoordinate: "129.293",
@@ -4126,7 +4126,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Вальково - Морозовская",
             startCoordinate: "130.452",
@@ -4134,7 +4134,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Морозовская(588302)",
             startCoordinate: "148.618",
@@ -4142,7 +4142,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 1,
             station: "Морозовская - Вознесенский",
             startCoordinate: "151.608",
@@ -4150,7 +4150,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Лихая(580003)",
             startCoordinate: "1.1",
@@ -4158,7 +4158,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Лихая - Репная",
             startCoordinate: "3.531",
@@ -4166,7 +4166,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Репная(587301)",
             startCoordinate: "24.479",
@@ -4174,7 +4174,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Репная - Васильевский",
             startCoordinate: "26.324",
@@ -4182,7 +4182,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Васильевский(587403)",
             startCoordinate: "30.506",
@@ -4190,7 +4190,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Васильевский - Какичев",
             startCoordinate: "32.39",
@@ -4198,7 +4198,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Какичев - Белая Калитва",
             startCoordinate: "43.648",
@@ -4206,7 +4206,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Белая Калитва(587704)",
             startCoordinate: "48.539",
@@ -4214,7 +4214,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Белая Калитва - Грачи",
             startCoordinate: "51.447",
@@ -4222,7 +4222,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Грачи(587808)",
             startCoordinate: "71.130",
@@ -4230,7 +4230,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Грачи - Жирнов",
             startCoordinate: "72.682",
@@ -4238,7 +4238,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Жирнов(587901)",
             startCoordinate: "84.443",
@@ -4246,7 +4246,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Жирнов - Быстрореченская",
             startCoordinate: "85.960",
@@ -4254,7 +4254,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Быстрореченская(588001)",
             startCoordinate: "92.707",
@@ -4262,7 +4262,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Быстрореченская - Тацинская",
             startCoordinate: "94.135",
@@ -4270,7 +4270,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Тацинская(588105)",
             startCoordinate: "99.937",
@@ -4278,7 +4278,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Тацинская - Ковылкин",
             startCoordinate: "101.413",
@@ -4286,7 +4286,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Ковылкин(588143)",
             startCoordinate: "118.222",
@@ -4294,7 +4294,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Ковылкин - Вальково",
             startCoordinate: "119.410",
@@ -4302,7 +4302,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Вальково(588209)",
             startCoordinate: "129.210",
@@ -4310,7 +4310,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Вальково - Морозовская",
             startCoordinate: "130.553",
@@ -4318,7 +4318,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Морозовская(588302)",
             startCoordinate: "148.714",
@@ -4326,7 +4326,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Лихая - Волгоград(19402)",
+            direction: " Лихая - Волгоград(19402)",
             track: 2,
             station: "Морозовская - Вознесенский",
             startCoordinate: "151.687",
@@ -4334,7 +4334,7 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   6 подход ст. Лихая(19430)",
+            direction: " 6 подход ст. Лихая(19430)",
             track: 1,
             station: "Лихая(580003)",
             startCoordinate: "1.1",
@@ -4342,14 +4342,14 @@ const DB = {
           },
           {
             pch: 33,
-            direction: "   Морозовская - Куберле(19440)",
+            direction: " Морозовская - Куберле(19440)",
             track: 1,
             station: "Морозовская(588302)",
             startCoordinate: "0.413",
             endCoordinate: "1.695"
           },
           {
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Киан - Курсавка",
             startCoordinate: "1754.908",
@@ -4357,7 +4357,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Курсавка(531408)",
             startCoordinate: "1780.198",
@@ -4365,7 +4365,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Курсавка - Нагутская",
             startCoordinate: "1782.127",
@@ -4373,7 +4373,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Нагутская(531501)",
             startCoordinate: "1799.261",
@@ -4381,7 +4381,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Нагутская - Суворовская",
             startCoordinate: "1800.562",
@@ -4389,7 +4389,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Суворовская(531605)",
             startCoordinate: "1818.738",
@@ -4397,7 +4397,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Суворовская - Минеральные Воды",
             startCoordinate: "1820.223",
@@ -4405,14 +4405,14 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 1,
             station: "Минеральные Воды(530000)",
             startCoordinate: "1836.123",
             endCoordinate: "1840.427"
           },
           {
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Киан - Курсавка",
             startCoordinate: "1754.837",
@@ -4420,7 +4420,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Курсавка(531408)",
             startCoordinate: "1780.133",
@@ -4428,7 +4428,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Курсавка - Нагутская",
             startCoordinate: "1782.214",
@@ -4436,7 +4436,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Нагутская(531501)",
             startCoordinate: "1799.191",
@@ -4444,7 +4444,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Нагутская - Суворовская",
             startCoordinate: "1800.656",
@@ -4452,7 +4452,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Суворовская(531605)",
             startCoordinate: "1818.664",
@@ -4460,7 +4460,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Суворовская - Минеральные Воды",
             startCoordinate: "1820.303",
@@ -4468,7 +4468,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Армавир - Мин. Воды(14102)",
+            direction: " Армавир - Мин. Воды(14102)",
             track: 2,
             station: "Минеральные Воды(530000)",
             startCoordinate: "1835.774",
@@ -4476,7 +4476,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Минеральные Воды(530000)",
             startCoordinate: "1840.428",
@@ -4484,7 +4484,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Минеральные Воды - Виноградная",
             startCoordinate: "1841.822",
@@ -4492,7 +4492,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Виноградная(536204)",
             startCoordinate: "1858.363",
@@ -4500,7 +4500,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Виноградная - Георгиевск",
             startCoordinate: "1859.503",
@@ -4508,7 +4508,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Георгиевск(536308)",
             startCoordinate: "1868.139",
@@ -4516,7 +4516,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Георгиевск - Зольский",
             startCoordinate: "1869.663",
@@ -4524,7 +4524,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Зольский(537207)",
             startCoordinate: "1887.234",
@@ -4532,7 +4532,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Зольский - Аполлонская",
             startCoordinate: "1888.463",
@@ -4540,7 +4540,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Аполлонская(537300)",
             startCoordinate: "1895.602",
@@ -4548,7 +4548,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Аполлонская - Солдатская",
             startCoordinate: "1897.497",
@@ -4556,7 +4556,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Солдатская(537424)",
             startCoordinate: "1916.625",
@@ -4564,7 +4564,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Минеральные Воды(530000)",
             startCoordinate: "1840.565",
@@ -4572,7 +4572,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Минеральные Воды - Виноградная",
             startCoordinate: "1841.914",
@@ -4580,7 +4580,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Виноградная(536204)",
             startCoordinate: "1858.295",
@@ -4588,7 +4588,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Виноградная - Георгиевск",
             startCoordinate: "1859.590",
@@ -4596,7 +4596,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Георгиевск(536308)",
             startCoordinate: "1868.54",
@@ -4604,7 +4604,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Георгиевск - Зольский",
             startCoordinate: "1869.749",
@@ -4612,7 +4612,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Зольский(537207)",
             startCoordinate: "1887.318",
@@ -4620,7 +4620,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Зольский - Аполлонская",
             startCoordinate: "1888.392",
@@ -4628,7 +4628,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Аполлонская(537300)",
             startCoordinate: "1895.533",
@@ -4636,7 +4636,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Аполлонская - Солдатская",
             startCoordinate: "1897.587",
@@ -4644,7 +4644,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Солдатская(537424)",
             startCoordinate: "1916.555",
@@ -4652,7 +4652,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   14 обводной путь МинВоды(14138)",
+            direction: " 14 обводной путь МинВоды(14138)",
             track: 1,
             station: "Минеральные Воды(530000)",
             startCoordinate: "1835.774",
@@ -4660,7 +4660,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Минеральные Воды(530000)",
             startCoordinate: "1.1",
@@ -4668,7 +4668,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Минеральные Воды - Бештау",
             startCoordinate: "1.527",
@@ -4676,7 +4676,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Бештау(531910)",
             startCoordinate: "14.795",
@@ -4684,7 +4684,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Бештау - Лермонтовский",
             startCoordinate: "15.367",
@@ -4692,7 +4692,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Лермонтовский(532006)",
             startCoordinate: "22.48",
@@ -4700,7 +4700,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Лермонтовский - Пятигорск",
             startCoordinate: "22.999",
@@ -4708,7 +4708,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Пятигорск(532100)",
             startCoordinate: "26.555",
@@ -4716,7 +4716,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Пятигорск - Скачки",
             startCoordinate: "27.191",
@@ -4724,7 +4724,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Скачки(532203)",
             startCoordinate: "32.100",
@@ -4732,7 +4732,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Скачки - Ессентуки",
             startCoordinate: "33.330",
@@ -4740,7 +4740,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Ессентуки(532307)",
             startCoordinate: "43.380",
@@ -4748,7 +4748,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Ессентуки - Подкумок",
             startCoordinate: "44.203",
@@ -4756,7 +4756,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Подкумок(532400)",
             startCoordinate: "56.162",
@@ -4764,7 +4764,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Подкумок - Кисловодск",
             startCoordinate: "56.826",
@@ -4772,7 +4772,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 1,
             station: "Кисловодск(532504)",
             startCoordinate: "63.321",
@@ -4780,7 +4780,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Минеральные Воды(530000)",
             startCoordinate: "1.1",
@@ -4788,7 +4788,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Минеральные Воды - Бештау",
             startCoordinate: "1.646",
@@ -4796,7 +4796,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Бештау(531910)",
             startCoordinate: "14.726",
@@ -4804,7 +4804,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Бештау - Лермонтовский",
             startCoordinate: "15.443",
@@ -4812,7 +4812,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Лермонтовский(532006)",
             startCoordinate: "22.138",
@@ -4820,7 +4820,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Лермонтовский - Пятигорск",
             startCoordinate: "22.890",
@@ -4828,7 +4828,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Пятигорск(532100)",
             startCoordinate: "26.481",
@@ -4836,7 +4836,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Пятигорск - Скачки",
             startCoordinate: "27.278",
@@ -4844,7 +4844,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Скачки(532203)",
             startCoordinate: "32.199",
@@ -4852,7 +4852,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Скачки - Ессентуки",
             startCoordinate: "33.267",
@@ -4860,7 +4860,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Ессентуки(532307)",
             startCoordinate: "43.466",
@@ -4868,7 +4868,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Ессентуки - Подкумок",
             startCoordinate: "44.286",
@@ -4876,7 +4876,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Подкумок(532400)",
             startCoordinate: "56.246",
@@ -4884,7 +4884,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Подкумок - Кисловодск",
             startCoordinate: "56.750",
@@ -4892,7 +4892,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Мин.Воды - Кисловодск(14146)",
+            direction: " Мин.Воды - Кисловодск(14146)",
             track: 2,
             station: "Кисловодск(532504)",
             startCoordinate: "63.231",
@@ -4900,7 +4900,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Бештау - Железноводск(14147)",
+            direction: " Бештау - Железноводск(14147)",
             track: 1,
             station: "Бештау(531910)",
             startCoordinate: "1.1",
@@ -4908,7 +4908,7 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Бештау - Железноводск(14147)",
+            direction: " Бештау - Железноводск(14147)",
             track: 1,
             station: "Бештау - Железноводск",
             startCoordinate: "1.153",
@@ -4916,21 +4916,21 @@ const DB = {
           },
           {
             pch: 10,
-            direction: "   Бештау - Железноводск(14147)",
+            direction: " Бештау - Железноводск(14147)",
             track: 1,
             station: "Железноводск(531802)",
             startCoordinate: "6.711"
           },
           {
             pch: 10,
-            direction: "   Светлоград - Георгиевск(21431)",
+            direction: " Светлоград - Георгиевск(21431)",
             track: 1,
             station: "Георгиевск(536308)",
             startCoordinate: "229.397",
             endCoordinate: "232.254"
           },
           {
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Солдатская - Шарданово",
             startCoordinate: "1917.711",
@@ -4938,7 +4938,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Шарданово(537508)",
             startCoordinate: "1927.755",
@@ -4946,7 +4946,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Шарданово - Прохладная",
             startCoordinate: "1929.315",
@@ -4954,7 +4954,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Прохладная(537601)",
             startCoordinate: "1936.191",
@@ -4962,7 +4962,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Прохладная -Баксан",
             startCoordinate: "1938.797",
@@ -4970,7 +4970,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Баксан(537711)",
             startCoordinate: "1945.282",
@@ -4978,7 +4978,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Баксан - Котляревская",
             startCoordinate: "1946.343",
@@ -4986,7 +4986,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Котляревская(537705)",
             startCoordinate: "1952.152",
@@ -4994,7 +4994,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Котляревская - Муртазово",
             startCoordinate: "1953.353",
@@ -5002,7 +5002,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Муртазово(538002)",
             startCoordinate: "1969.805",
@@ -5010,7 +5010,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Муртазово - Эльхотово",
             startCoordinate: "1971.47",
@@ -5018,7 +5018,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Эльхотово(538106)",
             startCoordinate: "1985.817",
@@ -5026,7 +5026,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Эльхотово - Дарг-Кох",
             startCoordinate: "1987.47",
@@ -5034,7 +5034,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Дарг-Кох(538202)",
             startCoordinate: "1998.227",
@@ -5042,7 +5042,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Дарг-Кох - Беслан",
             startCoordinate: "1999.580",
@@ -5050,7 +5050,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Беслан(538500)",
             startCoordinate: "2019.275",
@@ -5058,7 +5058,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Беслан - Консервный",
             startCoordinate: "2021.363",
@@ -5066,7 +5066,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Консервный(540320)",
             startCoordinate: "2035.12",
@@ -5074,7 +5074,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Консервный - Назрань",
             startCoordinate: "2036.236",
@@ -5082,7 +5082,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Назрань(540333)",
             startCoordinate: "2041.136",
@@ -5090,7 +5090,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Назрань - Плиево",
             startCoordinate: "2042.306",
@@ -5098,7 +5098,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Плиево(540427)",
             startCoordinate: "2050.379",
@@ -5106,7 +5106,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Плиево - Карабулакский",
             startCoordinate: "2051.499",
@@ -5114,7 +5114,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Карабулакский(540500)",
             startCoordinate: "2058.280",
@@ -5122,7 +5122,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Карабулакский - Слепцовская",
             startCoordinate: "2059.665",
@@ -5130,14 +5130,14 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 1,
             station: "Слепцовская(540604)",
             startCoordinate: "2069.443",
             endCoordinate: "2070.682"
           },
           {
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Солдатская - Шарданово",
             startCoordinate: "1917.799",
@@ -5145,7 +5145,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Шарданово(537508)",
             startCoordinate: "1927.846",
@@ -5153,7 +5153,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Шарданово - Прохладная",
             startCoordinate: "1929.249",
@@ -5161,7 +5161,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Мин. Воды-Гудермес(14103)",
+            direction: " Мин. Воды-Гудермес(14103)",
             track: 2,
             station: "Прохладная(537601)",
             startCoordinate: "1936.415",
@@ -5169,7 +5169,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 1,
             station: "Прохладная(537601)",
             startCoordinate: "1.1",
@@ -5177,7 +5177,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 1,
             station: "Прохладная - Моздок",
             startCoordinate: "2.346",
@@ -5185,7 +5185,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 1,
             station: "Моздок(539306)",
             startCoordinate: "49.692",
@@ -5193,7 +5193,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 1,
             station: "Моздок - Осетиновский",
             startCoordinate: "51.43",
@@ -5201,7 +5201,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 1,
             station: "Осетиновский(539408)",
             startCoordinate: "59.103",
@@ -5209,7 +5209,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 1,
             station: "Осетиновский - Стодеревская",
             startCoordinate: "60.631",
@@ -5217,7 +5217,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 1,
             station: "Стодеревская(539414)",
             startCoordinate: "67.871",
@@ -5225,7 +5225,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Прохладная(537601)",
             startCoordinate: "1.1",
@@ -5233,7 +5233,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Прохладная - Приближний",
             startCoordinate: "2.445",
@@ -5241,7 +5241,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Приближний(537616)",
             startCoordinate: "8.698",
@@ -5249,7 +5249,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: " Приближний - Черноярская",
             startCoordinate: "10.17",
@@ -5257,7 +5257,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Черноярская(539139)",
             startCoordinate: "25.276",
@@ -5265,7 +5265,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Черноярская - Луковский",
             startCoordinate: "26.511",
@@ -5273,7 +5273,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Луковский(539202)",
             startCoordinate: "42.508",
@@ -5281,7 +5281,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Луковский - Моздок",
             startCoordinate: "43.742",
@@ -5289,7 +5289,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Моздок(539306)",
             startCoordinate: "49.600",
@@ -5297,7 +5297,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Моздок - Стодеревская",
             startCoordinate: "50.875",
@@ -5305,7 +5305,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Прохладная - Гудермес(14104)",
+            direction: " Прохладная - Гудермес(14104)",
             track: 2,
             station: "Стодеревская(539414)",
             startCoordinate: "67.872",
@@ -5313,7 +5313,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Котляревская - Нальчик(14149)",
+            direction: " Котляревская - Нальчик(14149)",
             track: 1,
             station: "Котляревская - Докшукино",
             startCoordinate: "1.45",
@@ -5321,7 +5321,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Котляревская - Нальчик(14149)",
+            direction: " Котляревская - Нальчик(14149)",
             track: 1,
             station: "Докшукино(537809)",
             startCoordinate: "19.454",
@@ -5329,7 +5329,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Котляревская - Нальчик(14149)",
+            direction: " Котляревская - Нальчик(14149)",
             track: 1,
             station: "Докшукино - Нартан",
             startCoordinate: "20.524",
@@ -5337,7 +5337,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Котляревская - Нальчик(14149)",
+            direction: " Котляревская - Нальчик(14149)",
             track: 1,
             station: "Нартан(537839)",
             startCoordinate: "30.330",
@@ -5345,7 +5345,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Котляревская - Нальчик(14149)",
+            direction: " Котляревская - Нальчик(14149)",
             track: 1,
             station: "Нартан - Нальчик",
             startCoordinate: "31.590",
@@ -5353,7 +5353,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Котляревская - Нальчик(14149)",
+            direction: " Котляревская - Нальчик(14149)",
             track: 1,
             station: "Нальчик(537902)",
             startCoordinate: "41.224",
@@ -5361,7 +5361,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Дарг-Кох - Алагир(14150)",
+            direction: " Дарг-Кох - Алагир(14150)",
             track: 1,
             station: "Дарг-Кох - Ардон",
             startCoordinate: "0.416",
@@ -5369,7 +5369,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Дарг-Кох - Алагир(14150)",
+            direction: " Дарг-Кох - Алагир(14150)",
             track: 1,
             station: "Ардон(538303)",
             startCoordinate: "11.958",
@@ -5377,7 +5377,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Дарг-Кох - Алагир(14150)",
+            direction: " Дарг-Кох - Алагир(14150)",
             track: 1,
             station: "Ардон - Алагир",
             startCoordinate: "12.821",
@@ -5385,7 +5385,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Дарг-Кох - Алагир(14150)",
+            direction: " Дарг-Кох - Алагир(14150)",
             track: 1,
             station: "Алагир(538407)",
             startCoordinate: "28.349",
@@ -5393,7 +5393,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Беслан - Владикавказ(14151)",
+            direction: " Беслан - Владикавказ(14151)",
             track: 1,
             station: "Беслан(538500)",
             startCoordinate: "1.81",
@@ -5401,7 +5401,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Беслан - Владикавказ(14151)",
+            direction: " Беслан - Владикавказ(14151)",
             track: 1,
             station: "Беслан - Колонка",
             startCoordinate: "2.239",
@@ -5409,7 +5409,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Беслан - Владикавказ(14151)",
+            direction: " Беслан - Владикавказ(14151)",
             track: 1,
             station: "Колонка(538604)",
             startCoordinate: "14.324",
@@ -5417,7 +5417,7 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Беслан - Владикавказ(14151)",
+            direction: " Беслан - Владикавказ(14151)",
             track: 1,
             station: "Колонка - Владикавказ",
             startCoordinate: "15.163",
@@ -5425,35 +5425,35 @@ const DB = {
           },
           {
             pch: 12,
-            direction: "   Беслан - Владикавказ(14151)",
+            direction: " Беслан - Владикавказ(14151)",
             track: 1,
             station: "Владикавказ(538708)",
             startCoordinate: "19.864",
             endCoordinate: "23.689"
           },
           {
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 1,
             station: "Кади-Юрт - Хасав-Юрт",
             startCoordinate: "2180.225",
             endCoordinate: "2203.124"
           },
           {
-            direction: "  Гудермес - Самур(14105)",
+            direction: "Гудермес - Самур(14105)",
             track: 2,
             station: "Кади-Юрт - Хасав-Юрт",
             startCoordinate: "2178.334",
             endCoordinate: "2203.32"
           },
           {
-            direction: "   Ростов - Армавир(14101)",
+            direction: " Ростов - Армавир(14101)",
             track: 2,
             station: "Тихорецкая - Шохры",
             startCoordinate: "1528.742",
             endCoordinate: "1534.657"
           },
           {
-            direction: "  Червленная Узл.-Астрахань(12802)",
+            direction: "Червленная Узл.-Астрахань(12802)",
             track: 1,
             station: "Каргинская - Кизляр",
             startCoordinate: "60.995",

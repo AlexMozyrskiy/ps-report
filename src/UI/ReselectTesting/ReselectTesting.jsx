@@ -105,12 +105,13 @@ export const ReselectTesting = () => {
   }
 
   const writeFile = () => {
-    alert(getDirectionByCode("10468as"));
+    alert(getDirectionByCode(10457));
   }
 
   return (
     <>
       <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} />
+      <button onClick={writeFile}>Тест получить направленние по номеру</button>
     </>
   );
 }
