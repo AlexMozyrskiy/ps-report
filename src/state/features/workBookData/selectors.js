@@ -51,9 +51,8 @@ export const calculateAllDataForTheReportOcKmSheetSmartSelector = createSelector
         // Всего километров проверено
         let totalCheckedKilometers = 0;
 
-        // Уникальные ПЧ
-        const uniquePchArr = getUniquePch(ocKmData);      // массив с уникальными номерами ПЧ
-        debugger
+        // Массив объектов каждый объект это информация отл хор уд неуд км по каждому уникальному ПЧ
+        let otlXorUdNeudKmForEachUniquePchArr = [];
 
         ocKmData.forEach(item => {                                          // для каждого объекта (строчки в excel)
 
@@ -62,6 +61,7 @@ export const calculateAllDataForTheReportOcKmSheetSmartSelector = createSelector
             totalCheckedKilometers = totalCheckedKilometers.toFixed(3);     // пофиксим полученное число, т.к. JS дробь считает неправильно
             totalCheckedKilometers = +totalCheckedKilometers;               // приведем пофикшенную строку к числу
             // ------------------------------ / Всего километров проверено ---------------------------------------------
+
 
         }); // / ocKmData.forEach
 
@@ -85,6 +85,8 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
         // reportForDay = +reportForDay;
 
+        // вторые близкие к третьим степени - Массив Объектов такой же по типу как и входной массив объектов
+        let secondDegrees = [];
 
         // вторые близкие к третьим степени - Массив Объектов такой же по типу как и входной массив объектов
         let secondCloseToThirdDegrees = [];
@@ -95,8 +97,50 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
         // четвертые степени - Массив Объектов такой же по типу как и входной массив объектов
         let fourthDegrees = [];
 
+        // третьи и четвертые степени для таблицы 3 и 4 степеней - Массив Объектов такой же по типу как и входной массив объектов
+        let thirdAndFourthDegrees = [];
+
 
         otstData.forEach(item => {                                          // для каждого объекта (строчки в excel)
+
+            // ------------------------- Вторые степени. Создадим обеъкт с нужными нам свойствами -------------------------
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && item["СТЕПЕНЬ"] === 2 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
+                secondDegrees.push({
+                    "EXCLUDE": item["EXCLUDE"],
+                    "KM": item["KM"],
+                    "PR_PREDUPR": item["PR_PREDUPR"],
+                    "АМПЛИТУДА": item["АМПЛИТУДА"],
+                    "БАЛЛ": item["БАЛЛ"],
+                    "ВИД": item["ВИД"],
+                    "ГОД": item["ГОД"],
+                    "ДЕНЬ": item["ДЕНЬ"],
+                    "ДЗ": item["ДЗ"],
+                    "ДЛИНА": item["ДЛИНА"],
+                    "ИС": item["ИС"],
+                    "КЛАСС": item["КЛАСС"],
+                    "КОД": item["КОД"],
+                    "КОДНАПРВ": item["КОДНАПРВ"],
+                    "КОДОТСТУП": item["КОДОТСТУП"],
+                    "КОЛИЧЕСТВО": item["КОЛИЧЕСТВО"],
+                    "ЛИНИЯ": item["ЛИНИЯ"],
+                    "М": item["М"],
+                    "МЕСЯЦ": item["МЕСЯЦ"],
+                    "МОСТ": item["МОСТ"],
+                    "ОБК": item["ОБК"],
+                    "ОТСТУПЛЕНИЕ": item["ОТСТУПЛЕНИЕ"],
+                    "ПС": item["ПС"],
+                    "ПУТЬ": item["ПУТЬ"],
+                    "ПЧ": item["ПЧ"],
+                    "СК_ОГР_ГРУЗ": item["СК_ОГР_ГРУЗ"],           // "-" | number
+                    "СК_ОГР_ПАСС": item["СК_ОГР_ПАСС"],           // "-" | number
+                    "СК_УСТ_ГРУЗ": item["СК_УСТ_ГРУЗ"],           // "-" | number
+                    "СК_УСТ_ПАСС": item["СК_УСТ_ПАСС"],           // "-" | number
+                    "СТЕПЕНЬ": item["СТЕПЕНЬ"],
+                    "СТРЕЛКА": item["СТРЕЛКА"]
+                });
+            }
+            // ------------------------- / Вторые степени. Создадим обеъкт с нужными нам свойствами -----------------------
+
 
             // ------------------------- Вторые близкие к тертьим степени. Создадим обеъкт с нужными нам свойствами -------------------------
             if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && item["СТЕПЕНЬ"] === 2 && item["PR_PREDUPR"] === 1 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
@@ -177,7 +221,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
 
             // ------------------------- Четвертые степени. Создадим обеъкт с нужными нам свойствами -------------------------
-            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && item["СТЕПЕНЬ"] === 4 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && item["СТЕПЕНЬ"] === 4 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ" && item["ОТСТУПЛЕНИЕ"] !== "Заз.л" && item["ОТСТУПЛЕНИЕ"] !== "Заз.п") {
                 fourthDegrees.push({
                     "EXCLUDE": item["EXCLUDE"],
                     "KM": item["KM"],
@@ -214,15 +258,56 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
             }
             // ------------------------- / Четвертые степени. Создадим обеъкт с нужными нам свойствами -----------------------
 
+            
+            // ------------------------- Третьи и четвертые степени. Создадим обеъкт с нужными нам свойствами -------------------------
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && (item["СТЕПЕНЬ"] === 4 || item["СТЕПЕНЬ"] === 3) && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ" && item["ОТСТУПЛЕНИЕ"] !== "Заз.л" && item["ОТСТУПЛЕНИЕ"] !== "Заз.п") {
+                thirdAndFourthDegrees.push({
+                    "EXCLUDE": item["EXCLUDE"],
+                    "KM": item["KM"],
+                    "PR_PREDUPR": item["PR_PREDUPR"],
+                    "АМПЛИТУДА": item["АМПЛИТУДА"],
+                    "БАЛЛ": item["БАЛЛ"],
+                    "ВИД": item["ВИД"],
+                    "ГОД": item["ГОД"],
+                    "ДЕНЬ": item["ДЕНЬ"],
+                    "ДЗ": item["ДЗ"],
+                    "ДЛИНА": item["ДЛИНА"],
+                    "ИС": item["ИС"],
+                    "КЛАСС": item["КЛАСС"],
+                    "КОД": item["КОД"],
+                    "КОДНАПРВ": item["КОДНАПРВ"],
+                    "КОДОТСТУП": item["КОДОТСТУП"],
+                    "КОЛИЧЕСТВО": item["КОЛИЧЕСТВО"],
+                    "ЛИНИЯ": item["ЛИНИЯ"],
+                    "М": item["М"],
+                    "МЕСЯЦ": item["МЕСЯЦ"],
+                    "МОСТ": item["МОСТ"],
+                    "ОБК": item["ОБК"],
+                    "ОТСТУПЛЕНИЕ": item["ОТСТУПЛЕНИЕ"],
+                    "ПС": item["ПС"],
+                    "ПУТЬ": item["ПУТЬ"],
+                    "ПЧ": item["ПЧ"],
+                    "СК_ОГР_ГРУЗ": item["СК_ОГР_ГРУЗ"],           // "-" | number
+                    "СК_ОГР_ПАСС": item["СК_ОГР_ПАСС"],           // "-" | number
+                    "СК_УСТ_ГРУЗ": item["СК_УСТ_ГРУЗ"],           // "-" | number
+                    "СК_УСТ_ПАСС": item["СК_УСТ_ПАСС"],           // "-" | number
+                    "СТЕПЕНЬ": item["СТЕПЕНЬ"],
+                    "СТРЕЛКА": item["СТРЕЛКА"]
+                });
+            }
+            // ------------------------- / Третьи и четвертые степени. Создадим обеъкт с нужными нам свойствами -----------------------
+
 
 
         }); // / otstData.forEach
 
 
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
+        returnedDataObject.secondDegrees = secondDegrees;
         returnedDataObject.secondCloseToThirdDegrees = secondCloseToThirdDegrees;
         returnedDataObject.thirdDegrees = thirdDegrees;
         returnedDataObject.fourthDegrees = fourthDegrees;
+        returnedDataObject.thirdAndFourthDegrees = thirdAndFourthDegrees;
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
 

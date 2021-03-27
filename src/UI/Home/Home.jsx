@@ -5,67 +5,74 @@ import {
   getIsWorkBookDataLoadedSelector,
   calculateAllDataForTheReportOcKmSheetSmartSelector,
   calculateAllDataForTheReportOtstSheetSmartSelector,
-  getReportForDaySelector
+  getReportForDaySelector, getWorkBookOcKmSheetDataSelector
 } from "../../state/features/workBookData/selectors";
 import {
   setReportForDayActionCreator
 } from "../../state/features/workBookData/actionCreators";
 import { setWorkBookDataThunkCreator } from "../../state/features/workBookData/thunkCreators";
-import { definePicketByMeter } from "../../helpers/common/definePicketByMeter/definePicketByMeter";
+import { getThirdAndFourthDegreesArr } from "../../helpers/UI/getThirdAndFourthDegreesArr/getThirdAndFourthDegreesArr";
 import { Validator } from "../../helpers/Validator/Validator";
+import { getUniquePch } from "../../helpers/common/getUniquePch/getUniquePch";
 
 export const Home = () => {
 
   // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
   const dispatch = useDispatch();
+  const OcKmData = useSelector(getWorkBookOcKmSheetDataSelector);
   const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
   const isDataLoaded = useSelector(getIsWorkBookDataLoadedSelector);                                      // загружны ли данные в стейт
   const inputFieldDayValue = useSelector(getReportForDaySelector);
   const otstSheetCalculatingData = useSelector(calculateAllDataForTheReportOtstSheetSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
-  const [inputFieldDayValidateErrorText, setInputFieldDayValidateErrorText] = useState("");                                         // текст ошибки при валидации инпута даты за которое делать отчет
+  const [inputFieldDayValidateErrorText, setInputFieldDayValidateErrorText] = useState("");               // текст ошибки при валидации инпута даты за которое делать отчет
   // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
+
 
   // ------------------------------------ Declare функцию вызывающуюся при загрузке файла ------------------------------------------------
   const onBookSelect = (evt) => {
     let worBookData;                                    // возвращаем json
     const selectedFile = evt.target.files[0];           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
-    let reader = new FileReader();
-    reader.readAsBinaryString(selectedFile);
-    reader.onload = function (event) {
 
-      const data = event.target.result;
-      const workBook = XLSX.read(data, {
-        type: 'binary'
-      });
+    if (selectedFile) {                                 // если файл был выбран. эта проверка чтобы если пользователь нажал кнопку выбрать файл а потом закрыл окно с выбором файла не выбрав его
+      let reader = new FileReader();
+      reader.readAsBinaryString(selectedFile);
+      reader.onload = function (event) {
 
-      const workSheetOtstDataObj = workBook.Sheets["Отступления"];
-      const workSheetOtstDataJson = XLSX.utils.sheet_to_json(workSheetOtstDataObj);
+        const data = event.target.result;
+        const workBook = XLSX.read(data, {
+          type: 'binary'
+        });
 
-      const workSheetOcKmDataObj = workBook.Sheets["Оценка КМ"];
-      const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
+        const workSheetOtstDataObj = workBook.Sheets["Отступления"];
+        const workSheetOtstDataJson = XLSX.utils.sheet_to_json(workSheetOtstDataObj);
+
+        const workSheetOcKmDataObj = workBook.Sheets["Оценка КМ"];
+        const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
 
 
-      worBookData = {
-        otstSheetData: workSheetOtstDataJson,
-        ocKmSheetData: workSheetOcKmDataJson
-      }
+        worBookData = {
+          otstSheetData: workSheetOtstDataJson,
+          ocKmSheetData: workSheetOcKmDataJson
+        }
 
-      dispatch(setWorkBookDataThunkCreator(worBookData));
-    };
+        dispatch(setWorkBookDataThunkCreator(worBookData));
+      };
 
-    reader.onerror = function (event) {
-      worBookData = null
-      console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
-    };
+      reader.onerror = function (event) {
+        worBookData = null
+        console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
+      };
+    }
   }
   // ------------------------------------ / Declare функцию вызывающуюся при загрузке файла ----------------------------------------------
+
 
   // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
   const onThirdDegreesSaveButtonClick = () => {
 
     // ------------------------------------- Валидируем --------------------------------------
-    let validator = new Validator(inputFieldDayValue, { required: true, notNumberNull: true, isInteger: true, isPositive: true, isNumber: true });
-    const validate = validator.validate();
+    let inputFieldDayValidator = new Validator(inputFieldDayValue, { required: true, notNumberNull: true, isInteger: true, isPositive: true, isNumber: true });
+    const inputFieldDayValidate = inputFieldDayValidator.validate();
     /* в validate из функции вернется объект вида
     {isValidate: false, message: "Это поле обязательно для заполнения"} - если не прошли валижацию
     или 
@@ -73,53 +80,28 @@ export const Home = () => {
     // ------------------------------------- / Валидируем ------------------------------------
 
 
-    if (validate.isValidate/* && makeCalculation*/) {                                // если прошли Валидацию
-      const data = otstSheetCalculatingData.thirdDegrees;     // данные из селектора - массив объектов как и в стейте
+    if (inputFieldDayValidate.isValidate) {                             // если прошли Валидацию
+      const data = otstSheetCalculatingData.thirdAndFourthDegrees;      // данные из селектора - массив объектов как и в стейте
 
-      let dataToWrite = [];                                   //массив массивов для кнвертации его в xslx и записи в выходную книгу
+      let dataToWrite = getThirdAndFourthDegreesArr(data);              // массив массивов с информаций для записи в xlsx файл
 
-      // Шапка таблицы
-      dataToWrite.push(["ПС", "№", "ПЧ", "Перегон", "ПУТЬ", "KM", "ПК/м", "СКОРОСТЬ установленная", "СКОРОСТЬ* ограничения пасс/груз.", "Время выдачи ограничения", "Степень отст.", "ПРИЧИНА", "Наличие повтора", "УСТРАНЕНИЕ", "УСТРАНЕНИЕ ПРОВЕРИЛ"]);
 
-      data.forEach((item, i) => {
-        const arr = [];                   // этот массив используется для пуша в него всех данных по одной неисправности, чтобы потом получить массив массивов всех неисправности и преобразовать его в лист excel
+      const wb = XLSX.utils.book_new();                                 // созыдадим новую пустую книгу
 
-        const pkMetr = definePicketByMeter(item["М"]) + "/" + item["М"];      // пикет и метр в формате "5/214"
-        const setSpeed = item["СК_УСТ_ПАСС"] + "/" + item["СК_УСТ_ГРУЗ"];     // установленная скорость в формате "80/80"
 
-        // ------- скорость ограничения ------
-        let limitingSpeed;
-        if (item["СК_ОГР_ПАСС"] === "-") {
-          if (item["СК_ОГР_ГРУЗ"] === "-") {
-            limitingSpeed = "";
-          } else {
-            limitingSpeed = item["СК_ОГР_ПАСС"] + "/" + item["СК_ОГР_ГРУЗ"]
-          }
-        } else {
-          limitingSpeed = item["СК_ОГР_ПАСС"] + "/" + item["СК_ОГР_ГРУЗ"]
-        }
-        // ------- / скорость ограничения ----
+      const ws = XLSX.utils.aoa_to_sheet(dataToWrite);                  // создадим лист
 
-        const faultDecoding = item["ОТСТУПЛЕНИЕ"] + " " + item["АМПЛИТУДА"] + "/" + item["ДЛИНА"];  // причина неисправности в формате "П 16/12"
 
-        arr.push(item["ПС"], ++i, item["ПЧ"], "", item["ПУТЬ"], item["KM"], pkMetr, setSpeed, limitingSpeed, "", item["СТЕПЕНЬ"], faultDecoding);   // массив одна неисправность
-        dataToWrite.push(arr);        // запушим массив с одной неисправностью в массив со всеми неисправностями. Будем пошить каждую неисправность
-      });
+      XLSX.utils.book_append_sheet(wb, ws, "3 и 4 степени");                // добавим в созданную книгу лист
 
-      /* make the worksheet */
-      const ws = XLSX.utils.aoa_to_sheet(dataToWrite);
 
-      /* add to workbook */
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "3 degrees");
-
-      /* generate an XLSX file */
-      XLSX.writeFile(wb, "3 degrees.xlsx");
-    } else {
-      setInputFieldDayValidateErrorText(validate.message)
-    }   // if (validate.isValidate)
+      XLSX.writeFile(wb, "1. 3 и 4 степени.xlsx");                             // запишем файл xlsx и передадим его для сохранения пользователю
+    } else {                                                            // если не прошли валидацию
+      setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
+    }   // / if (inputFieldDayValidate.isValidate)
   }
   // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
+
 
   // ------------------------------------ Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт   ------------------------------------------------
   const onInputFieldDayChange = (inputFieldDayValue) => {
@@ -129,6 +111,20 @@ export const Home = () => {
     dispatch(setReportForDayActionCreator(inputFieldDayValue));     // запишем дату за которую нужно сделать отчет в стейт
   }
   // ------------------------------------ / Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт  ---------------------------------------------
+
+
+  // ------------------------------------ Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ" ------------------------------------------------
+  const onEKASUIReportButtonClick = () => {
+    const uniquePchArr = getUniquePch(OcKmData, inputFieldDayValue);      // массив с уникальными номерами ПЧ
+    debugger
+
+    // uniquePchArr.forEach(element => {                                           // для каждого уникального ПЧ
+    //   if (+item["ПЧ"] === +element["ПЧ"]) {                                    // если ПЧ в массиве уникальных ПЧ равен ПЧ в массиве данных листа оценка км из стейта
+
+    //   }
+    // });
+  }
+  // ------------------------------------ / Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ"---------------------------------------------
 
 
 
@@ -147,7 +143,8 @@ export const Home = () => {
           ? <>
             <input placeholder="Введите дату за которую нужно получить отчёт" value={inputFieldDayValue} onChange={(e) => onInputFieldDayChange(e.target.value)} required />
             { inputFieldDayValidateErrorText !== "" ? <p style={{ color: "red" }}>{inputFieldDayValidateErrorText}</p> : null}
-            <button onClick={onThirdDegreesSaveButtonClick}>Загрузить файл с 3 степенями</button>
+            <button onClick={onThirdDegreesSaveButtonClick}>Загрузить файл с 3 и 4 степенями</button>
+            <button onClick={onEKASUIReportButtonClick}>Загрузить отчет для единых форм ЕКАСУИ</button>
           </>
           : <div>Данные не загружены</div>
       }
