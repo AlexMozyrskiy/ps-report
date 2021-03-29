@@ -137,9 +137,9 @@ export const Home = () => {
             if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
           }
         });
-        secondDegreesCount = otstSheetCalculatingData.secondDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество вторых степеней всего по всем дистаницям получается, надо делить
-        thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;   // количество третьих степеней
-        fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество четвертых степеней
+        secondDegreesCount = otstSheetCalculatingData.secondDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество вторых степеней текущей дистанции
+        thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;   // количество третьих степеней текущей дистанции
+        fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество четвертых степеней текущей дистанции
         // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
 
         // -------------------- Вычислим величину Nуч ----------------------------------
