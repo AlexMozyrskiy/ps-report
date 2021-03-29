@@ -18,6 +18,7 @@ import { getUniquePch } from "../../helpers/common/getUniquePch/getUniquePch";
 import { calculateMagnitudeN } from "../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
 import { sheetOcKmConst, sheetOtstConst } from "../../CONSTS/sheetsHeaderConsts";
 import { createAndUploadWorkBook } from "../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
+import { createEKASUIReportAoA } from "../../helpers/UI/aoaCreators/EKASUIReportAoaCreator/createEKASUIReportAoA";
 
 export const Home = () => {
 
@@ -122,6 +123,7 @@ export const Home = () => {
       const uniquePchArr = getUniquePch(ocKmData, inputFieldDayValue);      // массив с уникальными номерами ПЧ
 
       let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0, secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesCount = 0;
+      let narrowingTotalCount = 0, wideningTotalCount = 0, levelTotalCount = 0, reconsiderTotalCount = 0, drawdownTotalCount = 0, planAngleTotalCount = 0;
       let magnitudeN = 0;                                                   // величина Nуч
       let dataForTableEKASUI = [];                                          // массив объектов тпа:
 
@@ -140,6 +142,12 @@ export const Home = () => {
         secondDegreesCount = otstSheetCalculatingData.secondDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество вторых степеней текущей дистанции
         thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;   // количество третьих степеней текущей дистанции
         fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество четвертых степеней текущей дистанции
+        narrowingTotalCount = otstSheetCalculatingData.narrowingTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество сужений за день текущей дистанции
+        wideningTotalCount = otstSheetCalculatingData.wideningTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уширений за день текущей дистанции
+        levelTotalCount = otstSheetCalculatingData.levelTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уровней за день текущей дистанции
+        reconsiderTotalCount = otstSheetCalculatingData.reconsiderTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество перекосов за день текущей дистанции
+        drawdownTotalCount = otstSheetCalculatingData.drawdownTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество просадок за день текущей дистанции
+        planAngleTotalCount = otstSheetCalculatingData.planAngleTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество рихтовок за день текущей дистанции
         // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
 
         // -------------------- Вычислим величину Nуч ----------------------------------
@@ -147,17 +155,26 @@ export const Home = () => {
         // -------------------- / Вычислим величину Nуч --------------------------------
 
 
-        dataForTableEKASUI.push({ pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN });         // запишем результат вычислений в массив
+        dataForTableEKASUI.push({         // запишем результат вычислений в массив
+          pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN,
+          narrowingTotalCount, wideningTotalCount, levelTotalCount, reconsiderTotalCount, drawdownTotalCount, planAngleTotalCount
+        });
         otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount = 0;
       });
 
       // создадим книгу с отчетом и предложим пользователю ее скачать
+      createAndUploadWorkBook(                                          // преобразует их в массив массивов для записи в книгу и предлагает пользователю эту книгу скачать
+        createEKASUIReportAoA,                                 // функция коллбек создатель массива массивов с информацией для записи в файл xlsx
+        dataForTableEKASUI,                                                           // данные для записи типа как в стейте
+        "2. Отчет в Ед Формы Для Екасуи.xlsx",                                        // имя создаваемой отчетной книги
+        "Отчет в Ед Формы Для Екасуи"                                                 // имя листа в этой книге
+      );
       console.log(dataForTableEKASUI);
     } else {
       setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
     } // / if (inputFieldDayValidate.isValidate)
 
-    
+
   }     // / uniquePchArr.forEach
   // ------------------------------------ / Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ"---------------------------------------------
 
