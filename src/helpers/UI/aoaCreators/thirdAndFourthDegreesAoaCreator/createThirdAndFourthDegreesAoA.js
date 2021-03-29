@@ -1,10 +1,10 @@
 /* функция принимает массив объектов 3 и 4 степеней (тип как в стейте)
     возвращает массив массивов для формирования книги 3 и 4 степеней
 */
-import { definePicketByMeter } from "../../common/definePicketByMeter/definePicketByMeter";
-import DB from "../../../DB/DB";
+import { definePicketByMeter } from "../../../common/definePicketByMeter/definePicketByMeter";
+import DB from "../../../../DB/DB";
 
-export function getThirdAndFourthDegreesArr(data) {
+export function createThirdAndFourthDegreesAoA(data) {
   let dataToWrite = [];                                   //массив массивов для конвертации его в xslx и записи в выходную книгу
 
   // Шапка таблицы

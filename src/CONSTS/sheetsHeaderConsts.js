@@ -15,7 +15,7 @@ export const sheetOtstConst = {
     DIRECTION_CODE: "КОДНАПРВ",
     RETREAT_CODE: "КОДОТСТУП",
     COUNT: "КОЛИЧЕСТВО",
-    LOINE: "ЛИНИЯ",
+    LINE: "ЛИНИЯ",
     METER: "М",
     MONTH: "МЕСЯЦ",
     BRIDGE: "МОСТ",

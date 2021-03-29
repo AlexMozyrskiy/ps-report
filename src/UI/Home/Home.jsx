@@ -12,11 +12,12 @@ import {
   setReportForDayActionCreator
 } from "../../state/features/workBookData/actionCreators";
 import { setWorkBookDataThunkCreator } from "../../state/features/workBookData/thunkCreators";
-import { getThirdAndFourthDegreesArr } from "../../helpers/UI/getThirdAndFourthDegreesArr/getThirdAndFourthDegreesArr";
+import { createThirdAndFourthDegreesAoA } from "../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
 import { Validator } from "../../helpers/Validator/Validator";
 import { getUniquePch } from "../../helpers/common/getUniquePch/getUniquePch";
 import { calculateMagnitudeN } from "../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
-import { sheetOtstConst, sheetOcKmConst } from "../../CONSTS/sheetsHeaderConsts";
+import { sheetOcKmConst } from "../../CONSTS/sheetsHeaderConsts";
+import { createAndUploadWorkBook } from "../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
 
 export const Home = () => {
 
@@ -85,19 +86,15 @@ export const Home = () => {
     {isValidate: true, message: ""} - если прошли валижацию  */
     // ------------------------------------- / Валидируем ------------------------------------
 
-
     if (inputFieldDayValidate.isValidate) {                             // если прошли Валидацию
       const data = otstSheetCalculatingData.thirdAndFourthDegrees;      // данные из селектора - массив объектов как и в стейте
 
-      let dataToWrite = getThirdAndFourthDegreesArr(data);              // массив массивов с информаций для записи в xlsx файл
-
-      const wb = XLSX.utils.book_new();                                 // созыдадим новую пустую книгу
-
-      const ws = XLSX.utils.aoa_to_sheet(dataToWrite);                  // создадим лист
-
-      XLSX.utils.book_append_sheet(wb, ws, "3 и 4 степени");            // добавим в созданную книгу лист
-
-      XLSX.writeFile(wb, "1. 3 и 4 степени.xlsx");                      // запишем файл xlsx и передадим его для сохранения пользователю
+      createAndUploadWorkBook(                                          // преобразует их в массив массивов для записи в книгу и предлагает пользователю эту книгу скачать
+        createThirdAndFourthDegreesAoA,
+        data,
+        "1. 3 и 4 степени.xlsx",
+        "3 и 4 степени"
+      );
     } else {                                                            // если не прошли валидацию
       setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
     }   // / if (inputFieldDayValidate.isValidate)
@@ -108,47 +105,57 @@ export const Home = () => {
   // ------------------------------------ Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт   ------------------------------------------------
   const onInputFieldDayChange = (inputFieldDayValue) => {
     if (inputFieldDayValidateErrorText !== "") {                                  // если есть текст сохранненной ошибки валидации
-      setInputFieldDayValidateErrorText("");                                       // скинем ошибку валидации чтобы она не отображалась на странице
+      setInputFieldDayValidateErrorText("");                                      // скинем ошибку валидации чтобы она не отображалась на странице
     }
-    dispatch(setReportForDayActionCreator(inputFieldDayValue));     // запишем дату за которую нужно сделать отчет в стейт
+    dispatch(setReportForDayActionCreator(inputFieldDayValue));                   // запишем дату за которую нужно сделать отчет в стейт
   }
   // ------------------------------------ / Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт  ---------------------------------------------
 
 
   // ------------------------------------ Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ" ------------------------------------------------
   const onEKASUIReportButtonClick = () => {
-    const uniquePchArr = getUniquePch(ocKmData, inputFieldDayValue);      // массив с уникальными номерами ПЧ
-    
-    let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0, secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesCount = 0;
-    let magnitudeN = 0;         // величина Nуч
-    let dataForTableEKASUI = [];    // массив объектов тпа:
+
+    let inputFieldDayValidator = new Validator(inputFieldDayValue, { required: true, notNumberNull: true, isInteger: true, isPositive: true, isNumber: true });
+    const inputFieldDayValidate = inputFieldDayValidator.validate();
+
+    if (inputFieldDayValidate.isValidate) {                                 // если прошли валидацию
+      const uniquePchArr = getUniquePch(ocKmData, inputFieldDayValue);      // массив с уникальными номерами ПЧ
+
+      let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0, secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesCount = 0;
+      let magnitudeN = 0;                                                   // величина Nуч
+      let dataForTableEKASUI = [];                                          // массив объектов тпа:
 
 
-    uniquePchArr.forEach(element => {                               // для каждого уникального ПЧ
+      uniquePchArr.forEach(element => {                                     // для каждого уникального ПЧ
 
-      // ----------------- Вычислим километры по видам (отл, хор ...) --------------------------------
-      ocKmData.forEach(el => {                                      // для каждого объекта в листе оц км (строчки excel)
-        if(element === el[sheetOcKmConst.RAILWAY_DISTANCE]) {
-          if(el[sheetOcKmConst.GRADE] === 5 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) otlKm = +(otlKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-          if(el[sheetOcKmConst.GRADE] === 4 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) xorKm = +(xorKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-          if(el[sheetOcKmConst.GRADE] === 3 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) UdKm = +(UdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-          if(el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-        }
+        // ----------------- Вычислим километры по видам (отл, хор ...) --------------------------------
+        ocKmData.forEach(el => {                                            // для каждого объекта в листе оц км (строчки excel)
+          if (element === el[sheetOcKmConst.RAILWAY_DISTANCE]) {            // для каждого ПЧ посчитаем отл, хор ... километры
+            if (el[sheetOcKmConst.GRADE] === 5 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) otlKm = +(otlKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+            if (el[sheetOcKmConst.GRADE] === 4 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) xorKm = +(xorKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+            if (el[sheetOcKmConst.GRADE] === 3 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) UdKm = +(UdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+            if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+          }
+        });
+        secondDegreesCount = otstSheetCalculatingData.secondDegrees.length; // количество вторых степеней
+        thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.length;   // количество третьих степеней
+        fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.length; // количество четвертых степеней
+        // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
+
+        // -------------------- Вычислим величину Nуч ----------------------------------
+        magnitudeN = calculateMagnitudeN(otlKm, xorKm, UdKm, neUdKm);       // Величина Nуч
+        // -------------------- / Вычислим величину Nуч --------------------------------
+
+
+        dataForTableEKASUI.push({ pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN });         // запишем результат вычислений в массив
+        otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount = 0;
       });
-      secondDegreesCount = otstSheetCalculatingData.secondDegrees.length;
-      thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.length;
-      fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.length;
-      // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
+      console.log(dataForTableEKASUI);
+    } else {
+      setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
+    } // / if (inputFieldDayValidate.isValidate)
 
-      // -------------------- Вычислим величину Nуч ----------------------------------
-      magnitudeN = calculateMagnitudeN(otlKm, xorKm, UdKm, neUdKm);
-      // -------------------- / Вычислим величину Nуч --------------------------------
-      
-
-      dataForTableEKASUI.push({pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN});         // запишем результат вычислений в массив
-      otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount = 0;
-    });
-    console.log(dataForTableEKASUI);
+    
   }     // / uniquePchArr.forEach
   // ------------------------------------ / Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ"---------------------------------------------
 
