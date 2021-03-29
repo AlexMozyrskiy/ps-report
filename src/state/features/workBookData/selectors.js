@@ -104,7 +104,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
         otstData.forEach(item => {                                          // для каждого объекта (строчки в excel)
 
             // ------------------------- Вторые степени. Создадим обеъкт с нужными нам свойствами -------------------------
-            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && /*+item["КОДНАПРВ"] <= 99999 && */item["СТЕПЕНЬ"] === 2 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && +item["КОДНАПРВ"] <= 99999 && item["СТЕПЕНЬ"] === 2 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
                 secondDegrees.push({
                     "EXCLUDE": item["EXCLUDE"],
                     "KM": item["KM"],
@@ -143,7 +143,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
 
             // ------------------------- Вторые близкие к тертьим степени. Создадим обеъкт с нужными нам свойствами -------------------------
-            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && /*+item["КОДНАПРВ"] <= 99999 && */item["СТЕПЕНЬ"] === 2 && item["PR_PREDUPR"] === 1 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && +item["КОДНАПРВ"] <= 99999 && item["СТЕПЕНЬ"] === 2 && item["PR_PREDUPR"] === 1 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
                 secondCloseToThirdDegrees.push({
                     "EXCLUDE": item["EXCLUDE"],
                     "KM": item["KM"],
@@ -182,7 +182,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
 
             // ------------------------- Третьи степени. Создадим обеъкт с нужными нам свойствами -------------------------
-            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && /*+item["КОДНАПРВ"] <= 99999 && */item["СТЕПЕНЬ"] === 3 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && +item["КОДНАПРВ"] <= 99999 && item["СТЕПЕНЬ"] === 3 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ") {
                 thirdDegrees.push({
                     "EXCLUDE": item["EXCLUDE"],
                     "KM": item["KM"],
@@ -221,7 +221,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
 
             // ------------------------- Четвертые степени. Создадим обеъкт с нужными нам свойствами -------------------------
-            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && /*+item["КОДНАПРВ"] <= 99999 && */item["СТЕПЕНЬ"] === 4 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ" && item["ОТСТУПЛЕНИЕ"] !== "Заз.л" && item["ОТСТУПЛЕНИЕ"] !== "Заз.п") {
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && +item["КОДНАПРВ"] <= 99999 && item["СТЕПЕНЬ"] === 4 && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ" && item["ОТСТУПЛЕНИЕ"] !== "Заз.л" && item["ОТСТУПЛЕНИЕ"] !== "Заз.п") {
                 fourthDegrees.push({
                     "EXCLUDE": item["EXCLUDE"],
                     "KM": item["KM"],
@@ -260,7 +260,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
             
             // ------------------------- Третьи и четвертые степени. Создадим обеъкт с нужными нам свойствами -------------------------
-            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && /*+item["КОДНАПРВ"] <= 99999 && */(item["СТЕПЕНЬ"] === 4 || item["СТЕПЕНЬ"] === 3) && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ" && item["ОТСТУПЛЕНИЕ"] !== "Заз.л" && item["ОТСТУПЛЕНИЕ"] !== "Заз.п") {
+            if (item["ДЕНЬ"] === +reportForDay && item["EXCLUDE"] === 0 && item["СТРЕЛКА"] === 0 && +item["КОДНАПРВ"] <= 99999 && (item["СТЕПЕНЬ"] === 4 || item["СТЕПЕНЬ"] === 3) && item["ОТСТУПЛЕНИЕ"] !== "Кривая" && item["ОТСТУПЛЕНИЕ"] !== "ПрУ" && item["ОТСТУПЛЕНИЕ"] !== "Заз.л" && item["ОТСТУПЛЕНИЕ"] !== "Заз.п") {
                 thirdAndFourthDegrees.push({
                     "EXCLUDE": item["EXCLUDE"],
                     "KM": item["KM"],

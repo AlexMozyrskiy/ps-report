@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
 import {
   getIsWorkBookDataLoadedSelector,
-  calculateAllDataForTheReportOcKmSheetSmartSelector,
+  // calculateAllDataForTheReportOcKmSheetSmartSelector,
   calculateAllDataForTheReportOtstSheetSmartSelector,
   getReportForDaySelector, getWorkBookOcKmSheetDataSelector,
   getWorkBookOtstSheetDataSelector
@@ -16,6 +16,7 @@ import { getThirdAndFourthDegreesArr } from "../../helpers/UI/getThirdAndFourthD
 import { Validator } from "../../helpers/Validator/Validator";
 import { getUniquePch } from "../../helpers/common/getUniquePch/getUniquePch";
 import { calculateMagnitudeN } from "../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
+import { sheetOtstConst, sheetOcKmConst } from "../../CONSTS/sheetsHeaderConsts";
 
 export const Home = () => {
 
@@ -127,11 +128,11 @@ export const Home = () => {
 
       // ----------------- Вычислим километры по видам (отл, хор ...) --------------------------------
       ocKmData.forEach(el => {                                      // для каждого объекта в листе оц км (строчки excel)
-        if(element === el["ПЧ"]) {
-          if(el["ОЦЕНКА"] === 5 && el["ДЕНЬ"] === +inputFieldDayValue) otlKm = +(otlKm + el["ПРОВЕРЕНО"]).toFixed(3);
-          if(el["ОЦЕНКА"] === 4 && el["ДЕНЬ"] === +inputFieldDayValue) xorKm = +(xorKm + el["ПРОВЕРЕНО"]).toFixed(3);
-          if(el["ОЦЕНКА"] === 3 && el["ДЕНЬ"] === +inputFieldDayValue) UdKm = +(UdKm + el["ПРОВЕРЕНО"]).toFixed(3);
-          if(el["ОЦЕНКА"] === 2 && el["ДЕНЬ"] === +inputFieldDayValue) neUdKm = +(neUdKm + el["ПРОВЕРЕНО"]).toFixed(3);
+        if(element === el[sheetOcKmConst.RAILWAY_DISTANCE]) {
+          if(el[sheetOcKmConst.GRADE] === 5 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) otlKm = +(otlKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+          if(el[sheetOcKmConst.GRADE] === 4 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) xorKm = +(xorKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+          if(el[sheetOcKmConst.GRADE] === 3 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) UdKm = +(UdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+          if(el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
         }
       });
       secondDegreesCount = otstSheetCalculatingData.secondDegrees.length;
