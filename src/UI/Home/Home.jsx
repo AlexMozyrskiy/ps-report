@@ -89,19 +89,14 @@ export const Home = () => {
       const data = otstSheetCalculatingData.thirdAndFourthDegrees;      // данные из селектора - массив объектов как и в стейте
 
       let dataToWrite = getThirdAndFourthDegreesArr(data);              // массив массивов с информаций для записи в xlsx файл
-      debugger
-
 
       const wb = XLSX.utils.book_new();                                 // созыдадим новую пустую книгу
 
-
       const ws = XLSX.utils.aoa_to_sheet(dataToWrite);                  // создадим лист
 
+      XLSX.utils.book_append_sheet(wb, ws, "3 и 4 степени");            // добавим в созданную книгу лист
 
-      XLSX.utils.book_append_sheet(wb, ws, "3 и 4 степени");                // добавим в созданную книгу лист
-
-
-      XLSX.writeFile(wb, "1. 3 и 4 степени.xlsx");                             // запишем файл xlsx и передадим его для сохранения пользователю
+      XLSX.writeFile(wb, "1. 3 и 4 степени.xlsx");                      // запишем файл xlsx и передадим его для сохранения пользователю
     } else {                                                            // если не прошли валидацию
       setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
     }   // / if (inputFieldDayValidate.isValidate)
@@ -125,7 +120,8 @@ export const Home = () => {
     
     let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0, secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesCount = 0;
     let magnitudeN = 0;         // величина Nуч
-    let dataForTaEKASUI = [];    // массив объектов тпа:
+    let dataForTableEKASUI = [];    // массив объектов тпа:
+
 
     uniquePchArr.forEach(element => {                               // для каждого уникального ПЧ
 
@@ -143,16 +139,16 @@ export const Home = () => {
       fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.length;
       // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
 
-      // -------------------- Вычисоим величину Nуч ----------------------------------
+      // -------------------- Вычислим величину Nуч ----------------------------------
       magnitudeN = calculateMagnitudeN(otlKm, xorKm, UdKm, neUdKm);
-      // -------------------- / Вычисоим величину Nуч --------------------------------
+      // -------------------- / Вычислим величину Nуч --------------------------------
       
 
-      dataForTaEKASUI.push({pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN});         // запишем результат вычислений в массив
+      dataForTableEKASUI.push({pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN});         // запишем результат вычислений в массив
       otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount = 0;
     });
-    console.log(dataForTaEKASUI);
-  }
+    console.log(dataForTableEKASUI);
+  }     // / uniquePchArr.forEach
   // ------------------------------------ / Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ"---------------------------------------------
 
 
