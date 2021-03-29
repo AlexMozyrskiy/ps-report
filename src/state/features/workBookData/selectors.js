@@ -306,6 +306,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
         returnedDataObject.thirdDegrees = thirdDegrees;
         returnedDataObject.fourthDegrees = fourthDegrees;
         returnedDataObject.thirdAndFourthDegrees = thirdAndFourthDegrees;
+        console.log(thirdDegrees)
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
 

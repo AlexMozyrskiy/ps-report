@@ -16,7 +16,7 @@ import { createThirdAndFourthDegreesAoA } from "../../helpers/UI/aoaCreators/thi
 import { Validator } from "../../helpers/Validator/Validator";
 import { getUniquePch } from "../../helpers/common/getUniquePch/getUniquePch";
 import { calculateMagnitudeN } from "../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
-import { sheetOcKmConst } from "../../CONSTS/sheetsHeaderConsts";
+import { sheetOcKmConst, sheetOtstConst } from "../../CONSTS/sheetsHeaderConsts";
 import { createAndUploadWorkBook } from "../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
 
 export const Home = () => {
@@ -90,10 +90,10 @@ export const Home = () => {
       const data = otstSheetCalculatingData.thirdAndFourthDegrees;      // данные из селектора - массив объектов как и в стейте
 
       createAndUploadWorkBook(                                          // преобразует их в массив массивов для записи в книгу и предлагает пользователю эту книгу скачать
-        createThirdAndFourthDegreesAoA,
-        data,
-        "1. 3 и 4 степени.xlsx",
-        "3 и 4 степени"
+        createThirdAndFourthDegreesAoA,                                 // функция коллбек создатель массива массивов с информацией для записи в файл xlsx
+        data,                                                           // данные для записи типа как в стейте
+        "1. 3 и 4 степени.xlsx",                                        // имя создаваемой отчетной книги
+        "3 и 4 степени"                                                 // имя листа в этой книге
       );
     } else {                                                            // если не прошли валидацию
       setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
@@ -137,9 +137,9 @@ export const Home = () => {
             if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
           }
         });
-        secondDegreesCount = otstSheetCalculatingData.secondDegrees.length; // количество вторых степеней
-        thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.length;   // количество третьих степеней
-        fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.length; // количество четвертых степеней
+        secondDegreesCount = otstSheetCalculatingData.secondDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество вторых степеней всего по всем дистаницям получается, надо делить
+        thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;   // количество третьих степеней
+        fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество четвертых степеней
         // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
 
         // -------------------- Вычислим величину Nуч ----------------------------------
@@ -150,6 +150,8 @@ export const Home = () => {
         dataForTableEKASUI.push({ pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN });         // запишем результат вычислений в массив
         otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount = 0;
       });
+
+      // создадим книгу с отчетом и предложим пользователю ее скачать
       console.log(dataForTableEKASUI);
     } else {
       setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
