@@ -4,7 +4,7 @@ import XLSX from "xlsx/dist/xlsx.full.min";
 import {
   getIsWorkBookDataLoadedSelector,
   // calculateAllDataForTheReportOcKmSheetSmartSelector,
-  calculateAllDataForTheReportOtstSheetSmartSelector,
+  calculatedAllDataForTheReportSmartSelector,
   getReportForDaySelector, getWorkBookOcKmSheetDataSelector,
   getWorkBookOtstSheetDataSelector
 } from "../../state/features/workBookData/selectors";
@@ -25,11 +25,11 @@ export const Home = () => {
   // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
   const dispatch = useDispatch();
   const ocKmData = useSelector(getWorkBookOcKmSheetDataSelector);
-  const otstData = useSelector(getWorkBookOtstSheetDataSelector);
+  // const otstData = useSelector(getWorkBookOtstSheetDataSelector);
   // const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
   const isDataLoaded = useSelector(getIsWorkBookDataLoadedSelector);                                      // загружны ли данные в стейт
   const inputFieldDayValue = useSelector(getReportForDaySelector);
-  const otstSheetCalculatingData = useSelector(calculateAllDataForTheReportOtstSheetSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
+  const calculatingData = useSelector(calculatedAllDataForTheReportSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
   const [inputFieldDayValidateErrorText, setInputFieldDayValidateErrorText] = useState("");               // текст ошибки при валидации инпута даты за которое делать отчет
   // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
@@ -88,10 +88,9 @@ export const Home = () => {
     // ------------------------------------- / Валидируем ------------------------------------
 
     if (inputFieldDayValidate.isValidate) {                             // если прошли Валидацию
-      const data = otstSheetCalculatingData.thirdAndFourthDegrees;      // данные из селектора - массив объектов как и в стейте
+      const data = calculatingData.thirdAndFourthDegreesAoA;            // данные из селектора - массив массивов для формирования отчетной xlsx книги
 
       createAndUploadWorkBook(                                          // преобразует их в массив массивов для записи в книгу и предлагает пользователю эту книгу скачать
-        createThirdAndFourthDegreesAoA,                                 // функция коллбек создатель массива массивов с информацией для записи в файл xlsx
         data,                                                           // данные для записи типа как в стейте
         "1. 3 и 4 степени.xlsx",                                        // имя создаваемой отчетной книги
         "3 и 4 степени"                                                 // имя листа в этой книге
@@ -139,15 +138,15 @@ export const Home = () => {
             if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +inputFieldDayValue) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
           }
         });
-        secondDegreesCount = otstSheetCalculatingData.secondDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество вторых степеней текущей дистанции
-        thirdDegreesCount = otstSheetCalculatingData.thirdDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;   // количество третьих степеней текущей дистанции
-        fourthDegreesCount = otstSheetCalculatingData.fourthDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество четвертых степеней текущей дистанции
-        narrowingTotalCount = otstSheetCalculatingData.narrowingTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество сужений за день текущей дистанции
-        wideningTotalCount = otstSheetCalculatingData.wideningTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уширений за день текущей дистанции
-        levelTotalCount = otstSheetCalculatingData.levelTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уровней за день текущей дистанции
-        reconsiderTotalCount = otstSheetCalculatingData.reconsiderTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество перекосов за день текущей дистанции
-        drawdownTotalCount = otstSheetCalculatingData.drawdownTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество просадок за день текущей дистанции
-        planAngleTotalCount = otstSheetCalculatingData.planAngleTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество рихтовок за день текущей дистанции
+        secondDegreesCount = calculatingData.secondDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество вторых степеней текущей дистанции
+        thirdDegreesCount = calculatingData.thirdDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;   // количество третьих степеней текущей дистанции
+        fourthDegreesCount = calculatingData.fourthDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество четвертых степеней текущей дистанции
+        narrowingTotalCount = calculatingData.narrowingTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество сужений за день текущей дистанции
+        wideningTotalCount = calculatingData.wideningTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уширений за день текущей дистанции
+        levelTotalCount = calculatingData.levelTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уровней за день текущей дистанции
+        reconsiderTotalCount = calculatingData.reconsiderTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество перекосов за день текущей дистанции
+        drawdownTotalCount = calculatingData.drawdownTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество просадок за день текущей дистанции
+        planAngleTotalCount = calculatingData.planAngleTotalCount.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество рихтовок за день текущей дистанции
         // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
 
         // -------------------- Вычислим величину Nуч ----------------------------------

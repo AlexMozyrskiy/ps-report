@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 // import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
 import { sheetOtstConst, sheetOcKmConst } from "../../../CONSTS/sheetsHeaderConsts";
+import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
 
 export const getWorkBookOtstSheetDataSelector = (state) => {
     return state.workBookData.otstSheetData;
@@ -74,9 +75,9 @@ export const calculateAllDataForTheReportOcKmSheetSmartSelector = createSelector
 
 
 // ------------------------- расчитаем все данные для отчета которые нам нужны из листа "Отступления" -----------------------
-export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector(
-    [getWorkBookOtstSheetDataSelector, getReportForDaySelector],
-    (otstData, reportForDay) => {
+export const calculatedAllDataForTheReportSmartSelector = createSelector(
+    [getWorkBookOtstSheetDataSelector, getWorkBookOcKmSheetDataSelector, getReportForDaySelector],
+    (otstData, ocKmData, reportForDay) => {
 
         // Возвращаемый объект расчитанных данных
         let returnedDataObject = {};
@@ -115,6 +116,9 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
 
         // Всего рихтовок за день - Массив Объектов такой же по типу как и входной массив объектов
         let planAngleTotalCount = [];
+
+        // Массив массивов с 3 и 4 степенями - для формаирования книги "1. 3 и 4 степени.xlsx"
+        let thirdAndFourthDegreesAoA = [];
 
 
 
@@ -544,12 +548,12 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
                 }
                 // ------------------------- / Всего рихтовок за день. Создадим обеъкт с нужными нам свойствами -----------------------
             }           // / if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999)
-
-
-
-
-
         }); // / otstData.forEach
+
+
+        thirdAndFourthDegreesAoA = createThirdAndFourthDegreesAoA(thirdAndFourthDegrees);
+
+
 
 
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
@@ -564,6 +568,7 @@ export const calculateAllDataForTheReportOtstSheetSmartSelector = createSelector
         returnedDataObject.reconsiderTotalCount = reconsiderTotalCount;
         returnedDataObject.drawdownTotalCount = drawdownTotalCount;
         returnedDataObject.planAngleTotalCount = planAngleTotalCount;
+        returnedDataObject.thirdAndFourthDegreesAoA = thirdAndFourthDegreesAoA;
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
 
