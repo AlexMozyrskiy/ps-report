@@ -9,6 +9,7 @@ import XLSX from "xlsx/dist/xlsx.full.min";
 */
 
 export function createAndUploadWorkBook(data, bookName, sheetName) {
+    debugger
     if(!Array.isArray(data)) {
         console.error("Переданные Вами данные данные в функцию creatrAndUploadWorkBook() не явлются массивом");
         return alert ("Переданные Вами данные данные в функцию creatrAndUploadWorkBook() не явлются массивом");

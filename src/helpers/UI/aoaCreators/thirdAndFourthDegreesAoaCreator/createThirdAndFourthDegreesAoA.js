@@ -43,7 +43,7 @@ export function createThirdAndFourthDegreesAoA(data) {
     });
     let station = typeof stationObject === 'undefined' ? "" : stationObject.station;  // название станции или перегона, если не нашли в базе совпадений, не нашли нужную станцию будут "", если нашли будет станция из базы
 
-    arr.push(item[sheetOtstConst.WAGON_NUMBER], ++i, item[sheetOtstConst.RAILWAY_DISTANCE], station, item[sheetOtstConst.TRACK], item[sheetOtstConst.METER], pkMetr, setSpeed, limitingSpeed, "", item[sheetOtstConst.DEGREE], faultDecoding);   // массив одна неисправность
+    arr.push(item[sheetOtstConst.WAGON_NUMBER], ++i, item[sheetOtstConst.RAILWAY_DISTANCE], station, item[sheetOtstConst.TRACK], item[sheetOtstConst.KILOMETER], pkMetr, setSpeed, limitingSpeed, "", item[sheetOtstConst.DEGREE], faultDecoding);   // массив одна неисправность
     dataToWrite.push(arr);        // запушим массив с одной неисправностью в массив со всеми неисправностями. Будем пошить каждую неисправность
   });
 
