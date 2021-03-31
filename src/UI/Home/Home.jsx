@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
 import {
-  getIsWorkBookDataLoadedSelector,
+  selectIsWorkBookDataLoaded,
   // calculateAllDataForTheReportOcKmSheetSmartSelector,
   calculatedAllDataForTheReportSmartSelector,
-  getReportForDaySelector, getWorkBookOcKmSheetDataSelector,
+  getReportForDaySelector, selectWorkBookOcKmSheetData,
   getWorkBookOtstSheetDataSelector
 } from "../../state/features/workBookData/selectors";
 import {
@@ -24,13 +24,13 @@ export const Home = () => {
 
   // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
   const dispatch = useDispatch();
-  const ocKmData = useSelector(getWorkBookOcKmSheetDataSelector);
+  const ocKmData = useSelector(selectWorkBookOcKmSheetData);
   // const otstData = useSelector(getWorkBookOtstSheetDataSelector);
   // const ocKmSheetCalculatingData = useSelector(calculateAllDataForTheReportOcKmSheetSmartSelector);       // вычисленные данные для отчета по книге "Оценка КМ" - объект
-  const isDataLoaded = useSelector(getIsWorkBookDataLoadedSelector);                                      // загружны ли данные в стейт
-  const inputFieldDayValue = useSelector(getReportForDaySelector);
-  const calculatingData = useSelector(calculatedAllDataForTheReportSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
-  const [inputFieldDayValidateErrorText, setInputFieldDayValidateErrorText] = useState("");               // текст ошибки при валидации инпута даты за которое делать отчет
+  const isDataLoaded = useSelector(selectIsWorkBookDataLoaded);                                      // загружны ли данные в стейт
+  // const inputFieldDayValue = useSelector(getReportForDaySelector);
+  // const calculatingData = useSelector(calculatedAllDataForTheReportSmartSelector);       // вычисленные данные для отчета по книге "Отступления" - объект
+  // const [inputFieldDayValidateErrorText, setInputFieldDayValidateErrorText] = useState("");               // текст ошибки при валидации инпута даты за которое делать отчет
   // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
 
@@ -75,43 +75,9 @@ export const Home = () => {
   // ------------------------------------ / Declare функцию вызывающуюся при загрузке файла ----------------------------------------------
 
 
-  // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
-  const onThirdDegreesSaveButtonClick = () => {
+  
 
-    // ------------------------------------- Валидируем --------------------------------------
-    let inputFieldDayValidator = new Validator(inputFieldDayValue, { required: true, notNumberNull: true, isInteger: true, isPositive: true, isNumber: true });
-    const inputFieldDayValidate = inputFieldDayValidator.validate();
-    /* в validate из функции вернется объект вида
-    {isValidate: false, message: "Это поле обязательно для заполнения"} - если не прошли валижацию
-    или 
-    {isValidate: true, message: ""} - если прошли валижацию  */
-    // ------------------------------------- / Валидируем ------------------------------------
-
-    if (inputFieldDayValidate.isValidate) {                             // если прошли Валидацию
-      const data = calculatingData.thirdAndFourthDegreesAoA;            // данные из селектора - массив массивов для формирования отчетной xlsx книги
-
-      createAndUploadWorkBook(                                          // преобразует их в массив массивов для записи в книгу и предлагает пользователю эту книгу скачать
-        data,                                                           // данные для записи типа как в стейте
-        "1. 3 и 4 степени.xlsx",                                        // имя создаваемой отчетной книги
-        "3 и 4 степени"                                                 // имя листа в этой книге
-      );
-    } else {                                                            // если не прошли валидацию
-      setInputFieldDayValidateErrorText(inputFieldDayValidate.message); // запишем сообщение в локальный стейт и в jsx покажем его пользователю
-    }   // / if (inputFieldDayValidate.isValidate)
-  }
-  // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
-
-
-  // ------------------------------------ Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт   ------------------------------------------------
-  const onInputFieldDayChange = (inputFieldDayValue) => {
-    if (inputFieldDayValidateErrorText !== "") {                                  // если есть текст сохранненной ошибки валидации
-      setInputFieldDayValidateErrorText("");                                      // скинем ошибку валидации чтобы она не отображалась на странице
-    }
-    dispatch(setReportForDayActionCreator(inputFieldDayValue));                   // запишем дату за которую нужно сделать отчет в стейт
-  }
-  // ------------------------------------ / Declare функцию вызывающуюся при вводе дня в поле, записывает введенную дату в стейт  ---------------------------------------------
-
-
+/*
   // ------------------------------------ Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ" ------------------------------------------------
   const onEKASUIReportButtonClick = () => {
 
@@ -177,27 +143,20 @@ export const Home = () => {
   }     // / uniquePchArr.forEach
   // ------------------------------------ / Declare функцию вызывающуюся при нажатии кнопки "Загрузить отчет для единых форм ЕКАСУИ"---------------------------------------------
 
-
+*/
 
 
   return (
     <>
-      <label>
-        <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} />
-      </label>
-      <p>{ }</p>
-
-
-
       {
         isDataLoaded
           ? <>
-            <input placeholder="Введите дату за которую нужно получить отчёт" value={inputFieldDayValue} onChange={(e) => onInputFieldDayChange(e.target.value)} required />
-            { inputFieldDayValidateErrorText !== "" ? <p style={{ color: "red" }}>{inputFieldDayValidateErrorText}</p> : null}
-            <button onClick={onThirdDegreesSaveButtonClick}>Загрузить файл с 3 и 4 степенями</button>
-            <button onClick={onEKASUIReportButtonClick}>Загрузить отчет для единых форм ЕКАСУИ</button>
+            <h2>Данные успешно загружены</h2>
           </>
-          : <div>Данные не загружены</div>
+          : <>
+          <h2>Данные не загружены, сначала загрузите данные</h2>
+          <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} />
+            </> 
       }
     </>
   );

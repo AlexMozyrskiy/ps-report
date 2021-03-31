@@ -18,6 +18,12 @@ const HeaderNav = () => {
                                 <NavLink to="/" className="header__anchor">Home</NavLink>
                             </li>
                             <li className="header__li">
+                                <NavLink to="/third-and-fourth-degrees" className="header__anchor">Третьи и четвертые степени</NavLink>
+                            </li>
+                            <li className="header__li">
+                                <NavLink to="/ekasui-report" className="header__anchor">Отчет в Ед формы ЕКАСУИ</NavLink>
+                            </li>
+                            <li className="header__li">
                                 <NavLink to="/test" className="header__anchor">Testing Reselect</NavLink>
                             </li>
                             {/* <li className="header__li">

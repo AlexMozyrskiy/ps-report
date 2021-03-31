@@ -1,120 +1,94 @@
 import { createSelector } from "reselect";
-import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
+// import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
 import { sheetOtstConst, sheetOcKmConst } from "../../../CONSTS/sheetsHeaderConsts";
 import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
-import { calculateMagnitudeN } from "../../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
-import { createEKASUIReportAoA } from "../../../helpers/UI/aoaCreators/EKASUIReportAoaCreator/createEKASUIReportAoA";
 
-export const selectWorkBookOtstSheetData = (state) => {
+export const getWorkBookOtstSheetDataSelector = (state) => {
     return state.workBookData.otstSheetData;
 }
 
-export const selectWorkBookOcKmSheetData = (state) => {
+export const getWorkBookOcKmSheetDataSelector = (state) => {
     return state.workBookData.ocKmSheetData;
 }
 
-export const selectIsWorkBookDataLoaded = (state) => {
+export const getIsWorkBookDataLoadedSelector = (state) => {
     return state.workBookData.isWorkBookDataLoaded;
 }
 
-export const selectIsWorkBookDataLoading = (state) => {
+export const getIsWorkBookDataLoadingSelector = (state) => {
     return state.workBookData.isWorkBookDataLoading;
 }
 
-export const selectReportForDay = (state) => {
+export const getReportForDaySelector = (state) => {
     return state.workBookData.reportForDay;
 }
 
-export const selectMakeCalculation = (state) => {
+export const getMakeCalculationSelector = (state) => {
     return state.workBookData.makeCalculation;
 }
 
-// ---------------------------------------------- расчитаем данные для отчета "1. 3 и 4 степени.xlsx" ----------------------------------------------
-export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
-    [selectWorkBookOtstSheetData, selectReportForDay],
-    (otstData, reportForDay) => {
 
+
+
+
+
+
+export const selectKmChecked = createSelector(                   // сколько провреено км
+    getWorkBookOcKmSheetDataSelector,
+    ocKmData => ocKmData.reduce((prevVaL, item) => {
+        const km = +item[sheetOcKmConst.CHECKED_KILOMETERS];                          // приведем к числу
+        const sum = km + Number(prevVaL);                       // приведем к числу
+        return sum.toFixed(3);                                  // вернем исправленную сумму
+    }, 0)
+);
+
+
+// ------------------------- расчитаем все данные для отчета которые нам нужны из листа "Оценка КМ" -----------------------
+export const calculateAllDataForTheReportOcKmSheetSmartSelector = createSelector(
+    [getWorkBookOcKmSheetDataSelector, getReportForDaySelector],
+    (ocKmData, reportForDay) => {
         // Возвращаемый объект расчитанных данных
         let returnedDataObject = {};
 
-        // третьи и четвертые степени для таблицы 3 и 4 степеней - Массив Объектов такой же по типу как и входной массив объектов
-        let thirdAndFourthDegrees = [];
+        // Всего километров проверено
+        let totalCheckedKilometers = 0;
 
-        // Массив массивов с 3 и 4 степенями - для формаирования книги "1. 3 и 4 степени.xlsx"
-        let thirdAndFourthDegreesAoA = [];
+        ocKmData.forEach(item => {                                          // для каждого объекта (строчки в excel)
 
-        otstData.forEach(item => {                                          // для каждого объекта (строчки в excel)
+            // ------------------------------ Всего километров проверено -----------------------------------------------
+            totalCheckedKilometers += Number(item[sheetOcKmConst.CHECKED_KILOMETERS]);            // расчиатем сумму текущую плюс предыдущую
+            totalCheckedKilometers = totalCheckedKilometers.toFixed(3);     // пофиксим полученное число, т.к. JS дробь считает неправильно
+            totalCheckedKilometers = +totalCheckedKilometers;               // приведем пофикшенную строку к числу
+            // ------------------------------ / Всего километров проверено ---------------------------------------------
 
-            // ---------------- Общие условия для всех свойств для начала расчета -------------------
-            if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1) {
-                // ------------------------- Третьи и четвертые степени степени. Создадим обеъкт (тип как в стейте) с нужными нам свойствами -------------------------
-                if ((item[sheetOtstConst.DEGREE] === 4 || item[sheetOtstConst.DEGREE] === 3) && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
-                    thirdAndFourthDegrees.push({
-                        "EXCLUDE": item[sheetOtstConst.EXCLUDE],
-                        "KM": item[sheetOtstConst.KILOMETER],
-                        "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
-                        "АМПЛИТУДА": item[sheetOtstConst.AMPLITUDE],
-                        "БАЛЛ": item[sheetOtstConst.SCORE],
-                        "ВИД": item[sheetOtstConst.TYPE_OF_RETREAT],
-                        "ГОД": item[sheetOtstConst.YEAR],
-                        "ДЕНЬ": item[sheetOtstConst.DAY],
-                        "ДЗ": item[sheetOtstConst.DZ],
-                        "ДЛИНА": item[sheetOtstConst.LENGTH_OF_RETREAT],
-                        "ИС": item[sheetOtstConst.INSULATING_JOINT],
-                        "КЛАСС": item[sheetOtstConst.CLASS],
-                        "КОД": item[sheetOtstConst.RAILWAY_CODE],
-                        "КОДНАПРВ": item[sheetOtstConst.DIRECTION_CODE],
-                        "КОДОТСТУП": item[sheetOtstConst.RETREAT_CODE],
-                        "КОЛИЧЕСТВО": item[sheetOtstConst.COUNT],
-                        "ЛИНИЯ": item[sheetOtstConst.LINE],
-                        "М": item[sheetOtstConst.METER],
-                        "МЕСЯЦ": item[sheetOtstConst.MONTH],
-                        "МОСТ": item[sheetOtstConst.BRIDGE],
-                        "ОБК": item[sheetOtstConst.RUNNING_IN],
-                        "ОТСТУПЛЕНИЕ": item[sheetOtstConst.RETREAT_TITLE],
-                        "ПС": item[sheetOtstConst.WAGON_NUMBER],
-                        "ПУТЬ": item[sheetOtstConst.TRACK],
-                        "ПЧ": item[sheetOtstConst.RAILWAY_DISTANCE],
-                        "СК_ОГР_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION],           // "-" | number
-                        "СК_ОГР_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION],           // "-" | number
-                        "СК_УСТ_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_ADVANCED],           // "-" | number
-                        "СК_УСТ_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_ADVANCED],           // "-" | number
-                        "СТЕПЕНЬ": item[sheetOtstConst.DEGREE],
-                        "СТРЕЛКА": item[sheetOtstConst.ARROW]
-                    });
-                }
-                // ------------------------- / Третьи и четвертые степени степени. Создадим обеъкт (тип как в стейте) с нужными нам свойствами -----------------------
-            }
-        });
 
-        // ---------------- массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ------------------------
-        thirdAndFourthDegreesAoA = createThirdAndFourthDegreesAoA(thirdAndFourthDegrees);
-        // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ----------------------
+        }); // / ocKmData.forEach
 
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
-        returnedDataObject.thirdAndFourthDegrees = thirdAndFourthDegrees;
-        returnedDataObject.thirdAndFourthDegreesAoA = thirdAndFourthDegreesAoA;
+        returnedDataObject.totalCheckedKilometers = totalCheckedKilometers;
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
         return returnedDataObject;
     }
 );
-// ---------------------------------------------- / расчитаем данные для отчета "1. 3 и 4 степени.xlsx" --------------------------------------------
+// ------------------------- / расчитаем все данные для отчета которые нам нужны из листа "Оценка КМ" ---------------------
 
 
-
-
-
-// ---------------------------------------------- расчитаем данные для отчета "1. 3 и 4 степени.xlsx" ----------------------------------------------
-export const selectCalculatedDataEKASUIReport = createSelector(
-    [selectWorkBookOtstSheetData, selectWorkBookOcKmSheetData, selectReportForDay],
+// ------------------------- расчитаем все данные для отчета которые нам нужны из листа "Отступления" -----------------------
+export const calculatedAllDataForTheReportSmartSelector = createSelector(
+    [getWorkBookOtstSheetDataSelector, getWorkBookOcKmSheetDataSelector, getReportForDaySelector],
     (otstData, ocKmData, reportForDay) => {
 
         // Возвращаемый объект расчитанных данных
         let returnedDataObject = {};
 
+        // reportForDay = +reportForDay;
+
         // вторые степени - Массив Объектов такой же по типу как и входной массив объектов
         let secondDegrees = [];
+
+        // вторые близкие к третьим степени - Массив Объектов такой же по типу как и входной массив объектов
+        let secondCloseToThirdDegrees = [];
 
         // третьи степени - Массив Объектов такой же по типу как и входной массив объектов
         let thirdDegrees = [];
@@ -122,29 +96,34 @@ export const selectCalculatedDataEKASUIReport = createSelector(
         // четвертые степени - Массив Объектов такой же по типу как и входной массив объектов
         let fourthDegrees = [];
 
+        // третьи и четвертые степени для таблицы 3 и 4 степеней - Массив Объектов такой же по типу как и входной массив объектов
+        let thirdAndFourthDegrees = [];
+
         // Всего сужений за день - Массив Объектов такой же по типу как и входной массив объектов
-        let narrowingsData = [];
+        let narrowingTotalCount = [];
 
         // Всего уширений за день - Массив Объектов такой же по типу как и входной массив объектов
-        let wideningsData = [];
+        let wideningTotalCount = [];
 
         // Всего уровней за день - Массив Объектов такой же по типу как и входной массив объектов
-        let levelsData = [];
+        let levelTotalCount = [];
 
         // Всего перекосов за день - Массив Объектов такой же по типу как и входной массив объектов
-        let reconsidersData = [];
+        let reconsiderTotalCount = [];
 
         // Всего просадок за день - Массив Объектов такой же по типу как и входной массив объектов
-        let drawdownsData = [];
+        let drawdownTotalCount = [];
 
         // Всего рихтовок за день - Массив Объектов такой же по типу как и входной массив объектов
-        let planAnglesData = [];
+        let planAngleTotalCount = [];
 
-        // третьи и четвертые степени для таблицы 3 и 4 степеней - Массив Объектов такой же по типу как и входной массив объектов
-        let EKASUIReport = [];
+        // // Всего рихтовок за день - Массив Объектов такой же по типу как и входной массив объектов
+        // let planAngleTotalCount = [];
 
         // Массив массивов с 3 и 4 степенями - для формаирования книги "1. 3 и 4 степени.xlsx"
-        let EKASUIReportAoA = [];
+        let thirdAndFourthDegreesAoA = [];
+
+
 
         otstData.forEach(item => {                                          // для каждого объекта (строчки в excel)
 
@@ -187,6 +166,46 @@ export const selectCalculatedDataEKASUIReport = createSelector(
                     });
                 }
                 // ------------------------- / Вторые степени. Создадим обеъкт с нужными нам свойствами -----------------------
+
+
+                // ------------------------- Вторые близкие к тертьим степени. Создадим обеъкт с нужными нам свойствами -------------------------
+                if (item[sheetOtstConst.DEGREE] === 2 && item[sheetOtstConst.PR_PREDUPR] === 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ") {
+                    secondCloseToThirdDegrees.push({
+                        "EXCLUDE": item[sheetOtstConst.EXCLUDE],
+                        "KM": item[sheetOtstConst.KILOMETER],
+                        "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
+                        "АМПЛИТУДА": item[sheetOtstConst.AMPLITUDE],
+                        "БАЛЛ": item[sheetOtstConst.SCORE],
+                        "ВИД": item[sheetOtstConst.TYPE_OF_RETREAT],
+                        "ГОД": item[sheetOtstConst.YEAR],
+                        "ДЕНЬ": item[sheetOtstConst.DAY],
+                        "ДЗ": item[sheetOtstConst.DZ],
+                        "ДЛИНА": item[sheetOtstConst.LENGTH_OF_RETREAT],
+                        "ИС": item[sheetOtstConst.INSULATING_JOINT],
+                        "КЛАСС": item[sheetOtstConst.CLASS],
+                        "КОД": item[sheetOtstConst.RAILWAY_CODE],
+                        "КОДНАПРВ": item[sheetOtstConst.DIRECTION_CODE],
+                        "КОДОТСТУП": item[sheetOtstConst.RETREAT_CODE],
+                        "КОЛИЧЕСТВО": item[sheetOtstConst.COUNT],
+                        "ЛИНИЯ": item[sheetOtstConst.LINE],
+                        "М": item[sheetOtstConst.METER],
+                        "МЕСЯЦ": item[sheetOtstConst.MONTH],
+                        "МОСТ": item[sheetOtstConst.BRIDGE],
+                        "ОБК": item[sheetOtstConst.RUNNING_IN],
+                        "ОТСТУПЛЕНИЕ": item[sheetOtstConst.RETREAT_TITLE],
+                        "ПС": item[sheetOtstConst.WAGON_NUMBER],
+                        "ПУТЬ": item[sheetOtstConst.TRACK],
+                        "ПЧ": item[sheetOtstConst.RAILWAY_DISTANCE],
+                        "СК_ОГР_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION],           // "-" | number
+                        "СК_ОГР_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION],           // "-" | number
+                        "СК_УСТ_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_ADVANCED],           // "-" | number
+                        "СК_УСТ_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_ADVANCED],           // "-" | number
+                        "СТЕПЕНЬ": item[sheetOtstConst.DEGREE],
+                        "СТРЕЛКА": item[sheetOtstConst.ARROW]
+                    });
+                }
+                // ------------------------- / Вторые близкие к тертьим степени. Создадим обеъкт с нужными нам свойствами -----------------------
+
 
                 // ------------------------- Третьи степени. Создадим обеъкт с нужными нам свойствами -------------------------
                 if (item[sheetOtstConst.DEGREE] === 3 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ") {
@@ -265,9 +284,48 @@ export const selectCalculatedDataEKASUIReport = createSelector(
                 }
                 // ------------------------- / Четвертые степени. Создадим обеъкт с нужными нам свойствами -----------------------
 
+
+                // ------------------------- Третьи и четвертые степени. Создадим обеъкт с нужными нам свойствами -------------------------
+                if ((item[sheetOtstConst.DEGREE] === 4 || item[sheetOtstConst.DEGREE] === 3) && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
+                    thirdAndFourthDegrees.push({
+                        "EXCLUDE": item[sheetOtstConst.EXCLUDE],
+                        "KM": item[sheetOtstConst.KILOMETER],
+                        "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
+                        "АМПЛИТУДА": item[sheetOtstConst.AMPLITUDE],
+                        "БАЛЛ": item[sheetOtstConst.SCORE],
+                        "ВИД": item[sheetOtstConst.TYPE_OF_RETREAT],
+                        "ГОД": item[sheetOtstConst.YEAR],
+                        "ДЕНЬ": item[sheetOtstConst.DAY],
+                        "ДЗ": item[sheetOtstConst.DZ],
+                        "ДЛИНА": item[sheetOtstConst.LENGTH_OF_RETREAT],
+                        "ИС": item[sheetOtstConst.INSULATING_JOINT],
+                        "КЛАСС": item[sheetOtstConst.CLASS],
+                        "КОД": item[sheetOtstConst.RAILWAY_CODE],
+                        "КОДНАПРВ": item[sheetOtstConst.DIRECTION_CODE],
+                        "КОДОТСТУП": item[sheetOtstConst.RETREAT_CODE],
+                        "КОЛИЧЕСТВО": item[sheetOtstConst.COUNT],
+                        "ЛИНИЯ": item[sheetOtstConst.LINE],
+                        "М": item[sheetOtstConst.METER],
+                        "МЕСЯЦ": item[sheetOtstConst.MONTH],
+                        "МОСТ": item[sheetOtstConst.BRIDGE],
+                        "ОБК": item[sheetOtstConst.RUNNING_IN],
+                        "ОТСТУПЛЕНИЕ": item[sheetOtstConst.RETREAT_TITLE],
+                        "ПС": item[sheetOtstConst.WAGON_NUMBER],
+                        "ПУТЬ": item[sheetOtstConst.TRACK],
+                        "ПЧ": item[sheetOtstConst.RAILWAY_DISTANCE],
+                        "СК_ОГР_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION],           // "-" | number
+                        "СК_ОГР_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION],           // "-" | number
+                        "СК_УСТ_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_ADVANCED],           // "-" | number
+                        "СК_УСТ_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_ADVANCED],           // "-" | number
+                        "СТЕПЕНЬ": item[sheetOtstConst.DEGREE],
+                        "СТРЕЛКА": item[sheetOtstConst.ARROW]
+                    });
+                }
+                // ------------------------- / Третьи и четвертые степени. Создадим обеъкт с нужными нам свойствами -----------------------
+
                 // ------------------------- Всего сужений за день. Создадим обеъкт с нужными нам свойствами -------------------------
                 if (item[sheetOtstConst.RETREAT_TITLE] === "Суж") {
-                    narrowingsData.push({
+                    narrowingTotalCount.push({
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
@@ -305,7 +363,7 @@ export const selectCalculatedDataEKASUIReport = createSelector(
 
                 // ------------------------- Всего уширений за день. Создадим обеъкт с нужными нам свойствами -------------------------
                 if (item[sheetOtstConst.RETREAT_TITLE] === "Уш") {
-                    wideningsData.push({
+                    wideningTotalCount.push({
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
@@ -343,7 +401,7 @@ export const selectCalculatedDataEKASUIReport = createSelector(
 
                 // ------------------------- Всего уровней за день. Создадим обеъкт с нужными нам свойствами -------------------------
                 if (item[sheetOtstConst.RETREAT_TITLE] === "У") {
-                    levelsData.push({
+                    levelTotalCount.push({
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
@@ -378,10 +436,10 @@ export const selectCalculatedDataEKASUIReport = createSelector(
                     });
                 }
                 // ------------------------- / Всего уровней за день. Создадим обеъкт с нужными нам свойствами -----------------------
-
+                
                 // ------------------------- Всего перекосов за день. Создадим обеъкт с нужными нам свойствами -------------------------
                 if (item[sheetOtstConst.RETREAT_TITLE] === "П") {
-                    reconsidersData.push({
+                    reconsiderTotalCount.push({
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
@@ -419,7 +477,7 @@ export const selectCalculatedDataEKASUIReport = createSelector(
 
                 // ------------------------- Всего просадок за день. Создадим обеъкт с нужными нам свойствами -------------------------
                 if (item[sheetOtstConst.RETREAT_TITLE] === "Пр.Л" || item[sheetOtstConst.RETREAT_TITLE] === "Пр.П") {
-                    drawdownsData.push({
+                    drawdownTotalCount.push({
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
@@ -457,7 +515,7 @@ export const selectCalculatedDataEKASUIReport = createSelector(
 
                 // ------------------------- Всего рихтовок за день. Создадим обеъкт с нужными нам свойствами -------------------------
                 if (item[sheetOtstConst.RETREAT_TITLE] === "Рст" || item[sheetOtstConst.RETREAT_TITLE] === "Р" || (item[sheetOtstConst.RETREAT_TITLE] === "Р.нр" && item[sheetOtstConst.DEGREE] === 4)) {
-                    planAnglesData.push({
+                    planAngleTotalCount.push({
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
@@ -492,70 +550,56 @@ export const selectCalculatedDataEKASUIReport = createSelector(
                     });
                 }
                 // ------------------------- / Всего рихтовок за день. Создадим обеъкт с нужными нам свойствами -----------------------
-            }
+            }           // / if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999)
+        }); // / otstData.forEach
+
+
+        ocKmData.forEach(item => {
+
         });
 
 
 
 
-        // -------------------- Подготовим данные для пребразования их в AoA ---------------------------------------------------
-        const uniquePchArr = getUniquePch(ocKmData, reportForDay);              // массив с уникальными номерами ПЧ
+        // ---------------------------------- Масивы объектов тип как в стейте для формирования массива массивов из которого формаируем отчетную книгу ------------------------------------------------
 
-        let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0, secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesCount = 0;
-        let narrowingTotalCount = 0, wideningTotalCount = 0, levelTotalCount = 0, reconsiderTotalCount = 0, drawdownTotalCount = 0, planAngleTotalCount = 0;
-        let magnitudeN = 0;                                                   // величина Nуч
+        // ---------------------------------- Масивы объектов тип как в стейте для формирования массива массивов из которого формаируем отчетную книгу ------------------------------------------------
 
 
-        uniquePchArr.forEach(element => {                                     // для каждого уникального ПЧ
-
-            // ----------------- Вычислим километры по видам (отл, хор ...) --------------------------------
-            ocKmData.forEach(el => {                                            // для каждого объекта в листе оц км (строчки excel)
-                if (element === el[sheetOcKmConst.RAILWAY_DISTANCE]) {            // для каждого ПЧ посчитаем отл, хор ... километры
-                    if (el[sheetOcKmConst.GRADE] === 5 && el[sheetOcKmConst.DAY] === +reportForDay) otlKm = +(otlKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-                    if (el[sheetOcKmConst.GRADE] === 4 && el[sheetOcKmConst.DAY] === +reportForDay) xorKm = +(xorKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-                    if (el[sheetOcKmConst.GRADE] === 3 && el[sheetOcKmConst.DAY] === +reportForDay) UdKm = +(UdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-                    if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +reportForDay) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
-                }
-            });
-            // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
-
-            // ---------------------------------------- Получим количество вторых степеней ... , сужений ... ------------------------------------------
-            secondDegreesCount = secondDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество вторых степеней текущей дистанции
-            thirdDegreesCount = thirdDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;   // количество третьих степеней текущей дистанции
-            fourthDegreesCount = fourthDegrees.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length; // количество четвертых степеней текущей дистанции
-            narrowingTotalCount = narrowingsData.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество сужений за день текущей дистанции
-            wideningTotalCount = wideningsData.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уширений за день текущей дистанции
-            levelTotalCount = levelsData.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество уровней за день текущей дистанции
-            reconsiderTotalCount = reconsidersData.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество перекосов за день текущей дистанции
-            drawdownTotalCount = drawdownsData.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество просадок за день текущей дистанции
-            planAngleTotalCount = planAnglesData.filter(item => item[sheetOtstConst.RAILWAY_DISTANCE] === element).length;  // количество рихтовок за день текущей дистанции
-            // ---------------------------------------- / Получим количество вторых степеней ... , сужений ... ----------------------------------------
-
-            // -------------------- Вычислим величину Nуч ----------------------------------
-            magnitudeN = calculateMagnitudeN(otlKm, xorKm, UdKm, neUdKm);       // Величина Nуч
-            // -------------------- / Вычислим величину Nуч --------------------------------
 
 
-            EKASUIReport.push({         // запишем результат вычислений в массив
-                pch: element, otlKm, xorKm, UdKm, neUdKm, secondDegreesCount, thirdDegreesCount, fourthDegreesCount, magnitudeN,
-                narrowingTotalCount, wideningTotalCount, levelTotalCount, reconsiderTotalCount, drawdownTotalCount, planAngleTotalCount
-            });
-            otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount = 0;
-        });
-        // -------------------- / Подготовим данные для пребразования их в AoA -------------------------------------------------
+        // ---------------------------------- Масивы массивов для формаирования и аплоада отчетных форм ------------------------------------------------
 
-        
         // ---------------- массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ------------------------
-        EKASUIReportAoA = createEKASUIReportAoA(EKASUIReport);
+        thirdAndFourthDegreesAoA = createThirdAndFourthDegreesAoA(thirdAndFourthDegrees);
         // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ----------------------
+
+        // ---------------------------------- / Масивы массивов для формаирования и аплоада отчетных форм ----------------------------------------------
+
         
-        
+
+
+
+
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
-        returnedDataObject.EKASUIReport = EKASUIReport;
-        returnedDataObject.EKASUIReportAoA = EKASUIReportAoA;
+        returnedDataObject.secondDegrees = secondDegrees;
+        returnedDataObject.secondCloseToThirdDegrees = secondCloseToThirdDegrees;
+        returnedDataObject.thirdDegrees = thirdDegrees;
+        returnedDataObject.fourthDegrees = fourthDegrees;
+        returnedDataObject.thirdAndFourthDegrees = thirdAndFourthDegrees;
+        returnedDataObject.narrowingTotalCount = narrowingTotalCount;
+        returnedDataObject.wideningTotalCount = wideningTotalCount;
+        returnedDataObject.levelTotalCount = levelTotalCount;
+        returnedDataObject.reconsiderTotalCount = reconsiderTotalCount;
+        returnedDataObject.drawdownTotalCount = drawdownTotalCount;
+        returnedDataObject.planAngleTotalCount = planAngleTotalCount;
+        returnedDataObject.thirdAndFourthDegreesAoA = thirdAndFourthDegreesAoA;
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
+
+
         return returnedDataObject;
-    }
+
+    }   // otstData => { }
 );
-// ---------------------------------------------- / расчитаем данные для отчета "1. 3 и 4 степени.xlsx" --------------------------------------------
+// ------------------------- / расчитаем все данные для отчета которые нам нужны из листа "Отступления" ---------------------

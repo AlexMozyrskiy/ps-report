@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 // import XLSX from "xlsx/dist/xlsx.full.min";
 // import { definePicketByMeter } from "../../helpers/common/definePicketByMeter/definePicketByMeter";
 import { getDirectionByCode } from "../../helpers/common/getDirectionByCode/getDirectionByCode";
-import { calculatedAllDataForTheReportSmartSelector } from "../../state/features/workBookData/selectors";
+// import { calculatedAllDataForTheReportSmartSelector } from "../../state/features/workBookData/selectors";
 import XLSX from "xlsx/dist/xlsx.full.min";
 
 export const ReselectTesting = () => {
 
-  const otstSheetCalculatingData = useSelector(calculatedAllDataForTheReportSmartSelector);
+  // const otstSheetCalculatingData = useSelector(calculatedAllDataForTheReportSmartSelector);
 
   const onBookSelect = (evt) => {
     let worBookData;                                    // возвращаем json
