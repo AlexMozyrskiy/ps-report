@@ -5,6 +5,7 @@ import { Home } from './UI/Home/Home';
 import { ReselectTesting } from './UI/ReselectTesting/ReselectTesting';
 import { ThirdAndFourthDegrees } from './UI/ThirdAndFourthDegrees/ThirdAndFourthDegrees';
 import { EkasuiReport } from './UI/EkasuiReport/EkasuiReport';
+import { ConvertVideo } from './UI/ConvertVideo/ConvertVideo';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route exact path='/' render={() => <Home />} />
         <Route exact path='/third-and-fourth-degrees' render={() => <ThirdAndFourthDegrees />} />
         <Route exact path='/ekasui-report' render={() => <EkasuiReport />} />
+        <Route exact path='/convert-video' render={() => <ConvertVideo />} />
         <Route exact path='/test' render={() => <ReselectTesting />} />
       </Switch>
     </div>
