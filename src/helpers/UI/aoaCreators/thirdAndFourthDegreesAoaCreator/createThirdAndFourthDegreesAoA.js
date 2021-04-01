@@ -4,6 +4,7 @@
 import { definePicketByMeter } from "../../../common/definePicketByMeter/definePicketByMeter";
 import DB from "../../../../DB/DB";
 import { sheetOtstConst } from "../../../../CONSTS/sheetsHeaderConsts";
+import { getStationNameByKmAndDirection } from "../../../common/getStationNameByKmAndDirection/getStationNameByKmAndDirection";
 
 export function createThirdAndFourthDegreesAoA(data) {
   let dataToWrite = [];                                   //массив массивов для конвертации его в xslx и записи в выходную книгу
@@ -35,15 +36,10 @@ export function createThirdAndFourthDegreesAoA(data) {
 
     const doubleKm = Number(item[sheetOtstConst.KILOMETER] + "." + item[sheetOtstConst.METER]);     // километр и метр приведем к виду 132.456
 
-    // найдем в DB объект с информацией о станции или перегоне где мы находимся
-    const stationObject = DB.stationBoundaries.find(el => {
-      const parseDirectionCode = el.direction.match(/\d\d\d\d\d/);         // распарсим из свойства direction в DB код направления для сравнения его с текущим кодом в item
+    const stationName = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], doubleKm);    // Станция или перегон определим из DB
+    
 
-      return +doubleKm > +el.startCoordinate && +doubleKm <= +el.endCoordinate && +item[sheetOtstConst.DIRECTION_CODE] === +parseDirectionCode[0];
-    });
-    let station = typeof stationObject === 'undefined' ? "" : stationObject.station;  // название станции или перегона, если не нашли в базе совпадений, не нашли нужную станцию будут "", если нашли будет станция из базы
-
-    arr.push(item[sheetOtstConst.WAGON_NUMBER], ++i, item[sheetOtstConst.RAILWAY_DISTANCE], station, item[sheetOtstConst.TRACK], item[sheetOtstConst.KILOMETER], pkMetr, setSpeed, limitingSpeed, "", item[sheetOtstConst.DEGREE], faultDecoding);   // массив одна неисправность
+    arr.push(item[sheetOtstConst.WAGON_NUMBER], ++i, item[sheetOtstConst.RAILWAY_DISTANCE], stationName, item[sheetOtstConst.TRACK], item[sheetOtstConst.KILOMETER], pkMetr, setSpeed, limitingSpeed, "", item[sheetOtstConst.DEGREE], faultDecoding);   // массив одна неисправность
     dataToWrite.push(arr);        // запушим массив с одной неисправностью в массив со всеми неисправностями. Будем пошить каждую неисправность
   });
 

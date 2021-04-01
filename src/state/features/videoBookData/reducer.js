@@ -1,7 +1,6 @@
 import {
     VIDEO_BOOK_DATA, IS_VIDEO_BOOK_DATA_LOADED,
-    IS_VIDEO_BOOK_DATA_LOADING, REPORT_FOR_DAY,
-    MAKE_CALCULATION
+    IS_VIDEO_BOOK_DATA_LOADING
 } from "./actionTypes";
 
 const initialState = {
@@ -17,15 +16,14 @@ const initialState = {
         "Дефект": "",
         "Огр.скорости (км/ч)": "",
     }],
-    isVideoBookDataLoaded: false,        // загрузились ли данные в стейт
-    isVideoBookDataLoading: false,       // загружаются ли данные в стейт по моменту
+    isVideoBookDataLoaded: false,           // загрузились ли данные в стейт
+    isVideoBookDataLoading: false           // загружаются ли данные в стейт по моменту
 };
 
 const videoBookDataReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case VIDEO_BOOK_DATA: {
-            debugger
             const superState = {
                 ...state,
 

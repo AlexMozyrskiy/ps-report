@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
-import { selectIsVideoBookDataLoaded } from "../../state/features/videoBookData/selectors";
+import { selectCalculatedDataVideoFromArm, selectIsVideoBookDataLoaded } from "../../state/features/videoBookData/selectors";
 import { setVideoBookDataThunkCreator } from "../../state/features/videoBookData/thunkCreators";
 
 export const ConvertVideo = () => {
 
-    // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
+  // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
   const dispatch = useDispatch();
   const isDataLoaded = useSelector(selectIsVideoBookDataLoaded);                                      // загружны ли данные в стейт
+  const calculatedData = useSelector(selectCalculatedDataVideoFromArm);                                      // загружны ли данные в стейт
   // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
 
@@ -34,9 +35,8 @@ export const ConvertVideo = () => {
 
 
         worBookData = {
-            videoData: videoDataObjJson
+          videoData: videoDataObjJson
         }
-        debugger
 
         dispatch(setVideoBookDataThunkCreator(worBookData));
       };
@@ -57,9 +57,9 @@ export const ConvertVideo = () => {
             <h2>Данные успешно загружены</h2>
           </>
           : <>
-          <h2>Данные не загружены, сначала загрузите данные</h2>
-          <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} />
-            </> 
+            <h2>Данные не загружены, сначала загрузите данные</h2>
+            <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} />
+          </>
       }
     </>
   );
