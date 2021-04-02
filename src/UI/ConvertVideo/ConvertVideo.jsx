@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
 import { selectCalculatedDataVideoFromArm, selectIsVideoBookDataLoaded } from "../../state/features/videoBookData/selectors";
 import { setVideoBookDataThunkCreator } from "../../state/features/videoBookData/thunkCreators";
+import { createAndUploadWorkBook } from "../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
+
 
 export const ConvertVideo = () => {
 
   // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
   const dispatch = useDispatch();
   const isDataLoaded = useSelector(selectIsVideoBookDataLoaded);                                      // загружны ли данные в стейт
-  const calculatedData = useSelector(selectCalculatedDataVideoFromArm);                                      // загружны ли данные в стейт
+  const calculatingData = useSelector(selectCalculatedDataVideoFromArm);                                      // загружны ли данные в стейт
   // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
 
@@ -49,12 +51,27 @@ export const ConvertVideo = () => {
   }
   // ------------------------------------ / Declare функцию вызывающуюся при загрузке файла ----------------------------------------------
 
+  // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
+  const onSaveButtonClick = () => {
+    const data = calculatingData.templateVideoAoA;                       // данные из селектора - массив массивов для формирования отчетной xlsx книги
+
+    createAndUploadWorkBook(                                            // Создает и предлагает скачать юзеру книгу со сформированным отчетом
+      data,                                                           // данные для записи
+      "3. Шаблон Видео.xlsx",                          // имя создаваемой отчетной книги
+      "Шаблон Видео"                                   // имя листа в этой книге
+    );
+  }
+  // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
+
+
+
   return (
     <>
       {
         isDataLoaded
           ? <>
             <h2>Данные успешно загружены</h2>
+            <button onClick={onSaveButtonClick}></button>
           </>
           : <>
             <h2>Данные не загружены, сначала загрузите данные</h2>

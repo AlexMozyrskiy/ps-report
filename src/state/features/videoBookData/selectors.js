@@ -27,6 +27,12 @@ export const selectCalculatedDataVideoFromArm = createSelector(
         templateVideoAoA = createTemplateVideoAoA(data);
         // ---------------- / массив массивов для формаирования книги "Для Шаблон Видео" ----------------------
 
+        // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
+        returnedDataObject.templateVideo = data;
+        returnedDataObject.templateVideoAoA = templateVideoAoA;
+        // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
+
+        return returnedDataObject;
     }
 );
 // ------------- / Из информации в стейте выгруженной из книги которая с помощью "ctrl + e" выгрузилась из АРМ видео создадим массив массивов для создания книги для Шаблона Видео --------------
