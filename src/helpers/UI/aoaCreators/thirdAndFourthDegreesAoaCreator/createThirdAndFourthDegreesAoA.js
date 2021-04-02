@@ -38,8 +38,13 @@ export function createThirdAndFourthDegreesAoA(data) {
 
     const stationName = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], doubleKm);    // Станция или перегон определим из DB
     
+    // --------------------- ЭТО ВРЕМЕННЫЙ КОСТЫЛЬ ДЛЯ ФИЛЬТРАЦИИ НЕИСПРАВНОСТЕЙ ТРЕБУЮЩИХ КОРРЕКТИРОВОВК --------------------------------------
+    let isCorrectionNeed = "";
+    if(item[sheetOtstConst.RETREAT_TITLE] === "П" && item[sheetOtstConst.AMPLITUDE] <= 15) isCorrectionNeed = "Требует корректировки согласно распоряжнию № 614"
+    // --------------------- / ЭТО ВРЕМЕННЫЙ КОСТЫЛЬ ДЛЯ ФИЛЬТРАЦИИ НЕИСПРАВНОСТЕЙ ТРЕБУЮЩИХ КОРРЕКТИРОВОВК ------------------------------------
 
-    arr.push(item[sheetOtstConst.WAGON_NUMBER], ++i, item[sheetOtstConst.RAILWAY_DISTANCE], stationName, item[sheetOtstConst.TRACK], item[sheetOtstConst.KILOMETER], pkMetr, setSpeed, limitingSpeed, "", item[sheetOtstConst.DEGREE], faultDecoding);   // массив одна неисправность
+
+    arr.push(item[sheetOtstConst.WAGON_NUMBER], ++i, item[sheetOtstConst.RAILWAY_DISTANCE], stationName, item[sheetOtstConst.TRACK], item[sheetOtstConst.KILOMETER], pkMetr, setSpeed, limitingSpeed, "", item[sheetOtstConst.DEGREE], faultDecoding, isCorrectionNeed);   // массив одна неисправность
     dataToWrite.push(arr);        // запушим массив с одной неисправностью в массив со всеми неисправностями. Будем пошить каждую неисправность
   });
 

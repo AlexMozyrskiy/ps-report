@@ -1,7 +1,12 @@
 /* функция принимает массив объектов с информацией из стейта по книге которая выгружена из АРМ Видео
     возвращает массив массивов для формирования книги для Шаблона Видео
 */
+import DB from "../../../../DB/DB";
 import { getDirectionByCode } from "../../../common/getDirectionByCode/getDirectionByCode";
+import { getStationNameByKmAndDirection } from "../../../common/getStationNameByKmAndDirection/getStationNameByKmAndDirection";
+import { definePicketByMeter } from "../../../common/definePicketByMeter/definePicketByMeter";
+import { getPchNumberByCodeAndKm } from "../../../common/getPchNumberByCodeAndKm/getPchNumberByCodeAndKm";
+
 
 
 export function createTemplateVideoAoA(data) {
@@ -24,13 +29,32 @@ export function createTemplateVideoAoA(data) {
     const direction = getDirectionByCode(+directionCode);
     // --------------- / Направление -------------------
 
+    // --------------- Станция ---------------------
+    const doubleKm = `${item["Км"]}.${item["М"]}`;                        // километр типа 132.123
+    const stationName = getStationNameByKmAndDirection(DB, +directionCode, +doubleKm);
+    // --------------- / Станция -------------------
+
+    // --------------- Номер ПЧ ---------------------
+    const pchNumber = getPchNumberByCodeAndKm(+directionCode, +doubleKm);
+    // --------------- / Номер ПЧ -------------------
+
+    // --------------- Путь ---------------------
+    const trackNumber = item["П-Н"].split(" - ")[0];      // разделим чтобы вычленить [1] элемент массива, это как раз код направление
+    // --------------- / Путь -------------------
+
+    // --------------- Путь ---------------------
+    const side = (item["Сторона"].split(" ")[0]).toLowercase();      // разделим чтобы вычленить [1] элемент массива, это как раз код направление
+    // --------------- / Путь -------------------
+
 
     arr.push(
-      ++i, "", "", direction,
+      ++i, "", "", direction, stationName, pchNumber, +trackNumber, item["Км"], definePicketByMeter(item["М"]), item["М"],
+      side, item["Объект"], null, null, item["Огр.скорости (км/ч)"], item["Параметр"]
     );   // массив одна неисправность
 
     dataToWrite.push(arr);        // запушим массив с одной неисправностью в массив со всеми неисправностями. Будем пошить каждую неисправность
   });
+  debugger
 
   return dataToWrite;
 }
