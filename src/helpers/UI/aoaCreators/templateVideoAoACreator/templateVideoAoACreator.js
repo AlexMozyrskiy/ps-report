@@ -6,6 +6,7 @@ import { getDirectionByCode } from "../../../common/getDirectionByCode/getDirect
 import { getStationNameByKmAndDirection } from "../../../common/getStationNameByKmAndDirection/getStationNameByKmAndDirection";
 import { definePicketByMeter } from "../../../common/definePicketByMeter/definePicketByMeter";
 import { getPchNumberByCodeAndKm } from "../../../common/getPchNumberByCodeAndKm/getPchNumberByCodeAndKm";
+import { getRegionNumberByPchNumber } from "../../../common/getRegionNumberByPchNumber/getRegionNumberByPchNumber";
 
 
 
@@ -70,10 +71,12 @@ export function createTemplateVideoAoA(data) {
     }
     // ------------ / Название неисправности -------------
 
+    const regionNumber = getRegionNumberByPchNumber(DB, +pchNumber);
+
 
     arr.push(
       ++i, "", "", direction, stationName, pchNumber, +trackNumber, item["Км"], definePicketByMeter(item["М"]), item["М"],
-      side, retreatTitle, null, null, item["Огр.скорости (км/ч)"], item["Параметр"]
+      side, retreatTitle, null, null, item["Огр.скорости (км/ч)"], item["Параметр"], getRegionNumberByPchNumber(DB, +pchNumber)
     );   // массив одна неисправность
 
     dataToWrite.push(arr);        // запушим массив с одной неисправностью в массив со всеми неисправностями. Будем пошить каждую неисправность
