@@ -1,5 +1,6 @@
 const DB = {
 
+    // Направления: Код направления, название направления
     directions: [
         { code: 10407, name: "Отрожка - Ростов" },
         { code: 10408, name: "Журавка - Боченково" },
@@ -104,6 +105,7 @@ const DB = {
         { code: 55002, name: "Вышестеблиевская -Керчь" },
     ],
     
+    // Границы Сатнция и перегонов
     stationBoundaries: [
         {
             pch: 3,
@@ -5461,6 +5463,7 @@ const DB = {
           }
     ],
 
+    // Название, номера дистанций, названия номера регионов по каждому ПЧ
     distances: [
       {distanceNumber: 1, distanceName: "Шахтинская дистанция пути", regionNumber: 1, regionTitle: "Ростовский", regionTitle: "Ростовский"},
       {distanceNumber: 2, distanceName: "Таганрогская дистанция инфраструктуры", regionNumber: 1, regionTitle: "Ростовский"},
