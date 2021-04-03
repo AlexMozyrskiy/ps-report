@@ -104,7 +104,7 @@ const DB = {
         { code: 55002, name: "Вышестеблиевская -Керчь" },
     ],
     
-    stationBoundaries : [
+    stationBoundaries: [
         {
             pch: 3,
             direction: "Отрожка - Ростов (10407)",
@@ -5459,8 +5459,36 @@ const DB = {
             startCoordinate: "60.995",
             endCoordinate: "80.506"
           }
-    ]
+    ],
 
+    distances: [
+      {distanceNumber: 1, distanceName: "Шахтинская дистанция пути"},
+      {distanceNumber: 2, distanceName: "Таганрогская дистанция инфраструктуры"},
+      {distanceNumber: 3, distanceName: "Ростовская дистанция пути"},
+      {distanceNumber: 4, distanceName: "Батайская дистанция пути"},
+      {distanceNumber: 6, distanceName: "Тихорецкая дистанция пути"},
+      {distanceNumber: 7, distanceName: "Кавказская дистанция пути"},
+      {distanceNumber: 8, distanceName: "Армавирская дистанция пути"},
+      {distanceNumber: 10, distanceName: "Минераловодская дистанция пути"},
+      {distanceNumber: 12, distanceName: "Прохладненская дистанция пути"},
+      {distanceNumber: 15, distanceName: "Гудермесская дистанция пути"},
+      {distanceNumber: 16, distanceName: "Махачкалинская дистанция пути"},
+      {distanceNumber: 18, distanceName: "Белореченская дистанция пути"},
+      {distanceNumber: 19, distanceName: "Туапсинская дистанция пути"},
+      {distanceNumber: 20, distanceName: "Сочинская дистанция инфраструктуры"},
+      {distanceNumber: 21, distanceName: "Краснодарская дистанция пути"},
+      {distanceNumber: 22, distanceName: "Новороссийская дистанция пути"},
+      {distanceNumber: 23, distanceName: "Старотиторовская дистанция пути"},
+      {distanceNumber: 24, distanceName: "Тимашевская дистанция пути"},
+      {distanceNumber: 26, distanceName: "Сальская дистанция пути"},
+      {distanceNumber: 27, distanceName: "Куберлевская дистанция пути"},
+      {distanceNumber: 30, distanceName: "Кизлярская дистанция пути"},
+      {distanceNumber: 32, distanceName: "Горячеключевская дистанция пути"},
+      {distanceNumber: 33, distanceName: "Лиховская дистанция пути"},
+      {distanceNumber: 35, distanceName: "Миллеровская дистанция пути"},
+      {distanceNumber: 28, distanceName: "Ставропольская дистанция инфраструктуры"},
+      {distanceNumber: 29, distanceName: "Ставропольская дистанция инфраструктуры"}
+    ]
 }
 
 export default DB;

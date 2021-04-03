@@ -71,7 +71,7 @@ export const ConvertVideo = () => {
         isDataLoaded
           ? <>
             <h2>Данные успешно загружены</h2>
-            <button onClick={onSaveButtonClick}></button>
+            <button onClick={onSaveButtonClick}>Save</button>
           </>
           : <>
             <h2>Данные не загружены, сначала загрузите данные</h2>
