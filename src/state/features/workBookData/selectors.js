@@ -7,6 +7,7 @@ import { sheetOtstConst, sheetOcKmConst } from "../../../CONSTS/sheetsHeaderCons
 import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
 import { calculateMagnitudeN } from "../../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
 import { createEKASUIReportAoA } from "../../../helpers/UI/aoaCreators/EKASUIReportAoaCreator/createEKASUIReportAoA";
+import { createMainTelegramAoA } from "../../../helpers/UI/aoaCreators/mainTelegramAoACreator/mainTelegramAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -515,6 +516,7 @@ export const selectCalculatedCommonData = createSelector(
             thirdDegreesCount = 0, artificialStructuresSecondCloseThirdDegreesCount = 0, fourthDegreesCount = 0;
         let narrowingTotalCount = 0, wideningTotalCount = 0, levelTotalCount = 0, reconsiderTotalCount = 0, drawdownTotalCount = 0, planAngleTotalCount = 0;
         let magnitudeN = 0;                                                   // величина Nуч
+        let tracks = [];                                                      // миссив из уникальных проверенных путей
 
 
         uniquePchArr.forEach(distanceNumber => {                                     // для каждого уникального ПЧ
@@ -527,6 +529,9 @@ export const selectCalculatedCommonData = createSelector(
                     if (el[sheetOcKmConst.GRADE] === 3 && el[sheetOcKmConst.DAY] === +reportForDay) UdKm = +(UdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
                     if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +reportForDay) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
                 }
+                // --------- массив уникальных путей по которым ехали ------------------
+                if(!tracks.includes(el[sheetOcKmConst.TRACK])) tracks.push(el[sheetOcKmConst.TRACK]);           // если в массиве уникальных путей нет текущего пути запушим его туда
+                // --------- / массив уникальных путей по которым ехали ----------------
             });
             // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
 
@@ -550,7 +555,7 @@ export const selectCalculatedCommonData = createSelector(
 
 
             commonData.push({         // запишем результат вычислений в массив
-                pch: distanceNumber, regionNumber: getRegionNumberByPchNumber(DB, distanceNumber) ,otlKm, xorKm, UdKm, neUdKm, secondDegreesCount,
+                pch: distanceNumber, regionNumber: getRegionNumberByPchNumber(DB, distanceNumber), otlKm, xorKm, UdKm, neUdKm, secondDegreesCount,
                 secondCloseThirdDegreesCount, artificialStructuresSecondCloseThirdDegreesCount,
                 thirdDegreesCount, fourthDegreesCount, magnitudeN, narrowingTotalCount, wideningTotalCount, levelTotalCount, reconsiderTotalCount,
                 drawdownTotalCount, planAngleTotalCount
@@ -560,13 +565,17 @@ export const selectCalculatedCommonData = createSelector(
         });
         // -------------------- / Подготовим данные для пребразования их в AoA -------------------------------------------------
 
+        const day = ocKmData[0][sheetOcKmConst.DAY] < 10 ? `0${ocKmData[0][sheetOcKmConst.DAY]}` : ocKmData[0][sheetOcKmConst.DAY];         // текущий день, если меньше 10 добавим 0 в начало
+        const month = ocKmData[0][sheetOcKmConst.MONTH] < 10 ? `0${ocKmData[0][sheetOcKmConst.MONTH]}` : ocKmData[0][sheetOcKmConst.MONTH]; // текущий месяц, если меньше 10 добавим 0 в начало
+        const year = ocKmData[0][sheetOcKmConst.YEAR];                                                                                      // текущий год
 
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
         returnedDataObject.generalStatistics = commonData;                  // общая статистика (просто цифры), без конкретных отстеплений (координата, станция и т.д.)
         returnedDataObject.uniquePch = uniquePchArr;                        // уникальные ПЧ
         returnedDataObject.uniqueRegions = getUniqueNumbersFromArr(commonData.map(item => item.regionNumber));  // уникальные регионы
+        returnedDataObject.uniqueTracks = tracks;                                                               // массив с уникальными путями
+        returnedDataObject.date = `${day}.${month}.${year}`;                // текущая дата
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
-        debugger
 
         return returnedDataObject;
     }
@@ -694,7 +703,7 @@ export const selectCalculatedDataMainTelegram = createSelector(
         let mainTelegramAoA = [];
 
         // ---------------- массив массивов для формаирования и аплоада отчетной книги по "Основная Телеграмма.xlsx" ------------------------
-        // mainTelegramAoA = createMainTelegramAoA(commonData);
+        mainTelegramAoA = createMainTelegramAoA(commonData);
         // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "Основная Телеграмма.xlsx" ----------------------
 
 

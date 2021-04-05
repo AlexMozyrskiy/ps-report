@@ -54,7 +54,7 @@ export const sheetOcKmConst = {
     GRADE: "ОЦЕНКА",
     CHECKED_KILOMETERS: "ПРОВЕРЕНО",
     WAGON_NUMBER:"ПС",
-    TERCK: "ПУТЬ",
+    TRACK: "ПУТЬ",
     RAILWAY_DISTANCE: "ПЧ",
     STRIZH_SPEED_RESTRICTION: "СК_ОГР_C",              // "-" | number
     FREIGHT_SPEED_RESTRICTION: "СК_ОГР_ГРУЗ",           // "-" | number
