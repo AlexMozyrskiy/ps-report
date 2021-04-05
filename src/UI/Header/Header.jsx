@@ -27,6 +27,9 @@ const HeaderNav = () => {
                                 <NavLink to="/convert-video" className="header__anchor">Ковернтировать из АРМ Видео в Шаблон</NavLink>
                             </li>
                             <li className="header__li">
+                                <NavLink to="/telegrams" className="header__anchor">Телеграммы</NavLink>
+                            </li>
+                            <li className="header__li">
                                 <NavLink to="/test" className="header__anchor">Testing Reselect</NavLink>
                             </li>
                             {/* <li className="header__li">

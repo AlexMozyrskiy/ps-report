@@ -53,7 +53,7 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
-                        "АМПЛИТУДА": item[sheetOtstConst.AMPLITUDE],
+                        "АМПЛИТУДА": Number.isNaN(item[sheetOtstConst.AMPLITUDE]) ? "-" : item[sheetOtstConst.AMPLITUDE],   // если будет неисправность с амплитудой не числом, не запишем ничего, в противном случае запишем числовую амплитуду
                         "БАЛЛ": item[sheetOtstConst.SCORE],
                         "ВИД": item[sheetOtstConst.TYPE_OF_RETREAT],
                         "ГОД": item[sheetOtstConst.YEAR],

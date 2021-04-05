@@ -71,12 +71,15 @@ export function createTemplateVideoAoA(data) {
     }
     // ------------ / Название неисправности -------------
 
-    const regionNumber = getRegionNumberByPchNumber(DB, +pchNumber);
+    // ---------------- Номер региона -------------------------
+    const regionNumber = getRegionNumberByPchNumber(DB, pchNumber);
+    // ---------------- / Номер региона -----------------------
+
 
 
     arr.push(
       ++i, "", "", direction, stationName, pchNumber, +trackNumber, item["Км"], definePicketByMeter(item["М"]), item["М"],
-      side, retreatTitle, null, null, item["Огр.скорости (км/ч)"], item["Параметр"], getRegionNumberByPchNumber(DB, +pchNumber)
+      side, retreatTitle, null, null, item["Огр.скорости (км/ч)"], item["Параметр"], regionNumber
     );   // массив одна неисправность
 
     dataToWrite.push(arr);        // запушим массив с одной неисправностью в массив со всеми неисправностями. Будем пошить каждую неисправность

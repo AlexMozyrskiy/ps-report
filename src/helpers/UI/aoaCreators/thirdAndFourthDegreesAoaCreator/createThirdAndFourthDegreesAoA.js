@@ -39,7 +39,7 @@ export function createThirdAndFourthDegreesAoA(data) {
     const stationName = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], doubleKm);    // Станция или перегон определим из DB
     
     // --------------------- ЭТО ВРЕМЕННЫЙ КОСТЫЛЬ ДЛЯ ФИЛЬТРАЦИИ НЕИСПРАВНОСТЕЙ ТРЕБУЮЩИХ КОРРЕКТИРОВОВК --------------------------------------
-    let isCorrectionNeed = "";
+    let isCorrectionNeed = null;
     if(item[sheetOtstConst.RETREAT_TITLE] === "П" && item[sheetOtstConst.AMPLITUDE] <= 15) isCorrectionNeed = "Требует корректировки согласно распоряжнию № 614"
     // --------------------- / ЭТО ВРЕМЕННЫЙ КОСТЫЛЬ ДЛЯ ФИЛЬТРАЦИИ НЕИСПРАВНОСТЕЙ ТРЕБУЮЩИХ КОРРЕКТИРОВОВК ------------------------------------
 
