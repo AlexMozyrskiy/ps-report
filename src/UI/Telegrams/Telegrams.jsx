@@ -17,7 +17,7 @@ export const Telegrams = () => {
 
 
     // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
-    const onThirdDegreesSaveButtonClick = () => {
+    const onCommonTelegramSaveButtonClick = () => {
 
         // ------------------------------------- Валидируем --------------------------------------
         let inputFieldDayValidator = new Validator(inputFieldDayValue, { required: true, notNumberNull: true, isInteger: true, isPositive: true, isNumber: true });
@@ -58,7 +58,7 @@ export const Telegrams = () => {
                     ? <>
                         <input placeholder="Введите дату за которую нужно получить отчёт" value={inputFieldDayValue} onChange={(e) => onInputFieldDayChange(e.target.value)} required />
                         { inputFieldDayValidateErrorText !== "" ? <p style={{ color: "red" }}>{inputFieldDayValidateErrorText}</p> : null}
-                        <button onClick={onThirdDegreesSaveButtonClick}>Загрузить файл с 3 и 4 степенями</button>
+                        <button onClick={onCommonTelegramSaveButtonClick}>Загрузить файл с 3 и 4 степенями</button>
                     </>
                     : <h3>Файл с данными не загружен, сначала загрузите файл</h3>
             }
