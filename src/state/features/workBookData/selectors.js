@@ -565,9 +565,25 @@ export const selectCalculatedCommonData = createSelector(
         });
         // -------------------- / Подготовим данные для пребразования их в AoA -------------------------------------------------
 
+        // ------------------------- Даты ----------------------------
         const day = ocKmData[0][sheetOcKmConst.DAY] < 10 ? `0${ocKmData[0][sheetOcKmConst.DAY]}` : ocKmData[0][sheetOcKmConst.DAY];         // текущий день, если меньше 10 добавим 0 в начало
         const month = ocKmData[0][sheetOcKmConst.MONTH] < 10 ? `0${ocKmData[0][sheetOcKmConst.MONTH]}` : ocKmData[0][sheetOcKmConst.MONTH]; // текущий месяц, если меньше 10 добавим 0 в начало
         const year = ocKmData[0][sheetOcKmConst.YEAR];                                                                                      // текущий год
+        // ------------------------- / Даты --------------------------
+
+
+        // ---------------------------------------- Тип проверки, рабочая, контрольная ... ------------------------------
+        let typeOfCheck;
+        if(ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 0) {
+            typeOfCheck = "Рабочая";
+        } else if(ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 1) {
+            typeOfCheck = "Контрольная";
+        } else if(ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 2) {
+            typeOfCheck = "Дополнительная";
+        }
+        // ---------------------------------------- / Тип проверки, рабочая, контрольная ... ----------------------------
+
+
 
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
         returnedDataObject.generalStatistics = commonData;                  // общая статистика (просто цифры), без конкретных отстеплений (координата, станция и т.д.)
@@ -575,6 +591,7 @@ export const selectCalculatedCommonData = createSelector(
         returnedDataObject.uniqueRegions = getUniqueNumbersFromArr(commonData.map(item => item.regionNumber));  // уникальные регионы
         returnedDataObject.uniqueTracks = tracks;                                                               // массив с уникальными путями
         returnedDataObject.date = `${day}.${month}.${year}`;                // текущая дата
+        returnedDataObject.typeOfCheck = typeOfCheck;
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
         return returnedDataObject;
