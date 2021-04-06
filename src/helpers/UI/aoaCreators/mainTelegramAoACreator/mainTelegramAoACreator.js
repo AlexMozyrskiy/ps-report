@@ -57,7 +57,7 @@ export function createMainTelegramAoA(data) {
 
   // ----------------------------------------- пятая строка телеграммы -------------------------------------------------
   const dataForFifthRow = data.uniquePch.map(distance => {
-    const distancePartAndNumber = getDistancePartAndNumber(distance, DB);       // имя ПЧ например: "ПЧ-15"
+    const distancePartAndNumber = getDistancePartAndNumber(distance, DB);       // имя ПЧ например: "ПЧ-15" 
 
     const currentIdstanceData = data.generalStatistics.find(item => item.pch === distance);   // найдем обехукт в расчитанных селектором данных с информацией по текущему ПЧ
     let magnitudeN;
