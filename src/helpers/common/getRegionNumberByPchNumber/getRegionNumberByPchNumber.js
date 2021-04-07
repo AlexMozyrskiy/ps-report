@@ -17,7 +17,7 @@ export function getRegionNumberByPchNumber(DB, distanceNumber) {
     });
     
     if (typeof targetRegionNumber === "undefined") {               // если не нашел переданного направления
-        console.error("Внимание!!!!! Номер Региона в функции не найден, перепроверьте функцию getRegionNumberByPchNumber!!!!! Переданный номер ПЧ: distanceNumber");
+        console.error(`Внимание!!!!! Номер Региона в функции не найден, перепроверьте функцию getRegionNumberByPchNumber!!!!! Переданный номер ПЧ: ${distanceNumber}`);
         return "";
     } else {                                    // если нашел
         return targetRegionNumber.regionNumber;

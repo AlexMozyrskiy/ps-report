@@ -76,7 +76,10 @@ export const selectCalculatedCommonData = createSelector(
         // Всего рихтовок за день - Массив Объектов такой же по типу как и входной массив объектов
         let planAnglesData = [];
 
-        // для всех таблиц, общая статистика (просто цифры), без конкретных отстеплений (координата, станция и т.д.)
+        // Ограничения по геометрии за день - Массив Объектов такой же по типу как и входной массив объектов
+        let speedLimits = [];
+
+        // для всех таблиц, общая статистика (просто цифры), без конкретных отступлений (координата, станция и т.д.)
         // - Массив Объектов такой же по типу как и входной массив объектов
         let commonData = [];
 
@@ -503,6 +506,44 @@ export const selectCalculatedCommonData = createSelector(
                     });
                 }
                 // ------------------------- / Всего рихтовок за день. Создадим обеъкт с нужными нам свойствами -----------------------
+
+                // ------------------------- Ограничений скорости по геометрии за день. Создадим обеъкт с нужными нам свойствами -------------------------
+                if ((item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] !== "-" || item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] !== "-") && (item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" || item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п")) {
+                    speedLimits.push({
+                        "EXCLUDE": item[sheetOtstConst.EXCLUDE],
+                        "KM": item[sheetOtstConst.KILOMETER],
+                        "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
+                        "АМПЛИТУДА": item[sheetOtstConst.AMPLITUDE],
+                        "БАЛЛ": item[sheetOtstConst.SCORE],
+                        "ВИД": item[sheetOtstConst.TYPE_OF_RETREAT],
+                        "ГОД": item[sheetOtstConst.YEAR],
+                        "ДЕНЬ": item[sheetOtstConst.DAY],
+                        "ДЗ": item[sheetOtstConst.DZ],
+                        "ДЛИНА": item[sheetOtstConst.LENGTH_OF_RETREAT],
+                        "ИС": item[sheetOtstConst.INSULATING_JOINT],
+                        "КЛАСС": item[sheetOtstConst.CLASS],
+                        "КОД": item[sheetOtstConst.RAILWAY_CODE],
+                        "КОДНАПРВ": item[sheetOtstConst.DIRECTION_CODE],
+                        "КОДОТСТУП": item[sheetOtstConst.RETREAT_CODE],
+                        "КОЛИЧЕСТВО": item[sheetOtstConst.COUNT],
+                        "ЛИНИЯ": item[sheetOtstConst.LINE],
+                        "М": item[sheetOtstConst.METER],
+                        "МЕСЯЦ": item[sheetOtstConst.MONTH],
+                        "МОСТ": item[sheetOtstConst.BRIDGE],
+                        "ОБК": item[sheetOtstConst.RUNNING_IN],
+                        "ОТСТУПЛЕНИЕ": item[sheetOtstConst.RETREAT_TITLE],
+                        "ПС": item[sheetOtstConst.WAGON_NUMBER],
+                        "ПУТЬ": item[sheetOtstConst.TRACK],
+                        "ПЧ": item[sheetOtstConst.RAILWAY_DISTANCE],
+                        "СК_ОГР_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION],           // "-" | number
+                        "СК_ОГР_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION],           // "-" | number
+                        "СК_УСТ_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_ADVANCED],           // "-" | number
+                        "СК_УСТ_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_ADVANCED],           // "-" | number
+                        "СТЕПЕНЬ": item[sheetOtstConst.DEGREE],
+                        "СТРЕЛКА": item[sheetOtstConst.ARROW]
+                    });
+                }
+                // ------------------------- / Ограничений скорости по геометрии за день. Создадим обеъкт с нужными нам свойствами -----------------------
             }
         });
 
@@ -530,7 +571,7 @@ export const selectCalculatedCommonData = createSelector(
                     if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +reportForDay) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
                 }
                 // --------- массив уникальных путей по которым ехали ------------------
-                if(!tracks.includes(el[sheetOcKmConst.TRACK])) tracks.push(el[sheetOcKmConst.TRACK]);           // если в массиве уникальных путей нет текущего пути запушим его туда
+                if(!tracks.includes(el[sheetOcKmConst.TRACK]) && el[sheetOcKmConst.DAY] === +reportForDay) tracks.push(el[sheetOcKmConst.TRACK]);           // если в массиве уникальных путей нет текущего пути запушим его туда
                 // --------- / массив уникальных путей по которым ехали ----------------
             });
             // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
@@ -558,7 +599,7 @@ export const selectCalculatedCommonData = createSelector(
                 pch: distanceNumber, regionNumber: getRegionNumberByPchNumber(DB, distanceNumber), otlKm, xorKm, UdKm, neUdKm, secondDegreesCount,
                 secondCloseThirdDegreesCount, artificialStructuresSecondCloseThirdDegreesCount,
                 thirdDegreesCount, fourthDegreesCount, magnitudeN, narrowingTotalCount, wideningTotalCount, levelTotalCount, reconsiderTotalCount,
-                drawdownTotalCount, planAngleTotalCount
+                drawdownTotalCount, planAngleTotalCount, speedLimits
             });
             otlKm = xorKm = UdKm = neUdKm = secondDegreesCount = thirdDegreesCount = fourthDegreesCount =
                 artificialStructuresSecondCloseThirdDegreesCount = secondCloseThirdDegreesCount = 0;

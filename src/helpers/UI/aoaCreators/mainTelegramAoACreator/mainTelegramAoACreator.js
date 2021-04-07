@@ -14,6 +14,7 @@ export function createMainTelegramAoA(data) {
   // ----------------------------------------- / Первая строка телеграммы -----------------------------------------------
 
 
+
   // ----------------------------------------- Вторая строка телеграммы -------------------------------------------------
   let tracksForSecondRow = [];              // пути для телеграммы
   if (data.uniqueTracks.length === 1) {      // если проверили только 1 путь
@@ -34,12 +35,13 @@ export function createMainTelegramAoA(data) {
   // ----------------------------------------- Вторая строка телеграммы -------------------------------------------------
 
 
+
   // ----------------------------------------- третья строка телеграммы -------------------------------------------------
   const dataForThirdRow = data.uniquePch.map(distance => {                    // данные для третьей строки телеграммы массив объектов
     const distancePartAndNumber = getDistancePartAndNumber(distance, DB);       // имя ПЧ например: "ПЧ-15"
 
-    const distanceDataFromSelector = data.generalStatistics.find(item => item.pch === distance);    // найдем элемент с данными с посчитанной статистикой по ПЧ
-    const sumKm = (distanceDataFromSelector.otlKm + distanceDataFromSelector.xorKm + distanceDataFromSelector.UdKm + distanceDataFromSelector.neUdKm).toFixed(3);
+    const currentDistanceData = data.generalStatistics.find(item => item.pch === distance);    // найдем элемент с данными с посчитанной статистикой по ПЧ
+    const sumKm = (currentDistanceData.otlKm + currentDistanceData.xorKm + currentDistanceData.UdKm + currentDistanceData.neUdKm).toFixed(3);
 
     return { distanceNumber: distance, distancePartAndNumber, sumKm };        // вернем объект с данными для формирования массива объектов с данными по каждому ПЧ
   });
@@ -55,30 +57,82 @@ export function createMainTelegramAoA(data) {
   // ----------------------------------------- четвертая строка телеграммы -------------------------------------------------
 
 
+
   // ----------------------------------------- пятая строка телеграммы -------------------------------------------------
   const dataForFifthRow = data.uniquePch.map(distance => {
     const distancePartAndNumber = getDistancePartAndNumber(distance, DB);       // имя ПЧ например: "ПЧ-15"
 
-    const currentIdstanceData = data.generalStatistics.find(item => item.pch === distance);   // найдем обехукт в расчитанных селектором данных с информацией по текущему ПЧ
+    const currentDistanceData = data.generalStatistics.find(item => item.pch === distance);   // найдем информацию по текущему ПЧ в расчитанных селектором данных с информацией по текущему ПЧ
     let magnitudeN;
-    if(currentIdstanceData) {
-      magnitudeN = currentIdstanceData.magnitudeN;                                            // достанем из него Величину Nуч. по текущему ПЧ
+    if (currentDistanceData) {
+      magnitudeN = currentDistanceData.magnitudeN;                                            // достанем из него Величину Nуч. по текущему ПЧ
     }
 
-    return {distancePartAndNumber, magnitudeN}
+    return { distancePartAndNumber, magnitudeN }
   });
 
-  const dataForFifthRowArr = dataForFifthRow.map(distance => `${distance.distancePartAndNumber} - ${distance.magnitudeN} ед.`);                    //  данные для третьей строки телеграммы - простой массив, чтобы джйонуть его в строку
+  const dataForFifthRowArr = dataForFifthRow.map(distance => `${distance.distancePartAndNumber} - ${distance.magnitudeN} ед.`);                    //  данные для пятой строки телеграммы - простой массив, чтобы джйонуть его в строку
   const dataForFifthRowStr = dataForFifthRowArr.join("; ")
   const fifthRow = `4. Величина Nуч: ${dataForFifthRowStr}`;
-  // ----------------------------------------- пятая строка телеграммы -------------------------------------------------
+  // ----------------------------------------- / пятая строка телеграммы -----------------------------------------------
+
+
+
+  // ----------------------------------------- шестая строка телеграммы -------------------------------------------------
+  const dataForSixthRow = data.uniquePch.map(distance => {
+    const distancePartAndNumber = getDistancePartAndNumber(distance, DB);       // имя ПЧ например: "ПЧ-15"
+
+    const currentDistanceData = data.generalStatistics.find(item => item.pch === distance);   // найдем информацию по текущему ПЧ в расчитанных селектором данных с информацией по текущему ПЧ
+    let neUdKm;
+
+    if (currentDistanceData) {
+      neUdKm = currentDistanceData.neUdKm;                                            // достанем из него количество неуд км по текущему ПЧ
+    }
+
+    return { distancePartAndNumber, neUdKm }
+  });
+
+  const dataForSixthRowArr = dataForSixthRow.map(distance => `${distance.distancePartAndNumber} - ${distance.neUdKm} км.`);                    //  данные для шестой строки телеграммы - простой массив, чтобы джйонуть его в строку
+  const dataForSixthRowStr = dataForSixthRowArr.join("; ")
+  const sixthRow = `5. Неудовлетворительные километры: ${dataForSixthRowStr}`;
+  // ----------------------------------------- / шестая строка телеграммы -----------------------------------------------
+
+
+
+  // ----------------------------------------- седьмая строка телеграммы -------------------------------------------------
+  const seventhRow = "6. Ограничений скорости: 0 шт., из них:"
+  // ----------------------------------------- / седьмая строка телеграммы -----------------------------------------------
+
+
+
+  // ----------------------------------------- восьмая строка телеграммы -------------------------------------------------
+  const dataFoEighthRow = data.uniquePch.map(distance => {
+    const distancePartAndNumber = getDistancePartAndNumber(distance, DB);       // имя ПЧ например: "ПЧ-15"
+
+    const currentDistanceData = data.generalStatistics.find(item => item.pch === distance);   // найдем информацию по текущему ПЧ в расчитанных селектором данных с информацией по текущему ПЧ
+    let speedLimits = [];
+
+    if (currentDistanceData) {
+      speedLimits = currentDistanceData.speedLimits;                                            // достанем из него массив с ограничениями по текущему ПЧ, тип как в стейте
+    }
+
+    // ДАЛЬШЕ НЕ ДУМАЛ И НЕ ДЕЛАЛ
+    // return { distancePartAndNumber, speedLimits }
+  });
+
+  // const dataFoEighthRowArr = dataFoEighthRow.map(distance => `${distance.distancePartAndNumber} - ${distance.neUdKm} км.`);                    //  данные для шестой строки телеграммы - простой массив, чтобы джйонуть его в строку
+  // const dataFoEighthRowStr = dataFoEighthRowArr.join("; ")
+  const eighthRow = "6.1. По 436/р - ограничений не выявлено."
+  // ----------------------------------------- / восьмая строка телеграммы -----------------------------------------------
 
 
 
 
 
 
-  dataToWrite.push([secondRow], [firstRow], [thirdRow], [fourthRow], [fifthRow]);      // формируем телеграмму
+
+
+  dataToWrite.push([secondRow], [firstRow], [thirdRow], [fourthRow], [fifthRow], [sixthRow]);      // формируем телеграмму
 
   debugger
 
