@@ -1,0 +1,2 @@
+export const IS_TERMS_OF_USE_BUTTON_CLICKED = 'ps-report/termsOfUse/IS_TERMS_OF_USE_BUTTON_CLICKED';   // была ли нажата одна из кнопок (согласие или не согласие) на странице "Пользовательское соглашение"
+export const IS_USER_AGREES_WITH_TERMS_OF_USE = 'ps-report/termsOfUse/IS_USER_AGREES_WITH_TERMS_OF_USE';   // согласился ли юзер с "Пользовательским соглашением"

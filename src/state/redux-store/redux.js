@@ -3,11 +3,13 @@ import thunkMiddleWare from "redux-thunk";
 import { compose } from "redux";
 import workBookDataReducers from "../features/workBookData/reducer";
 import videoBookDataReducer from "../features/videoBookData/reducer";
+import termsOfUseReducer from "../features/termsOfUse/reducer";
 
 
 let reducers = combineReducers({
   workBookData: workBookDataReducers,
-  videoBookData: videoBookDataReducer
+  videoBookData: videoBookDataReducer,
+  termsOfUse: termsOfUseReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

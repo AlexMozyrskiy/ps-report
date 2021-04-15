@@ -1,6 +1,29 @@
-import { Button } from 'antd';
+import { Button, Alert } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    setIsTermsOfUseButtonClickedActionCreator,
+    setIsUserAgreesWithTermsOfUseActionCreator
+} from "../../state/features/termsOfUse/actionCreators";
+import {
+    selectIsTermsOfUseButtonClicked,
+    selectIsUserAgreesWithTermsOfUse
+} from "../../state/features/termsOfUse/selectors";
 
 export const TermsOfUse = () => {
+    // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
+    const dispatch = useDispatch();
+    const isTermsOfUseButtonClicked = useSelector(selectIsTermsOfUseButtonClicked);
+    const isUserAgreesWithTermsOfUse = useSelector(selectIsUserAgreesWithTermsOfUse);
+    // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
+
+    // ------------ При клике по любой кнопке (согласен или не согласен с пользовательским соглашением) ----------------------------------------------
+    const onTermsOfUseButtonClick = (isUserAgrees) => {
+        dispatch(setIsTermsOfUseButtonClickedActionCreator(true));
+        dispatch(setIsUserAgreesWithTermsOfUseActionCreator(isUserAgrees));
+    }
+    // ------------ / При клике по любой кнопке (согласен или не согласен с пользовательским соглашением) --------------------------------------------
+
+
     return (
         <div className="container">
             <h2>Условия использования данного сайта</h2>
@@ -177,9 +200,15 @@ export const TermsOfUse = () => {
             <p>9.2. Отзывы Пользователя, размещенные на Сайте, не являются конфиденциальной информацией и
             могут быть использованы Администрацией сайта без ограничений.</p>
 
-            <div style={{color: "red", display: "flex", justifyContent: "space-between"}}>
-                <Button type="primary">Я соглашаюсь с Условиями Использования данного сайта</Button>
-                <Button type="primary" danger>Я НЕ соглашаюсь с Условиями Использования данного сайта</Button>
+            <div style={{ color: "red", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                {isTermsOfUseButtonClicked && !isUserAgreesWithTermsOfUse ? <Alert message="Вы НЕ согласились с Пользовательским Соглашением. Использование этот сайта невозможно" type="error" showIcon /> : null}
+                {isTermsOfUseButtonClicked && isUserAgreesWithTermsOfUse ? <Alert message="Вы согласились с Пользовательским Соглашением" type="success" showIcon /> : null}
+                {!isTermsOfUseButtonClicked
+                    ? <>
+                        <Button type="primary" onClick={() => onTermsOfUseButtonClick(true)}>Я соглашаюсь с Условиями Использования данного сайта</Button>
+                        <Button type="primary" danger onClick={() => onTermsOfUseButtonClick(false)}>Я НЕ соглашаюсь с Условиями Использования данного сайта</Button>
+                    </>
+                    : null}
             </div>
         </div>
     );
