@@ -133,8 +133,7 @@ template {
 	max-width: 1030px;
 	margin: 0 auto
 }
-.header {
-	/* position: fixed; */
+/* .header {
 	height: 55px;
 	width: 100%;
 	background-color: #231f20;
@@ -211,7 +210,7 @@ template {
 	background: rgba(255, 255, 255, .2);
 	padding-left: 15px;
 	outline: 0
-}
+} */
 
 /* Анимация Лоадер */
 

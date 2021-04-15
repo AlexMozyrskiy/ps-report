@@ -26,7 +26,7 @@ export function createMainTelegramAoA(data) {
 
   let pchForSecondRow = data.uniquePch.map(pch => {                                       // массив со строками вида: ["ПЧ-1 Шахтинская дистанция пути", "ПЧ-1 Шахтинская дистанция пути"]
     const pchObj = DB.distances.find(distanceObj => distanceObj.distanceNumber === pch);  // найдем в базе данных объект с информацией об интересубщем нас ПЧ
-    const pchName = pchObj ? pchObj.distanceFullName : null;                        // Если нашли достанем из него название ПЧ для телеграммы
+    const pchName = pchObj ? pchObj.distanceFullName : "";                        // Если нашли достанем из него название ПЧ для телеграммы
     return pchName;
   }).join(", ");      // преобразуем массив в строку для корректного отображения в телеграмме
 
