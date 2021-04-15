@@ -11,6 +11,7 @@ import { ThirdAndFourthDegrees } from './UI/ThirdAndFourthDegrees/ThirdAndFourth
 import { EkasuiReport } from './UI/EkasuiReport/EkasuiReport';
 import { ConvertVideo } from './UI/ConvertVideo/ConvertVideo';
 import { Telegrams } from './UI/Telegrams/Telegrams';
+import { WithTermsOfUse } from "./HOC/WithTermsOfUse";
 
 const App = () => {
   return (
@@ -18,8 +19,10 @@ const App = () => {
       {/* <div className="container"> */}
         <MyHeader />
 
+        
         <Switch>
           <Route exact path='/' render={() => <TermsOfUse />} />
+          <Route exact path='/work' render={() => <WithTermsOfUse Component={TermsOfUse} />} />
           <Route exact path='/third-and-fourth-degrees' render={() => <ThirdAndFourthDegrees />} />
           <Route exact path='/ekasui-report' render={() => <EkasuiReport />} />
           <Route exact path='/convert-video' render={() => <ConvertVideo />} />
