@@ -12,23 +12,50 @@ import { EkasuiReport } from './UI/EkasuiReport/EkasuiReport';
 import { ConvertVideo } from './UI/ConvertVideo/ConvertVideo';
 import { Telegrams } from './UI/Telegrams/Telegrams';
 import { WithTermsOfUse } from "./HOC/WithTermsOfUse";
+import { MySideBar } from "./UI/MySideBar/MySideBar"
+import { WorkLoadBooks } from './UI/Work/WorkLoadBooks';
+
+const { Content } = Layout;
 
 const App = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* <div className="container"> */}
-        <MyHeader />
+      <MyHeader />
 
-        
-        <Switch>
-          <Route exact path='/' render={() => <TermsOfUse />} />
-          <Route exact path='/work' render={() => <WithTermsOfUse Component={TermsOfUse} />} />
-          <Route exact path='/third-and-fourth-degrees' render={() => <ThirdAndFourthDegrees />} />
-          <Route exact path='/ekasui-report' render={() => <EkasuiReport />} />
-          <Route exact path='/convert-video' render={() => <ConvertVideo />} />
-          <Route exact path='/telegrams' render={() => <Telegrams />} />
-          <Route exact path='/test' render={() => <ReselectTesting />} />
-        </Switch>
+      <Content style={{ padding: '0 50px' }}>
+        <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
+
+          <MySideBar />
+
+          <Content style={{ padding: '0 24px', minHeight: 280 }}>
+
+            <Switch>
+              <div>
+                <Route exact path='/' render={() => <TermsOfUse />} />
+                <Route exact path='/work/load-books' render={() => <WithTermsOfUse Component={WorkLoadBooks} />} />
+                {/* <div>Выберите день для отчета</div>
+              <DatePicker placeholder={"Выберите Дату"} onChange={(e) => console.log(e._d.getDate())} /> */}
+              </div>
+            </Switch>
+
+          </Content>
+        </Layout>
+      </Content>
+
+
+
+
+
+      {/* <Switch>
+        <Route exact path='/' render={() => <TermsOfUse />} />
+        <Route exact path='/work' render={() => <WithTermsOfUse Component={Work} />} />
+        <Route exact path='/third-and-fourth-degrees' render={() => <ThirdAndFourthDegrees />} />
+        <Route exact path='/ekasui-report' render={() => <EkasuiReport />} />
+        <Route exact path='/convert-video' render={() => <ConvertVideo />} />
+        <Route exact path='/telegrams' render={() => <Telegrams />} />
+        <Route exact path='/test' render={() => <ReselectTesting />} />
+      </Switch> */}
       {/* </div> */}
     </Layout>
   );

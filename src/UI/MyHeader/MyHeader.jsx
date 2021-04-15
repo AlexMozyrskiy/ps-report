@@ -9,7 +9,7 @@ const MyHeader = () => {
     return (
         <Header className="header">
             <Menu theme="dark" mode="horizontal" >
-                <Menu.Item key="1"><NavLink to="/work">Работа</NavLink></Menu.Item>
+                <Menu.Item key="1"><NavLink to="/work/general-settings">Работа</NavLink></Menu.Item>
                 <Menu.Item key="2"><NavLink to="/">Пользовательское соглашение</NavLink></Menu.Item>
                 <Menu.Item key="3">Благодарности</Menu.Item>
             </Menu>
