@@ -1,6 +1,6 @@
 import {
     WORK_BOOK_DATA, IS_WORK_BOOK_DATA_LOADED,
-    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY,
+    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DATE,
     MAKE_CALCULATION
 } from "./actionTypes";
 import { sheetOtstConst } from "../../../CONSTS/sheetsHeaderConsts";
@@ -76,6 +76,8 @@ const initialState = {
     isWorkBookDataLoaded: false,        // загрузились ли данные в стейт
     isWorkBookDataLoading: false,       // загружаются ли данные в стейт по моменту
     reportForDay: "",                   // пользователь вводит за какой день надо сделать отчет, нужен для фильтри при расчетах
+    reportForMonth: "",                   // пользователь вводит за какой месяц надо сделать отчет, нужен для фильтри при расчетах
+    reportForYear: "",                   // пользователь вводит за какой год надо сделать отчет, нужен для фильтри при расчетах
     makeCalculation: false              // производить ли расчет в селекторе, будет переключаться на true в момент нажатия пользователем кнопки загрузить какой-либо отчет, и обратно на false  вмомент окончания загрузки отчета
 };
 
@@ -179,10 +181,12 @@ const workBookDataReducers = (state = initialState, action) => {
             return superState;
         }
 
-        case REPORT_FOR_DAY: {
+        case REPORT_FOR_DATE: {
             const superState = {
                 ...state,
-                reportForDay: action.reportForDay
+                reportForDay: action.reportForDay,
+                reportForMonth: action.reportForMonth,
+                reportForYear: action.reportForYear
             };
             return superState;
         }

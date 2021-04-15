@@ -1,6 +1,6 @@
 import {
     WORK_BOOK_DATA, IS_WORK_BOOK_DATA_LOADED,
-    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DAY,
+    IS_WORK_BOOK_DATA_LOADING, REPORT_FOR_DATE,
     MAKE_CALCULATION
 } from "./actionTypes";
 
@@ -27,10 +27,12 @@ export const setIsWorkBookDataLoadingActionCreator = ( boolVar ) => {           
     }
 };
 
-export const setReportForDayActionCreator = ( day ) => {                // пользователь вводит за какой день надо сделать отчет, нужен для фильтри при расчетах
+export const setDateActionCreator = ( day, month, year ) => {                // пользователь вводит за какой день надо сделать отчет, нужен для фильтри при расчетах
     return {
-        type: REPORT_FOR_DAY,
-        reportForDay: day
+        type: REPORT_FOR_DATE,
+        reportForDay: day,
+        reportForMonth: month,
+        reportForYear: year
     }
 };
 

@@ -14,6 +14,7 @@ import { Telegrams } from './UI/Telegrams/Telegrams';
 import { WithTermsOfUse } from "./HOC/WithTermsOfUse";
 import { MySideBar } from "./UI/MySideBar/MySideBar"
 import { WorkLoadBooks } from './UI/Work/WorkLoadBooks';
+import { GeneralSettingsMainComponent } from './UI/Work/Settings/GeneralSettings/GeneralSettingsMainComponent';
 
 const { Content } = Layout;
 
@@ -34,8 +35,8 @@ const App = () => {
               <div>
                 <Route exact path='/' render={() => <TermsOfUse />} />
                 <Route exact path='/work/load-books' render={() => <WithTermsOfUse Component={WorkLoadBooks} />} />
-                {/* <div>Выберите день для отчета</div>
-              <DatePicker placeholder={"Выберите Дату"} onChange={(e) => console.log(e._d.getDate())} /> */}
+                <Route exact path='/work/general-settings' render={() => <WithTermsOfUse Component={GeneralSettingsMainComponent} />} />
+                
               </div>
             </Switch>
 

@@ -212,6 +212,12 @@ template {
 	outline: 0
 } */
 
+.content__input-item {
+	padding: 10px;
+	border-bottom: 1px solid #1890FF;
+	border-top: 1px solid #1890FF;
+}
+
 /* Анимация Лоадер */
 
 /* / Анимация Лоадер */

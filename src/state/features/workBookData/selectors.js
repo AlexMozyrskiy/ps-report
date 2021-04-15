@@ -29,6 +29,14 @@ export const selectReportForDay = (state) => {
     return state.workBookData.reportForDay;
 }
 
+export const selectReportForMonth = (state) => {
+    return state.workBookData.reportForMonth;
+}
+
+export const selectReportForYear = (state) => {
+    return state.workBookData.reportForYear;
+}
+
 export const selectMakeCalculation = (state) => {
     return state.workBookData.makeCalculation;
 }
