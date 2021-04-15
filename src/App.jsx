@@ -13,8 +13,8 @@ import { ConvertVideo } from './UI/ConvertVideo/ConvertVideo';
 import { Telegrams } from './UI/Telegrams/Telegrams';
 import { WithTermsOfUse } from "./HOC/WithTermsOfUse";
 import { MySideBar } from "./UI/MySideBar/MySideBar"
-import { WorkLoadBooks } from './UI/Work/WorkLoadBooks';
 import { GeneralSettingsMainComponent } from './UI/Work/Settings/GeneralSettings/GeneralSettingsMainComponent';
+import { FilesUploadMainComponent } from './UI/Work/FilesUpload/FilesUploadMainComponent';
 
 const { Content } = Layout;
 
@@ -34,7 +34,7 @@ const App = () => {
             <Switch>
               <div>
                 <Route exact path='/' render={() => <TermsOfUse />} />
-                <Route exact path='/work/load-books' render={() => <WithTermsOfUse Component={WorkLoadBooks} />} />
+                <Route exact path='/work/load-books' render={() => <WithTermsOfUse Component={FilesUploadMainComponent} />} />
                 <Route exact path='/work/general-settings' render={() => <WithTermsOfUse Component={GeneralSettingsMainComponent} />} />
                 
               </div>
