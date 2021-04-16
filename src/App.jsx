@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router';
+import { Route, Switch, useHistory } from 'react-router';
 import MyHeader from './UI/MyHeader/MyHeader';
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { Layout, Menu, DatePicker } from 'antd';
@@ -15,10 +15,27 @@ import { WithTermsOfUse } from "./HOC/WithTermsOfUse";
 import { MySideBar } from "./UI/MySideBar/MySideBar"
 import { GeneralSettingsMainComponent } from './UI/Work/Settings/GeneralSettings/GeneralSettingsMainComponent';
 import { FilesUploadMainComponent } from './UI/Work/FilesUpload/FilesUploadMainComponent';
+import { useEffect } from 'react';
 
 const { Content } = Layout;
 
 const App = () => {
+  
+  // let history = useHistory();
+  // let currentLocation = "";
+  // currentLocation = history.location.pathname;
+  // currentLocation = currentLocation.split("/")[1];
+  // debugger
+
+  // useEffect(() => {
+  //   currentLocation = history.location.pathname;
+  //   currentLocation = currentLocation.split("/")[1];
+  //   const bool = currentLocation === "work";
+  //   debugger
+  // }, [history]);
+  
+
+
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* <div className="container"> */}
@@ -26,6 +43,8 @@ const App = () => {
 
       <Content style={{ padding: '0 50px' }}>
         <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
+
+          {/* {currentLocation === "work" ? <MySideBar /> : null} */}
 
           <MySideBar />
 
@@ -36,11 +55,12 @@ const App = () => {
                 <Route exact path='/' render={() => <TermsOfUse />} />
                 <Route exact path='/work/load-books' render={() => <WithTermsOfUse Component={FilesUploadMainComponent} />} />
                 <Route exact path='/work/general-settings' render={() => <WithTermsOfUse Component={GeneralSettingsMainComponent} />} />
-                
+
               </div>
             </Switch>
 
           </Content>
+
         </Layout>
       </Content>
 

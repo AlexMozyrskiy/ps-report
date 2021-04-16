@@ -218,6 +218,10 @@ template {
 	border-top: 1px solid #1890FF;
 }
 
+.content__input-item:not(:last-child) {
+	margin-bottom: 10px;
+}
+
 /* Анимация Лоадер */
 
 /* / Анимация Лоадер */

@@ -4,59 +4,15 @@ import XLSX from "xlsx/dist/xlsx.full.min";
 import { Upload, message, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import {
-    selectIsWorkBookDataLoaded
-} from "../../../state/features/workBookData/selectors";
-import { setWorkBookDataThunkCreator } from "../../../state/features/workBookData/thunkCreators";
+    selectIsWorkBook2DataLoaded
+} from "../../../state/features/workBook2Data/selectors";
+import { setWorkBook2DataThunkCreator } from "../../../state/features/workBook2Data/thunkCreators";
 
-export const FilesUploadBook1 = () => {
+export const FilesUploadBook2 = () => {
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
     const dispatch = useDispatch();
-    const isBook1DataLoaded = useSelector(selectIsWorkBookDataLoaded);                                      // загружны ли данные по текущему проезду в стейт
+    const isBook2DataLoaded = useSelector(selectIsWorkBook2DataLoaded);                                      // загружны ли данные по текущему проезду в стейт
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
-
-
-
-
-    // // ------------------------------------ Declare функцию вызывающуюся при загрузке файла ------------------------------------------------
-    // const onBookSelect = (evt) => {
-    //     debugger
-    //     let worBookData;                                    // возвращаем json
-    //     const selectedFile = evt.target.files[0];           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
-
-    //     if (selectedFile) {                                 // если файл был выбран. эта проверка чтобы если пользователь нажал кнопку выбрать файл а потом закрыл окно с выбором файла не выбрав его
-    //         let reader = new FileReader();
-    //         reader.readAsBinaryString(selectedFile);
-    //         reader.onload = function (event) {
-
-    //             const data = event.target.result;
-    //             const workBook = XLSX.read(data, {
-    //                 type: 'binary'
-    //             });
-
-    //             const workSheetOtstDataObj = workBook.Sheets["Отступления"];
-    //             const workSheetOtstDataJson = XLSX.utils.sheet_to_json(workSheetOtstDataObj);
-
-    //             const workSheetOcKmDataObj = workBook.Sheets["Оценка КМ"];
-    //             const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
-
-
-    //             worBookData = {
-    //                 otstSheetData: workSheetOtstDataJson,
-    //                 ocKmSheetData: workSheetOcKmDataJson
-    //             }
-
-    //             dispatch(setWorkBookDataThunkCreator(worBookData));
-    //         };
-
-    //         reader.onerror = function (event) {
-    //             worBookData = null
-    //             console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
-    //         };
-    //     }
-    // }
-    // // ------------------------------------ / Declare функцию вызывающуюся при загрузке файла ----------------------------------------------
-
-
 
     // ---------------------------------------- Пропсы которые будем передавать в Upload Ant Design ----------------------------------------
     const props = {
@@ -91,7 +47,7 @@ export const FilesUploadBook1 = () => {
                         ocKmSheetData: workSheetOcKmDataJson
                     }
 
-                    dispatch(setWorkBookDataThunkCreator(worBookData));
+                    dispatch(setWorkBook2DataThunkCreator(worBookData));
                 };
 
                 reader.onerror = function (event) {
@@ -108,12 +64,13 @@ export const FilesUploadBook1 = () => {
         <>
             <div className="content__input-item">
                 {
-                    isBook1DataLoaded
+                    isBook2DataLoaded
                         ? <>
-                            <h2>Данные по текущему проезду успешно загружены</h2>
+                            <h2>Данные по предыдущему периоду успешно загружены</h2>
                         </>
                         : <>
-                            <h2>Данные по текущему проезду не загружены, сначала загрузите данные</h2>
+                            <h2>Данные по предыдущему периоду не загружены, сначала загрузите данные.
+                                Например если сейчас период Апрель контрольный загрузите суюда файл с данными по Апрелю рабочему</h2>
                             <Upload {...props}>
                                 <Button type="primary" icon={<UploadOutlined />}>Загрузить файл</Button>
                             </Upload>
