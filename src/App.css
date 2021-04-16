@@ -219,7 +219,7 @@ template {
 }
 
 .content__input-item:not(:last-child) {
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 }
 
 /* Анимация Лоадер */
