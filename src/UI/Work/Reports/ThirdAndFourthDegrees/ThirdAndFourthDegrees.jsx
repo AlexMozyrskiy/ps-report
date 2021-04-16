@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { createAndUploadWorkBook } from "../../../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
 import { selectIsWorkBookDataLoaded, selectReportForDay, selectCalculatedDataThirdAndFourthDegrees } from "../../../../state/features/workBookData/selectors";
-import { Alert } from 'antd';
+import { Alert, Button } from 'antd';
+import { DownloadOutlined } from '@ant-design/icons';
 
 export const ThirdAndFourthDegrees = () => {
 
@@ -34,9 +35,14 @@ export const ThirdAndFourthDegrees = () => {
                 : null
             }
             {
+                !isDataLoaded
+                ? <Alert message="Файл с данными за текущий период не загружен, сначала загрузите файл. Загрузите файл с данными за текущий период во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="success" type="error" showIcon />
+                : null
+            }
+            {
                 isDataLoaded && reportForDate !== ""
-                    ? <button onClick={onThirdDegreesSaveButtonClick}>Загрузить файл с 3 и 4 степенями</button>
-                    : <Alert message="Файл с данными за текущий период не загружен, сначала загрузите файл. Загрузите файл с данными за текущий период во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="success" type="error" showIcon />
+                    ? <Button type="primary" icon={<DownloadOutlined />} onClick={onThirdDegreesSaveButtonClick}>Загрузить файл с 3 и 4 степенями</Button>
+                    : null
             }
         </>
 

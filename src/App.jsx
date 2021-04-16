@@ -28,14 +28,11 @@ const App = () => {
           <Content style={{ padding: '0 24px', minHeight: 280 }}>
 
             <Switch>
-              <div>
                 <Route exact path='/' render={() => <TermsOfUse />} />
-                <Route exact path='/work/load-books' render={() => <WithTermsOfUse Component={FilesUploadMainComponent} />} />
-                <Route exact path='/work/general-settings' render={() => <WithTermsOfUse Component={GeneralSettingsMainComponent} />} />
-                <Route exact path='/work/reports/third-and-fourth-defrees' render={() => <WithTermsOfUse Component={ThirdAndFourthDegrees} />} />
-                <Route exact path='/work/excel-to-json' render={() => <WithTermsOfUse Component={XlsxToJson} />} />
-
-              </div>
+                <Route exact path='/work/load-books' render={() => <WithTermsOfUse component={FilesUploadMainComponent} />} />
+                <Route exact path='/work/general-settings' render={() => <WithTermsOfUse component={GeneralSettingsMainComponent} />} />
+                <Route exact path='/work/reports/third-and-fourth-defrees' render={() => <WithTermsOfUse component={ThirdAndFourthDegrees} />} />
+                <Route exact path='/work/excel-to-json' render={() => <WithTermsOfUse component={XlsxToJson} />} />
             </Switch>
 
           </Content>

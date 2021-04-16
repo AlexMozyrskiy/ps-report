@@ -16,9 +16,9 @@ export const WithTermsOfUse = (props) => {
 
     if(!isUserAgreesWithTermsOfUse) {
         return (
-            <Alert message="Вы НЕ согласились с Пользовательским Соглашением. Использование этот сайта невозможно" type="error" showIcon />
+            <Alert message="Вы НЕ согласились с Пользовательским Соглашением. Использование этого сайта невозможно" type="error" showIcon />
         );
     } else {
-        return <props.Component />
+        return <props.component />
     }
 }

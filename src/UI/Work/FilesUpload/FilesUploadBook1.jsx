@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import XLSX from "xlsx/dist/xlsx.full.min";
-import { Upload, message, Button } from 'antd';
+import { Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import {
     selectIsWorkBookDataLoaded
@@ -58,10 +58,10 @@ export const FilesUploadBook1 = () => {
 
 
 
-    // ---------------------------------------- Пропсы которые будем передавать в Upload Ant Design ----------------------------------------
+    // ------------ Пропсы которые будем передавать в Upload Ant Design, тут и метод при изменении аплоада, то есть загрузки файла ------------
     const props = {
-        name: 'file',
-        // action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+        // name: 'file',
+        // action: null,
         // headers: {
         //     authorization: 'authorization-text',
         // },
@@ -101,7 +101,8 @@ export const FilesUploadBook1 = () => {
             }
         },
     };
-    // ---------------------------------------- / Пропсы которые будем передавать в Upload Ant Design --------------------------------------
+    // ------------ / Пропсы которые будем передавать в Upload Ant Design, тут и метод при изменении аплоада, то есть загрузки файла ----------
+
 
 
     return (
