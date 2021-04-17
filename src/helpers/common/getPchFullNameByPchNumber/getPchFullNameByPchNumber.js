@@ -15,8 +15,8 @@ export function getPchFullNameByPchNumber(DB, distanceNumber) {
     const pchObjFromDB = DB.distances.find(item =>{
         return distanceNumber === item.distanceNumber;
     });
-    
-    if (typeof targetRegionNumber === "undefined") {               // если не нашел переданного направления
+
+    if (typeof pchObjFromDB === "undefined") {               // если не нашел переданного направления
         console.error(`Внимание!!!!! Полное имя ПЧ (например ПЧ-15 Гудермес) в функции не найден, перепроверьте функцию getPchFullNameByPchNumber!!!!! Переданный номер ПЧ: ${distanceNumber}`);
         return "";
     } else {                                    // если нашел

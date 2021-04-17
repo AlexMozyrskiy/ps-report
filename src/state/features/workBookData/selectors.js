@@ -9,6 +9,7 @@ import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/
 import { calculateMagnitudeN } from "../../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
 import { createEKASUIReportAoA } from "../../../helpers/UI/aoaCreators/EKASUIReportAoaCreator/createEKASUIReportAoA";
 import { createMainTelegramAoA } from "../../../helpers/UI/aoaCreators/mainTelegramAoACreator/mainTelegramAoACreator";
+import { scoreAoACreator } from "../../../helpers/UI/aoaCreators/scoreAoACreator/scoreAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -721,7 +722,6 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
         returnedDataObject.thirdAndFourthDegreesLikeInStateAoO = thirdAndFourthDegreesLikeInStateAoO;
         returnedDataObject.thirdAndFourthDegreesAoA = thirdAndFourthDegreesAoA;
-        debugger
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
         return returnedDataObject;
@@ -777,7 +777,7 @@ export const selectCalculatedDataScore = createSelector(
 
             otstData.forEach(item => {
                 // ---------------- Общие условия для всех свойств для начала расчета -------------------
-                if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1) {
+                if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
                     if (distanceNumber === item[sheetOtstConst.RAILWAY_DISTANCE]) {  // если номер текущего уникального ПЧ равен номеру ПЧ в данных из стейта
                         // ------------- Соберем данные по количеству степеней ---------------------
                         if (item[sheetOtstConst.DEGREE] === 2) {                     // если 2 степень
@@ -854,9 +854,15 @@ export const selectCalculatedDataScore = createSelector(
 
         });         // / uniquePchArr.forEach
 
+        scoreForExcelAoA = scoreAoACreator(scoreForAoACreatorAoO);
+
         // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.scoreAoO = scoreForAoACreatorAoO;
+        returnedDataObject.scoreAoA = scoreForExcelAoA
         // ------------------ / Запишем собранные данные в объект --------------------
+
+        debugger
+        return returnedDataObject;
 
     }
 );
