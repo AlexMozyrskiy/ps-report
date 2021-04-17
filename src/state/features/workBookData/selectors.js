@@ -4,12 +4,17 @@ import { getRegionNumberByPchNumber } from "../../../helpers/common/getRegionNum
 import { getUniqueNumbersFromArr } from "../../../helpers/common/getUniqueNumbersFromArr/getUniqueNumbersFromArr";
 import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
 import { getPchFullNameByPchNumber } from "../../../helpers/common/getPchFullNameByPchNumber/getPchFullNameByPchNumber";
+import { getDirectorateOfInfrastructureShortNameBydirectorateOfInfrastructureNumber } from "../../../helpers/common/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber"
 import { sheetOtstConst, sheetOcKmConst } from "../../../CONSTS/sheetsHeaderConsts";
 import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
 import { calculateMagnitudeN } from "../../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
 import { createEKASUIReportAoA } from "../../../helpers/UI/aoaCreators/EKASUIReportAoaCreator/createEKASUIReportAoA";
 import { createMainTelegramAoA } from "../../../helpers/UI/aoaCreators/mainTelegramAoACreator/mainTelegramAoACreator";
 import { scoreAoACreator } from "../../../helpers/UI/aoaCreators/scoreAoACreator/scoreAoACreator";
+import { getDirectionByCode } from "../../../helpers/common/getDirectionByCode/getDirectionByCode";
+import { getStationNameByKmAndDirection } from "../../../helpers/common/getStationNameByKmAndDirection/getStationNameByKmAndDirection";
+import { definePicketByMeter } from "../../../helpers/common/definePicketByMeter/definePicketByMeter";
+import { defineTypeOfCheckNameByTypeOfChekNumber } from "../../../helpers/common/defineTypeOfCheckNameByTypeOfChekNumber/defineTypeOfCheckNameByTypeOfChekNumber";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -666,10 +671,10 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
         let returnedDataObject = {};
 
         // третьи и четвертые степени для таблицы 3 и 4 степеней - Массив Объектов такой же по типу как и массив объектов в стейте
-        let thirdAndFourthDegreesLikeInStateAoO = [];
+        let forAoACreatorAoO = [];
 
         // Массив массивов с 3 и 4 степенями - для формаирования книги "1. 3 и 4 степени.xlsx"
-        let thirdAndFourthDegreesAoA = [];
+        let forExcelAoA = [];
 
         otstData.forEach(item => {                                          // для каждого объекта (строчки в excel)
 
@@ -677,7 +682,7 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
             if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1) {
                 // ------------------------- Третьи и четвертые степени степени. Создадим обеъкт (тип как в стейте) с нужными нам свойствами -------------------------
                 if ((item[sheetOtstConst.DEGREE] === 4 || item[sheetOtstConst.DEGREE] === 3) && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
-                    thirdAndFourthDegreesLikeInStateAoO.push({
+                    forAoACreatorAoO.push({
                         "EXCLUDE": item[sheetOtstConst.EXCLUDE],
                         "KM": item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": item[sheetOtstConst.PR_PREDUPR],
@@ -716,12 +721,12 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
         });
 
         // ---------------- массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ------------------------
-        thirdAndFourthDegreesAoA = createThirdAndFourthDegreesAoA(thirdAndFourthDegreesLikeInStateAoO);
+        forExcelAoA = createThirdAndFourthDegreesAoA(forAoACreatorAoO);
         // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ----------------------
 
         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
-        returnedDataObject.thirdAndFourthDegreesLikeInStateAoO = thirdAndFourthDegreesLikeInStateAoO;
-        returnedDataObject.thirdAndFourthDegreesAoA = thirdAndFourthDegreesAoA;
+        returnedDataObject.AoO = forAoACreatorAoO;
+        returnedDataObject.AoA = forExcelAoA;
         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
         return returnedDataObject;
@@ -740,10 +745,10 @@ export const selectCalculatedDataScore = createSelector(
         let returnedDataObject = {};
 
         // Массив объектов - для формаирования AoA в AoACreator`е
-        let scoreForAoACreatorAoO = [];
+        let forAoACreatorAoO = [];
 
         // Массив массивов - для формаирования книги excel
-        let scoreForExcelAoA = [];
+        let forExcelAoA = [];
 
         // Массив с уникальными номерами ПЧ
         const uniquePchArr = getUniquePch(ocKmData, reportForDay);
@@ -815,7 +820,7 @@ export const selectCalculatedDataScore = createSelector(
 
 
             // ------------------------- Запушим полученные данные в массив объектов --------------------------
-            scoreForAoACreatorAoO.push({
+            forAoACreatorAoO.push({
                 distanceNumber,
                 distanceFullName,
                 otlKm,
@@ -854,11 +859,127 @@ export const selectCalculatedDataScore = createSelector(
 
         });         // / uniquePchArr.forEach
 
-        scoreForExcelAoA = scoreAoACreator(scoreForAoACreatorAoO);
+        forExcelAoA = scoreAoACreator(forAoACreatorAoO);
 
         // ------------------ Запишем собранные данные в объект ----------------------
-        returnedDataObject.scoreAoO = scoreForAoACreatorAoO;
-        returnedDataObject.scoreAoA = scoreForExcelAoA
+        returnedDataObject.AoO = forAoACreatorAoO;
+        returnedDataObject.AoA = forExcelAoA
+        // ------------------ / Запишем собранные данные в объект --------------------
+
+        return returnedDataObject;
+
+    }
+);
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Бальность ---------------------------------------
+
+
+
+// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  -----------------------------------------
+export const selectCalculatedDataSpeedRestrictions = createSelector(
+    [selectWorkBookOtstSheetData, selectReportForDay],
+    (otstData, reportForDay) => {
+        // Возвращаемый объект расчитанных данных
+        let returnedDataObject = {};
+
+        // Массив объектов - для формаирования AoA в AoACreator`е
+        let forAoACreatorAoO = [];
+
+        // Массив массивов - для формаирования книги excel
+        let forExcelAoA = [];
+
+        // Номер по порядку
+        let sequentialNumber = 1;
+        // Название Дирекции Инфраструктуры
+        let directorateOfInfrastructureShortName = "";
+        // Номер ПС
+        let vagonNumber;
+        // Направление буквами
+        let directionName;
+        // Станция
+        let station;
+        // Регион
+        let region;
+        // номер дистанции пути
+        let distanceNumber;
+        // Номер пути
+        let trackNumber;
+        // километр
+        let kilometer;
+        // Пикет
+        let picket;
+        // метр
+        let meter;
+        // Отступлеие
+        let retreatTitle;
+        // Амплитуда отступления
+        let retreatAmplitude;
+        // Протяженность отступления
+        let retreatLength;
+        // Установленная скорость
+        let advancedSpeed;
+        // Ограниечение скорости
+        let restrictionSpeed;
+        // Вид проверки
+        let typeOfCheck;
+
+
+
+
+        otstData.forEach(item => {
+            // ---------------- Общие условия для всех свойств для начала расчета -------------------
+            if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
+                if (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] !== "-" || item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] !== "-") {
+                    directorateOfInfrastructureShortName = getDirectorateOfInfrastructureShortNameBydirectorateOfInfrastructureNumber(DB, item[sheetOtstConst.RAILWAY_CODE]);
+                    vagonNumber = item[sheetOtstConst.WAGON_NUMBER];
+                    directionName = getDirectionByCode(DB, item[sheetOtstConst.DIRECTION_CODE]);
+                    station = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], `${item[sheetOtstConst.KILOMETER]}.${item[sheetOtstConst.METER]}`);
+                    region = getRegionNumberByPchNumber(DB, item[sheetOtstConst.RAILWAY_DISTANCE]);
+                    distanceNumber = item[sheetOtstConst.RAILWAY_DISTANCE];
+                    trackNumber = item[sheetOtstConst.TRACK];
+                    kilometer = item[sheetOtstConst.KILOMETER];
+                    picket = definePicketByMeter(item[sheetOtstConst.METER]);
+                    meter = item[sheetOtstConst.METER];
+                    retreatTitle = item[sheetOtstConst.RETREAT_TITLE];
+                    retreatAmplitude = item[sheetOtstConst.AMPLITUDE];
+                    retreatLength = item[sheetOtstConst.LENGTH_OF_RETREAT];
+                    advancedSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_ADVANCED]}/${item[sheetOtstConst.FREIGHT_SPEED_ADVANCED]}`;
+                    restrictionSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION]}/${item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION]}`;
+                    typeOfCheck = defineTypeOfCheckNameByTypeOfChekNumber(item[sheetOtstConst.TYPE_OF_CHECK]);
+                    
+
+
+                    // ------------------------- Запушим полученные данные в массив объектов --------------------------
+                    forAoACreatorAoO.push({
+                        sequentialNumber,
+                        directorateOfInfrastructureShortName,
+                        vagonNumber,
+                        directionName,
+                        station,
+                        region,
+                        distanceNumber,
+                        trackNumber,
+                        kilometer,
+                        picket,
+                        meter,
+                        retreatTitle,
+                        retreatAmplitude,
+                        retreatLength,
+                        advancedSpeed,
+                        restrictionSpeed,
+                        typeOfCheck
+                    });
+                    // ------------------------- / Запушим полученные данные в массив объектов ------------------------
+
+                    sequentialNumber++;     // Итерируем номер по порядку
+                }
+            }
+        });     // / otstData.forEach
+
+        // forExcelAoA = scoreAoACreator(forAoACreatorAoO);
+
+        // ------------------ Запишем собранные данные в объект ----------------------
+        returnedDataObject.AoO = forAoACreatorAoO;
+        returnedDataObject.AoA = forExcelAoA
         // ------------------ / Запишем собранные данные в объект --------------------
 
         debugger
@@ -866,7 +987,7 @@ export const selectCalculatedDataScore = createSelector(
 
     }
 );
-// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Бальность ---------------------------------------
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  ---------------------------------------
 
 
 

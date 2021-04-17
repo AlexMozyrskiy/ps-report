@@ -1,7 +1,6 @@
 /* Функция вернет название направления (тип string) по переданному ей коду направления (тип number) */
-import DB from "../../../DB/DB";
 
-export function getDirectionByCode(code) {
+export function getDirectionByCode(DB, code) {
 
     if (!Number.isFinite(code)) {                     // если передано не число
         code = +code;                         // приведем его к числу

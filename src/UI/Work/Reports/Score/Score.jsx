@@ -18,7 +18,7 @@ export const Score = () => {
     // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
     const onSaveButtonClick = () => {
 
-        const data = calculatingData.scoreAoA;                              // данные из селектора - массив массивов для формирования отчетной xlsx книги
+        const data = calculatingData.AoA;                                   // данные из селектора - массив массивов для формирования отчетной xlsx книги
 
         createAndUploadWorkBook(                                            // Создает и предлагает скачать юзеру книгу со сформированным отчетом
             data,                                                           // данные для записи
@@ -29,37 +29,10 @@ export const Score = () => {
     // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
 
     // ------------------------------------ AoA без заголовка для отрисовки основного тела таблицы (без заголовка) на этой страницы -----------------------------------------
-    let calculatingDataWithoutHeadAoA = calculatingData.scoreAoA.filter(item => item[0] !== "Дистанция пути");                        // если 0 индекс это заголовок, не добавляем его в новый массив
+    let calculatingDataWithoutHeadAoA = calculatingData.AoA.filter(item => item[0] !== "Дистанция пути");                        // если 0 индекс это заголовок, не добавляем его в новый массив
     // ------------------------------------ / AoA без заголовка для отрисовки основного тела таблицы (без заголовка) на этой страницы ---------------------------------------
 
     return (
-        // <>
-        //     {                           // Если не введена Дата
-        //         reportForDate === ""
-        //             ? <Alert message="Не выбрана дата для отчета. Выберите дату во вкладке &ldquo;Настройки и установки&rdquo; &rarr; &ldquo;Основные настройки&rdquo;" type="success" type="error" showIcon />
-        //             : null
-        //     }
-        //     {                           // Если не загружен файл xlsx с данными 
-        //         !isDataLoaded
-        //             ? <Alert message="Файл с данными за текущий период не загружен, сначала загрузите файл. Загрузите файл с данными за текущий период во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="success" type="error" showIcon />
-        //             : null
-        //     }
-        //     {                           // Если файл загружен и дата введена
-        //         isDataLoaded && reportForDate !== ""
-        //             ? <>
-        //                 <table border="1">
-        //                     <caption>Таблица Бальность для Единых Форм</caption>
-        //                     <tr>{calculatingData.scoreAoA[0].map(item => <th>{item}</th>)}</tr>
-        //                     {calculatingDataWithoutHeadAoA.map(item => {
-        //                         return <tr>{item.map(element => <td>{element}</td>)}</tr>
-        //                     })}
-        //                 </table>
-
-        //                 <Button type="primary" icon={<DownloadOutlined />} onClick={onSaveButtonClick}>Скачать файл Бальность для Единых Форм</Button>
-        //             </>
-        //             : null
-        //     }
-        // </>
 
         <AlertLogicAndTable
             calculatingDataFromSelector={calculatingData}

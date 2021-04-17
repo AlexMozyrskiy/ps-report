@@ -5491,6 +5491,11 @@ const DB = {
       {distanceNumber: 35, distanceName: "Миллеровская дистанция пути", distancePartAndNumber: "ПЧ-35", distanceFullName: "ПЧ-35 Миллеровская дистанция пути", regionNumber: 1, regionTitle: "Ростовский"},
       {distanceNumber: 28, distanceName: "Ставропольская дистанция инфраструктуры", distancePartAndNumber: "ИЧ-3", distanceFullName: "ИЧ-3 Ставропольская дистанция инфраструктуры", regionNumber: 3, regionTitle: "Минераловодский"},
       {distanceNumber: 29, distanceName: "Ставропольская дистанция инфраструктуры", distancePartAndNumber: "ИЧ-3", distanceFullName: "ИЧ-3 Ставропольская дистанция инфраструктуры", regionNumber: 3, regionTitle: "Минераловодский"}
+    ],
+
+    directoratesOfInfrastructure: [
+      {directorateNumber: 51, directorateShortName: "СКАВ", directorateFullName: "Северо-Кавказская Дирекция инфраструктуры"},
+      {directorateNumber: 61, directorateShortName: "ПРИВ", directorateFullName: "Приволжская Дирекция инфраструктуры"},
     ]
 }
 

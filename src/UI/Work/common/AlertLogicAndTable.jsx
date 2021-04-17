@@ -26,7 +26,7 @@ export const AlertLogicAndTable = (props) => {
                     ? <>
                         <table border="1">
                             <caption>{tableCaption}</caption>
-                            <tr>{calculatingDataFromSelector.scoreAoA[0].map(item => <th>{item}</th>)}</tr>
+                            <tr>{calculatingDataFromSelector.AoA[0].map(item => <th>{item}</th>)}</tr>
                             {calculatingDataWithoutHeadAoA.map(item => {
                                 return <tr>{item.map(element => <td>{element}</td>)}</tr>
                             })}
