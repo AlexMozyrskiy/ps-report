@@ -4,6 +4,7 @@ import { createAndUploadWorkBook } from "../../../../helpers/common/createAndUpl
 import { selectIsWorkBookDataLoaded, selectReportForDay, selectCalculatedDataScore } from "../../../../state/features/workBookData/selectors";
 import { Alert, Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
+import { AlertLogicAndTable } from "../../common/AlertLogicAndTable";
 
 export const Score = () => {
 
@@ -32,33 +33,43 @@ export const Score = () => {
     // ------------------------------------ / AoA без заголовка для отрисовки основного тела таблицы (без заголовка) на этой страницы ---------------------------------------
 
     return (
-        <>
-            {                           // Если не введена Дата
-                reportForDate === ""
-                    ? <Alert message="Не выбрана дата для отчета. Выберите дату во вкладке &ldquo;Настройки и установки&rdquo; &rarr; &ldquo;Основные настройки&rdquo;" type="success" type="error" showIcon />
-                    : null
-            }
-            {                           // Если не загружен файл xlsx с данными 
-                !isDataLoaded
-                    ? <Alert message="Файл с данными за текущий период не загружен, сначала загрузите файл. Загрузите файл с данными за текущий период во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="success" type="error" showIcon />
-                    : null
-            }
-            {                           // Если файл загружен и дата введена
-                isDataLoaded && reportForDate !== ""
-                    ? <>
-                        <table border="1">
-                            <caption>Таблица 3 и 4 степени</caption>
-                            <tr>{calculatingData.scoreAoA[0].map(item => <th>{item}</th>)}</tr>
-                            {calculatingDataWithoutHeadAoA.map(item => {
-                                return <tr>{item.map(element => <td>{element}</td>)}</tr>
-                            })}
-                        </table>
+        // <>
+        //     {                           // Если не введена Дата
+        //         reportForDate === ""
+        //             ? <Alert message="Не выбрана дата для отчета. Выберите дату во вкладке &ldquo;Настройки и установки&rdquo; &rarr; &ldquo;Основные настройки&rdquo;" type="success" type="error" showIcon />
+        //             : null
+        //     }
+        //     {                           // Если не загружен файл xlsx с данными 
+        //         !isDataLoaded
+        //             ? <Alert message="Файл с данными за текущий период не загружен, сначала загрузите файл. Загрузите файл с данными за текущий период во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="success" type="error" showIcon />
+        //             : null
+        //     }
+        //     {                           // Если файл загружен и дата введена
+        //         isDataLoaded && reportForDate !== ""
+        //             ? <>
+        //                 <table border="1">
+        //                     <caption>Таблица Бальность для Единых Форм</caption>
+        //                     <tr>{calculatingData.scoreAoA[0].map(item => <th>{item}</th>)}</tr>
+        //                     {calculatingDataWithoutHeadAoA.map(item => {
+        //                         return <tr>{item.map(element => <td>{element}</td>)}</tr>
+        //                     })}
+        //                 </table>
 
-                        <Button type="primary" icon={<DownloadOutlined />} onClick={onSaveButtonClick}>Скачать файл с 3 и 4 степенями</Button>
-                    </>
-                    : null
-            }
-        </>
+        //                 <Button type="primary" icon={<DownloadOutlined />} onClick={onSaveButtonClick}>Скачать файл Бальность для Единых Форм</Button>
+        //             </>
+        //             : null
+        //     }
+        // </>
+
+        <AlertLogicAndTable
+            calculatingDataFromSelector={calculatingData}
+            calculatingDataWithoutHeadAoA={calculatingDataWithoutHeadAoA}
+            reportForDate={reportForDate}
+            isDataLoaded={isDataLoaded}
+            tableCaption="Таблица Бальность для Единых Форм"
+            buttonText="Скачать файл Бальность для Единых Форм"
+            onSaveButtonClick={onSaveButtonClick}
+        />
 
 
     );
