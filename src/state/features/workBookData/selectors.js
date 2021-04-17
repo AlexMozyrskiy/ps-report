@@ -655,7 +655,7 @@ export const selectCalculatedCommonData = createSelector(
 
 
 
-// ---------------------------------------------- расчитаем данные для отчета "1. 3 и 4 степени.xlsx" ----------------------------------------------
+// ---------------------------------------------- Расчитаем данные для отчета "1. 3 и 4 степени.xlsx" ----------------------------------------------
 export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
     [selectWorkBookOtstSheetData, selectReportForDay],
     (otstData, reportForDay) => {
@@ -726,60 +726,92 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
         return returnedDataObject;
     }
 );
-// ---------------------------------------------- / расчитаем данные для отчета "1. 3 и 4 степени.xlsx" --------------------------------------------
+// ---------------------------------------------- / Расчитаем данные для отчета "1. 3 и 4 степени.xlsx" --------------------------------------------
 
 
 
 
-
-// ---------------------------------------------- расчитаем данные для отчета "Отчет в бальность ЕКАСУИ.xlsx" ----------------------------------------------
-export const selectCalculatedDataEKASUIReport = createSelector(
-    selectCalculatedCommonData,
-    (commonData) => {
-
+// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Бальность -----------------------------------------
+export const selectCalculatedDataScore = createSelector(
+    [selectWorkBookOtstSheetData, selectWorkBookOcKmSheetData, selectReportForDay],
+    (otstData, ocKmData, reportForDay) => {
         // Возвращаемый объект расчитанных данных
         let returnedDataObject = {};
 
-        let EKASUIReportAoA = [];
+        // Массив массивов - для формаирования книги excel
+        let scoreAoA = [];
 
-        // ---------------- массив массивов для формаирования и аплоада отчетной книги по "Отчет в бальность ЕКАСУИ.xlsx" ------------------------
-        EKASUIReportAoA = createEKASUIReportAoA(commonData.generalStatistics);
-        // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "Отчет в бальность ЕКАСУИ.xlsx" ----------------------
+        // Массив с уникальными номерами ПЧ
+        const uniquePchArr = getUniquePch(ocKmData, reportForDay);
 
-
-        // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
-        returnedDataObject.EKASUIReport = commonData.generalStatistics;
-        returnedDataObject.EKASUIReportAoA = EKASUIReportAoA;
-        // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
-
-        return returnedDataObject;
+        // Километры по видам
+        let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0
+        // Стеккпени по видам
+        let secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesWithRstCount = 0, fourthDegreesWithOutRstCount = 0, otherRetreats = 0;
+        // Ограничения скорости по видам
+        let speedRestriction0 = 0, speedRestriction15 = 0, speedRestriction25 = 0, speedRestriction40 = 0, speedRestrictionFreight60 = 0, speedRestriction60 = 0, speedRestrictionMoreThen60 = 0
+        // величина Nуч
+        let magnitudeN = 0;
     }
 );
-// ---------------------------------------------- / расчитаем данные для отчета "Отчет в бальность ЕКАСУИ.xlsx" --------------------------------------------
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Бальность ---------------------------------------
 
 
 
-// ---------------------------------------------- расчитаем данные для отчета ежедневной телеграммы ----------------------------------------------
-export const selectCalculatedDataMainTelegram = createSelector(
-    selectCalculatedCommonData,
-    (commonData) => {
-        // Возвращаемый объект расчитанных данных
-        let returnedDataObject = {};
-
-        // Массив массивов с информацией для преобразования ее в xlsx и аплоада юзером - для формаирования книги "Основная Телеграмма.xlsx"
-        let mainTelegramAoA = [];
-
-        // ---------------- массив массивов для формаирования и аплоада отчетной книги по "Основная Телеграмма.xlsx" ------------------------
-        mainTelegramAoA = createMainTelegramAoA(commonData);
-        // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "Основная Телеграмма.xlsx" ----------------------
 
 
-        // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
-        returnedDataObject.mainTelegram = commonData;
-        returnedDataObject.mainTelegramAoA = mainTelegramAoA;
-        // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
 
-        return returnedDataObject;
-    }
-);
-// ---------------------------------------------- / расчитаем данные для отчета ежедневной телеграммы --------------------------------------------
+
+// // ---------------------------------------------- расчитаем данные для отчета "Отчет в бальность ЕКАСУИ.xlsx" ----------------------------------------------
+// export const selectCalculatedDataEKASUIReport = createSelector(
+//     selectCalculatedCommonData,
+//     (commonData) => {
+
+//         // Возвращаемый объект расчитанных данных
+//         let returnedDataObject = {};
+
+//         let EKASUIReportAoA = [];
+
+//         // ---------------- массив массивов для формаирования и аплоада отчетной книги по "Отчет в бальность ЕКАСУИ.xlsx" ------------------------
+//         EKASUIReportAoA = createEKASUIReportAoA(commonData.generalStatistics);
+//         // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "Отчет в бальность ЕКАСУИ.xlsx" ----------------------
+
+
+//         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
+//         returnedDataObject.EKASUIReport = commonData.generalStatistics;
+//         returnedDataObject.EKASUIReportAoA = EKASUIReportAoA;
+//         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
+
+//         return returnedDataObject;
+//     }
+// );
+// // ---------------------------------------------- / расчитаем данные для отчета "Отчет в бальность ЕКАСУИ.xlsx" --------------------------------------------
+
+
+
+// // ---------------------------------------------- расчитаем данные для отчета ежедневной телеграммы ----------------------------------------------
+// export const selectCalculatedDataMainTelegram = createSelector(
+//     selectCalculatedCommonData,
+//     (commonData) => {
+//         // Возвращаемый объект расчитанных данных
+//         let returnedDataObject = {};
+
+//         // Массив массивов с информацией для преобразования ее в xlsx и аплоада юзером - для формаирования книги "Основная Телеграмма.xlsx"
+//         let mainTelegramAoA = [];
+
+//         // ---------------- массив массивов для формаирования и аплоада отчетной книги по "Основная Телеграмма.xlsx" ------------------------
+//         mainTelegramAoA = createMainTelegramAoA(commonData);
+//         // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "Основная Телеграмма.xlsx" ----------------------
+
+
+//         // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
+//         returnedDataObject.mainTelegram = commonData;
+//         returnedDataObject.mainTelegramAoA = mainTelegramAoA;
+//         // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
+
+//         return returnedDataObject;
+//     }
+// );
+// // ---------------------------------------------- / расчитаем данные для отчета ежедневной телеграммы --------------------------------------------
+
+
