@@ -20,6 +20,6 @@ export function getPchFullNameByPchNumber(DB, distanceNumber) {
         console.error(`Внимание!!!!! Полное имя ПЧ (например ПЧ-15 Гудермес) в функции не найден, перепроверьте функцию getPchFullNameByPchNumber!!!!! Переданный номер ПЧ: ${distanceNumber}`);
         return "";
     } else {                                    // если нашел
-        return targetRegionNumber.distanceFullName;
+        return pchObjFromDB.distanceFullName;
     }
 }

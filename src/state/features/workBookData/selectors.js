@@ -3,6 +3,7 @@ import DB from "../../../DB/DB";
 import { getRegionNumberByPchNumber } from "../../../helpers/common/getRegionNumberByPchNumber/getRegionNumberByPchNumber";
 import { getUniqueNumbersFromArr } from "../../../helpers/common/getUniqueNumbersFromArr/getUniqueNumbersFromArr";
 import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
+import { getPchFullNameByPchNumber } from "../../../helpers/common/getPchFullNameByPchNumber/getPchFullNameByPchNumber";
 import { sheetOtstConst, sheetOcKmConst } from "../../../CONSTS/sheetsHeaderConsts";
 import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
 import { calculateMagnitudeN } from "../../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
@@ -579,7 +580,7 @@ export const selectCalculatedCommonData = createSelector(
                     if (el[sheetOcKmConst.GRADE] === 2 && el[sheetOcKmConst.DAY] === +reportForDay) neUdKm = +(neUdKm + el[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
                 }
                 // --------- массив уникальных путей по которым ехали ------------------
-                if(!tracks.includes(el[sheetOcKmConst.TRACK]) && el[sheetOcKmConst.DAY] === +reportForDay) tracks.push(el[sheetOcKmConst.TRACK]);           // если в массиве уникальных путей нет текущего пути запушим его туда
+                if (!tracks.includes(el[sheetOcKmConst.TRACK]) && el[sheetOcKmConst.DAY] === +reportForDay) tracks.push(el[sheetOcKmConst.TRACK]);           // если в массиве уникальных путей нет текущего пути запушим его туда
                 // --------- / массив уникальных путей по которым ехали ----------------
             });
             // ----------------- / Вычислим километры по видам (отл, хор ...) ------------------------------
@@ -623,11 +624,11 @@ export const selectCalculatedCommonData = createSelector(
 
         // ---------------------------------------- Тип проверки, рабочая, контрольная ... ------------------------------
         let typeOfCheck;
-        if(ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 0) {
+        if (ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 0) {
             typeOfCheck = "Рабочая";
-        } else if(ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 1) {
+        } else if (ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 1) {
             typeOfCheck = "Контрольная";
-        } else if(ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 2) {
+        } else if (ocKmData[0][sheetOcKmConst.TYPE_OF_CHECK] === 2) {
             typeOfCheck = "Дополнительная";
         }
         // ---------------------------------------- / Тип проверки, рабочая, контрольная ... ----------------------------
@@ -738,20 +739,125 @@ export const selectCalculatedDataScore = createSelector(
         // Возвращаемый объект расчитанных данных
         let returnedDataObject = {};
 
+        // Массив объектов - для формаирования AoA в AoACreator`е
+        let scoreForAoACreatorAoO = [];
+
         // Массив массивов - для формаирования книги excel
-        let scoreAoA = [];
+        let scoreForExcelAoA = [];
 
         // Массив с уникальными номерами ПЧ
         const uniquePchArr = getUniquePch(ocKmData, reportForDay);
 
+        // Полное имя ПЧ
+        let distanceFullName = "";
         // Километры по видам
         let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0
         // Стеккпени по видам
         let secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesWithRstCount = 0, fourthDegreesWithOutRstCount = 0, otherRetreats = 0;
         // Ограничения скорости по видам
-        let speedRestriction0 = 0, speedRestriction15 = 0, speedRestriction25 = 0, speedRestriction40 = 0, speedRestrictionFreight60 = 0, speedRestriction60 = 0, speedRestrictionMoreThen60 = 0
+        let speedRestrictionCount0 = 0, speedRestrictionCount15 = 0, speedRestrictionCount25 = 0, speedRestrictionCount40 = 0, speedRestrictionFreightCount60 = 0, speedRestrictionCount60 = 0, speedRestrictionMoreThenCount60 = 0
         // величина Nуч
         let magnitudeN = 0;
+
+
+        uniquePchArr.forEach(distanceNumber => {
+
+            distanceFullName = getPchFullNameByPchNumber(DB, distanceNumber);     // полное имя текущей дистанции
+
+
+            ocKmData.forEach(item => {
+                if (distanceNumber === item[sheetOcKmConst.RAILWAY_DISTANCE]) {  // если номер текущего уникального ПЧ равен номеру ПЧ в данных из стейта
+                    if (item[sheetOcKmConst.GRADE] === 5 && item[sheetOcKmConst.DAY] === +reportForDay) otlKm = +(otlKm + item[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+                    if (item[sheetOcKmConst.GRADE] === 4 && item[sheetOcKmConst.DAY] === +reportForDay) xorKm = +(xorKm + item[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+                    if (item[sheetOcKmConst.GRADE] === 3 && item[sheetOcKmConst.DAY] === +reportForDay) UdKm = +(UdKm + item[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+                    if (item[sheetOcKmConst.GRADE] === 2 && item[sheetOcKmConst.DAY] === +reportForDay) neUdKm = +(neUdKm + item[sheetOcKmConst.CHECKED_KILOMETERS]).toFixed(3);
+                }
+            });     // / ocKmData.forEach
+
+
+            otstData.forEach(item => {
+                // ---------------- Общие условия для всех свойств для начала расчета -------------------
+                if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1) {
+                    if (distanceNumber === item[sheetOtstConst.RAILWAY_DISTANCE]) {  // если номер текущего уникального ПЧ равен номеру ПЧ в данных из стейта
+                        // ------------- Соберем данные по количеству степеней ---------------------
+                        if (item[sheetOtstConst.DEGREE] === 2) {                     // если 2 степень
+                            secondDegreesCount = +(secondDegreesCount + item[sheetOtstConst.COUNT])
+                        }
+                        if (item[sheetOtstConst.DEGREE] === 3) {                     // если 3 степень
+                            thirdDegreesCount = +(thirdDegreesCount + item[sheetOtstConst.COUNT])
+                        }
+                        if (item[sheetOtstConst.DEGREE] === 4 && item[sheetOtstConst.RETREAT_TITLE] !== "Рст") {                     // если 4 степень не Рст
+                            fourthDegreesWithOutRstCount = +(fourthDegreesWithOutRstCount + item[sheetOtstConst.COUNT])
+                        }
+                        if (item[sheetOtstConst.DEGREE] === 4 && item[sheetOtstConst.RETREAT_TITLE] === "Рст") {                     // если 4 степень Рст
+                            fourthDegreesWithRstCount = +(fourthDegreesWithRstCount + item[sheetOtstConst.COUNT])
+                        }
+                        // ------------- / Соберем данные по количеству степеней -------------------
+
+
+                        // ------------- Соберем данные по количеству ограничений скорости ---------
+                        if (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] === 0 || item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] === 0) speedRestrictionCount0 += 1;
+                        if (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] === 15 || item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] === 15) speedRestrictionCount15 += 1;
+                        if (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] === 25 || item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] === 25) speedRestrictionCount25 += 1;
+                        if (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] === 40 || item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] === 40) speedRestrictionCount40 += 1;
+                        if (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] === 60 && item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] === "-") speedRestrictionFreightCount60 += 1;
+                        if ((item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] === 60 && item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] === 60) ||
+                            (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] === "-" && item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] === 60)) speedRestrictionCount60 += 1;
+                        if (item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION] > 60 || item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION] > 60) speedRestrictionMoreThenCount60 += 1;
+                        // ------------- / Соберем данные по количеству ограничений скорости -------
+                    }
+                }
+            });     // / otstData.forEach
+
+            // -------------------- Вычислим величину Nуч ----------------------------------
+            magnitudeN = calculateMagnitudeN(otlKm, xorKm, UdKm, neUdKm);       // Величина Nуч
+            // -------------------- / Вычислим величину Nуч --------------------------------
+
+
+            // ------------------------- Запушим полученные данные в массив объектов --------------------------
+            scoreForAoACreatorAoO.push({
+                distanceNumber,
+                distanceFullName,
+                otlKm,
+                xorKm,
+                UdKm,
+                neUdKm,
+                secondDegreesCount,
+                thirdDegreesCount,
+                fourthDegreesWithOutRstCount,
+                fourthDegreesWithRstCount,
+                speedRestrictionCount0,
+                speedRestrictionCount15,
+                speedRestrictionCount25,
+                speedRestrictionCount40,
+                speedRestrictionFreightCount60,
+                speedRestrictionCount60,
+                speedRestrictionMoreThenCount60,
+                magnitudeN
+            });
+            // ------------------------- / Запушим полученные данные в массив объектов ------------------------
+
+
+            // ----------------------- Обнулим все значения для корректного подсчета их для следующего уникального ПЧ -------------------
+            // Полное имя ПЧ
+            distanceFullName = "";
+            // Километры по видам
+            otlKm = xorKm = UdKm = neUdKm = 0;
+            // Стеккпени по видам
+            secondDegreesCount = thirdDegreesCount = fourthDegreesWithRstCount = fourthDegreesWithOutRstCount = otherRetreats = 0;
+            // Ограничения скорости по видам
+            speedRestrictionCount0 = speedRestrictionCount15 = speedRestrictionCount25 = speedRestrictionCount40 = speedRestrictionFreightCount60
+                = speedRestrictionCount60 = speedRestrictionMoreThenCount60 = 0;
+            // величина Nуч
+            magnitudeN = 0;
+            // ----------------------- / Обнулим все значения для корректного подсчета их для следующего уникального ПЧ -----------------
+
+        });         // / uniquePchArr.forEach
+
+        // ------------------ Запишем собранные данные в объект ----------------------
+        returnedDataObject.scoreAoO = scoreForAoACreatorAoO;
+        // ------------------ / Запишем собранные данные в объект --------------------
+
     }
 );
 // ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Бальность ---------------------------------------
