@@ -1,7 +1,7 @@
 /* Функция принимает тип проверки цифрой и возвращает буквами например "Рабочая" */
 
 export function defineTypeOfCheckNameByTypeOfChekNumber(typeOfCheckNumber) {
-    let typeOfCheckString;                                     // Вид проверки буквами
+    let typeOfCheckString = "";                                     // Вид проверки буквами
 
     if (!Number.isFinite(typeOfCheckNumber)) {                     // если передано не число
         typeOfCheckNumber = +typeOfCheckNumber;                         // приведем его к числу

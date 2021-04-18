@@ -11,6 +11,7 @@ import { FilesUploadMainComponent } from './UI/Work/FilesUpload/FilesUploadMainC
 import { ThirdAndFourthDegrees } from "./UI/Work/Reports/ThirdAndFourthDegrees/ThirdAndFourthDegrees"
 import { XlsxToJson } from './UI/Work/Tests/XlsxToJson/XlsxToJson';
 import { Score } from './UI/Work/Reports/Score/Score';
+import { SpeedRestrictions } from './UI/Work/Reports/SpeedRestrictions/SpeedRestrictions';
 
 const { Content } = Layout;
 
@@ -34,6 +35,7 @@ const App = () => {
                 <Route exact path='/work/general-settings' render={() => <WithTermsOfUse component={GeneralSettingsMainComponent} />} />
                 <Route exact path='/work/reports/third-and-fourth-defrees' render={() => <WithTermsOfUse component={ThirdAndFourthDegrees} />} />
                 <Route exact path='/work/reports/score' render={() => <WithTermsOfUse component={Score} />} />
+                <Route exact path='/work/reports/speed-restrictions' render={() => <WithTermsOfUse component={SpeedRestrictions} />} />
                 <Route exact path='/work/excel-to-json' render={() => <WithTermsOfUse component={XlsxToJson} />} />
             </Switch>
 

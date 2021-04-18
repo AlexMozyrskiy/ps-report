@@ -4,7 +4,7 @@ import { getRegionNumberByPchNumber } from "../../../helpers/common/getRegionNum
 import { getUniqueNumbersFromArr } from "../../../helpers/common/getUniqueNumbersFromArr/getUniqueNumbersFromArr";
 import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
 import { getPchFullNameByPchNumber } from "../../../helpers/common/getPchFullNameByPchNumber/getPchFullNameByPchNumber";
-import { getDirectorateOfInfrastructureShortNameBydirectorateOfInfrastructureNumber } from "../../../helpers/common/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber"
+import { getDirectorateOfInfrastructureShortNameBydirectorateOfInfrastructureNumber } from "../../../helpers/common/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber";
 import { sheetOtstConst, sheetOcKmConst } from "../../../CONSTS/sheetsHeaderConsts";
 import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
 import { calculateMagnitudeN } from "../../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
@@ -15,6 +15,7 @@ import { getDirectionByCode } from "../../../helpers/common/getDirectionByCode/g
 import { getStationNameByKmAndDirection } from "../../../helpers/common/getStationNameByKmAndDirection/getStationNameByKmAndDirection";
 import { definePicketByMeter } from "../../../helpers/common/definePicketByMeter/definePicketByMeter";
 import { defineTypeOfCheckNameByTypeOfChekNumber } from "../../../helpers/common/defineTypeOfCheckNameByTypeOfChekNumber/defineTypeOfCheckNameByTypeOfChekNumber";
+import { speedRestrictionsAoACreator } from "../../../helpers/UI/aoaCreators/speedRestrictionsAoACreator/speedRestrictionsAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -975,14 +976,13 @@ export const selectCalculatedDataSpeedRestrictions = createSelector(
             }
         });     // / otstData.forEach
 
-        // forExcelAoA = scoreAoACreator(forAoACreatorAoO);
+        forExcelAoA = speedRestrictionsAoACreator(forAoACreatorAoO);
 
         // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.AoO = forAoACreatorAoO;
         returnedDataObject.AoA = forExcelAoA
         // ------------------ / Запишем собранные данные в объект --------------------
 
-        debugger
         return returnedDataObject;
 
     }

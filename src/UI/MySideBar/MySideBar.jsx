@@ -31,18 +31,19 @@ export const MySideBar = () => {
             <SubMenu key="sub3" icon={<LaptopOutlined />} title="Отчетные формы по ГРК">
               <Menu.Item key="5"><NavLink to="/work/reports/third-and-fourth-defrees">Третьи и четвертые степени</NavLink></Menu.Item>
               <Menu.Item key="6"><NavLink to="/work/reports/score">Бальность для Единых Форм</NavLink></Menu.Item>
+              <Menu.Item key="7"><NavLink to="/work/reports/speed-restrictions">Справка по ограничениям</NavLink></Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub4" icon={<VideoCameraOutlined />} title="Отчетные формы по Видеокотролю">
-              <Menu.Item key="7">option9</Menu.Item>
+              <Menu.Item key="8">option9</Menu.Item>
             </SubMenu>
             
             <SubMenu key="sub5" icon={<FileTextOutlined />} title="Телеграммы">
-              <Menu.Item key="8">option9</Menu.Item>
+              <Menu.Item key="9">option9</Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub6" icon={<FileTextOutlined />} title="Тесты">
-              <Menu.Item key="9"><NavLink to="/work/excel-to-json">Excel в JSON</NavLink></Menu.Item>
+              <Menu.Item key="10"><NavLink to="/work/excel-to-json">Excel в JSON</NavLink></Menu.Item>
             </SubMenu>
 
           </Menu>

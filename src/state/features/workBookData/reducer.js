@@ -96,7 +96,7 @@ const workBookDataReducers = (state = initialState, action) => {
                         "UPDATTR": +item[sheetOtstConst.UPDATTR],
                         "АМПЛИТУДА": +item[sheetOtstConst.AMPLITUDE],
                         "БАЛЛ": +item[sheetOtstConst.SCORE],
-                        "ВИД": item[sheetOtstConst.TYPE_OF_RETREAT],
+                        "ВИД": item[sheetOtstConst.TYPE_OF_CHECK],
                         "ГОД": +item[sheetOtstConst.YEAR],
                         "ДЕНЬ": +item[sheetOtstConst.DAY],
                         "ДЗ": item[sheetOtstConst.DZ],
