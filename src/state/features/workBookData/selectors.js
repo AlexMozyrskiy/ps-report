@@ -6,16 +6,16 @@ import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch"
 import { getPchFullNameByPchNumber } from "../../../helpers/common/getPchFullNameByPchNumber/getPchFullNameByPchNumber";
 import { getDirectorateOfInfrastructureShortNameBydirectorateOfInfrastructureNumber } from "../../../helpers/common/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber";
 import { sheetOtstConst, sheetOcKmConst } from "../../../CONSTS/sheetsHeaderConsts";
+import { retreatColumnConstants } from "../../../CONSTS/retreatColumnConstants";
 import { createThirdAndFourthDegreesAoA } from "../../../helpers/UI/aoaCreators/thirdAndFourthDegreesAoaCreator/createThirdAndFourthDegreesAoA";
 import { calculateMagnitudeN } from "../../../helpers/common/calculateMagnitudeN/calculateMagnitudeN";
-import { createEKASUIReportAoA } from "../../../helpers/UI/aoaCreators/EKASUIReportAoaCreator/createEKASUIReportAoA";
-import { createMainTelegramAoA } from "../../../helpers/UI/aoaCreators/mainTelegramAoACreator/mainTelegramAoACreator";
 import { scoreAoACreator } from "../../../helpers/UI/aoaCreators/scoreAoACreator/scoreAoACreator";
 import { getDirectionByCode } from "../../../helpers/common/getDirectionByCode/getDirectionByCode";
 import { getStationNameByKmAndDirection } from "../../../helpers/common/getStationNameByKmAndDirection/getStationNameByKmAndDirection";
 import { definePicketByMeter } from "../../../helpers/common/definePicketByMeter/definePicketByMeter";
 import { defineTypeOfCheckNameByTypeOfChekNumber } from "../../../helpers/common/defineTypeOfCheckNameByTypeOfChekNumber/defineTypeOfCheckNameByTypeOfChekNumber";
 import { speedRestrictionsAoACreator } from "../../../helpers/UI/aoaCreators/speedRestrictionsAoACreator/speedRestrictionsAoACreator";
+import { selectWorkBook2OtstSheetData } from "../workBook2Data/selectors";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -946,7 +946,7 @@ export const selectCalculatedDataSpeedRestrictions = createSelector(
                     advancedSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_ADVANCED]}/${item[sheetOtstConst.FREIGHT_SPEED_ADVANCED]}`;
                     restrictionSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION]}/${item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION]}`;
                     typeOfCheck = defineTypeOfCheckNameByTypeOfChekNumber(item[sheetOtstConst.TYPE_OF_CHECK]);
-                    
+
 
 
                     // ------------------------- Запушим полученные данные в массив объектов --------------------------
@@ -985,6 +985,200 @@ export const selectCalculatedDataSpeedRestrictions = createSelector(
 
         return returnedDataObject;
 
+    }
+);
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  ---------------------------------------
+
+
+
+
+// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  -----------------------------------------
+export const selectCalculatedDataShortStraightenings = createSelector(
+    [selectWorkBookOtstSheetData, selectWorkBook2OtstSheetData, selectReportForDay],
+    (otstData, otst2Data, reportForDay) => {
+        // Возвращаемый объект расчитанных данных
+        let returnedDataObject = {};
+
+        // Массив объектов - для формаирования AoA в AoACreator`е
+        let forAoACreatorAoO = [];
+
+        // Массив массивов - для формаирования книги excel
+        let forExcelAoA = [];
+
+        // Номер по порядку
+        let sequentialNumber = 1;
+        // Дата проверки
+        let fullDate;
+        // Номер ПС
+        let vagonNumber;
+        // Станция
+        let station;
+        // номер дистанции пути
+        let distanceNumber;
+        // Номер пути
+        let trackNumber;
+        // Километр
+        let kilometer;
+        // Пикет
+        let picket;
+        // метр
+        let meter;
+        // Степень рихтовки
+        let degree;
+        // Величина рихтовки мм/м
+        let amount;
+        // Изменение величны рихтовки
+        let amountChange;
+        // Установленная скорость
+        let advancedSpeed;
+        // Ограниечение скорости
+        let restrictionSpeed;
+
+
+
+        otstData.forEach(item => {
+            // ---------------- Общие условия для всех свойств для начала расчета -------------------
+            if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
+                if (item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.STRAIGHTENING || item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.ARROW_STRAIGHTENING || (item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.NR_STRAIGHTENING && item[sheetOtstConst.DEGREE] === 4)) {
+                    // Если рихтовка короткая второй степени
+                    if (item[sheetOtstConst.LENGTH_OF_RETREAT] >= 7 && item[sheetOtstConst.LENGTH_OF_RETREAT] <= 15 && item[sheetOtstConst.DEGREE] === 2 && item[sheetOtstConst.PR_PREDUPR] === 0) {
+                        // ---------------------- Найдем рихтовки в прошлом проходе +- в 20 метрах --------------------------------
+                        let prevStraightenings = otst2Data.filter(otst2DataItem => {
+                            return item[sheetOtstConst.DIRECTION_CODE] === otst2DataItem[sheetOtstConst.DIRECTION_CODE]
+                                && item[sheetOtstConst.TRACK] === otst2DataItem[sheetOtstConst.TRACK]
+                                && otst2DataItem[sheetOtstConst.DEGREE] > 1
+                                && item[sheetOtstConst.RETREAT_TITLE] === otst2DataItem[sheetOtstConst.RETREAT_TITLE]
+                                && item[sheetOtstConst.KILOMETER] === otst2DataItem[sheetOtstConst.KILOMETER]
+                                && (item[sheetOtstConst.METER] - 20) < otst2DataItem[sheetOtstConst.METER] && (item[sheetOtstConst.METER] + 20) > otst2DataItem[sheetOtstConst.METER]
+                        });
+
+                        if (prevStraightenings.length === 0) {                // Если не нашел в прошлом проезде рихтовки в этой точке
+                            amountChange = "вновь";
+                        } else if (prevStraightenings.length === 1) {       // Если нашел 1 рихтовку в этой точке
+                            const amountChangeFirstObj = prevStraightenings[0];  
+                            amountChange = item[sheetOtstConst.AMPLITUDE] - amountChangeFirstObj[sheetOtstConst.AMPLITUDE];
+                        } else if (prevStraightenings.length > 1) {                                                                     // Если нашел несколько рихтовок
+                            prevStraightenings.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
+                            const amountChangeFirstSortedObj = prevStraightenings[0];                                                   // первый обхекто в отсортированном массиве
+                            amountChange = item[sheetOtstConst.AMPLITUDE] - amountChangeFirstSortedObj[sheetOtstConst.AMPLITUDE]        // изменение рихтовки по сравнению с самой ближней прощлого прохода
+                        }
+                        // ---------------------- / Найдем рихтовки в прошлом проходе +- в 20 метрах -----------------------------
+
+                        const day = item[sheetOtstConst.DAY] < 10 ? `0${item[sheetOtstConst.DAY]}` : item[sheetOtstConst.DAY];
+                        const month = item[sheetOtstConst.MONTH] < 10 ? `0${item[sheetOtstConst.MONTH]}` : item[sheetOtstConst.MONTH];
+                        const year = item[sheetOtstConst.YEAR];
+                        fullDate = `${day}.${month}.${year}`;
+                        vagonNumber = item[sheetOtstConst.WAGON_NUMBER];
+                        station = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], `${item[sheetOtstConst.KILOMETER]}.${item[sheetOtstConst.METER]}`);
+                        distanceNumber = item[sheetOtstConst.RAILWAY_DISTANCE];
+                        trackNumber = item[sheetOtstConst.TRACK];
+                        kilometer = item[sheetOtstConst.KILOMETER];
+                        picket = definePicketByMeter(item[sheetOtstConst.METER]);
+                        meter = item[sheetOtstConst.METER];
+                        degree = item[sheetOtstConst.DEGREE];
+                        amount = `${item[sheetOtstConst.AMPLITUDE]}/${item[sheetOtstConst.LENGTH_OF_RETREAT]}`;
+                        // amountChange
+                        advancedSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_ADVANCED]}/${item[sheetOtstConst.FREIGHT_SPEED_ADVANCED]}`;
+                        restrictionSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION]}/${item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION]}`;
+
+
+                        // ------------------------- Запушим полученные данные в массив объектов --------------------------
+                        forAoACreatorAoO.push({
+                            sequentialNumber,
+                            fullDate,
+                            vagonNumber,
+                            station,
+                            distanceNumber,
+                            trackNumber,
+                            kilometer,
+                            picket,
+                            meter,
+                            degree,
+                            amount,
+                            amountChange,
+                            advancedSpeed,
+                            restrictionSpeed
+                        });
+                        // ------------------------- / Запушим полученные данные в массив объектов ------------------------
+
+                        sequentialNumber++;     // Итерируем номер по порядку
+                    }
+
+                    // Если 2 близкая к 3 степень или выше
+                    if (item[sheetOtstConst.DEGREE] > 2 || (item[sheetOtstConst.DEGREE] === 2 && item[sheetOtstConst.PR_PREDUPR] > 0)) {
+
+                        // ---------------------- Найдем рихтовки в прошлом проходе +- в 20 метрах --------------------------------
+                        let prevStraightenings = otst2Data.filter(otst2DataItem => {
+                            return item[sheetOtstConst.DIRECTION_CODE] === otst2DataItem[sheetOtstConst.DIRECTION_CODE]
+                                && item[sheetOtstConst.TRACK] === otst2DataItem[sheetOtstConst.TRACK]
+                                && otst2DataItem[sheetOtstConst.DEGREE] > 1
+                                && item[sheetOtstConst.RETREAT_TITLE] === otst2DataItem[sheetOtstConst.RETREAT_TITLE]
+                                && item[sheetOtstConst.KILOMETER] === otst2DataItem[sheetOtstConst.KILOMETER]
+                                && (item[sheetOtstConst.METER] - 20) < otst2DataItem[sheetOtstConst.METER] && (item[sheetOtstConst.METER] + 20) > otst2DataItem[sheetOtstConst.METER]
+                        });
+                        if (prevStraightenings.length === 0) {                // Если не нашел в прошлом проезде рихтовки в этой точке
+                            amountChange = "вновь";
+                        } else if (prevStraightenings.length === 1) {       // Если нашел 1 рихтовку в этой точке
+                            const amountChangeFirstObj = prevStraightenings[0];  
+                            amountChange = item[sheetOtstConst.AMPLITUDE] - amountChangeFirstObj[sheetOtstConst.AMPLITUDE];
+                        } else if (prevStraightenings.length > 1) {                                                                     // Если нашел несколько рихтовок
+                            prevStraightenings.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
+                            const amountChangeFirstSortedObj = prevStraightenings[0];                                                   // первый обхекто в отсортированном массиве
+                            amountChange = item[sheetOtstConst.AMPLITUDE] - amountChangeFirstSortedObj[sheetOtstConst.AMPLITUDE]        // изменение рихтовки по сравнению с самой ближней прощлого прохода
+                        }
+                        // ---------------------- / Найдем рихтовки в прошлом проходе +- в 20 метрах -----------------------------
+
+                        const day = item[sheetOtstConst.DAY] < 10 ? `0${item[sheetOtstConst.DAY]}` : item[sheetOtstConst.DAY];
+                        const month = item[sheetOtstConst.MONTH] < 10 ? `0${item[sheetOtstConst.MONTH]}` : item[sheetOtstConst.MONTH];
+                        const year = item[sheetOtstConst.YEAR];
+                        fullDate = `${day}.${month}.${year}`;
+                        vagonNumber = item[sheetOtstConst.WAGON_NUMBER];
+                        station = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], `${item[sheetOtstConst.KILOMETER]}.${item[sheetOtstConst.METER]}`);
+                        distanceNumber = item[sheetOtstConst.RAILWAY_DISTANCE];
+                        trackNumber = item[sheetOtstConst.TRACK];
+                        kilometer = item[sheetOtstConst.KILOMETER];
+                        picket = definePicketByMeter(item[sheetOtstConst.METER]);
+                        meter = item[sheetOtstConst.METER];
+                        degree = item[sheetOtstConst.DEGREE];
+                        amount = `${item[sheetOtstConst.AMPLITUDE]}/${item[sheetOtstConst.LENGTH_OF_RETREAT]}`;
+                        // amountChange
+                        advancedSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_ADVANCED]}/${item[sheetOtstConst.FREIGHT_SPEED_ADVANCED]}`;
+                        restrictionSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION]}/${item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION]}`;
+
+
+                        // ------------------------- Запушим полученные данные в массив объектов --------------------------
+                        forAoACreatorAoO.push({
+                            sequentialNumber,
+                            fullDate,
+                            vagonNumber,
+                            station,
+                            distanceNumber,
+                            trackNumber,
+                            kilometer,
+                            picket,
+                            meter,
+                            degree,
+                            amount,
+                            amountChange,
+                            advancedSpeed,
+                            restrictionSpeed
+                        });
+                        // ------------------------- / Запушим полученные данные в массив объектов ------------------------
+
+                        sequentialNumber++;     // Итерируем номер по порядку
+                    }
+                }
+            }
+        });     // / otstData.forEach
+
+        // forExcelAoA = speedRestrictionsAoACreator(forAoACreatorAoO);
+
+        // ------------------ Запишем собранные данные в объект ----------------------
+        returnedDataObject.AoO = forAoACreatorAoO;
+        returnedDataObject.AoA = forExcelAoA
+        // ------------------ / Запишем собранные данные в объект --------------------
+        debugger
+        return returnedDataObject;
     }
 );
 // ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  ---------------------------------------
