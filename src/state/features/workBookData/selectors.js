@@ -674,8 +674,8 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
         // третьи и четвертые степени для таблицы 3 и 4 степеней - Массив Объектов такой же по типу как и массив объектов в стейте
         let forAoACreatorAoO = [];
 
-        // Массив массивов с 3 и 4 степенями - для формаирования книги "1. 3 и 4 степени.xlsx"
-        let forExcelAoA = [];
+        // Массив массивов - для формаирования книги excel и рендеринга страницы в браузере
+        let forExcelAndPageRenderingData = [];
 
         otstData.forEach(item => {                                          // для каждого объекта (строчки в excel)
 
@@ -722,13 +722,14 @@ export const selectCalculatedDataThirdAndFourthDegrees = createSelector(
         });
 
         // ---------------- массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ------------------------
-        forExcelAoA = createThirdAndFourthDegreesAoA(forAoACreatorAoO);
+        forExcelAndPageRenderingData = createThirdAndFourthDegreesAoA(forAoACreatorAoO);
         // ---------------- / массив массивов для формаирования и аплоада отчетной книги по "1. 3 и 4 степени.xlsx" ----------------------
 
-        // -------------------------- заполним возвращаемый объект вычисленными данными ----------------------------
+        // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.AoO = forAoACreatorAoO;
-        returnedDataObject.AoA = forExcelAoA;
-        // -------------------------- / заполним возвращаемый объект вычисленными данными --------------------------
+        returnedDataObject.forXLSXAoA = forExcelAndPageRenderingData.forXLSXAoA
+        returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
+        // ------------------ / Запишем собранные данные в объект --------------------
 
         return returnedDataObject;
     }
@@ -748,7 +749,7 @@ export const selectCalculatedDataScore = createSelector(
         // Массив объектов - для формаирования AoA в AoACreator`е
         let forAoACreatorAoO = [];
 
-        // Массив массивов - для формаирования книги excel
+        // Массив массивов - для формаирования книги excel и рендеринга страницы в браузере
         let forExcelAndPageRenderingData = [];
 
         // Массив с уникальными номерами ПЧ
@@ -868,8 +869,6 @@ export const selectCalculatedDataScore = createSelector(
         returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
         // ------------------ / Запишем собранные данные в объект --------------------
 
-  debugger
-
         return returnedDataObject;
 
     }
@@ -888,8 +887,8 @@ export const selectCalculatedDataSpeedRestrictions = createSelector(
         // Массив объектов - для формаирования AoA в AoACreator`е
         let forAoACreatorAoO = [];
 
-        // Массив массивов - для формаирования книги excel
-        let forExcelAoA = [];
+        // Массив массивов - для формаирования книги excel и рендеринга страницы в браузере
+        let forExcelAndPageRenderingData = [];
 
         // Номер по порядку
         let sequentialNumber = 1;
@@ -979,15 +978,15 @@ export const selectCalculatedDataSpeedRestrictions = createSelector(
             }
         });     // / otstData.forEach
 
-        forExcelAoA = speedRestrictionsAoACreator(forAoACreatorAoO);
+        forExcelAndPageRenderingData = speedRestrictionsAoACreator(forAoACreatorAoO);
 
         // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.AoO = forAoACreatorAoO;
-        returnedDataObject.AoA = forExcelAoA
+        returnedDataObject.forXLSXAoA = forExcelAndPageRenderingData.forXLSXAoA
+        returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
         // ------------------ / Запишем собранные данные в объект --------------------
 
         return returnedDataObject;
-
     }
 );
 // ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  ---------------------------------------

@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { createAndUploadWorkBook } from "../../../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
-import { selectIsWorkBookDataLoaded, selectReportForDay, selectCalculatedDataSpeedRestrictions } from "../../../../state/features/workBookData/selectors";
+import { selectReportForDay, selectCalculatedDataSpeedRestrictions } from "../../../../state/features/workBookData/selectors";
+import { WithRequiredUploadedFlesCount } from "../../../../HOC/WithRequiredUploadedFilesCount";
 import { AlertLogicAndTable } from "../../common/AlertLogicAndTable";
 
 export const SpeedRestrictions = () => {
 
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
-    const isDataLoaded = useSelector(selectIsWorkBookDataLoaded);                       // загружны ли данные в стейт
     const calculatingData = useSelector(selectCalculatedDataSpeedRestrictions);                     // вычисленные данные для отчета на этой странице
     const reportForDate = useSelector(selectReportForDay);
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
@@ -16,7 +16,7 @@ export const SpeedRestrictions = () => {
     // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
     const onSaveButtonClick = () => {
 
-        const data = calculatingData.AoA;                                   // данные из селектора - массив массивов для формирования отчетной xlsx книги
+        const data = calculatingData.forXLSXAoA;                                   // данные из селектора - массив массивов для формирования отчетной xlsx книги
 
         createAndUploadWorkBook(                                            // Создает и предлагает скачать юзеру книгу со сформированным отчетом
             data,                                                           // данные для записи
@@ -26,22 +26,17 @@ export const SpeedRestrictions = () => {
     }
     // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
 
-    // ------------------------------------ AoA без заголовка для отрисовки основного тела таблицы (без заголовка) на этой страницы -----------------------------------------
-    let calculatingDataWithoutHeadAoA = calculatingData.AoA.filter(item => item[0] !== " №     п/п");                        // если 0 индекс это заголовок, не добавляем его в новый массив
-    // ------------------------------------ / AoA без заголовка для отрисовки основного тела таблицы (без заголовка) на этой страницы ---------------------------------------
-
     return (
 
-        <AlertLogicAndTable
-            calculatingDataFromSelector={calculatingData}
-            calculatingDataWithoutHeadAoA={calculatingDataWithoutHeadAoA}
+        <WithRequiredUploadedFlesCount
+            requireUploadTrackGeomуtryFilesCount={1}
+            requireUploadVideoFilesCount={0}
+            forBrowserPageRenderObj={calculatingData.forBrowserPageRenderObj}
             reportForDate={reportForDate}
-            isDataLoaded={isDataLoaded}
             tableCaption="Таблица Справка по ограничениям для Единых Форм"
             buttonText="Скачать файл Справка по ограничениям для Единых Форм"
             onSaveButtonClick={onSaveButtonClick}
+            Component={AlertLogicAndTable}
         />
-
-
     );
 }
