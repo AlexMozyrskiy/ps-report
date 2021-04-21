@@ -95,7 +95,7 @@ const workBookDataReducers = (state = initialState, action) => {
                         "KM": +item[sheetOtstConst.KILOMETER],
                         "PR_PREDUPR": +item[sheetOtstConst.PR_PREDUPR],
                         "UPDATTR": +item[sheetOtstConst.UPDATTR],
-                        "АМПЛИТУДА": +item[sheetOtstConst.AMPLITUDE],
+                        "АМПЛИТУДА": isNaN(item[sheetOtstConst.AMPLITUDE]) ? "" : +item[sheetOtstConst.AMPLITUDE],
                         "БАЛЛ": +item[sheetOtstConst.SCORE],
                         "ВИД": item[sheetOtstConst.TYPE_OF_CHECK],
                         "ГОД": +item[sheetOtstConst.YEAR],
