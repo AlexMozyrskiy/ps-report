@@ -20,6 +20,7 @@ export const sheetOtstConst = {
     METER: "М",
     MONTH: "МЕСЯЦ",
     BRIDGE: "МОСТ",
+    NORMAL: "HOPMA",
     PLUS: "+",
     MINUS: "-",
     RUNNING_IN: "ОБК",

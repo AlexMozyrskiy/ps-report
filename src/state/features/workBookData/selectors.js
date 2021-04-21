@@ -17,6 +17,7 @@ import { defineTypeOfCheckNameByTypeOfChekNumber } from "../../../helpers/common
 import { speedRestrictionsAoACreator } from "../../../helpers/UI/aoaCreators/speedRestrictionsAoACreator/speedRestrictionsAoACreator";
 import { selectWorkBook2OtstSheetData } from "../workBook2Data/selectors";
 import { shortStraighteningsAoACreator } from "../../../helpers/UI/aoaCreators/shortStraighteningsAoACreator/shortStraighteningsAoACreator";
+import { a1543AndMoreAoACreator } from "../../../helpers/UI/aoaCreators/a1543AndMoreAoACreator/a1543AndMoreAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -1058,7 +1059,7 @@ export const selectCalculatedDataShortStraightenings = createSelector(
                         if (prevStraightenings.length === 0) {                // Если не нашел в прошлом проезде рихтовки в этой точке
                             amountChange = "вновь";
                         } else if (prevStraightenings.length === 1) {       // Если нашел 1 рихтовку в этой точке
-                            const amountChangeFirstObj = prevStraightenings[0];  
+                            const amountChangeFirstObj = prevStraightenings[0];
                             amountChange = item[sheetOtstConst.AMPLITUDE] - amountChangeFirstObj[sheetOtstConst.AMPLITUDE];
                         } else if (prevStraightenings.length > 1) {                                                                     // Если нашел несколько рихтовок
                             prevStraightenings.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
@@ -1122,7 +1123,7 @@ export const selectCalculatedDataShortStraightenings = createSelector(
                         if (prevStraightenings.length === 0) {                // Если не нашел в прошлом проезде рихтовки в этой точке
                             amountChange = "вновь";
                         } else if (prevStraightenings.length === 1) {       // Если нашел 1 рихтовку в этой точке
-                            const amountChangeFirstObj = prevStraightenings[0];  
+                            const amountChangeFirstObj = prevStraightenings[0];
                             amountChange = item[sheetOtstConst.AMPLITUDE] - amountChangeFirstObj[sheetOtstConst.AMPLITUDE];
                         } else if (prevStraightenings.length > 1) {                                                                     // Если нашел несколько рихтовок
                             prevStraightenings.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
@@ -1186,6 +1187,110 @@ export const selectCalculatedDataShortStraightenings = createSelector(
     }
 );
 // ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Короткие Рихтовки  ---------------------------------------
+
+
+
+// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Шаблон 1543 и более  -----------------------------------------
+export const selectCalculatedData1543AndMore = createSelector(
+    [selectWorkBookOtstSheetData, selectReportForDay],
+    (otstData, reportForDay) => {
+        // Возвращаемый объект расчитанных данных
+        let returnedDataObject = {};
+
+        // Массив объектов - для формаирования AoA в AoACreator`е
+        let forAoACreatorAoO = [];
+
+        // Массив массивов - для формаирования книги excel и рендеринга страницы в браузере
+        let forExcelAndPageRenderingData = [];
+
+        // Номер по порядку
+        let sequentialNumber = 1;
+        // Дата проверки
+        let fullDate;
+        // номер дистанции пути
+        let distanceNumber;
+        // Номер пути
+        let trackNumber;
+        // Направление буквами
+        let directionName;
+        // километр
+        let kilometer;
+        // метр
+        let meter;
+        // Амплитуда отступления
+        let retreatAmplitude;
+        // Протяженность отступления
+        let retreatLength;
+        // Количетсво угирений
+        let retreatCount;
+        // Установленная скорость пассажирским
+        let passenengerAdvancedSpeed;
+        // Установленная скорость грузовым
+        let freightAdvancedSpeed;
+        // Норма
+        let normal;
+        // Ограниечение скорости
+        let restrictionSpeed;
+
+
+        otstData.forEach(item => {
+            // ---------------- Общие условия для всех свойств для начала расчета -------------------
+            if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
+                if (item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.WIDE && item[sheetOtstConst.AMPLITUDE] >= 1543) {
+                    const day = item[sheetOtstConst.DAY] < 10 ? `0${item[sheetOtstConst.DAY]}` : item[sheetOtstConst.DAY];
+                    const month = item[sheetOtstConst.MONTH] < 10 ? `0${item[sheetOtstConst.MONTH]}` : item[sheetOtstConst.MONTH];
+                    const year = item[sheetOtstConst.YEAR];
+                    fullDate = `${day}.${month}.${year}`;
+                    distanceNumber = item[sheetOtstConst.RAILWAY_DISTANCE];
+                    trackNumber = item[sheetOtstConst.TRACK];
+                    directionName = getDirectionByCode(DB, item[sheetOtstConst.DIRECTION_CODE]);
+                    kilometer = item[sheetOtstConst.KILOMETER];
+                    meter = item[sheetOtstConst.METER];
+                    retreatAmplitude = item[sheetOtstConst.AMPLITUDE];
+                    retreatLength = item[sheetOtstConst.LENGTH_OF_RETREAT];
+                    retreatCount = item[sheetOtstConst.COUNT];
+                    passenengerAdvancedSpeed = item[sheetOtstConst.PASSENGER_SPEED_ADVANCED];
+                    freightAdvancedSpeed = item[sheetOtstConst.FREIGHT_SPEED_ADVANCED];
+                    normal = item[sheetOtstConst.NORMAL];
+                    restrictionSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_RESTRICTION]}/${item[sheetOtstConst.FREIGHT_SPEED_RESTRICTION]}`;
+
+
+                    // ------------------------- Запушим полученные данные в массив объектов --------------------------
+                    forAoACreatorAoO.push({
+                        sequentialNumber,
+                        fullDate,
+                        distanceNumber,
+                        trackNumber,
+                        directionName,
+                        kilometer,
+                        meter,
+                        retreatAmplitude,
+                        retreatLength,
+                        retreatCount,
+                        passenengerAdvancedSpeed,
+                        freightAdvancedSpeed,
+                        normal,
+                        restrictionSpeed
+                    });
+                    // ------------------------- / Запушим полученные данные в массив объектов ------------------------
+
+                    sequentialNumber++;     // Итерируем номер по порядку
+                }
+            }
+        });     // / otstData.forEach
+
+        forExcelAndPageRenderingData = a1543AndMoreAoACreator(forAoACreatorAoO);
+
+        // ------------------ Запишем собранные данные в объект ----------------------
+        returnedDataObject.AoO = forAoACreatorAoO;
+        returnedDataObject.forXLSXAoA = forExcelAndPageRenderingData.forXLSXAoA
+        returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
+        // ------------------ / Запишем собранные данные в объект --------------------
+
+        return returnedDataObject;
+    }
+);
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Шаблон 1543 и более  ---------------------------------------
 
 
 

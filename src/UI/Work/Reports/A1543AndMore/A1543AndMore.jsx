@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { createAndUploadWorkBook } from "../../../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
-import { selectReportForDay, selectCalculatedDataShortStraightenings } from "../../../../state/features/workBookData/selectors";
+import { selectReportForDay, selectCalculatedData1543AndMore } from "../../../../state/features/workBookData/selectors";
 import { WithRequiredUploadedFlesCount } from "../../../../HOC/WithRequiredUploadedFilesCount";
 import { AlertLogicAndTable } from "../../common/AlertLogicAndTable";
 
-export const ShortStraightenings = () => {
+export const A1543AndMore = () => {
 
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
-    const calculatingData = useSelector(selectCalculatedDataShortStraightenings);                     // вычисленные данные для отчета на этой странице
+    const calculatingData = useSelector(selectCalculatedData1543AndMore);                     // вычисленные данные для отчета на этой странице
     const reportForDate = useSelector(selectReportForDay);
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
@@ -20,8 +20,8 @@ export const ShortStraightenings = () => {
 
         createAndUploadWorkBook(                                            // Создает и предлагает скачать юзеру книгу со сформированным отчетом
             data,                                                           // данные для записи
-            "Короткие рихтовки.xlsx",                                               // имя создаваемой отчетной книги
-            "Короткие рихтовки"                                                     // имя листа в этой книге
+            "Шаблон 1543 и более.xlsx",                                               // имя создаваемой отчетной книги
+            "Шаблон 1543 и более"                                                     // имя листа в этой книге
         );
     }
     // ------------------------------------ Declare функцию вызывающуюся при нажатии на кнопку для выгрузки третьих степеней ------------------------------------------------
@@ -29,12 +29,12 @@ export const ShortStraightenings = () => {
     return (
 
         <WithRequiredUploadedFlesCount
-            requireUploadTrackGeomуtryFilesCount={2}
+            requireUploadTrackGeomуtryFilesCount={1}
             requireUploadVideoFilesCount={0}
             forBrowserPageRenderObj={calculatingData.forBrowserPageRenderObj}
             reportForDate={reportForDate}
-            tableCaption="Таблица Короткие рихтовки"
-            buttonText="Скачать файл Короткие рихтовки"
+            tableCaption="Таблица Шаблон 1543 и более"
+            buttonText="Скачать файл Шаблон 1543 и более"
             onSaveButtonClick={onSaveButtonClick}
             Component={AlertLogicAndTable}
         />
