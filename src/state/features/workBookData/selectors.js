@@ -749,7 +749,7 @@ export const selectCalculatedDataScore = createSelector(
         let forAoACreatorAoO = [];
 
         // Массив массивов - для формаирования книги excel
-        let forExcelAoA = [];
+        let forExcelAndPageRenderingData = [];
 
         // Массив с уникальными номерами ПЧ
         const uniquePchArr = getUniquePch(ocKmData, reportForDay);
@@ -860,12 +860,15 @@ export const selectCalculatedDataScore = createSelector(
 
         });         // / uniquePchArr.forEach
 
-        forExcelAoA = scoreAoACreator(forAoACreatorAoO);
+        forExcelAndPageRenderingData = scoreAoACreator(forAoACreatorAoO);
 
         // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.AoO = forAoACreatorAoO;
-        returnedDataObject.AoA = forExcelAoA
+        returnedDataObject.forXLSXAoA = forExcelAndPageRenderingData.forXLSXAoA
+        returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
         // ------------------ / Запишем собранные данные в объект --------------------
+
+  debugger
 
         return returnedDataObject;
 
@@ -992,7 +995,7 @@ export const selectCalculatedDataSpeedRestrictions = createSelector(
 
 
 
-// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  -----------------------------------------
+// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Короткие Рихтовки  -----------------------------------------
 export const selectCalculatedDataShortStraightenings = createSelector(
     [selectWorkBookOtstSheetData, selectWorkBook2OtstSheetData, selectReportForDay],
     (otstData, otst2Data, reportForDay) => {
@@ -1181,7 +1184,7 @@ export const selectCalculatedDataShortStraightenings = createSelector(
         return returnedDataObject;
     }
 );
-// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Справка по ограничениям  ---------------------------------------
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Короткие Рихтовки  ---------------------------------------
 
 
 

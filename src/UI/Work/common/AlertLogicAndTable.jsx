@@ -7,7 +7,9 @@ import { Alert, Button } from 'antd';
 import { DownloadOutlined } from '@ant-design/icons';
 
 export const AlertLogicAndTable = (props) => {
-    let {calculatingDataFromSelector, calculatingDataWithoutHeadAoA, reportForDate, isDataLoaded, tableCaption, buttonText, onSaveButtonClick} = {...props};
+    let {reportForDate, isDataLoaded, tableCaption, buttonText, onSaveButtonClick} = {...props};
+    let {header, body} = {...props.forBrowserPageRenderObj}
+    debugger
     
     return(
         <>
@@ -26,8 +28,9 @@ export const AlertLogicAndTable = (props) => {
                     ? <>
                         <table border="1">
                             <caption>{tableCaption}</caption>
-                            <tr>{calculatingDataFromSelector.AoA[0].map(item => <th>{item}</th>)}</tr>
-                            {calculatingDataWithoutHeadAoA.map(item => {
+                            <tr>{header.map(item => <th>{item}</th>)}</tr>
+                            {/* <tr>{body.map(item => <td>{item}</td>)}</tr> */}
+                            {body.map(item => {
                                 return <tr>{item.map(element => <td>{element}</td>)}</tr>
                             })}
                         </table>
