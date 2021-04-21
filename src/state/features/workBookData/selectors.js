@@ -16,6 +16,7 @@ import { definePicketByMeter } from "../../../helpers/common/definePicketByMeter
 import { defineTypeOfCheckNameByTypeOfChekNumber } from "../../../helpers/common/defineTypeOfCheckNameByTypeOfChekNumber/defineTypeOfCheckNameByTypeOfChekNumber";
 import { speedRestrictionsAoACreator } from "../../../helpers/UI/aoaCreators/speedRestrictionsAoACreator/speedRestrictionsAoACreator";
 import { selectWorkBook2OtstSheetData } from "../workBook2Data/selectors";
+import { shortStraighteningsAoACreator } from "../../../helpers/UI/aoaCreators/shortStraighteningsAoACreator/shortStraighteningsAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -1004,8 +1005,8 @@ export const selectCalculatedDataShortStraightenings = createSelector(
         // Массив объектов - для формаирования AoA в AoACreator`е
         let forAoACreatorAoO = [];
 
-        // Массив массивов - для формаирования книги excel
-        let forExcelAoA = [];
+        // Массив массивов - для формаирования книги excel и рендеринга страницы в браузере
+        let forExcelAndPageRenderingData = [];
 
         // Номер по порядку
         let sequentialNumber = 1;
@@ -1173,13 +1174,14 @@ export const selectCalculatedDataShortStraightenings = createSelector(
             }
         });     // / otstData.forEach
 
-        // forExcelAoA = speedRestrictionsAoACreator(forAoACreatorAoO);
+        forExcelAndPageRenderingData = shortStraighteningsAoACreator(forAoACreatorAoO);
 
         // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.AoO = forAoACreatorAoO;
-        returnedDataObject.AoA = forExcelAoA
+        returnedDataObject.forXLSXAoA = forExcelAndPageRenderingData.forXLSXAoA
+        returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
         // ------------------ / Запишем собранные данные в объект --------------------
-        debugger
+
         return returnedDataObject;
     }
 );
