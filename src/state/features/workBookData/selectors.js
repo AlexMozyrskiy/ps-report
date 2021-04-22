@@ -20,6 +20,7 @@ import { selectWorkBook3OtstSheetData } from "../workBook3Data/selectors";
 import { shortStraighteningsAoACreator } from "../../../helpers/UI/aoaCreators/shortStraighteningsAoACreator/shortStraighteningsAoACreator";
 import { a1543AndMoreAoACreator } from "../../../helpers/UI/aoaCreators/a1543AndMoreAoACreator/a1543AndMoreAoACreator";
 import { insulatingJointDrowdownsAoACreator } from "../../../helpers/UI/aoaCreators/insulatingJointDrowdowns/insulatingJointDrowdownsAoACreator";
+import { repeatabilityAnalysisAoACreator } from "../../../helpers/UI/aoaCreators/repeatabilityAnalysisAoACreator/repeatabilityAnalysisAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -817,6 +818,169 @@ export const selectCalculatedDataInsulatingJointDrowdowns = createSelector(
         });     // / otstData.forEach
 
         forExcelAndPageRenderingData = insulatingJointDrowdownsAoACreator(forAoACreatorAoO);
+
+        // ------------------ Запишем собранные данные в объект ----------------------
+        returnedDataObject.AoO = forAoACreatorAoO;
+        returnedDataObject.forXLSXAoA = forExcelAndPageRenderingData.forXLSXAoA
+        returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
+        // ------------------ / Запишем собранные данные в объект --------------------
+
+        return returnedDataObject;
+    }
+);
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Повторы просадок в ИС  ---------------------------------------
+
+
+
+// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Повторы просадок в ИС  -----------------------------------------
+export const selectCalculatedDataRepeatabilityAnalysis = createSelector(
+    [selectWorkBookOtstSheetData, selectWorkBook2OtstSheetData, selectWorkBook3OtstSheetData, selectReportForDay],
+    (otstData, otst2Data, otst3Data, reportForDay) => {
+        // Возвращаемый объект расчитанных данных
+        let returnedDataObject = {};
+
+        // Массив объектов - для формаирования AoA в AoACreator`е
+        let forAoACreatorAoO = [];
+
+        // Массив массивов - для формаирования книги excel и рендеринга страницы в браузере
+        let forExcelAndPageRenderingData = [];
+
+        // Дата проверки
+        let fullDate;
+        // Номер ПС
+        let vagonNumber;
+        // номер дистанции пути
+        let distanceNumber;
+        // Станция
+        let station;
+        // Номер пути
+        let trackNumber;
+        // Километр
+        let kilometer;
+        // Пикет/метр
+        let picketSlashMeter;
+        // Отступлеие
+        let retreatTitle;
+        // Степень неисправности по текущему периоду
+        let currentPeriodDegree;
+        // Амплитуда отступления по текущему периоду
+        let currentPeriodRetreatAmplitude;
+        // Протяженность отступления по текущему периоду
+        let currentPeriodRetreatLength;
+        // Степень неисправности по предыдущему периоду
+        let prevPeriodRetreatDegree;
+        // Амплитуда отступления по предыдущему периоду
+        let prevPeriodRetreatAmplitude;
+        // Протяженность отступления по предыдущему периоду
+        let prevPeriodRetreatLength;
+        // Степень неисправности по позапрошлому периоду
+        let prevPrevPeriodRetreatDegree;
+        // Амплитуда отступления по позапрошлому периоду
+        let prevPrevPeriodRetreatAmplitude;
+        // Протяженность отступления по позапрошлому периоду
+        let prevPrevPeriodRetreatLength;
+
+
+
+
+        otstData.forEach(item => {
+            // ---------------- Общие условия для всех свойств для начала расчета -------------------
+            if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
+                if (item[sheetOtstConst.DEGREE] === 3) {            // найдем сначала тройки
+                    const day = item[sheetOtstConst.DAY] < 10 ? `0${item[sheetOtstConst.DAY]}` : item[sheetOtstConst.DAY];
+                    const month = item[sheetOtstConst.MONTH] < 10 ? `0${item[sheetOtstConst.MONTH]}` : item[sheetOtstConst.MONTH];
+                    const year = item[sheetOtstConst.YEAR];
+                    fullDate = `${day}.${month}.${year}`;
+                    vagonNumber = item[sheetOtstConst.WAGON_NUMBER];
+                    distanceNumber = item[sheetOtstConst.RAILWAY_DISTANCE];
+                    station = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], `${item[sheetOtstConst.KILOMETER]}.${item[sheetOtstConst.METER]}`);
+                    trackNumber = item[sheetOtstConst.TRACK];
+                    kilometer = item[sheetOtstConst.KILOMETER];
+                    picketSlashMeter = `${definePicketByMeter(item[sheetOtstConst.METER])}/${item[sheetOtstConst.METER]}`;
+                    retreatTitle = item[sheetOtstConst.RETREAT_TITLE];
+                    currentPeriodDegree = item[sheetOtstConst.DEGREE];
+                    currentPeriodRetreatAmplitude = item[sheetOtstConst.AMPLITUDE];
+                    currentPeriodRetreatLength = item[sheetOtstConst.LENGTH_OF_RETREAT];
+
+                    // ---------------------- Найдем это отступление в прошлом и в позапрошлом проходе +- в 20 метрах --------------------------------
+                    let prevPeriodRetreat = otst2Data.filter(otst2DataItem => {
+                        return item[sheetOtstConst.DIRECTION_CODE] === otst2DataItem[sheetOtstConst.DIRECTION_CODE]
+                            && item[sheetOtstConst.TRACK] === otst2DataItem[sheetOtstConst.TRACK]
+                            && otst2DataItem[sheetOtstConst.DEGREE] > 1
+                            && item[sheetOtstConst.RETREAT_TITLE] === otst2DataItem[sheetOtstConst.RETREAT_TITLE]
+                            && item[sheetOtstConst.KILOMETER] === otst2DataItem[sheetOtstConst.KILOMETER]
+                            && (item[sheetOtstConst.METER] - 20) < otst2DataItem[sheetOtstConst.METER] && (item[sheetOtstConst.METER] + 20) > otst2DataItem[sheetOtstConst.METER]
+                    });
+
+                    let prevPrevPeriodRetreat = otst3Data.filter(otst3DataItem => {
+                        return item[sheetOtstConst.DIRECTION_CODE] === otst3DataItem[sheetOtstConst.DIRECTION_CODE]
+                            && item[sheetOtstConst.TRACK] === otst3DataItem[sheetOtstConst.TRACK]
+                            && otst3DataItem[sheetOtstConst.DEGREE] > 1
+                            && item[sheetOtstConst.RETREAT_TITLE] === otst3DataItem[sheetOtstConst.RETREAT_TITLE]
+                            && item[sheetOtstConst.KILOMETER] === otst3DataItem[sheetOtstConst.KILOMETER]
+                            && (item[sheetOtstConst.METER] - 20) < otst3DataItem[sheetOtstConst.METER] && (item[sheetOtstConst.METER] + 20) > otst3DataItem[sheetOtstConst.METER]
+                    });
+
+                    if (prevPeriodRetreat.length === 0) {                // Если не нашел в прошлом проезде отступление в этой точке
+                        prevPeriodRetreatDegree = "";
+                        prevPeriodRetreatAmplitude = "";
+                        prevPeriodRetreatLength = "";
+                    } else if (prevPeriodRetreat.length === 1) {       // Если нашел 1 неисправность в этой точке
+                        const prevPeriodRetreatFirstSortedObj = prevPeriodRetreat[0];
+                        prevPeriodRetreatDegree = prevPeriodRetreatFirstSortedObj[sheetOtstConst.DEGREE];
+                        prevPeriodRetreatAmplitude = prevPeriodRetreatFirstSortedObj[sheetOtstConst.AMPLITUDE];
+                        prevPeriodRetreatLength = prevPeriodRetreatFirstSortedObj[sheetOtstConst.LENGTH_OF_RETREAT];
+                        debugger
+                    } else if (prevPeriodRetreat.length > 1) {                                                                       // Если нашел несколько неисправностей
+                        prevPeriodRetreat.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
+                        const prevPeriodRetreatFirstSortedObj = prevPeriodRetreat[0];                                                   // первый объект в отсортированном массиве, то есть самый ближний к обнаруженной неисправности в текущем периоде
+                        prevPeriodRetreatDegree = prevPeriodRetreatFirstSortedObj[sheetOtstConst.DEGREE];
+                        prevPeriodRetreatAmplitude = prevPeriodRetreatFirstSortedObj[sheetOtstConst.AMPLITUDE];
+                        prevPeriodRetreatLength = prevPeriodRetreatFirstSortedObj[sheetOtstConst.LENGTH_OF_RETREAT];
+                    }
+
+                    if (prevPrevPeriodRetreat.length === 0) {                // Если не нашел в позапрошлом проезде отступление в этой точке
+                        prevPrevPeriodRetreatDegree = "";
+                        prevPrevPeriodRetreatAmplitude = "";
+                        prevPrevPeriodRetreatLength = "";
+                    } else if (prevPrevPeriodRetreat.length === 1) {       // Если нашел 1 неисправность в этой точке
+                        prevPrevPeriodRetreatDegree = prevPrevPeriodRetreat[sheetOtstConst.DEGREE];
+                        prevPrevPeriodRetreatAmplitude = prevPrevPeriodRetreat[sheetOtstConst.AMPLITUDE];
+                        prevPrevPeriodRetreatLength = prevPrevPeriodRetreat[sheetOtstConst.LENGTH_OF_RETREAT];
+                    } else if (prevPrevPeriodRetreat.length > 1) {                                                                       // Если нашел несколько неисправностей
+                        prevPrevPeriodRetreat.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
+                        const prevPrevPeriodRetreatFirstSortedObj = prevPrevPeriodRetreat[0];                                                   // первый объект в отсортированном массиве, то есть самый ближний к обнаруженной неисправности в текущем периоде
+                        prevPrevPeriodRetreatDegree = prevPrevPeriodRetreatFirstSortedObj[sheetOtstConst.DEGREE];
+                        prevPrevPeriodRetreatAmplitude = prevPrevPeriodRetreatFirstSortedObj[sheetOtstConst.AMPLITUDE];
+                        prevPrevPeriodRetreatLength = prevPrevPeriodRetreatFirstSortedObj[sheetOtstConst.LENGTH_OF_RETREAT];
+                    }
+
+                    // ------------------------- Запушим полученные данные в массив объектов --------------------------
+                    forAoACreatorAoO.push({
+                        fullDate,
+                        vagonNumber,
+                        distanceNumber,
+                        station,
+                        trackNumber,
+                        kilometer,
+                        picketSlashMeter,
+                        retreatTitle,
+                        currentPeriodDegree,
+                        currentPeriodRetreatAmplitude,
+                        currentPeriodRetreatLength,
+                        prevPeriodRetreatDegree,
+                        prevPeriodRetreatAmplitude,
+                        prevPeriodRetreatLength,
+                        prevPrevPeriodRetreatDegree,
+                        prevPrevPeriodRetreatAmplitude,
+                        prevPrevPeriodRetreatLength
+                    });
+                    // ---------------------- / Найдем это отступление в прошлом и в позапрошлом проходе +- в 20 метрах -----------------------------
+                }
+            }
+        });     // / otstData.forEach
+
+        forExcelAndPageRenderingData = repeatabilityAnalysisAoACreator(forAoACreatorAoO);
 
         // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.AoO = forAoACreatorAoO;

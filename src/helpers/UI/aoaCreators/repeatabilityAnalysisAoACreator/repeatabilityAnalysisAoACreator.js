@@ -1,8 +1,8 @@
 /* функция принимает массив объектов
-  возвращает массив массивов для формирования книги бальности в таблице единых форм
+  возвращает массив массивов для формирования книги Анализ повторяемости в таблице единых форм
 */
 
-export function insulatingJointDrowdownsAoACreator(data) {
+export function repeatabilityAnalysisAoACreator(data) {
   // возвращаемый объект, тут будет 1 массив и 1 объект:
   // 1 массив - массов массвов для формирования книги excel с помощью библиотеки XLSX;
   // 2 объект - объект для отрисовки таблицы на странице в браузере, состоит из 2 свойств:
@@ -21,29 +21,42 @@ export function insulatingJointDrowdownsAoACreator(data) {
 
   // Шапка таблицы
   forXLSXAoA.push([
-    " №     п/п", "Направление/Перегон", "Рег.", "ПЧ",
-    "Путь", "КМ", "ПК,м", "Вид отступления, амплитуда/протяженность", "амплитуда", "протяженность",
-    "степень", "Устан. Скорость", "ограничение скорости",
-    "Наличие повтора", "Вид проверки", "Дата проезда"
+    "Дата", "ПС", "ПЧ", "участок пути", "путь", "км", "м",
+    "наименование неисправности", "степень отступления/ ограничение",
+    "величина неисправности, мм", "протяженность неисправности, м",
+    "степень отступления/ ограничение",
+    "величина неисправности, мм", "протяженность неисправности, м",
+    "степень отступления/ ограничение",
+    "величина неисправности, мм", "протяженность неисправности, м"
   ]);
   forBrowserPageRenderObj.header.push(
-    " №     п/п", "Направление/Перегон", "Рег.", "ПЧ",
-    "Путь", "КМ", "ПК,м", "Вид отступления", "амплитуда", "протяженность",
-    "степень", "Устан. Скорость", "ограничение скорости",
-    "Наличие повтора", "Вид проверки", "Дата проезда"
+    "Дата", "ПС", "ПЧ", "участок пути", "путь", "км", "м",
+    "наименование неисправности", "степень отступления",
+    "величина, мм", "протяженность, м",
+    "степень отступления",
+    "величина, мм", "протяженность, м",
+    "степень отступления",
+    "величина, мм", "протяженность, м"
   );
 
   data.forEach((item) => {
+
     // этот массив используется для пуша в него всех данных по одной неисправности,
     // чтобы потом получить массив массивов всех неисправности для формирования книги excel с помощью библиотеки XLSX;
     const forXLSXArr = [];
 
     forXLSXArr.push(
-      item.sequentialNumber, item.station, item.region, item.distanceNumber,
-      item.trackNumber, item.kilometer, item.picketSlashMeter,
-      item.retreatTitle, item.retreatAmplitude, item.retreatLength,
-      item.degree, item.advancedSpeed, item.restrictionSpeed,
-      item.presenceOfRepeat, item.typeOfCheck, item.fullDate
+      item.fullDate, item.vagonNumber, item.distanceNumber, item.station, item.trackNumber,
+      item.kilometer, item.picketSlashMeter, item.retreatTitle,
+      item.prevPrevPeriodRetreatDegree,
+      item.prevPrevPeriodRetreatAmplitude,
+      item.prevPrevPeriodRetreatLength,
+      item.prevPeriodRetreatDegree,
+      item.prevPeriodRetreatAmplitude,
+      item.prevPeriodRetreatLength,
+      item.currentPeriodDegree,
+      item.currentPeriodRetreatAmplitude,
+      item.currentPeriodRetreatLength
     );   // массив одна неисправность
 
     // запушим массив с одной неисправностью в массив со всеми неисправностями для формирования книги excel с помощью библиотеки XLSX; Будем пошить каждую неисправность
@@ -57,11 +70,17 @@ export function insulatingJointDrowdownsAoACreator(data) {
     const forPageBrowserArr = [];
 
     forPageBrowserArr.push(
-      item.sequentialNumber, item.station, item.region, item.distanceNumber,
-      item.trackNumber, item.kilometer, item.picketSlashMeter,
-      item.retreatTitle, item.retreatAmplitude, item.retreatLength,
-      item.degree, item.advancedSpeed, item.restrictionSpeed,
-      item.presenceOfRepeat, item.typeOfCheck, item.fullDate
+      item.fullDate, item.vagonNumber, item.distanceNumber, item.station, item.trackNumber,
+      item.kilometer, item.picketSlashMeter, item.retreatTitle,
+      item.prevPrevPeriodRetreatDegree,
+      item.prevPrevPeriodRetreatAmplitude,
+      item.prevPrevPeriodRetreatLength,
+      item.prevPeriodRetreatDegree,
+      item.prevPeriodRetreatAmplitude,
+      item.prevPeriodRetreatLength,
+      item.currentPeriodDegree,
+      item.currentPeriodRetreatAmplitude,
+      item.currentPeriodRetreatLength
     );   // массив одна неисправность
 
     // запушим массив с одной неисправностью в массив со всеми неисправностями для отрисовки таблицы на странице в браузере

@@ -119,6 +119,7 @@ export const FilesUploadBook1 = () => {
                                 <Button type="primary" icon={<UploadOutlined />}>Загрузить файл</Button>
                             </Upload>
                             {/* <input style={{ color: "green" }} type="file" onChange={(e) => onBookSelect(e)} /> */}
+                            {/* <Button type="primary" icon={<UploadOutlined />} htmlType="file">Загрузить файл</Button> */}
                         </>
                 }
             </div>
