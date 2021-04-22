@@ -9,17 +9,18 @@ import { DownloadOutlined } from '@ant-design/icons';
 export const AlertLogicAndTable = (props) => {
     let { tableCaption, buttonText, onSaveButtonClick } = { ...props };
     let { header, body } = { ...props.forBrowserPageRenderObj }
-    debugger
 
     return (
         <>
             <>
                 <table border="1">
                     <caption>{tableCaption}</caption>
-                    <tr>{header.map(item => <th>{item}</th>)}</tr>
-                    {body.map(item => {
-                        return <tr>{item.map(element => <td>{element}</td>)}</tr>
-                    })}
+                    <tbody>
+                        <tr>{header.map((item, i) => <th key={i}>{item}</th>)}</tr>
+                        {body.map((item, i) => {
+                            return <tr key={i}>{item.map((element, i) => <td key={i}>{element}</td>)}</tr>
+                        })}
+                    </tbody>
                 </table>
 
                 <Button type="primary" icon={<DownloadOutlined />} onClick={onSaveButtonClick}>{buttonText}</Button>

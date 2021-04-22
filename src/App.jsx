@@ -14,6 +14,7 @@ import { Score } from './UI/Work/Reports/Score/Score';
 import { SpeedRestrictions } from './UI/Work/Reports/SpeedRestrictions/SpeedRestrictions';
 import { ShortStraightenings } from './UI/Work/Reports/ShortStraightenings/ShortStraightenings';
 import { A1543AndMore } from './UI/Work/Reports/A1543AndMore/A1543AndMore';
+import { InsulatingJointDrowdowns } from './UI/Work/Reports/InsulatingJointDrowdowns/InsulatingJointDrowdowns';
 
 const { Content } = Layout;
 
@@ -40,6 +41,7 @@ const App = () => {
                 <Route exact path='/work/reports/speed-restrictions' render={() => <WithTermsOfUse component={SpeedRestrictions} />} />
                 <Route exact path='/work/reports/short-straightenings' render={() => <WithTermsOfUse component={ShortStraightenings} />} />
                 <Route exact path='/work/reports/1543-and-more' render={() => <WithTermsOfUse component={A1543AndMore} />} />
+                <Route exact path='/work/reports/insulating-joint-drowdowns' render={() => <WithTermsOfUse component={InsulatingJointDrowdowns} />} />
                 <Route exact path='/work/excel-to-json' render={() => <WithTermsOfUse component={XlsxToJson} />} />
             </Switch>
 

@@ -33,6 +33,7 @@ export const MySideBar = () => {
               <Menu.Item key="6"><NavLink to="/work/reports/score">Бальность для Единых Форм</NavLink></Menu.Item>
               <Menu.Item key="7"><NavLink to="/work/reports/speed-restrictions">Справка по ограничениям</NavLink></Menu.Item>
               <Menu.Item key="8"><NavLink to="/work/reports/short-straightenings">Короткие рихтовки</NavLink></Menu.Item>
+              <Menu.Item key="8"><NavLink to="/work/reports/insulating-joint-drowdowns">Повторы просадок ИС</NavLink></Menu.Item>
               <Menu.Item key="9"><NavLink to="/work/reports/1543-and-more">Шаблон 1543 и более</NavLink></Menu.Item>
             </SubMenu>
 
