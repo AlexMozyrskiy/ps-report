@@ -21,6 +21,7 @@ import { shortStraighteningsAoACreator } from "../../../helpers/UI/aoaCreators/s
 import { a1543AndMoreAoACreator } from "../../../helpers/UI/aoaCreators/a1543AndMoreAoACreator/a1543AndMoreAoACreator";
 import { insulatingJointDrowdownsRepeatsAoACreator } from "../../../helpers/UI/aoaCreators/insulatingJointDrowdownsRepeats/insulatingJointDrowdownsRepeatsAoACreator";
 import { repeatabilityAnalysisAoACreator } from "../../../helpers/UI/aoaCreators/repeatabilityAnalysisAoACreator/repeatabilityAnalysisAoACreator";
+import { insulatingJointDrowdownsAoACreator } from "../../../helpers/UI/aoaCreators/insulatingJointDrowdowns/insulatingJointDrowdownsAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
     return state.workBookData.otstSheetData;
@@ -721,7 +722,7 @@ export const selectCalculatedDataInsulatingJointDrowdownsRepeats = createSelecto
         let retreatAmplitude;
         // Протяженность отступления
         let retreatLength;
-        // Степень рихтовки
+        // Степень
         let degree;
         // Установленная скорость
         let advancedSpeed;
@@ -833,7 +834,153 @@ export const selectCalculatedDataInsulatingJointDrowdownsRepeats = createSelecto
 
 
 
-// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Повторы просадок в ИС  -----------------------------------------
+// ---------------------------------------------- Расчитаем данные для отчета Просадки в ИС  форма для ПС  -----------------------------------------
+export const selectCalculatedDataInsulatingJointDrowdowns = createSelector(
+    [selectWorkBookOtstSheetData, selectWorkBook2OtstSheetData, selectWorkBook3OtstSheetData, selectReportForDay],
+    (otstData, otst2Data, otst3Data, reportForDay) => {
+        // Возвращаемый объект расчитанных данных
+        let returnedDataObject = {};
+
+        // Массив объектов - для формаирования AoA в AoACreator`е
+        let forAoACreatorAoO = [];
+
+        // Массив массивов - для формаирования книги excel и рендеринга страницы в браузере
+        let forExcelAndPageRenderingData = [];
+
+        // Номер по порядку
+        let sequentialNumber = 1;
+        // Номер ПС
+        let vagonNumber;
+        // Станция
+        let station;
+        // Регион
+        let region;
+        // номер дистанции пути
+        let distanceNumber;
+        // Номер пути
+        let trackNumber;
+        // Километр
+        let kilometer;
+        // Пикет
+        let picketSlashMeter;
+        // Отступлеие
+        let retreatTitle;
+        // Амплитуда отступления
+        let retreatAmplitude;
+        // Протяженность отступления
+        let retreatLength;
+        // Степень
+        let degree;
+        // Установленная скорость
+        let advancedSpeed;
+        // Наличие повтора
+        let presenceOfRepeat = 0;
+        // Вид проверки
+        let typeOfCheck;
+        // Дата проверки
+        let fullDate;
+
+
+        otstData.forEach(item => {
+            // ---------------- Общие условия для всех свойств для начала расчета -------------------
+            if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
+                if ((item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.LEFT_DROWDOWN || item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.RIGHT_DROWDOWN) && item[sheetOtstConst.INSULATING_JOINT] !== 0) {
+                    // ------------------------------------ Запишем найденную просадку в ИС ---------------------------------------------
+                    vagonNumber = item[sheetOtstConst.WAGON_NUMBER];
+                    station = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], `${item[sheetOtstConst.KILOMETER]}.${item[sheetOtstConst.METER]}`);
+                    region = getRegionNumberByPchNumber(DB, item[sheetOtstConst.RAILWAY_DISTANCE]);
+                    distanceNumber = item[sheetOtstConst.RAILWAY_DISTANCE];
+                    trackNumber = item[sheetOtstConst.TRACK];
+                    kilometer = item[sheetOtstConst.KILOMETER];
+                    picketSlashMeter = `${definePicketByMeter(item[sheetOtstConst.METER])}/${item[sheetOtstConst.METER]}`;
+                    retreatTitle = item[sheetOtstConst.RETREAT_TITLE];
+                    retreatAmplitude = item[sheetOtstConst.AMPLITUDE];
+                    retreatLength = item[sheetOtstConst.LENGTH_OF_RETREAT];
+                    degree = item[sheetOtstConst.DEGREE];
+                    advancedSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_ADVANCED]}/${item[sheetOtstConst.FREIGHT_SPEED_ADVANCED]}`;
+                    typeOfCheck = defineTypeOfCheckNameByTypeOfChekNumber(item[sheetOtstConst.TYPE_OF_CHECK]);
+                    const day = item[sheetOtstConst.DAY] < 10 ? `0${item[sheetOtstConst.DAY]}` : item[sheetOtstConst.DAY];
+                    const month = item[sheetOtstConst.MONTH] < 10 ? `0${item[sheetOtstConst.MONTH]}` : item[sheetOtstConst.MONTH];
+                    const year = item[sheetOtstConst.YEAR];
+                    fullDate = `${day}.${month}.${year}`;
+                    // ------------------------------------ / Запишем найденную просадку в ИС -------------------------------------------
+
+
+                    // ---------------------- Найдем ИС в прошлом и в позапрошлом проходе +- в 20 метрах --------------------------------
+                    let prevStraightenings = otst2Data.filter(otst2DataItem => {
+                        return item[sheetOtstConst.DIRECTION_CODE] === otst2DataItem[sheetOtstConst.DIRECTION_CODE]
+                            && item[sheetOtstConst.TRACK] === otst2DataItem[sheetOtstConst.TRACK]
+                            && otst2DataItem[sheetOtstConst.DEGREE] > 1
+                            && item[sheetOtstConst.RETREAT_TITLE] === otst2DataItem[sheetOtstConst.RETREAT_TITLE]
+                            && item[sheetOtstConst.KILOMETER] === otst2DataItem[sheetOtstConst.KILOMETER]
+                            && (item[sheetOtstConst.METER] - 20) < otst2DataItem[sheetOtstConst.METER] && (item[sheetOtstConst.METER] + 20) > otst2DataItem[sheetOtstConst.METER]
+                    });
+
+                    if (prevStraightenings.length !== 0) {      // Если нашел просадку в этой точке по прошлому периоду
+                        presenceOfRepeat = 1;                   // Количество повторов будет 1
+
+                        let prevPrevStraightenings = otst3Data.filter(otst3DataItem => {
+                            return item[sheetOtstConst.DIRECTION_CODE] === otst3DataItem[sheetOtstConst.DIRECTION_CODE]
+                                && item[sheetOtstConst.TRACK] === otst3DataItem[sheetOtstConst.TRACK]
+                                && otst3DataItem[sheetOtstConst.DEGREE] > 1
+                                && item[sheetOtstConst.RETREAT_TITLE] === otst3DataItem[sheetOtstConst.RETREAT_TITLE]
+                                && item[sheetOtstConst.KILOMETER] === otst3DataItem[sheetOtstConst.KILOMETER]
+                                && (item[sheetOtstConst.METER] - 20) < otst3DataItem[sheetOtstConst.METER] && (item[sheetOtstConst.METER] + 20) > otst3DataItem[sheetOtstConst.METER]
+                        });
+
+                        if (prevPrevStraightenings !== 0) {          // Если нашел просадку в этой точке по позапрошлому периоду
+                            presenceOfRepeat = 2;                   // Количество повторов будет 2
+                        }
+                    }
+                    // ---------------------- / Найдем ИС в прошлом и в позапрошлом проходе +- в 20 метрах -----------------------------
+
+                    // если нашли хоть один повтор просадки, в противном случае будет пустая ячейка
+                    presenceOfRepeat = presenceOfRepeat === 0 ? null : presenceOfRepeat;
+
+                    // ------------------------- Запушим полученные данные в массив объектов --------------------------
+                    forAoACreatorAoO.push({
+                        sequentialNumber,
+                        vagonNumber,
+                        station,
+                        region,
+                        distanceNumber,
+                        trackNumber,
+                        kilometer,
+                        picketSlashMeter,
+                        retreatTitle,
+                        retreatAmplitude,
+                        retreatLength,
+                        degree,
+                        advancedSpeed,
+                        presenceOfRepeat,
+                        typeOfCheck,
+                        fullDate
+                    });
+                    // ------------------------- / Запушим полученные данные в массив объектов ------------------------
+
+                    sequentialNumber++;     // Итерируем номер по порядку
+                    presenceOfRepeat = 0;   // обнулим счетчик количества повторов
+                }
+            }
+        });     // / otstData.forEach
+
+        forExcelAndPageRenderingData = insulatingJointDrowdownsAoACreator(forAoACreatorAoO);
+
+        // ------------------ Запишем собранные данные в объект ----------------------
+        returnedDataObject.AoO = forAoACreatorAoO;
+        returnedDataObject.forXLSXAoA = forExcelAndPageRenderingData.forXLSXAoA
+        returnedDataObject.forBrowserPageRenderObj = forExcelAndPageRenderingData.forBrowserPageRenderObj
+        // ------------------ / Запишем собранные данные в объект --------------------
+
+        return returnedDataObject;
+    }
+);
+// ---------------------------------------------- / Расчитаем данные для отчета Просадки в ИС  форма для ПС  ---------------------------------------
+
+
+
+
+// ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Анализ повторяемости  -----------------------------------------
 export const selectCalculatedDataRepeatabilityAnalysis = createSelector(
     [selectWorkBookOtstSheetData, selectWorkBook2OtstSheetData, selectWorkBook3OtstSheetData, selectReportForDay],
     (otstData, otst2Data, otst3Data, reportForDay) => {
@@ -992,4 +1139,4 @@ export const selectCalculatedDataRepeatabilityAnalysis = createSelector(
         return returnedDataObject;
     }
 );
-// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Повторы просадок в ИС  ---------------------------------------
+// ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Анализ повторяемости  ---------------------------------------

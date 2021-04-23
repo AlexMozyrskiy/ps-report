@@ -1,8 +1,8 @@
 /* функция принимает массив объектов
-  возвращает массив массивов для формирования книги повторов просадок в ИС в таблице единых форм
+  возвращает массив массивов для формирования книги Просадок в ИС
 */
 
-export function insulatingJointDrowdownsRepeatsAoACreator(data) {
+export function insulatingJointDrowdownsAoACreator(data) {
   // возвращаемый объект, тут будет 1 массив и 1 объект:
   // 1 массив - массов массвов для формирования книги excel с помощью библиотеки XLSX;
   // 2 объект - объект для отрисовки таблицы на странице в браузере, состоит из 2 свойств:
@@ -21,16 +21,14 @@ export function insulatingJointDrowdownsRepeatsAoACreator(data) {
 
   // Шапка таблицы
   forXLSXAoA.push([
-    " №     п/п", "Направление/Перегон", "Рег.", "ПЧ",
+    " №     п/п", "№ ПС", "Перегон, станция", "Рег.", "ПЧ",
     "Путь", "КМ", "ПК,м", "Вид отступления, амплитуда/протяженность", "амплитуда", "протяженность",
-    "степень", "Устан. Скорость", "ограничение скорости",
-    "Наличие повтора", "Вид проверки", "Дата проезда"
+    "степень", "Устан. Скорость", "Наличие повтора", "Вид проверки", "Дата проезда"
   ]);
   forBrowserPageRenderObj.header.push(
-    " №     п/п", "Направление/Перегон", "Рег.", "ПЧ",
-    "Путь", "КМ", "ПК,м", "Вид отступления", "амплитуда", "протяженность",
-    "степень", "Устан. Скорость", "ограничение скорости",
-    "Наличие повтора", "Вид проверки", "Дата проезда"
+    " №     п/п", "№ ПС", "Перегон, станция", "Рег.", "ПЧ",
+    "Путь", "КМ", "ПК,м", "Вид отступления, амплитуда/протяженность", "амплитуда", "протяженность",
+    "степень", "Устан. Скорость", "Наличие повтора", "Вид проверки", "Дата проезда"
   );
 
   data.forEach((item) => {
@@ -39,11 +37,10 @@ export function insulatingJointDrowdownsRepeatsAoACreator(data) {
     const forXLSXArr = [];
 
     forXLSXArr.push(
-      item.sequentialNumber, item.station, item.region, item.distanceNumber,
+      item.sequentialNumber, item.vagonNumber, item.station, item.region, item.distanceNumber,
       item.trackNumber, item.kilometer, item.picketSlashMeter,
       item.retreatTitle, item.retreatAmplitude, item.retreatLength,
-      item.degree, item.advancedSpeed, item.restrictionSpeed,
-      item.presenceOfRepeat, item.typeOfCheck, item.fullDate
+      item.degree, item.advancedSpeed, item.presenceOfRepeat, item.typeOfCheck, item.fullDate
     );   // массив одна неисправность
 
     // запушим массив с одной неисправностью в массив со всеми неисправностями для формирования книги excel с помощью библиотеки XLSX; Будем пошить каждую неисправность
@@ -57,11 +54,10 @@ export function insulatingJointDrowdownsRepeatsAoACreator(data) {
     const forPageBrowserArr = [];
 
     forPageBrowserArr.push(
-      item.sequentialNumber, item.station, item.region, item.distanceNumber,
+      item.sequentialNumber, item.vagonNumber, item.station, item.region, item.distanceNumber,
       item.trackNumber, item.kilometer, item.picketSlashMeter,
       item.retreatTitle, item.retreatAmplitude, item.retreatLength,
-      item.degree, item.advancedSpeed, item.restrictionSpeed,
-      item.presenceOfRepeat, item.typeOfCheck, item.fullDate
+      item.degree, item.advancedSpeed, item.presenceOfRepeat, item.typeOfCheck, item.fullDate
     );   // массив одна неисправность
 
     // запушим массив с одной неисправностью в массив со всеми неисправностями для отрисовки таблицы на странице в браузере

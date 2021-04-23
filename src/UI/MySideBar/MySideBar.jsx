@@ -33,21 +33,22 @@ export const MySideBar = () => {
               <Menu.Item key="6"><NavLink to="/work/reports/score">Бальность для Единых Форм</NavLink></Menu.Item>
               <Menu.Item key="7"><NavLink to="/work/reports/speed-restrictions">Справка по ограничениям</NavLink></Menu.Item>
               <Menu.Item key="8"><NavLink to="/work/reports/short-straightenings">Короткие рихтовки</NavLink></Menu.Item>
-              <Menu.Item key="9"><NavLink to="/work/reports/insulating-joint-drowdowns">Повторы просадок ИС</NavLink></Menu.Item>
-              <Menu.Item key="10"><NavLink to="/work/reports/repeatability-analysis">Анализ повторяемости</NavLink></Menu.Item>
-              <Menu.Item key="11"><NavLink to="/work/reports/1543-and-more">Шаблон 1543 и более</NavLink></Menu.Item>
+              <Menu.Item key="9"><NavLink to="/work/reports/insulating-joint-drowdowns-repeats">Повторы просадок ИС</NavLink></Menu.Item>
+              <Menu.Item key="10"><NavLink to="/work/reports/insulating-joint-drowdowns">Просадки в ИС форма для ПС</NavLink></Menu.Item>
+              <Menu.Item key="11"><NavLink to="/work/reports/repeatability-analysis">Анализ повторяемости</NavLink></Menu.Item>
+              <Menu.Item key="12"><NavLink to="/work/reports/1543-and-more">Шаблон 1543 и более</NavLink></Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub4" icon={<VideoCameraOutlined />} title="Отчетные формы по Видеокотролю">
-              <Menu.Item key="12">option9</Menu.Item>
+              <Menu.Item key="13">option9</Menu.Item>
             </SubMenu>
             
             <SubMenu key="sub5" icon={<FileTextOutlined />} title="Телеграммы">
-              <Menu.Item key="13">option9</Menu.Item>
+              <Menu.Item key="14">option9</Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub6" icon={<FileTextOutlined />} title="Тесты">
-              <Menu.Item key="14"><NavLink to="/work/excel-to-json">Excel в JSON</NavLink></Menu.Item>
+              <Menu.Item key="15"><NavLink to="/work/excel-to-json">Excel в JSON</NavLink></Menu.Item>
             </SubMenu>
 
           </Menu>
