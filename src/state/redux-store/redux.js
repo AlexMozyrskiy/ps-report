@@ -6,6 +6,7 @@ import workBook2DataReducer from "../features/workBook2Data/reducer";
 import workBook3DataReducer from "../features/workBook3Data/reducer";
 import videoBookDataReducer from "../features/videoBookData/reducer";
 import termsOfUseReducer from "../features/termsOfUse/reducer";
+import URLReducer from "../features/URL/reducer";
 
 
 let reducers = combineReducers({
@@ -13,7 +14,8 @@ let reducers = combineReducers({
   workBook2Data: workBook2DataReducer,
   workBook3Data: workBook3DataReducer,
   videoBookData: videoBookDataReducer,
-  termsOfUse: termsOfUseReducer
+  termsOfUse: termsOfUseReducer,
+  URL: URLReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

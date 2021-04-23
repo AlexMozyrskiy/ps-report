@@ -1,0 +1,1 @@
+export const IS_WE_ARE_ON_THE_WORK_TAB = 'ps-report/URL/IS_WE_ARE_ON_THE_WORK_TAB';   // находимся ли мы сейчас на закладке "Работа"
