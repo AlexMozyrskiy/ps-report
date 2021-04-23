@@ -19,6 +19,7 @@ import { InsulatingJointDrowdownsRepeats } from './UI/Work/Reports/InsulatingJoi
 import { RepeatabilityAnalysis } from './UI/Work/Reports/RepeatabilityAnalysis/RepeatabilityAnalysis';
 import { selectIsWeAreOnTheWorkTab } from "./state/features/URL/selectors";
 import { InsulatingJointDrowdowns } from './UI/Work/Reports/InsulatingJointDrowdowns/InsulatingJointDrowdowns';
+import { Time } from './UI/Work/Tests/Time/Time';
 
 const { Content } = Layout;
 
@@ -52,6 +53,7 @@ const App = () => {
               <Route exact path='/work/reports/insulating-joint-drowdowns' render={() => <WithTermsOfUse component={InsulatingJointDrowdowns} />} />
               <Route exact path='/work/reports/repeatability-analysis' render={() => <WithTermsOfUse component={RepeatabilityAnalysis} />} />
               <Route exact path='/work/excel-to-json' render={() => <WithTermsOfUse component={XlsxToJson} />} />
+              <Route exact path='/work/time' render={() => <WithTermsOfUse component={Time} />} />
             </Switch>
 
           </Content>

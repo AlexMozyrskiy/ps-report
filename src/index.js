@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import store from './state/redux-store/redux';
+import { WithTargetTimeStamp } from './HOC/WithTargetTimeStamp';
 
 
 ReactDOM.render(
   <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
-      <App />
+      <WithTargetTimeStamp Component={App} />
     </Provider>
   </BrowserRouter>,
   document.getElementById('root')

@@ -5,6 +5,7 @@ import {
 const initialState = {
     isTermsOfUseButtonClicked: false,           // была ли нажата одна из кнопок (согласие или не согласие) на странице "Пользовательское соглашение"
     isUserAgreesWithTermsOfUse: false,          // согласился ли юзер с "Пользовательским соглашением"
+    targetTimeStamp: 1620491898564
 };
 
 const termsOfUseReducer = (state = initialState, action) => {
