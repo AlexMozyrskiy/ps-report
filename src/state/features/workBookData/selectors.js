@@ -1,7 +1,6 @@
 import { createSelector } from "reselect";
 import DB from "../../../DB/DB";
 import { getRegionNumberByPchNumber } from "../../../helpers/common/getRegionNumberByPchNumber/getRegionNumberByPchNumber";
-import { getUniqueNumbersFromArr } from "../../../helpers/common/getUniqueNumbersFromArr/getUniqueNumbersFromArr";
 import { getUniquePch } from "../../../helpers/common/getUniquePch/getUniquePch";
 import { getPchFullNameByPchNumber } from "../../../helpers/common/getPchFullNameByPchNumber/getPchFullNameByPchNumber";
 import { getDirectorateOfInfrastructureShortNameBydirectorateOfInfrastructureNumber } from "../../../helpers/common/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber/getDirectorateOfInfrastructureNameBydirectorateOfInfrastructureNumber";
@@ -156,7 +155,7 @@ export const selectCalculatedDataScore = createSelector(
         // Километры по видам
         let otlKm = 0, xorKm = 0, UdKm = 0, neUdKm = 0
         // Стеккпени по видам
-        let secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesWithRstCount = 0, fourthDegreesWithOutRstCount = 0, otherRetreats = 0;
+        let secondDegreesCount = 0, thirdDegreesCount = 0, fourthDegreesWithRstCount = 0, fourthDegreesWithOutRstCount = 0/*, otherRetreats = 0*/;
         // Ограничения скорости по видам
         let speedRestrictionCount0 = 0, speedRestrictionCount15 = 0, speedRestrictionCount25 = 0, speedRestrictionCount40 = 0, speedRestrictionFreightCount60 = 0, speedRestrictionCount60 = 0, speedRestrictionMoreThenCount60 = 0
         // величина Nуч
@@ -247,7 +246,7 @@ export const selectCalculatedDataScore = createSelector(
             // Километры по видам
             otlKm = xorKm = UdKm = neUdKm = 0;
             // Стеккпени по видам
-            secondDegreesCount = thirdDegreesCount = fourthDegreesWithRstCount = fourthDegreesWithOutRstCount = otherRetreats = 0;
+            secondDegreesCount = thirdDegreesCount = fourthDegreesWithRstCount = fourthDegreesWithOutRstCount = /* otherRetreats = */ 0;
             // Ограничения скорости по видам
             speedRestrictionCount0 = speedRestrictionCount15 = speedRestrictionCount25 = speedRestrictionCount40 = speedRestrictionFreightCount60
                 = speedRestrictionCount60 = speedRestrictionMoreThenCount60 = 0;

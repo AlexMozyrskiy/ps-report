@@ -25,7 +25,7 @@ export const WithRequiredUploadedFlesCount = (props) => {
     
     // Если не выбрана дата для отчета
     if(reportForDate === "") {
-        return <Alert message="Не выбрана дата для отчета. Выберите дату во вкладке &ldquo;Настройки и установки&rdquo; &rarr; &ldquo;Основные настройки&rdquo;" type="success" type="error" showIcon />
+        return <Alert message="Не выбрана дата для отчета. Выберите дату во вкладке &ldquo;Настройки и установки&rdquo; &rarr; &ldquo;Основные настройки&rdquo;" type="error" showIcon />
     }
 
     // если в пропсах передали, что чтобы работать с отчетом надо загрузить 1 файл по геометрии (текущий период) и 0 файлов по видео (для этого отчета видео не нужно):

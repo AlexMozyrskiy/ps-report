@@ -10,7 +10,7 @@ export const Time = () => {
         const tergetTimeStamp = 1619195898564 + 60000;
         if(currentTimeStamp > tergetTimeStamp) {
             console.log(1619195898564 + 1296000000);
-            const targetTimeStamp = 1620491898564;      // через 15 суток
+            // const targetTimeStamp = 1620491898564;      // через 15 суток
             // 1296000000 - 15 суток
         }
     }
