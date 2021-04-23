@@ -2,7 +2,7 @@
   возвращает массив массивов для формирования книги бальности в таблице единых форм
 */
 
-export function insulatingJointDrowdownsAoACreator(data) {
+export function insulatingJointDrowdownsRepeatsAoACreator(data) {
   // возвращаемый объект, тут будет 1 массив и 1 объект:
   // 1 массив - массов массвов для формирования книги excel с помощью библиотеки XLSX;
   // 2 объект - объект для отрисовки таблицы на странице в браузере, состоит из 2 свойств:

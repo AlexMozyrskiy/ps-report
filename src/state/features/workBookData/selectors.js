@@ -19,7 +19,7 @@ import { selectWorkBook2OtstSheetData } from "../workBook2Data/selectors";
 import { selectWorkBook3OtstSheetData } from "../workBook3Data/selectors";
 import { shortStraighteningsAoACreator } from "../../../helpers/UI/aoaCreators/shortStraighteningsAoACreator/shortStraighteningsAoACreator";
 import { a1543AndMoreAoACreator } from "../../../helpers/UI/aoaCreators/a1543AndMoreAoACreator/a1543AndMoreAoACreator";
-import { insulatingJointDrowdownsAoACreator } from "../../../helpers/UI/aoaCreators/insulatingJointDrowdowns/insulatingJointDrowdownsAoACreator";
+import { insulatingJointDrowdownsRepeatsAoACreator } from "../../../helpers/UI/aoaCreators/insulatingJointDrowdownsRepeats/insulatingJointDrowdownsRepeatsAoACreator";
 import { repeatabilityAnalysisAoACreator } from "../../../helpers/UI/aoaCreators/repeatabilityAnalysisAoACreator/repeatabilityAnalysisAoACreator";
 
 export const selectWorkBookOtstSheetData = (state) => {
@@ -689,7 +689,7 @@ export const selectCalculatedData1543AndMore = createSelector(
 
 
 // ---------------------------------------------- Расчитаем данные для отчета в Единых формах -> Повторы просадок в ИС  -----------------------------------------
-export const selectCalculatedDataInsulatingJointDrowdowns = createSelector(
+export const selectCalculatedDataInsulatingJointDrowdownsRepeats = createSelector(
     [selectWorkBookOtstSheetData, selectWorkBook2OtstSheetData, selectWorkBook3OtstSheetData, selectReportForDay],
     (otstData, otst2Data, otst3Data, reportForDay) => {
         // Возвращаемый объект расчитанных данных
@@ -817,7 +817,7 @@ export const selectCalculatedDataInsulatingJointDrowdowns = createSelector(
             }
         });     // / otstData.forEach
 
-        forExcelAndPageRenderingData = insulatingJointDrowdownsAoACreator(forAoACreatorAoO);
+        forExcelAndPageRenderingData = insulatingJointDrowdownsRepeatsAoACreator(forAoACreatorAoO);
 
         // ------------------ Запишем собранные данные в объект ----------------------
         returnedDataObject.AoO = forAoACreatorAoO;
@@ -829,6 +829,7 @@ export const selectCalculatedDataInsulatingJointDrowdowns = createSelector(
     }
 );
 // ---------------------------------------------- / Расчитаем данные для отчета в Единых формах -> Повторы просадок в ИС  ---------------------------------------
+
 
 
 

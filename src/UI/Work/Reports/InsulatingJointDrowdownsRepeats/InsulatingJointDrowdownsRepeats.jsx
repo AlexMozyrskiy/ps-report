@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { createAndUploadWorkBook } from "../../../../helpers/common/createAndUploadWorkBook/createAndUploadWorkBook";
-import { selectReportForDay, selectCalculatedDataInsulatingJointDrowdowns } from "../../../../state/features/workBookData/selectors";
+import { selectReportForDay, selectCalculatedDataInsulatingJointDrowdownsRepeats } from "../../../../state/features/workBookData/selectors";
 import { WithRequiredUploadedFlesCount } from "../../../../HOC/WithRequiredUploadedFilesCount";
 import { AlertLogicAndTable } from "../../common/AlertLogicAndTable";
 
-export const InsulatingJointDrowdowns = () => {
+export const InsulatingJointDrowdownsRepeats = () => {
 
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
-    const calculatingData = useSelector(selectCalculatedDataInsulatingJointDrowdowns);                     // вычисленные данные для отчета на этой странице
+    const calculatingData = useSelector(selectCalculatedDataInsulatingJointDrowdownsRepeats);                     // вычисленные данные для отчета на этой странице
     const reportForDate = useSelector(selectReportForDay);
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
