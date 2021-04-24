@@ -536,7 +536,7 @@ export const selectCalculatedDataShortStraightenings = createSelector(
                         kilometer = item[sheetOtstConst.KILOMETER];
                         picket = definePicketByMeter(item[sheetOtstConst.METER]);
                         meter = item[sheetOtstConst.METER];
-                        degree = item[sheetOtstConst.DEGREE];
+                        degree = item[sheetOtstConst.DEGREE] === 2 && item[sheetOtstConst.PR_PREDUPR] === 1 ? "2/3" : item[sheetOtstConst.DEGREE];
                         amount = `${item[sheetOtstConst.AMPLITUDE]}/${item[sheetOtstConst.LENGTH_OF_RETREAT]}`;
                         // amountChange
                         advancedSpeed = `${item[sheetOtstConst.PASSENGER_SPEED_ADVANCED]}/${item[sheetOtstConst.FREIGHT_SPEED_ADVANCED]}`;
