@@ -739,7 +739,7 @@ export const selectCalculatedDataInsulatingJointDrowdownsRepeats = createSelecto
         otstData.forEach(item => {
             // ---------------- Общие условия для всех свойств для начала расчета -------------------
             if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
-                if ((item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.LEFT_DROWDOWN || item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.RIGHT_DROWDOWN) && item[sheetOtstConst.INSULATING_JOINT] !== 0) {
+                if ((item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.LEFT_DROWDOWN || item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.RIGHT_DROWDOWN) && item[sheetOtstConst.CONDITIONS_FOR_CALCULATING] < 0) {
                     // ---------------------- Найдем ИС в прошлом и в позапрошлом проходе +- в 20 метрах --------------------------------
                     let prevStraightenings = otst2Data.filter(otst2DataItem => {
                         return item[sheetOtstConst.DIRECTION_CODE] === otst2DataItem[sheetOtstConst.DIRECTION_CODE]
@@ -883,7 +883,7 @@ export const selectCalculatedDataInsulatingJointDrowdowns = createSelector(
         otstData.forEach(item => {
             // ---------------- Общие условия для всех свойств для начала расчета -------------------
             if (item[sheetOtstConst.DAY] === +reportForDay && item[sheetOtstConst.EXCLUDE] === 0 && item[sheetOtstConst.ARROW] === 0 && +item[sheetOtstConst.DIRECTION_CODE] <= 99999 && item[sheetOtstConst.DEGREE] > 1 && item[sheetOtstConst.RETREAT_TITLE] !== "Кривая" && item[sheetOtstConst.RETREAT_TITLE] !== "ПрУ" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.л" && item[sheetOtstConst.RETREAT_TITLE] !== "Заз.п") {
-                if ((item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.LEFT_DROWDOWN || item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.RIGHT_DROWDOWN) && item[sheetOtstConst.INSULATING_JOINT] !== 0) {
+                if ((item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.LEFT_DROWDOWN || item[sheetOtstConst.RETREAT_TITLE] === retreatColumnConstants.RIGHT_DROWDOWN) && item[sheetOtstConst.CONDITIONS_FOR_CALCULATING] < 0) {
                     // ------------------------------------ Запишем найденную просадку в ИС ---------------------------------------------
                     vagonNumber = item[sheetOtstConst.WAGON_NUMBER];
                     station = getStationNameByKmAndDirection(DB, item[sheetOtstConst.DIRECTION_CODE], `${item[sheetOtstConst.KILOMETER]}.${item[sheetOtstConst.METER]}`);

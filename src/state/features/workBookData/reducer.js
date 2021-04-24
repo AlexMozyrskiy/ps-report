@@ -41,7 +41,8 @@ const initialState = {
         "СК_УСТ_ГРУЗ": 0,           // "-" | number
         "СК_УСТ_ПАСС": 0,           // "-" | number
         "СТЕПЕНЬ": 0,
-        "СТРЕЛКА": 0
+        "СТРЕЛКА": 0,
+        "УСЛРАСЧЕТА": 0
     }],
     ocKmSheetData: [{
         "KM": 0,
@@ -125,7 +126,8 @@ const workBookDataReducers = (state = initialState, action) => {
                         "СК_УСТ_ГРУЗ": item[sheetOtstConst.FREIGHT_SPEED_ADVANCED],           // "-" | number
                         "СК_УСТ_ПАСС": item[sheetOtstConst.PASSENGER_SPEED_ADVANCED],           // "-" | number
                         "СТЕПЕНЬ": +item[sheetOtstConst.DEGREE],
-                        "СТРЕЛКА": +item[sheetOtstConst.ARROW]
+                        "СТРЕЛКА": +item[sheetOtstConst.ARROW],
+                        "УСЛРАСЧЕТА": +item[sheetOtstConst.CONDITIONS_FOR_CALCULATING]
                     }
 
                 }),

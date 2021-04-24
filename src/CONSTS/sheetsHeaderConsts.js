@@ -33,7 +33,8 @@ export const sheetOtstConst = {
     FREIGHT_SPEED_ADVANCED: "СК_УСТ_ГРУЗ",                  // "-" | number
     PASSENGER_SPEED_ADVANCED: "СК_УСТ_ПАСС",                // "-" | number
     DEGREE: "СТЕПЕНЬ",
-    ARROW: "СТРЕЛКА"
+    ARROW: "СТРЕЛКА",
+    CONDITIONS_FOR_CALCULATING: "УСЛРАСЧЕТА"
 }
 
 export const sheetOcKmConst = {
