@@ -35,7 +35,7 @@ export const sheetOtstConst = {
     DEGREE: "СТЕПЕНЬ",
     ARROW: "СТРЕЛКА",
     CONDITIONS_FOR_CALCULATING: "УСЛРАСЧЕТА"
-}
+};
 
 export const sheetOcKmConst = {
     KILOMETER: "KM",
@@ -67,4 +67,22 @@ export const sheetOcKmConst = {
     FREIGHT_SPEED_ADVANCED: "СК_УСТ_ГРУЗ",
     PASSENGER_SPEED_ADVANCED: "СК_УСТ_ПАСС",
     SAPSAN_SPEED_ADVANCED: "СК_УСТ_СПН"
-}
+};
+
+export const sheetVideoConst = {
+    SEQUENTIAL_NUMBER: "Номер записи",
+    DATE: "Дата проезда",
+    DIRECTION_CODE: "КОД Направления (цифрами)",
+    TRACK: "Путь",
+    KILOMETER: "КМ",
+    METER: "М",
+    RAIL_THREAD: "Нить",
+    RETREAT_CODE: "КОД Замчания (цифрами)",
+    NUMBER_OF_HOLES_IN_LINING: "Накладка в стыке",
+    ADVENCED_SPEED: "Уст Скорость",
+    RESTRICTION_SPEED: "Огр. скорости",
+    RETREAT_AMOUNT: "Величина (только цифра, без мм)",
+    CURVE_RADIUS: "Радиус кривой",
+    UNDER_RAIL_BASE: "Подрельсовое основание дерево/бетон",
+    TRACK_TYPE: "Тип пути (зв./ бп)"
+};

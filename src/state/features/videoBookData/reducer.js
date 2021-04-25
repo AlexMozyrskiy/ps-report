@@ -1,23 +1,27 @@
 import {
-    VIDEO_BOOK_DATA, IS_VIDEO_BOOK_DATA_LOADED,
-    IS_VIDEO_BOOK_DATA_LOADING
+    VIDEO_BOOK_DATA, IS_VIDEO_BOOK_DATA_LOADED
 } from "./actionTypes";
+import { sheetVideoConst } from "../../../CONSTS/sheetsHeaderConsts";
 
 const initialState = {
     videoSheetData: [{
-        "№": 0,
-        "Объект": "",
-        "П-Н": "",
-        "Км": 0,
+        "Номер записи": 0,
+        "Дата проезда": "",
+        "КОД Направления (цифрами)": 0,
+        "Путь": 0,
+        "КМ": 0,
         "М": 0,
-        "Сторона": "",
-        "Параметр": "",
-        "Тип": "",
-        "Дефект": "",
-        "Огр.скорости (км/ч)": "",
+        "Нить": "",
+        "КОД Замчания (цифрами)": 0,
+        "Накладка в стыке": "",
+        "Уст Скорость": "",
+        "Огр. скорости": "",
+        "Величина (только цифра, без мм)": 0,
+        "Радиус кривой": "",
+        "Подрельсовое основание дерево/бетон": "",
+        "Тип пути (зв./ бп)": ""
     }],
     isVideoBookDataLoaded: false,           // загрузились ли данные в стейт
-    isVideoBookDataLoading: false           // загружаются ли данные в стейт по моменту
 };
 
 const videoBookDataReducer = (state = initialState, action) => {
@@ -29,16 +33,21 @@ const videoBookDataReducer = (state = initialState, action) => {
 
                 videoSheetData: action.videoBookDataObject.videoData.map(item => {
                     return {
-                        "№": +item["№"],
-                        "Объект": item["Объект"],
-                        "П-Н": item["П-Н"],
-                        "Км": +item["Км"],
-                        "М": +item["М"],
-                        "Сторона": item["Сторона"],
-                        "Параметр": item["Параметр"],
-                        "Тип": item["Тип"],
-                        "Дефект": item["Дефект"],
-                        "Огр.скорости": item["Огр.скорости (км/ч)"],
+                        "Номер записи": +item[sheetVideoConst.SEQUENTIAL_NUMBER],
+                        "Дата проезда": item[sheetVideoConst.DATE],
+                        "КОД Направления (цифрами)": +item[sheetVideoConst.DIRECTION_CODE],
+                        "Путь": item[sheetVideoConst.TRACK],
+                        "КМ": +item[sheetVideoConst.KILOMETER],
+                        "М": +item[sheetVideoConst.METER],
+                        "Нить": item[sheetVideoConst.RAIL_THREAD],
+                        "КОД Замчания (цифрами)": +item[sheetVideoConst.RETREAT_CODE],
+                        "Накладка в стыке": item[sheetVideoConst.NUMBER_OF_HOLES_IN_LINING],
+                        "Уст Скорость": item[sheetVideoConst.ADVENCED_SPEED],
+                        "Огр. скорости": item[sheetVideoConst.RESTRICTION_SPEED],
+                        "Величина (только цифра, без мм)": +item[sheetVideoConst.RETREAT_AMOUNT],
+                        "Радиус кривой": item[sheetVideoConst.CURVE_RADIUS],
+                        "Подрельсовое основание дерево/бетон": item[sheetVideoConst.UNDER_RAIL_BASE],
+                        "Тип пути (зв./ бп)": item[sheetVideoConst.TRACK_TYPE]
                     }
                 }),
             };
@@ -49,14 +58,6 @@ const videoBookDataReducer = (state = initialState, action) => {
             const superState = {
                 ...state,
                 isVideoBookDataLoaded: action.isVideoBookDataLoaded
-            };
-            return superState;
-        }
-
-        case IS_VIDEO_BOOK_DATA_LOADING: {
-            const superState = {
-                ...state,
-                isVideoBookDataLoading: action.isVideoBookDataLoading
             };
             return superState;
         }
