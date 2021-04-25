@@ -20,7 +20,7 @@ export const FilesUploadBook1 = () => {
     // // ------------------------------------ Declare функцию вызывающуюся при загрузке файла ------------------------------------------------
     // const onBookSelect = (evt) => {
     //     debugger
-    //     let worBookData;                                    // возвращаем json
+    //     let workBookData;                                    // возвращаем json
     //     const selectedFile = evt.target.files[0];           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
 
     //     if (selectedFile) {                                 // если файл был выбран. эта проверка чтобы если пользователь нажал кнопку выбрать файл а потом закрыл окно с выбором файла не выбрав его
@@ -40,16 +40,16 @@ export const FilesUploadBook1 = () => {
     //             const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
 
 
-    //             worBookData = {
+    //             workBookData = {
     //                 otstSheetData: workSheetOtstDataJson,
     //                 ocKmSheetData: workSheetOcKmDataJson
     //             }
 
-    //             dispatch(setWorkBookDataThunkCreator(worBookData));
+    //             dispatch(setWorkBookDataThunkCreator(workBookData));
     //         };
 
     //         reader.onerror = function (event) {
-    //             worBookData = null
+    //             workBookData = null
     //             console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
     //         };
     //     }
@@ -66,7 +66,7 @@ export const FilesUploadBook1 = () => {
         //     authorization: 'authorization-text',
         // },
         onChange(evt) {
-            let worBookData;                                    // возвращаем json
+            let workBookData;                                    // возвращаем json
             const selectedFile = evt.fileList[0].originFileObj;           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
 
             if (selectedFile) {                                 // если файл был выбран. эта проверка чтобы если пользователь нажал кнопку выбрать файл а потом закрыл окно с выбором файла не выбрав его
@@ -86,16 +86,16 @@ export const FilesUploadBook1 = () => {
                     const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
 
 
-                    worBookData = {
+                    workBookData = {
                         otstSheetData: workSheetOtstDataJson,
                         ocKmSheetData: workSheetOcKmDataJson
                     }
 
-                    dispatch(setWorkBookDataThunkCreator(worBookData));
+                    dispatch(setWorkBookDataThunkCreator(workBookData));
                 };
 
                 reader.onerror = function (event) {
-                    worBookData = null
+                    workBookData = null
                     console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
                 };
             }

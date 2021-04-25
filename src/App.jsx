@@ -20,6 +20,7 @@ import { RepeatabilityAnalysis } from './UI/Work/Reports/RepeatabilityAnalysis/R
 import { selectIsWeAreOnTheWorkTab } from "./state/features/URL/selectors";
 import { InsulatingJointDrowdowns } from './UI/Work/Reports/InsulatingJointDrowdowns/InsulatingJointDrowdowns';
 import { Time } from './UI/Work/Tests/Time/Time';
+import { FilesUploadVideoMainComponent } from './UI/Work/FilesUpload/FolesUploadVideo/FilesUploadVideoMainComponent';
 
 const { Content } = Layout;
 
@@ -43,6 +44,7 @@ const App = () => {
             <Switch>
               <Route exact path='/' render={() => <TermsOfUse />} />
               <Route exact path='/work/load-geometry-books' render={() => <WithTermsOfUse component={FilesUploadGeometryMainComponent} />} />
+              <Route exact path='/work/load-video-books' render={() => <WithTermsOfUse component={FilesUploadVideoMainComponent} />} />
               <Route exact path='/work/general-settings' render={() => <WithTermsOfUse component={GeneralSettingsMainComponent} />} />
               <Route exact path='/work/reports/third-and-fourth-defrees' render={() => <WithTermsOfUse component={ThirdAndFourthDegrees} />} />
               <Route exact path='/work/reports/score' render={() => <WithTermsOfUse component={Score} />} />

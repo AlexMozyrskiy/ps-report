@@ -6,7 +6,7 @@ import { FilesUploadBook3 } from "./FilesUploadBook3";
 export const FilesUploadGeometryMainComponent = () => {
     return (
         <>
-            <h2>Files Upload</h2>
+            <h2>Geometry Files Upload</h2>
 
             <FilesUploadBook1 />
             

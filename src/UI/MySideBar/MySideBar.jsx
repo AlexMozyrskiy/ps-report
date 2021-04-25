@@ -25,7 +25,7 @@ export const MySideBar = () => {
 
             <SubMenu key="sub2" icon={<FileExcelOutlined />} title="Загрузка файлов">
               <Menu.Item key="3"><NavLink to="/work/load-geometry-books">ГРК</NavLink></Menu.Item>
-              <Menu.Item key="4">Видео</Menu.Item>
+              <Menu.Item key="4"><NavLink to="/work/load-video-books">Видео</NavLink></Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub3" icon={<LaptopOutlined />} title="Отчетные формы по ГРК">

@@ -4,57 +4,16 @@ import XLSX from "xlsx/dist/xlsx.full.min";
 import { Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import {
-    selectIsWorkBookDataLoaded
-} from "../../../../state/features/workBookData/selectors";
-import { setWorkBookDataThunkCreator } from "../../../../state/features/workBookData/thunkCreators";
+    selectIsVideoBookDataLoaded
+} from "../../../../state/features/videoBookData/selectors";
+import { setVideoBookDataThunkCreator } from "../../../../state/features/videoBookData/thunkCreators";
 
-export const FilesUploadBook1 = () => {
+// Это компонент который принимает от юзера файл "Видео" заполненый юзером. На основе этого файла строятся все отчетные таблицы по видео и телеграммы
+export const FilledByUserBook = () => {
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
     const dispatch = useDispatch();
-    const isBook1DataLoaded = useSelector(selectIsWorkBookDataLoaded);                                      // загружны ли данные по текущему проезду в стейт
+    const isFilledByUserBookLoaded = useSelector(selectIsVideoBookDataLoaded);                                      // загружны ли данные по текущему проезду в стейт
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
-
-
-
-
-    // // ------------------------------------ Declare функцию вызывающуюся при загрузке файла ------------------------------------------------
-    // const onBookSelect = (evt) => {
-    //     debugger
-    //     let worBookData;                                    // возвращаем json
-    //     const selectedFile = evt.target.files[0];           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
-
-    //     if (selectedFile) {                                 // если файл был выбран. эта проверка чтобы если пользователь нажал кнопку выбрать файл а потом закрыл окно с выбором файла не выбрав его
-    //         let reader = new FileReader();
-    //         reader.readAsBinaryString(selectedFile);
-    //         reader.onload = function (event) {
-
-    //             const data = event.target.result;
-    //             const workBook = XLSX.read(data, {
-    //                 type: 'binary'
-    //             });
-
-    //             const workSheetOtstDataObj = workBook.Sheets["Отступления"];
-    //             const workSheetOtstDataJson = XLSX.utils.sheet_to_json(workSheetOtstDataObj);
-
-    //             const workSheetOcKmDataObj = workBook.Sheets["Оценка КМ"];
-    //             const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
-
-
-    //             worBookData = {
-    //                 otstSheetData: workSheetOtstDataJson,
-    //                 ocKmSheetData: workSheetOcKmDataJson
-    //             }
-
-    //             dispatch(setWorkBookDataThunkCreator(worBookData));
-    //         };
-
-    //         reader.onerror = function (event) {
-    //             worBookData = null
-    //             console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
-    //         };
-    //     }
-    // }
-    // // ------------------------------------ / Declare функцию вызывающуюся при загрузке файла ----------------------------------------------
 
 
 
@@ -66,7 +25,7 @@ export const FilesUploadBook1 = () => {
         //     authorization: 'authorization-text',
         // },
         onChange(evt) {
-            let worBookData;                                    // возвращаем json
+            let workBookData;                                    // возвращаем json
             const selectedFile = evt.fileList[0].originFileObj;           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
 
             if (selectedFile) {                                 // если файл был выбран. эта проверка чтобы если пользователь нажал кнопку выбрать файл а потом закрыл окно с выбором файла не выбрав его
@@ -79,23 +38,19 @@ export const FilesUploadBook1 = () => {
                         type: 'binary'
                     });
 
-                    const workSheetOtstDataObj = workBook.Sheets["Отступления"];
-                    const workSheetOtstDataJson = XLSX.utils.sheet_to_json(workSheetOtstDataObj);
-
-                    const workSheetOcKmDataObj = workBook.Sheets["Оценка КМ"];
-                    const workSheetOcKmDataJson = XLSX.utils.sheet_to_json(workSheetOcKmDataObj);
+                    const videoDataObj = workBook.Sheets["Ввод"];
+                    const videoDataObjJson = XLSX.utils.sheet_to_json(videoDataObj);
 
 
-                    worBookData = {
-                        otstSheetData: workSheetOtstDataJson,
-                        ocKmSheetData: workSheetOcKmDataJson
+                    workBookData = {
+                        videoData: videoDataObjJson
                     }
 
-                    dispatch(setWorkBookDataThunkCreator(worBookData));
+                    dispatch(setVideoBookDataThunkCreator(workBookData));
                 };
 
                 reader.onerror = function (event) {
-                    worBookData = null
+                    workBookData = null
                     console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
                 };
             }
@@ -109,12 +64,12 @@ export const FilesUploadBook1 = () => {
         <>
             <div className="content__input-item">
                 {
-                    isBook1DataLoaded
+                    isFilledByUserBookLoaded
                         ? <>
-                            <h2>Данные по текущему периоду успешно загружены</h2>
+                            <h2>Данные по видео успешно загружены</h2>
                         </>
                         : <>
-                            <h2>Данные по текущему периоду не загружены, сначала загрузите данные</h2>
+                            <h2>Данные по видео не загружены, сначала загрузите данные</h2>
                             <Upload {...props}>
                                 <Button type="primary" icon={<UploadOutlined />}>Загрузить файл</Button>
                             </Upload>
