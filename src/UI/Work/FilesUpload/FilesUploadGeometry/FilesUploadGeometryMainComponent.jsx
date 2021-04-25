@@ -3,7 +3,7 @@ import { FilesUploadBook1 } from "./FilesUploadBook1";
 import { FilesUploadBook2 } from "./FilesUploadBook2";
 import { FilesUploadBook3 } from "./FilesUploadBook3";
 
-export const FilesUploadMainComponent = () => {
+export const FilesUploadGeometryMainComponent = () => {
     return (
         <>
             <h2>Files Upload</h2>

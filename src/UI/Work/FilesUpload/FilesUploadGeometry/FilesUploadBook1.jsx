@@ -5,8 +5,8 @@ import { Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import {
     selectIsWorkBookDataLoaded
-} from "../../../state/features/workBookData/selectors";
-import { setWorkBookDataThunkCreator } from "../../../state/features/workBookData/thunkCreators";
+} from "../../../../state/features/workBookData/selectors";
+import { setWorkBookDataThunkCreator } from "../../../../state/features/workBookData/thunkCreators";
 
 export const FilesUploadBook1 = () => {
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------

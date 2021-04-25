@@ -19,7 +19,7 @@ export const ConvertVideo = () => {
 
   // ------------------------------------ Declare функцию вызывающуюся при загрузке файла ------------------------------------------------
   const onBookSelect = (evt) => {
-    let worBookData;                                    // возвращаем json
+    let workBookData;                                    // возвращаем json
     const selectedFile = evt.target.files[0];           // выбранный в браузере файл, один, так как запрещен мульти выбор файлов
 
     if (selectedFile) {                                 // если файл был выбран. эта проверка чтобы если пользователь нажал кнопку выбрать файл а потом закрыл окно с выбором файла не выбрав его
@@ -36,15 +36,15 @@ export const ConvertVideo = () => {
         const videoDataObjJson = XLSX.utils.sheet_to_json(videoDataObj);
 
 
-        worBookData = {
+        workBookData = {
           videoData: videoDataObjJson
         }
 
-        dispatch(setVideoBookDataThunkCreator(worBookData));
+        dispatch(setVideoBookDataThunkCreator(workBookData));
       };
 
       reader.onerror = function (event) {
-        worBookData = null
+        workBookData = null
         console.error("Файл не может быть прочитан. Код ошибки: " + event.target.error.code);
       };
     }

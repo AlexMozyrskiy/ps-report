@@ -4,14 +4,14 @@ import XLSX from "xlsx/dist/xlsx.full.min";
 import { Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import {
-    selectIsWorkBook3DataLoaded
-} from "../../../state/features/workBook3Data/selectors";
-import { setWorkBook3DataThunkCreator } from "../../../state/features/workBook3Data/thunkCreators";
+    selectIsWorkBook2DataLoaded
+} from "../../../../state/features/workBook2Data/selectors";
+import { setWorkBook2DataThunkCreator } from "../../../../state/features/workBook2Data/thunkCreators";
 
-export const FilesUploadBook3 = () => {
+export const FilesUploadBook2 = () => {
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
     const dispatch = useDispatch();
-    const isBook3DataLoaded = useSelector(selectIsWorkBook3DataLoaded);                                      // загружны ли данные по текущему проезду в стейт
+    const isBook2DataLoaded = useSelector(selectIsWorkBook2DataLoaded);                                      // загружны ли данные по текущему проезду в стейт
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
     // ---------------------------------------- Пропсы которые будем передавать в Upload Ant Design ----------------------------------------
@@ -47,7 +47,7 @@ export const FilesUploadBook3 = () => {
                         ocKmSheetData: workSheetOcKmDataJson
                     }
 
-                    dispatch(setWorkBook3DataThunkCreator(worBookData));
+                    dispatch(setWorkBook2DataThunkCreator(worBookData));
                 };
 
                 reader.onerror = function (event) {
@@ -64,13 +64,13 @@ export const FilesUploadBook3 = () => {
         <>
             <div className="content__input-item">
                 {
-                    isBook3DataLoaded
+                    isBook2DataLoaded
                         ? <>
-                            <h2>Данные по позапрошлому периоду успешно загружены</h2>
+                            <h2>Данные по предыдущему периоду успешно загружены</h2>
                         </>
                         : <>
-                            <h2>Данные по позапрошлому периоду не загружены, сначала загрузите данные.
-                                Например если сейчас период Апрель контрольный загрузите сюда файл с данными по Марту контрольному</h2>
+                            <h2>Данные по предыдущему периоду не загружены, сначала загрузите данные.
+                                Например если сейчас период Апрель контрольный загрузите сюда файл с данными по Апрелю рабочему</h2>
                             <Upload {...props}>
                                 <Button type="primary" icon={<UploadOutlined />}>Загрузить файл</Button>
                             </Upload>

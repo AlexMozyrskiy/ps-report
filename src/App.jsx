@@ -8,7 +8,7 @@ import { TermsOfUse } from "./UI/TermsOfUse/TermsOfUse";
 import { WithTermsOfUse } from "./HOC/WithTermsOfUse";
 import { MySideBar } from "./UI/MySideBar/MySideBar"
 import { GeneralSettingsMainComponent } from './UI/Work/Settings/GeneralSettings/GeneralSettingsMainComponent';
-import { FilesUploadMainComponent } from './UI/Work/FilesUpload/FilesUploadMainComponent';
+import { FilesUploadGeometryMainComponent } from './UI/Work/FilesUpload/FilesUploadGeometry/FilesUploadGeometryMainComponent';
 import { ThirdAndFourthDegrees } from "./UI/Work/Reports/ThirdAndFourthDegrees/ThirdAndFourthDegrees"
 import { XlsxToJson } from './UI/Work/Tests/XlsxToJson/XlsxToJson';
 import { Score } from './UI/Work/Reports/Score/Score';
@@ -42,7 +42,7 @@ const App = () => {
 
             <Switch>
               <Route exact path='/' render={() => <TermsOfUse />} />
-              <Route exact path='/work/load-books' render={() => <WithTermsOfUse component={FilesUploadMainComponent} />} />
+              <Route exact path='/work/load-geometry-books' render={() => <WithTermsOfUse component={FilesUploadGeometryMainComponent} />} />
               <Route exact path='/work/general-settings' render={() => <WithTermsOfUse component={GeneralSettingsMainComponent} />} />
               <Route exact path='/work/reports/third-and-fourth-defrees' render={() => <WithTermsOfUse component={ThirdAndFourthDegrees} />} />
               <Route exact path='/work/reports/score' render={() => <WithTermsOfUse component={Score} />} />
