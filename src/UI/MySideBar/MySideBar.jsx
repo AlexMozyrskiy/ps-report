@@ -50,6 +50,7 @@ export const MySideBar = () => {
             <SubMenu key="sub6" icon={<FileTextOutlined />} title="Тесты">
               <Menu.Item key="15"><NavLink to="/work/excel-to-json">Excel в JSON</NavLink></Menu.Item>
               <Menu.Item key="16"><NavLink to="/work/time">Time</NavLink></Menu.Item>
+              <Menu.Item key="17"><NavLink to="/work/common-test">Common Test</NavLink></Menu.Item>
             </SubMenu>
 
           </Menu>

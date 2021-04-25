@@ -21,6 +21,7 @@ import { selectIsWeAreOnTheWorkTab } from "./state/features/URL/selectors";
 import { InsulatingJointDrowdowns } from './UI/Work/Reports/InsulatingJointDrowdowns/InsulatingJointDrowdowns';
 import { Time } from './UI/Work/Tests/Time/Time';
 import { FilesUploadVideoMainComponent } from './UI/Work/FilesUpload/FolesUploadVideo/FilesUploadVideoMainComponent';
+import { CommonTest } from './UI/Work/Tests/CommonTest/CommonTest';
 
 const { Content } = Layout;
 
@@ -31,7 +32,7 @@ const App = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      {/* <div className="container"> */}
+
       <MyHeader />
 
       <Content style={{ padding: '0 50px' }}>
@@ -56,6 +57,7 @@ const App = () => {
               <Route exact path='/work/reports/repeatability-analysis' render={() => <WithTermsOfUse component={RepeatabilityAnalysis} />} />
               <Route exact path='/work/excel-to-json' render={() => <WithTermsOfUse component={XlsxToJson} />} />
               <Route exact path='/work/time' render={() => <WithTermsOfUse component={Time} />} />
+              <Route exact path='/work/common-test' render={() => <WithTermsOfUse component={CommonTest} />} />
             </Switch>
 
           </Content>
@@ -63,20 +65,6 @@ const App = () => {
         </Layout>
       </Content>
 
-
-
-
-
-      {/* <Switch>
-        <Route exact path='/' render={() => <TermsOfUse />} />
-        <Route exact path='/work' render={() => <WithTermsOfUse Component={Work} />} />
-        <Route exact path='/third-and-fourth-degrees' render={() => <ThirdAndFourthDegrees />} />
-        <Route exact path='/ekasui-report' render={() => <EkasuiReport />} />
-        <Route exact path='/convert-video' render={() => <ConvertVideo />} />
-        <Route exact path='/telegrams' render={() => <Telegrams />} />
-        <Route exact path='/test' render={() => <ReselectTesting />} />
-      </Switch> */}
-      {/* </div> */}
     </Layout>
   );
 }
