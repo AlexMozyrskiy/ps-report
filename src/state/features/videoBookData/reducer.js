@@ -2,6 +2,7 @@ import {
     VIDEO_BOOK_DATA, IS_VIDEO_BOOK_DATA_LOADED
 } from "./actionTypes";
 import { sheetVideoConst } from "../../../CONSTS/sheetsHeaderConsts";
+import { replaceCommasWithPeriodsInANumber } from "../../../helpers/common/replaceCommasWithPeriodsInANumber/replaceCommasWithPeriodsInANumber";
 
 const initialState = {
     videoSheetData: [{
@@ -44,7 +45,7 @@ const videoBookDataReducer = (state = initialState, action) => {
                         "Накладка в стыке": item[sheetVideoConst.NUMBER_OF_HOLES_IN_LINING],
                         "Уст Скорость": item[sheetVideoConst.ADVENCED_SPEED],
                         "Огр. скорости": item[sheetVideoConst.RESTRICTION_SPEED],
-                        "Величина (только цифра, без мм)": +item[sheetVideoConst.RETREAT_AMOUNT],
+                        "Величина (только цифра, без мм)": +replaceCommasWithPeriodsInANumber(item[sheetVideoConst.RETREAT_AMOUNT]),
                         "Радиус кривой": item[sheetVideoConst.CURVE_RADIUS],
                         "Подрельсовое основание дерево/бетон": item[sheetVideoConst.UNDER_RAIL_BASE],
                         "Тип пути (зв./ бп)": item[sheetVideoConst.TRACK_TYPE]

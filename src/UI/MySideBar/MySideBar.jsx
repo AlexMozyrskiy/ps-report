@@ -44,7 +44,7 @@ export const MySideBar = () => {
             </SubMenu>
             
             <SubMenu key="sub5" icon={<FileTextOutlined />} title="Телеграммы">
-              <Menu.Item key="14">option9</Menu.Item>
+              <Menu.Item key="14"><NavLink to="/work/telegrams/video">Телеграмма Видео</NavLink></Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub6" icon={<FileTextOutlined />} title="Тесты">

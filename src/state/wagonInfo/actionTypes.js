@@ -1,0 +1,2 @@
+export const WAGON_FULL_NAME = 'ps-report/wagonInfo/WAGON_FULL_NAME';   // Полное имя вагона, например "ПС-025"
+export const IS_SUBMIT_BUTTON_WAGON_NAME_CLICKED = 'ps-report/wagonInfo/IS_SUBMIT_BUTTON_WAGON_NAME_CLICKED';   // Нажал ли пользователь кнопку подтверждения после ввода полного имени вагона
