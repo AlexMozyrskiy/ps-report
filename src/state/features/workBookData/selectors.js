@@ -1077,7 +1077,6 @@ export const selectCalculatedDataRepeatabilityAnalysis = createSelector(
                         prevPeriodRetreatDegree = prevPeriodRetreatFirstSortedObj[sheetOtstConst.DEGREE];
                         prevPeriodRetreatAmplitude = prevPeriodRetreatFirstSortedObj[sheetOtstConst.AMPLITUDE];
                         prevPeriodRetreatLength = prevPeriodRetreatFirstSortedObj[sheetOtstConst.LENGTH_OF_RETREAT];
-                        debugger
                     } else if (prevPeriodRetreat.length > 1) {                                                                       // Если нашел несколько неисправностей
                         prevPeriodRetreat.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
                         const prevPeriodRetreatFirstSortedObj = prevPeriodRetreat[0];                                                   // первый объект в отсортированном массиве, то есть самый ближний к обнаруженной неисправности в текущем периоде
@@ -1091,9 +1090,10 @@ export const selectCalculatedDataRepeatabilityAnalysis = createSelector(
                         prevPrevPeriodRetreatAmplitude = "";
                         prevPrevPeriodRetreatLength = "";
                     } else if (prevPrevPeriodRetreat.length === 1) {       // Если нашел 1 неисправность в этой точке
-                        prevPrevPeriodRetreatDegree = prevPrevPeriodRetreat[sheetOtstConst.DEGREE];
-                        prevPrevPeriodRetreatAmplitude = prevPrevPeriodRetreat[sheetOtstConst.AMPLITUDE];
-                        prevPrevPeriodRetreatLength = prevPrevPeriodRetreat[sheetOtstConst.LENGTH_OF_RETREAT];
+                        const prevPeriodRetreatFirstSortedObj = prevPrevPeriodRetreat[0];
+                        prevPrevPeriodRetreatDegree = prevPeriodRetreatFirstSortedObj[sheetOtstConst.DEGREE];
+                        prevPrevPeriodRetreatAmplitude = prevPeriodRetreatFirstSortedObj[sheetOtstConst.AMPLITUDE];
+                        prevPrevPeriodRetreatLength = prevPeriodRetreatFirstSortedObj[sheetOtstConst.LENGTH_OF_RETREAT];
                     } else if (prevPrevPeriodRetreat.length > 1) {                                                                       // Если нашел несколько неисправностей
                         prevPrevPeriodRetreat.sort((a, b) => b[sheetOtstConst.METER] - a[sheetOtstConst.METER]);                       // отсортируем массив объектоп по возрастанию
                         const prevPrevPeriodRetreatFirstSortedObj = prevPrevPeriodRetreat[0];                                                   // первый объект в отсортированном массиве, то есть самый ближний к обнаруженной неисправности в текущем периоде

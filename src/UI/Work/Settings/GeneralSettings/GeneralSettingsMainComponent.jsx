@@ -1,5 +1,6 @@
 import React from "react";
 import { GeneralSettingsDatePicker } from "./GeneralSettingsDatePicker";
+import { GeneralSettingsInspectionArea } from "./GeneralSettingsInspectionArea";
 import { GeneralSettingsWagonNameInputForm } from "./GeneralSettingsWagonNameInputForm";
 
 export const GeneralSettingsMainComponent = () => {
@@ -10,6 +11,8 @@ export const GeneralSettingsMainComponent = () => {
             <GeneralSettingsDatePicker />
 
             <GeneralSettingsWagonNameInputForm />
+
+            <GeneralSettingsInspectionArea />
         </>
     );
 }

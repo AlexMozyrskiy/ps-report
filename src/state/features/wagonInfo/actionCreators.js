@@ -1,5 +1,5 @@
 import {
-    WAGON_FULL_NAME, IS_SUBMIT_BUTTON_WAGON_NAME_CLICKED
+    WAGON_FULL_NAME, INSPECTION_AREA
 } from "./actionTypes";
 
 /* при вводе во вкладке настройки номера вагона заносим информацию в стейт */
@@ -10,10 +10,10 @@ export const setWagonFullNameActionCreator = ( wagonFullName ) => {
     }
 };
 
-/* Нажал ли пользователь кнопку подтверждения после ввода полного имени вагона во вкладке настройки */
-export const setIsSubmitButtonWagonNameClickedActionCreator = ( boolVar ) => {
+/* Пользователь указывает участок проверки от станции к станции */
+export const setInspectionAreaActionCreator = ( inspectionArea ) => {
     return {
-        type: IS_SUBMIT_BUTTON_WAGON_NAME_CLICKED,
-        isSubmitButtonClicked: boolVar
+        type: INSPECTION_AREA,
+        inspectionArea
     }
 };

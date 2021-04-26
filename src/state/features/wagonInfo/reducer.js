@@ -1,10 +1,10 @@
 import {
-    WAGON_FULL_NAME, IS_SUBMIT_BUTTON_WAGON_NAME_CLICKED
+    WAGON_FULL_NAME, INSPECTION_AREA
 } from "./actionTypes";
 
 const initialState = {
-    wagonFullName: "",           // Полное имя вагона, например "ПС-025"
-    isSubmitButtonClicked: false
+    wagonFullName: "",          // Полное имя вагона, например "ПС-025"
+    inspectionArea: ""          // Пользователь указывает участок проверки от станции к станции ля использования в телеграмме
 };
 
 const wagonInfoReducer = (state = initialState, action) => {
@@ -18,10 +18,10 @@ const wagonInfoReducer = (state = initialState, action) => {
             return superState;
         }
 
-        case IS_SUBMIT_BUTTON_WAGON_NAME_CLICKED: {
+        case INSPECTION_AREA: {
             const superState = {
                 ...state,
-                isSubmitButtonClicked: action.isSubmitButtonClicked
+                inspectionArea: action.inspectionArea
             };
             return superState;
         }

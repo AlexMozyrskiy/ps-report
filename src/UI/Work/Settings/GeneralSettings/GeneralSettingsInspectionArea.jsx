@@ -1,20 +1,20 @@
 import React from "react";
 import { Form, Input } from 'antd';
-import { selectWagonFullName } from "../../../../state/features/wagonInfo/selectors";
-import { setWagonFullNameActionCreator } from "../../../../state/features/wagonInfo/actionCreators";
+import { selectInspectionArea } from "../../../../state/features/wagonInfo/selectors";
+import { setInspectionAreaActionCreator } from "../../../../state/features/wagonInfo/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
 
-/* Пользователь указывает полное имя МСД для использования в телеграмме */
+/* Пользователь указывает участок проверки от станции к станции */
 
-export const GeneralSettingsWagonNameInputForm = () => {
+export const GeneralSettingsInspectionArea = () => {
     // -------------------------------------------------------------- Хуки ---------------------------------------------------------------------------
     const dispatch = useDispatch();
-    const wagonFullName = useSelector(selectWagonFullName);
+    const inspectionArea = useSelector(selectInspectionArea);
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
     // ------------------------------------ Declare функцию вызывающуюся при вводе текста в поле ввода имени вагона   ------------------------------------------------
     const onInputChange = (value) => {
-        dispatch(setWagonFullNameActionCreator(value));                   // запишем введенное имя вагона в стейт
+        dispatch(setInspectionAreaActionCreator(value));                   // запишем введенное имя вагона в стейт
     }
     // ------------------------------------ / Declare функцию вызывающуюся при вводе текста в поле ввода имени вагона  ---------------------------------------------
 
@@ -23,8 +23,8 @@ export const GeneralSettingsWagonNameInputForm = () => {
         <>
             <div className="content__input-item">
                 <Form layout="inline">
-                    <Form.Item label="Ведите название вагона для использования в телеграмме">
-                        <Input placeholder="Название вагона" value={wagonFullName} onChange={(e) => onInputChange(e.target.value)} />
+                    <Form.Item label="Ведите участок проверки">
+                        <Input placeholder="Участок проверки" value={inspectionArea} onChange={(e) => onInputChange(e.target.value)} />
                     </Form.Item>
                 </Form>
             </div>
