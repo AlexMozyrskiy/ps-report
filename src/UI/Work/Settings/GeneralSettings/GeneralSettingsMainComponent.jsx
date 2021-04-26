@@ -1,5 +1,6 @@
 import React from "react";
 import { GeneralSettingsDatePicker } from "./GeneralSettingsDatePicker";
+import { GeneralSettingsWagonNameInputForm } from "./GeneralSettingsWagonNameInputForm";
 
 export const GeneralSettingsMainComponent = () => {
     return (
@@ -7,6 +8,8 @@ export const GeneralSettingsMainComponent = () => {
             <h2>General Settings</h2>
 
             <GeneralSettingsDatePicker />
+
+            <GeneralSettingsWagonNameInputForm />
         </>
     );
 }
