@@ -762,7 +762,7 @@ export const selectCalculatedDataInsulatingJointDrowdownsRepeats = createSelecto
                                 && (item[sheetOtstConst.METER] - 20) < otst3DataItem[sheetOtstConst.METER] && (item[sheetOtstConst.METER] + 20) > otst3DataItem[sheetOtstConst.METER]
                         });
 
-                        if (prevPrevStraightenings !== 0) {          // Если нашел просадку в этой точке по позапрошлому периоду
+                        if (prevPrevStraightenings.length !== 0) {          // Если нашел просадку в этой точке по позапрошлому периоду
                             presenceOfRepeat = 2;                   // Количество повторов будет 2
                         }
                     }

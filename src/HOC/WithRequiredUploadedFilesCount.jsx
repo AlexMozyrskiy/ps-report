@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { selectIsWorkBookDataLoaded } from "../state/features/workBookData/selectors";
 import { selectIsWorkBook2DataLoaded } from "../state/features/workBook2Data/selectors";
 import { selectIsWorkBook3DataLoaded } from "../state/features/workBook3Data/selectors";
+import { selectIsVideoBookDataLoaded } from "../state/features/videoBookData/selectors";
 
 
 export const WithRequiredUploadedFlesCount = (props) => {
@@ -14,6 +15,7 @@ export const WithRequiredUploadedFlesCount = (props) => {
     const isBook1DataLoaded = useSelector(selectIsWorkBookDataLoaded);                       // загружны ли данные в стейт
     const isBook2DataLoaded = useSelector(selectIsWorkBook2DataLoaded);                       // загружны ли данные в стейт
     const isBook3DataLoaded = useSelector(selectIsWorkBook3DataLoaded);                       // загружны ли данные в стейт
+    const isVideoBookDataLoaded = useSelector(selectIsVideoBookDataLoaded);
     // -------------------------------------------------------------- / Хуки -------------------------------------------------------------------------
 
     const {
@@ -22,10 +24,31 @@ export const WithRequiredUploadedFlesCount = (props) => {
         reportForDate,
         Component                                           // компонент
     } = { ...props };
-    
+
     // Если не выбрана дата для отчета
-    if(reportForDate === "") {
+    if (reportForDate === "") {
         return <Alert message="Не выбрана дата для отчета. Выберите дату во вкладке &ldquo;Настройки и установки&rdquo; &rarr; &ldquo;Основные настройки&rdquo;" type="error" showIcon />
+    }
+
+    if (requireUploadTrackGeomуtryFilesCount === 1 && requireUploadVideoFilesCount === 1) {
+        if (isBook1DataLoaded && isVideoBookDataLoaded) {
+            return <Component {...props} />
+        } else if (!isBook1DataLoaded && isVideoBookDataLoaded) {
+            return (
+                <Alert message="Для работы с этим отчетом необходимо загрузить файл с данными за текущий период. Загрузите файл с данными за текущий период во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="error" showIcon />
+            );
+        } else if (isBook1DataLoaded && !isVideoBookDataLoaded) {
+            return (
+                <Alert message="Для работы с этим отчетом необходимо загрузить файл с данными по видео &ldquo;Видео.xlsx&rdquo;. Загрузите файл &ldquo;Видео.xlsx&rdquo; во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="error" showIcon />
+            );
+        } else if (!isBook1DataLoaded && !isVideoBookDataLoaded) {
+            return (
+                <>
+                    <Alert message="Для работы с этим отчетом необходимо загрузить файл с данными за текущий период. Загрузите файл с данными за текущий период во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="error" showIcon />
+                    <Alert message="Для работы с этим отчетом необходимо загрузить файл с данными по видео &ldquo;Видео.xlsx&rdquo;. Загрузите файл &ldquo;Видео.xlsx&rdquo; во вкладке &ldquo;Загрузка Файлов&rdquo; &rarr; &ldquo;ГРК&rdquo;" type="error" showIcon />
+                </>
+            );
+        }
     }
 
     // если в пропсах передали, что чтобы работать с отчетом надо загрузить 1 файл по геометрии (текущий период) и 0 файлов по видео (для этого отчета видео не нужно):

@@ -31,7 +31,7 @@ export const TelegramVideo = () => {
 
         <WithRequiredUploadedFlesCount
             requireUploadTrackGeomуtryFilesCount={1}
-            requireUploadVideoFilesCount={0}
+            requireUploadVideoFilesCount={1}
             forBrowserPageRenderObj={calculatingData.forBrowserPageRenderObj}
             reportForDate={reportForDate}
             tableCaption="Телеграмма по видео"
