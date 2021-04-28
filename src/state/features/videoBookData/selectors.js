@@ -41,15 +41,25 @@ export const selectCalculatedDataTelegramVideo = createSelector(
             const distanceNumber = getPchNumberByCodeAndKm(item[sheetVideoConst.DIRECTION_CODE], kilometerMeterDouble)
             return distanceNumber;
         });
-        const uniquePchNumbersArr = getUniqueNumbersFromArr(allPchArr);                // массив уникальных номеров ПЧ (цифры)
+        let uniquePchNumbersArr = getUniqueNumbersFromArr(allPchArr);                // массив уникальных номеров ПЧ (цифры)
+        uniquePchNumbersArr = uniquePchNumbersArr.filter(item => item !== "");          // отфильтруем все номера ПЧ === "", которые не опредлила функция getPchNumberByCodeAndKm и вернула ""
+        let uniquePchPartAndNumbersAoO;
         let uniquePchPartAndNumbersArr;
         if (uniquePchNumbersArr[0] === "") {                                            // если не загрузили файл с видео при первом рендеринге страницы, чтобы не было ошибки приложения, так как map не может быть на ""
             uniquePchPartAndNumbersArr = [];
         } else {
-            uniquePchPartAndNumbersArr = uniquePchNumbersArr.map(item => DB.distances.find(element => {       // массив из принадлежности и номера ПЧ (например: ПЧ-15)
+            uniquePchPartAndNumbersAoO = uniquePchNumbersArr.map(item => DB.distances.find(element => {       // массив из принадлежности и номера ПЧ (например: ПЧ-15)
                 return element.distanceNumber === item;
-            }).distancePartAndNumber);
+            }));
         }
+        debugger
+        uniquePchPartAndNumbersArr = uniquePchPartAndNumbersAoO.map(item => {
+            if(item.distancePartAndNumber === "undefined") {
+                return "";
+            } else {
+                return item.distancePartAndNumber;
+            }
+        })
         const uniquePchPartAndNumbersStr = uniquePchPartAndNumbersArr.join(", ");                           // строка вида "ПЧ-3, ПЧ-33" для адресов в телеграмме
         // -------------- / Уникальные ПЧ ------------
 
