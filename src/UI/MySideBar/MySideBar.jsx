@@ -44,13 +44,14 @@ export const MySideBar = () => {
             </SubMenu>
             
             <SubMenu key="sub5" icon={<FileTextOutlined />} title="Телеграммы">
-              <Menu.Item key="14"><NavLink to="/work/telegrams/video">Телеграмма Видео</NavLink></Menu.Item>
+              <Menu.Item key="14"><NavLink to="/work/telegrams/video">Телеграмма по Видео</NavLink></Menu.Item>
+              <Menu.Item key="15"><NavLink to="/work/telegrams/main">Основная Телеграмма</NavLink></Menu.Item>
             </SubMenu>
 
             <SubMenu key="sub6" icon={<FileTextOutlined />} title="Тесты">
-              <Menu.Item key="15"><NavLink to="/work/excel-to-json">Excel в JSON</NavLink></Menu.Item>
-              <Menu.Item key="16"><NavLink to="/work/time">Time</NavLink></Menu.Item>
-              <Menu.Item key="17"><NavLink to="/work/common-test">Common Test</NavLink></Menu.Item>
+              <Menu.Item key="16"><NavLink to="/work/excel-to-json">Excel в JSON</NavLink></Menu.Item>
+              <Menu.Item key="17"><NavLink to="/work/time">Time</NavLink></Menu.Item>
+              <Menu.Item key="18"><NavLink to="/work/common-test">Common Test</NavLink></Menu.Item>
             </SubMenu>
 
           </Menu>

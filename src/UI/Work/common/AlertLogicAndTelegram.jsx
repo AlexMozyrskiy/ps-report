@@ -9,7 +9,6 @@ import { DownloadOutlined } from '@ant-design/icons';
 export const AlertLogicAndTelegram = (props) => {
     let { tableCaption, buttonText, onSaveButtonClick } = { ...props };
     let body = props.forBrowserPageRenderObj;
-    debugger
 
     return (
         <>

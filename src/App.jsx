@@ -23,6 +23,7 @@ import { Time } from './UI/Work/Tests/Time/Time';
 import { FilesUploadVideoMainComponent } from './UI/Work/FilesUpload/FolesUploadVideo/FilesUploadVideoMainComponent';
 import { CommonTest } from './UI/Work/Tests/CommonTest/CommonTest';
 import { TelegramVideo } from './UI/Work/Telegrams/Video/TelegramVideo';
+import { TelegramMain } from './UI/Work/Telegrams/Main/TelegramMain';
 
 const { Content } = Layout;
 
@@ -57,6 +58,7 @@ const App = () => {
               <Route exact path='/work/reports/insulating-joint-drowdowns' render={() => <WithTermsOfUse component={InsulatingJointDrowdowns} />} />
               <Route exact path='/work/reports/repeatability-analysis' render={() => <WithTermsOfUse component={RepeatabilityAnalysis} />} />
               <Route exact path='/work/telegrams/video' render={() => <WithTermsOfUse component={TelegramVideo} />} />
+              <Route exact path='/work/telegrams/main' render={() => <WithTermsOfUse component={TelegramMain} />} />
               <Route exact path='/work/excel-to-json' render={() => <WithTermsOfUse component={XlsxToJson} />} />
               <Route exact path='/work/time' render={() => <WithTermsOfUse component={Time} />} />
               <Route exact path='/work/common-test' render={() => <WithTermsOfUse component={CommonTest} />} />

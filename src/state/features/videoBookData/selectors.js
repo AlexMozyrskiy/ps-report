@@ -52,7 +52,6 @@ export const selectCalculatedDataTelegramVideo = createSelector(
                 return element.distanceNumber === item;
             }));
         }
-        debugger
         uniquePchPartAndNumbersArr = uniquePchPartAndNumbersAoO.map(item => {
             if(item.distancePartAndNumber === "undefined") {
                 return "";
@@ -138,19 +137,23 @@ export const selectCalculatedDataTelegramVideo = createSelector(
 
             const retreatTitleObj = retreatVideoCodes.find(element => element.retreatCode === item[sheetVideoConst.RETREAT_CODE]);
             const retreatAmaunt = item[sheetVideoConst.RETREAT_AMOUNT] ? item[sheetVideoConst.RETREAT_AMOUNT] : "";
+            debugger
 
-            if (item[sheetVideoConst.RETREAT_CODE] === 3 || item[sheetVideoConst.RETREAT_CODE] === 4 || item[sheetVideoConst.RETREAT_CODE] === 7) {     // если это зазор или подвижка
-                if (item[sheetVideoConst.RETREAT_AMOUNT] !== 0) {                                                                                       // если они не нулевые
+            if(typeof retreatTitleObj !== "undefined") {
+                debugger
+                if (item[sheetVideoConst.RETREAT_CODE] === 3 || item[sheetVideoConst.RETREAT_CODE] === 4 || item[sheetVideoConst.RETREAT_CODE] === 7) {     // если это зазор или подвижка
+                    if (item[sheetVideoConst.RETREAT_AMOUNT] !== 0) {                                                                                       // если они не нулевые
+                        forXLSXAoA.push([`
+                            ${item[sheetVideoConst.KILOMETER]} км ${item[sheetVideoConst.METER]} м, ${item[sheetVideoConst.RAIL_THREAD]}, 
+                            ${retreatTitleObj.retreatFullTitle} ${retreatAmaunt} мм.
+                        `]);
+                    }
+                } else {                                                                                                                                    // если это не зазор и не подвижка запушим в любом случае
                     forXLSXAoA.push([`
                         ${item[sheetVideoConst.KILOMETER]} км ${item[sheetVideoConst.METER]} м, ${item[sheetVideoConst.RAIL_THREAD]}, 
-                        ${retreatTitleObj.retreatFullTitle} ${retreatAmaunt} мм.
+                        ${retreatTitleObj.retreatFullTitle}${retreatAmaunt ? retreatAmaunt + " мм." : "."}
                     `]);
                 }
-            } else {                                                                                                                                    // если это не зазор и не подвижка запушим в любом случае
-                forXLSXAoA.push([`
-                    ${item[sheetVideoConst.KILOMETER]} км ${item[sheetVideoConst.METER]} м, ${item[sheetVideoConst.RAIL_THREAD]}, 
-                    ${retreatTitleObj.retreatFullTitle}${retreatAmaunt ? retreatAmaunt + " мм." : "."}
-                `]);
             }
         });
 
@@ -164,7 +167,6 @@ export const selectCalculatedDataTelegramVideo = createSelector(
 
 
         
-        debugger
 
 
 
