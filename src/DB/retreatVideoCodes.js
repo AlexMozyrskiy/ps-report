@@ -36,5 +36,7 @@ export const retreatVideoCodes = [
     {retreatCode: 35, retreatForReportTamlesTitle: "недостаточное количество балласта в шпальном ящике", retreatFullTitle: "Недостаточное количество балласта в шпальном ящике"},
     {retreatCode: 36, retreatForReportTamlesTitle: "не обновлена маркировка «маячных» шпал", retreatFullTitle: "Не обновлена маркировка «маячных» шпал"},
     {retreatCode: 37, retreatForReportTamlesTitle: "отсутствует разметка контрольных сечений рельсовой плети", retreatFullTitle: "Отсутствует разметка контрольных сечений рельсовой плети"},
-    {retreatCode: 38, retreatForReportTamlesTitle: "прочие", retreatFullTitle: "Прочие"}
+    {retreatCode: 38, retreatForReportTamlesTitle: "эксплуатация четырехдырных накладок на мосту", retreatFullTitle: "Эксплуатация четырехдырных накладок на мосту"},
+    {retreatCode: 39, retreatForReportTamlesTitle: "металлическая пластина между головкой рельса и стыковой наклодкой", retreatFullTitle: "Металлическая пластина между головкой рельса и стыковой наклодкой"},
+    {retreatCode: 40, retreatForReportTamlesTitle: "прочие", retreatFullTitle: "Прочие"}
 ];
