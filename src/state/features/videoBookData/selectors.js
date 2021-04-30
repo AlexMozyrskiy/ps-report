@@ -53,7 +53,7 @@ export const selectCalculatedDataTelegramVideo = createSelector(
             }));
         }
         uniquePchPartAndNumbersArr = uniquePchPartAndNumbersAoO.map(item => {
-            if(item.distancePartAndNumber === "undefined") {
+            if(typeof item === "undefined") {
                 return "";
             } else {
                 return item.distancePartAndNumber;

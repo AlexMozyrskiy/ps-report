@@ -5,6 +5,7 @@ import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import { Layout } from 'antd';
 import './App.css';
 import { TermsOfUse } from "./UI/TermsOfUse/TermsOfUse";
+import { Employer } from "./UI/Employer/Employer";
 import { WithTermsOfUse } from "./HOC/WithTermsOfUse";
 import { MySideBar } from "./UI/MySideBar/MySideBar"
 import { GeneralSettingsMainComponent } from './UI/Work/Settings/GeneralSettings/GeneralSettingsMainComponent';
@@ -45,7 +46,8 @@ const App = () => {
           <Content style={{ padding: '0 24px', minHeight: 280 }}>
 
             <Switch>
-              <Route exact path='/' render={() => <TermsOfUse />} />
+              <Route exact path='/terms-of-use' render={() => <TermsOfUse />} />
+              <Route exact path='/' render={() => <Employer />} />
               <Route exact path='/work/load-geometry-books' render={() => <WithTermsOfUse component={FilesUploadGeometryMainComponent} />} />
               <Route exact path='/work/load-video-books' render={() => <WithTermsOfUse component={FilesUploadVideoMainComponent} />} />
               <Route exact path='/work/general-settings' render={() => <WithTermsOfUse component={GeneralSettingsMainComponent} />} />

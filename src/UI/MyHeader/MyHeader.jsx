@@ -19,10 +19,10 @@ const MyHeader = () => {
 
     return (
         <Header className="header">
-            <Menu theme="dark" mode="horizontal" >
+            <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['3']}>
                 <Menu.Item key="1"><NavLink to="/work/general-settings" onClick={() => onHeaderLinkClick(true)}>Работа</NavLink></Menu.Item>
-                <Menu.Item key="2"><NavLink to="/" onClick={() => onHeaderLinkClick(false)}>Пользовательское соглашение</NavLink></Menu.Item>
-                <Menu.Item key="3" onClick={() => onHeaderLinkClick(false)}>Благодарности</Menu.Item>
+                <Menu.Item key="2"><NavLink to="/terms-of-use" onClick={() => onHeaderLinkClick(false)}>Пользовательское соглашение</NavLink></Menu.Item>
+                <Menu.Item key="3"><NavLink to="/" onClick={() => onHeaderLinkClick(false)}>Работодателю</NavLink></Menu.Item>
             </Menu>
         </Header>
 
